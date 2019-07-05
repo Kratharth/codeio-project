@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Dashboard from './views/Dashboard';
 import ProductList from './views/ProductList';
 import UserList from './views/UserList';
-import Typography from './views/Typography';
+//import Typography from './views/Typography';
 // import Icons from './views/Icons';
 import Account from './views/Account';
 import TimeTables from './views/TimeTables'
@@ -42,11 +42,11 @@ export default class Routes extends Component {
           exact
           path="/products"
         />
-        <Route
+        {/* <Route
           component={Typography}
           exact
           path="/typography"
-        />
+        /> */}
         {/* <Route
           component={Icons}
           exact
