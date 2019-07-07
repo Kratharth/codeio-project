@@ -63,6 +63,10 @@ export default theme => ({
       justifyContent: 'center'
     }
   },
+  formControl: {
+    margin: theme.spacing(1),
+    width:'400px'
+  },
   form: {
     paddingLeft: '100px',
     paddingRight: '100px',

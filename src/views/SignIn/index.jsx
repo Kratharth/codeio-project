@@ -7,6 +7,10 @@ import compose from 'recompose/compose';
 import validate from 'validate.js';
 import _ from 'underscore';
 
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
@@ -46,7 +50,8 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-  type:'admin'
+      type:'',
+      open:false
     },
     touched: {
       email: false,
@@ -69,12 +74,11 @@ class SignIn extends Component {
 
   validateForm = _.debounce(() => {
     const { values } = this.state;
-
     const newState = { ...this.state };
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = errors ? false : true;
+    newState.isValid = errors||values.type=='' ?false:true;
 
     this.setState(newState);
   }, 300);
@@ -89,6 +93,16 @@ class SignIn extends Component {
     this.setState(newState, this.validateForm);
   };
 
+  handleChange = (field, value) => {
+    const newState = { ...this.state };
+      
+    newState.submitError = null;
+    newState.touched[field] = true;
+    newState.values[field] = value;
+    this.setState(newState, this.validateForm);
+   
+  };
+
   handleSignIn = async () => {
     try {
       const { history } = this.props;
@@ -99,7 +113,9 @@ class SignIn extends Component {
       await signIn(values.email, values.password);
 
       localStorage.setItem('isAuthenticated', true);
-
+      console.log(values.email);
+      console.log(values.password);
+      console.log(values.type);
        history.push(`/${values.type}/dashboard`);
     } catch (error) {
       this.setState({
@@ -108,7 +124,16 @@ class SignIn extends Component {
       });
     }
   };
-
+  handleClose = () => {
+  this.setState({
+    open:false
+   })
+  };
+  handleOpen = () => {
+    this.setState({
+      open:true
+     })
+    };
   render() {
     const { classes } = this.props;
     const {
@@ -134,8 +159,8 @@ class SignIn extends Component {
             item
             lg={5}
           >
-            <div className={classes.quote}>
-              <div className={classes.quoteInner}>
+              <div className={classes.quote}>
+              {/* <div className={classes.quoteInner}>
                 <Typography
                   className={classes.quoteText}
                   variant="h1"
@@ -155,9 +180,9 @@ class SignIn extends Component {
                   >
                    Founder at BMS College of Engineering
                   </Typography>
-                </div>
-              </div>
-            </div>
+                </div> */}
+              {/* </div> */}
+             </div>  
           </Grid>
           <Grid
             className={classes.content}
@@ -253,6 +278,34 @@ class SignIn extends Component {
                         {errors.password[0]}
                       </Typography>
                     )}
+                    <form>
+                     <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="demo-controlled-open-select">Select your type</InputLabel>
+          <Select
+            open={this.state.open}
+            name="type"
+          onClose={this.handleClose}
+          onOpen={this.handleOpen}
+          value={values.type}
+          onChange={event =>
+            this.handleChange('type',event.target.value)
+      }
+          inputProps={{
+            name: 'type',
+            id: 'demo-controlled-open-select',
+          }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+
+          <MenuItem value="admin">Administrator</MenuItem>
+          <MenuItem value="student">Student</MenuItem>
+          <MenuItem value="lecturer">Professor</MenuItem>
+          <MenuItem value="department">Department</MenuItem>
+        </Select>
+      </FormControl>
+    </form>
                   </div>
                   {submitError && (
                     <Typography
