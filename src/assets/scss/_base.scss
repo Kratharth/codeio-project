@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+ // background-color: blue;  // to change the background of the entire thing
+}
+
+html {
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color:white;
+}
+
+a {
+  text-decoration: none;
+}
