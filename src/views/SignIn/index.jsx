@@ -17,13 +17,17 @@ import {
   IconButton,
   CircularProgress,
   TextField,
-  Typography
+  Typography,
+  FormHelperText,
+  Input,
+  Select,
+  MenuItem
 } from '@material-ui/core';
 
 // Material icons
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+//import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 
-// // Shared components
+// Shared components
 // import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
 
 // Component styles
@@ -45,26 +49,24 @@ class SignIn extends Component {
   state = {
     values: {
       email: '',
-      password: ''
+      password: '',
+      type: 'Student'
     },
     touched: {
       email: false,
-      password: false
+      password: false,
+      type: false
     },
     errors: {
       email: null,
-      password: null
+      password: null,
+      type: null
     },
     isValid: false,
     isLoading: false,
     submitError: null
   };
 
-  handleBack = () => {
-    const { history } = this.props;
-
-    history.goBack();
-  };
 
   validateForm = _.debounce(() => {
     const { values } = this.state;
@@ -99,7 +101,7 @@ class SignIn extends Component {
 
       localStorage.setItem('isAuthenticated', true);
 
-      history.push('/dashboard');
+      history.push('/dashboard'+'/'+values.type);
     } catch (error) {
       this.setState({
         isLoading: false,
@@ -139,7 +141,7 @@ class SignIn extends Component {
                   className={classes.quoteText}
                   variant="h1"
                 >
-                 Welcome To BMSCE Lecture Videos.
+                 Welcome To BMSCE Lecture Portal
                 </Typography>
                 <div className={classes.person}>
                   <Typography
@@ -165,54 +167,14 @@ class SignIn extends Component {
             xs={12}
           >
             <div className={classes.content}>
-              <div className={classes.contentHeader}>
-                <IconButton
-                  className={classes.backButton}
-                  onClick={this.handleBack}
-                >
-                  <ArrowBackIcon />
-                </IconButton>
-              </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
                   <Typography
                     className={classes.title}
                     variant="h2"
-                    align="center"
                   >
                     Sign in
                   </Typography>
-                  {/* <Typography
-                    className={classes.subtitle}
-                    variant="body1"s
-                  >
-                    Sign in with social media
-                  </Typography> */}
-                  {/* <Button
-                    className={classes.facebookButton}
-                    color="primary"
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <FacebookIcon className={classes.facebookIcon} />
-                    Login with Facebook
-                  </Button>
-                  <Button
-                    className={classes.googleButton}
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <GoogleIcon className={classes.googleIcon} />
-                    Login with Google
-                  </Button> */}
-                  {/* <Typography
-                    className={classes.sugestion}
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography> */}
                   <div className={classes.fields}>
                     <TextField
                       className={classes.textField}
@@ -252,6 +214,18 @@ class SignIn extends Component {
                         {errors.password[0]}
                       </Typography>
                     )}
+		    <Select
+		      className={classes.textField}
+                      value={values.type}
+                      onChange={event => this.handleFieldChange('type',event.target.value)}
+                      input={<Input name="type" id="user-type" />}
+                    >
+                      <MenuItem value='Admin'>Admin</MenuItem>
+                      <MenuItem value='Dept'>Department</MenuItem>
+                      <MenuItem value='Lecturer'>Lecturer</MenuItem>
+                      <MenuItem value='Student'>Student</MenuItem>
+                    </Select>
+                    <FormHelperText>Select user type</FormHelperText>
                   </div>
                   {submitError && (
                     <Typography
@@ -261,6 +235,7 @@ class SignIn extends Component {
                       {submitError}
                     </Typography>
                   )}
+
                   {isLoading ? (
                     <CircularProgress className={classes.progress} />
                   ) : (
@@ -275,18 +250,6 @@ class SignIn extends Component {
                       Sign in now
                     </Button>
                   )}
-                  {/* <Typography
-                    className={classes.signUp}
-                    variant="body1"
-                  >
-                    Don't have an account?{' '}
-                    <Link
-                      className={classes.signUpUrl}
-                      to="/sign-up"
-                    >
-                      Sign up
-                    </Link>
-                  </Typography> */}
                 </form>
               </div>
             </div>

@@ -28,7 +28,7 @@ export default class Routes extends Component {
         <Route
           component={Dashboard}
           exact
-          path="/dashboard"
+          path="/dashboard/:type"
         />
 
        
@@ -62,21 +62,21 @@ export default class Routes extends Component {
           exact
           path="/settings"
         />
-        <Route
+        {/*<Route
           component={SignUp}
           exact
           path="/sign-up"
-        />
+        />*/}
         <Route
           component={SignIn}
           exact
           path="/sign-in"
         />
-         <Route
+         {/*<Route
           component={TimeTable}
           exact
           path="/sign-in"
-        />
+        />*/}
          <Route
           component={TimeTables}
           exact

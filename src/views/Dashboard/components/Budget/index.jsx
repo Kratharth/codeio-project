@@ -26,7 +26,7 @@ class Budget extends Component {
   render() {
     const { classes, className, ...rest } = this.props;
 
-    const rootClassName = classNames(classes.root, className);
+    const rootClassName = classNames(classes.root, className); // classNames joins css classes
 
     return (
       <Paper

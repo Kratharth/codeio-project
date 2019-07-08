@@ -11,5 +11,8 @@ export default {
     length: {
       maximum: 128
     }
+  },
+  type: {
+    presence: { allowEmpty: false, message: 'is required' }
   }
 };

@@ -12,7 +12,12 @@ import { withStyles, withWidth } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 
 // Custom components
-import { Sidebar, Topbar, Footer } from './components';
+import { Topbar, Footer, 
+SidebarAdmin, 
+SidebarDept, 
+SidebarLecturer, 
+SidebarStudent}
+ from './components';
 
 // Component styles
 import styles from './styles';
@@ -21,8 +26,8 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    const isMobile = ['xs', 'sm', 'md'].includes(props.width);
-
+    const isMobile = ['xs', 'sm', 'md'].includes(props.width); // isMobile contains a boolean value
+    // includes() here checks if the array contains props.width 
     this.state = {
       isOpen: !isMobile
     };
@@ -38,8 +43,18 @@ class Dashboard extends Component {
     }));
   };
 
+  sidebarType = (type) => {
+     switch(type){
+      case 'Admin': return <SidebarAdmin />
+      case 'Dept': return <SidebarDept />
+      case 'Lecturer': return <SidebarLecturer />
+      case 'Student': return <SidebarStudent />
+      default : return null
+     }
+  };
+
   render() {
-    const { classes, width, title, children } = this.props;
+    const { classes, width, title, children,type } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -63,7 +78,7 @@ class Dashboard extends Component {
           open={isOpen}
           variant={isMobile ? 'temporary' : 'persistent'}
         >
-          <Sidebar className={classes.sidebar} />
+          {this.sidebarType(type)}
         </Drawer>
         <main
           className={classNames(classes.content, {
@@ -83,7 +98,8 @@ Dashboard.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default compose(
