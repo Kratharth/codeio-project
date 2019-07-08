@@ -36,7 +36,7 @@ import {
 // Component styles
 import styles from './styles';
 
-class Sidebar extends Component {
+class SidebarStudent extends Component {
   render() {
     const { classes, className } = this.props;
 
@@ -83,7 +83,7 @@ class Sidebar extends Component {
             className={classes.bioText}
             variant="caption"
           >
-           Student
+           STUDENT
           </Typography>
         </div>
         <Divider className={classes.profileDivider} />
@@ -252,9 +252,9 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.propTypes = {
+SidebarStudent.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles)(SidebarStudent);

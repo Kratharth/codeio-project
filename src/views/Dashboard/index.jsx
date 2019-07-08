@@ -37,9 +37,9 @@ const styles = theme => ({
 class Dashboard extends Component {
   render() {
     const { classes } = this.props;
-
+    const usertype = this.props.match.params.type;
     return (
-      <DashboardLayout title="Dashboard">
+      <DashboardLayout title="Dashboard" type={usertype}> {/*pass user type here*/}
         <div className={classes.root}>
           <Grid
             container
