@@ -12,17 +12,17 @@ export default theme => ({
   },
   topbarShift: {
     marginLeft: '271px',
-    width: 'calc(-271px + 100vw)'
+    width: 'calc(-271px + 100vw)' // top bar side shift on opening and closing the side-nav
   },
   drawerPaper: {
     zIndex: 1200,
-    width: '271px'
+    width: '271px' //actual sidebar width
   },
   sidebar: {
-    width: '270px'
+    width: '270px' // width for sidebar head and sidebar icon. as you increase this the header and icon will disappear.
   },
   content: {
-    marginTop: '64px',
+    marginTop: '64px', // width between the header and body content
     backgroundColor: theme.palette.background.default,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -30,6 +30,6 @@ export default theme => ({
     })
   },
   contentShift: {
-    marginLeft: '270px'
+    marginLeft: '270px' // by how much the body content shifts on opening the side-nav
   }
 });

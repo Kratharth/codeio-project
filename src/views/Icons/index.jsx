@@ -23,10 +23,10 @@ const styles = theme => ({
 
 class Icons extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Icons">
+      <DashboardLayout title="Icons" type={type}>
         <div className={classes.root}>
           <iframe
             className={classes.iframe}
