@@ -48,7 +48,7 @@ const PortletLabel = props => {
           className={classes.title}
           variant="h5"
         >
-          {title}
+        {title}
         </Typography>
       )}
       {subtitle && (
@@ -56,7 +56,7 @@ const PortletLabel = props => {
           className={classes.subtitle}
           variant="subtitle2"
         >
-          {subtitle}
+        {subtitle}
         </Typography>
       )}
     </div>

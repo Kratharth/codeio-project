@@ -17,7 +17,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(/images/principal.jpg)',
+    backgroundImage: 'url(/images/bmscce.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -27,7 +27,7 @@ export default theme => ({
     flexBasis: '600px'
   },
   quoteText: {
-    color: theme.palette.common.white,
+    color: theme.palette.danger.dark,
     fontWeight: 300
   },
   name: {
@@ -51,7 +51,7 @@ export default theme => ({
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2
   },
-  
+  backButton: {},
   logoImage: {
     marginLeft: theme.spacing.unit * 4
   },
@@ -62,6 +62,10 @@ export default theme => ({
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center'
     }
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    width:'400px'
   },
   form: {
     paddingLeft: '100px',
@@ -80,7 +84,25 @@ export default theme => ({
     color: theme.palette.text.secondary,
     marginTop: theme.spacing.unit * 0.5
   },
-    
+  facebookButton: {
+    marginTop: theme.spacing.unit * 3,
+    width: '100%'
+  },
+  facebookIcon: {
+    marginRight: theme.spacing.unit
+  },
+  googleButton: {
+    marginTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
+  googleIcon: {
+    marginRight: theme.spacing.unit
+  },
+  sugestion: {
+    color: theme.palette.text.secondary,
+    marginTop: theme.spacing.unit * 2,
+    textAlign: 'center'
+  },
   fields: {
     marginTop: theme.spacing.unit * 2
   },
@@ -118,7 +140,17 @@ export default theme => ({
     marginTop: theme.spacing.unit * 2,
     width: '100%'
   },
-  
+  signUp: {
+    marginTop: theme.spacing.unit * 2,
+    color: theme.palette.text.secondary
+  },
+  signUpUrl: {
+    color: theme.palette.primary.main,
+    fontWeight: 'bold',
+    '&:hover': {
+      color: theme.palette.primary.main
+    }
+  },
   fieldError: {
     color: theme.palette.danger.main,
     marginBottom: theme.spacing.unit * 2,

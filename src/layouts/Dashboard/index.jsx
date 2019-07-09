@@ -12,22 +12,18 @@ import { withStyles, withWidth } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 
 // Custom components
-import { Topbar, Footer, 
-SidebarAdmin, 
-SidebarDept, 
-SidebarLecturer, 
-SidebarStudent}
- from './components';
+import { SidebarAdmin,SidebarDepartment,SidebarStudent,SidebarLecturer, Topbar, Footer } from './components';
 
 // Component styles
 import styles from './styles';
 
 class Dashboard extends Component {
   constructor(props) {
+    console.log(props)
     super(props);
 
-    const isMobile = ['xs', 'sm', 'md'].includes(props.width); // isMobile contains a boolean value
-    // includes() here checks if the array contains props.width 
+    const isMobile = ['xs', 'sm', 'md'].includes(props.width);
+
     this.state = {
       isOpen: !isMobile
     };
@@ -42,19 +38,16 @@ class Dashboard extends Component {
       isOpen: !prevState.isOpen
     }));
   };
-
-  sidebarType = (type) => {
-     switch(type){
-      case 'Admin': return <SidebarAdmin />
-      case 'Dept': return <SidebarDept />
-      case 'Lecturer': return <SidebarLecturer />
-      case 'Student': return <SidebarStudent />
-      default : return null
-     }
+  selectSideBar = () => {
+    if (this.props.type === 'student') return <SidebarStudent className={this.props.classes.sidebar} />;
+    else if (this.props.type === 'admin') return <SidebarAdmin className={this.props.classes.sidebar} />;
+    else if (this.props.type === 'department') return <SidebarDepartment className={this.props.classes.sidebar} />;
+    else if (this.props.type === 'lecturer') return <SidebarLecturer className={this.props.classes.sidebar} />;
   };
 
+
   render() {
-    const { classes, width, title, children,type } = this.props;
+    const { classes, width, title, children ,type } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -78,7 +71,8 @@ class Dashboard extends Component {
           open={isOpen}
           variant={isMobile ? 'temporary' : 'persistent'}
         >
-          {this.sidebarType(type)}
+          {/* <Sidebar className={classes.sidebar} /> */}
+          {this.selectSideBar()}
         </Drawer>
         <main
           className={classNames(classes.content, {

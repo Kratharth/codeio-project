@@ -25,6 +25,7 @@ import {
   NotificationsOutlined as NotificationsIcon,
   Input as InputIcon
 } from '@material-ui/icons';
+import Settings from '@material-ui/icons/Settings'
 
 // Shared services
 import { getNotifications } from 'services/notification';
@@ -91,14 +92,14 @@ class Topbar extends Component {
       notificationsEl: null
     });
   };
-
   render() {
     const {
       classes,
       className,
       title,
       isSidebarOpen,
-      onToggleSidebar
+      onToggleSidebar,
+      type
     } = this.props;
     const { notifications, notificationsCount, notificationsEl } = this.state;
 
@@ -140,6 +141,12 @@ class Topbar extends Component {
             >
               <InputIcon />
             </IconButton>
+             {/* <IconButton
+              className={classes.signOutButton}
+              onClick={this.handleSettings}
+            >
+              <Settings/>
+            </IconButton>   */}
           </Toolbar>
         </div>
         <Popover
