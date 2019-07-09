@@ -4,7 +4,9 @@ import { Link, NavLink } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
@@ -30,72 +32,75 @@ import {
   ImageOutlined as ImageIcon,
   InfoOutlined as InfoIcon,
   AccountBoxOutlined as AccountBoxIcon,
-  SettingsOutlined as SettingsIcon
+  SettingsOutlined as SettingsIcon,
+  Help as Help
 } from '@material-ui/icons';
+import BookIcon from '@material-ui/icons/Book';
+import DesktopIcon from '@material-ui/icons/DesktopWindows';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 // Component styles
 import styles from './styles';
 
 class SidebarDept extends Component {
+
+  //opening and closing of course-catalog
+  state ={
+    open1:true
+  }
+  handleClick1(){
+    this.setState({
+      open1:!this.state.open1
+    })
+  }
+
   render() {
     const { classes, className } = this.props;
-
+    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
       <nav className={rootClassName}>
-        <div className={classes.logoWrapper}>
-
-        <Typography
-                    className={classes.title}
-                    variant="h2"
-                    align="center"
-                  >
-                    BMS LRS
-                  </Typography>
-          {/* <Link
-            className={classes.logoLink}
-            to="/"
-          >
-            <img
-              alt="Brainalytica logo"
-              className={classes.logoImage}
-              src="/images/logos/brainalytica_logo.svg"
-            />
-          </Link> */}
-        </div>
+       {/* department details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
-          <Link to="/account">
+          <Link to="/department/account">
             <Avatar
-              alt=" Dr.Umadevi "
+              alt="CSE"
               className={classes.avatar}
-              src="/images/avatars/umadevi.jpg"
+              src="/images/bmslogo.png"
             />
           </Link>
           <Typography
             className={classes.nameText}
             variant="h6"
           >
-        HOD
+            CSE
           </Typography>
           <Typography
             className={classes.bioText}
             variant="caption"
           >
-          DEPT
+            Department
           </Typography>
         </div>
+
+
         <Divider className={classes.profileDivider} />
+
+      {/*list starts */}
+
         <List
           component="div"
           disablePadding
         >
+
+          {/*dashboard*/}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/dashboard"
+            to="/department/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -106,124 +111,146 @@ class SidebarDept extends Component {
             />
           </ListItem>
 
-        
-          <ListItem
-            activeClassName={classes.activeListItem}
+        {/*course catalog*/}
+
+        <ListItem button onClick={this.handleClick1.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <BookIcon/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Course Catalog"/>
+          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
+        </ListItem>
+       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+        <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Time Tables"
-            />
+            to="/department/sem1">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-1"/>
           </ListItem>
-          
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/users"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Users"
-            />
+            to="/department/sem2">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-2"/>
           </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem3">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-3"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem4">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-4"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem5">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-5"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem6">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-6"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem7">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-7"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/sem8">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-8"/>
+          </ListItem>
+          </List>
+          </Collapse>
+         
+        {/*Transfer Session */}
 
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/products"
+            to="/department/transfer"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <ShoppingBasketIcon />
+              <DesktopIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Products"
+              primary="Transfer Session"
             />
           </ListItem>
+          
+      {/*Add a Schedule */}
+
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/sign-in"
+            to="/department/addschedule"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <LockOpenIcon />
+              <ScheduleIcon/>
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Authentication"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/typography"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <TextFieldsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Typography"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/icons"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ImageIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Icons and Images"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/account"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Account"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/settings"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Settings"
+              primary="Add Schedule"
             />
           </ListItem>
         </List>
+        
+        
         <Divider className={classes.listDivider} />
-        <List
+        
+        
+       {/* Help and support */}
+
+       <List
           component="div"
           disablePadding
           subheader={
@@ -234,16 +261,16 @@ class SidebarDept extends Component {
         >
           <ListItem
             className={classes.listItem}
-            component="a"
-            href="https://devias.io/contact-us"
-            target="_blank"
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <InfoIcon />
+              <Help />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Customer support"
+              primary="Help and support"
             />
           </ListItem>
         </List>
@@ -258,3 +285,4 @@ SidebarDept.propTypes = {
 };
 
 export default withStyles(styles)(SidebarDept);
+

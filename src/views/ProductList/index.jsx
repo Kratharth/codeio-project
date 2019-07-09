@@ -121,10 +121,10 @@ class ProductList extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Products">
+      <DashboardLayout title="Products" type={type}>
         <div className={classes.root}>
           <ProductsToolbar />
           <div className={classes.content}>{this.renderProducts()}</div>
@@ -144,7 +144,8 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(ProductList);

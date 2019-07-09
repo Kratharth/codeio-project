@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core';
 // Material components
 import {
   Grid,
+  Avatar,
   Button,
   IconButton,
   CircularProgress,
@@ -50,7 +51,7 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-      type: 'Student'
+      type: 'student'
     },
     touched: {
       email: false,
@@ -101,7 +102,7 @@ class SignIn extends Component {
 
       localStorage.setItem('isAuthenticated', true);
 
-      history.push('/dashboard'+'/'+values.type);
+      history.push(values.type+'/dashboard');
     } catch (error) {
       this.setState({
         isLoading: false,
@@ -169,6 +170,11 @@ class SignIn extends Component {
             <div className={classes.content}>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
+		  <Avatar
+                    alt="BMS logo"
+                    className={classes.avatar}
+                    src="/images/bmslogo.png"
+                  />
                   <Typography
                     className={classes.title}
                     variant="h2"
@@ -220,10 +226,10 @@ class SignIn extends Component {
                       onChange={event => this.handleFieldChange('type',event.target.value)}
                       input={<Input name="type" id="user-type" />}
                     >
-                      <MenuItem value='Admin'>Admin</MenuItem>
-                      <MenuItem value='Dept'>Department</MenuItem>
-                      <MenuItem value='Lecturer'>Lecturer</MenuItem>
-                      <MenuItem value='Student'>Student</MenuItem>
+                      <MenuItem value='admin'>Admin</MenuItem>
+                      <MenuItem value='department'>Department</MenuItem>
+                      <MenuItem value='lecturer'>Lecturer</MenuItem>
+                      <MenuItem value='student'>Student</MenuItem>
                     </Select>
                     <FormHelperText>Select user type</FormHelperText>
                   </div>

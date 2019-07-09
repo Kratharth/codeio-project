@@ -18,7 +18,7 @@ import { AccountProfile, AccountDetails } from './components';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   }
 });
 
@@ -26,10 +26,10 @@ class Account extends Component {
   state = { tabIndex: 0 };
 
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Account">
+      <DashboardLayout title="Account" type={type}>
         <div className={classes.root}>
           <Grid
             container
@@ -61,7 +61,8 @@ class Account extends Component {
 }
 
 Account.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(Account);

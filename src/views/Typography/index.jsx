@@ -82,3 +82,4 @@ Typography.propTypes = {
 };
 
 export default withStyles(styles)(Typography);
+

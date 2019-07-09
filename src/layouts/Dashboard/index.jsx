@@ -43,12 +43,12 @@ class Dashboard extends Component {
     }));
   };
 
-  sidebarType = (type) => {
+  sidebarType = (type,classes) => {
      switch(type){
-      case 'Admin': return <SidebarAdmin />
-      case 'Dept': return <SidebarDept />
-      case 'Lecturer': return <SidebarLecturer />
-      case 'Student': return <SidebarStudent />
+      case 'admin': return <SidebarAdmin className={classes.sidebar}/>
+      case 'department': return <SidebarDept className={classes.sidebar}/>
+      case 'lecturer': return <SidebarLecturer className={classes.sidebar}/>
+      case 'student': return <SidebarStudent className={classes.sidebar}/>
       default : return null
      }
   };
@@ -78,7 +78,7 @@ class Dashboard extends Component {
           open={isOpen}
           variant={isMobile ? 'temporary' : 'persistent'}
         >
-          {this.sidebarType(type)}
+          {this.sidebarType(type,classes)}
         </Drawer>
         <main
           className={classNames(classes.content, {
@@ -99,7 +99,7 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   width: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default compose(
