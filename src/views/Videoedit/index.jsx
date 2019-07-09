@@ -26,10 +26,10 @@ class Videoedit extends Component {
   state = { tabIndex: 0 };
 
   render() {
-    const { classes } = this.props;
+    const { classes,type} = this.props;
 
     return (
-      <DashboardLayout title="Videoedit" >
+      <DashboardLayout title="Videoedit" type={type}>
         <div className={classes.root}>
           <Grid
             container

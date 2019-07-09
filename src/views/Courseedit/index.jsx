@@ -13,7 +13,7 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { VideoeditDetails } from './components';
+import { CourseeditDetails } from './components';
 
 // Component styles
 const styles = theme => ({
@@ -22,14 +22,14 @@ const styles = theme => ({
   }
 });
 
-class Videocontrol extends Component {
+class Coursecontrol extends Component {
   state = { tabIndex: 0 };
 
   render() {
     const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Videocontrol" type={type} >
+      <DashboardLayout title="Coursecontrol" type={type} >
         <div className={classes.root}>
           <Grid
             container
@@ -43,7 +43,7 @@ class Videocontrol extends Component {
               xl={8}
               xs={12}
             >
-              <VideoeditDetails />
+              <CourseeditDetails />
             </Grid>
 
           </Grid>
@@ -53,8 +53,8 @@ class Videocontrol extends Component {
   }
 }
 
-Videocontrol.propTypes = {
+Coursecontrol.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Videocontrol);
+export default withStyles(styles)(Coursecontrol);

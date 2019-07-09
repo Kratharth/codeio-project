@@ -33,7 +33,8 @@ import {
   InfoOutlined as InfoIcon,
   AccountBoxOutlined as AccountBoxIcon,
   SettingsOutlined as SettingsIcon,
-  Help as Help
+  Help as Help,
+  Create as EditIcon
 } from '@material-ui/icons';
 import BookIcon from '@material-ui/icons/Book';
 import DesktopIcon from '@material-ui/icons/DesktopWindows';
@@ -223,7 +224,7 @@ class SidebarDepartment extends Component {
           </ListItem>
           </List>
           </Collapse>
-         
+
         {/*Transfer Session */}
 
           <ListItem
@@ -240,7 +241,26 @@ class SidebarDepartment extends Component {
               primary="Transfer Session"
             />
           </ListItem>
-          
+
+
+          {/*Courseedit */}
+
+            <ListItem
+              activeClassName={classes.activeListItem}
+              className={classes.listItem}
+              component={NavLink}
+              to="/department/courseedit"
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+                <EditIcon />
+              </ListItemIcon>
+              <ListItemText
+                classes={{ primary: classes.listItemText }}
+                primary="Course edit"
+              />
+            </ListItem>
+
+
       {/*Add a Schedule */}
 
           <ListItem
@@ -258,11 +278,11 @@ class SidebarDepartment extends Component {
             />
           </ListItem>
         </List>
-        
-        
+
+
         <Divider className={classes.listDivider} />
-        
-        
+
+
        {/* Help and support */}
 
        <List

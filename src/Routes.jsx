@@ -13,7 +13,9 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
-
+import Videocontrol from './views/Videocontrol';
+import Videoedit from './views/Videoedit';
+import Courseedit from './views/Courseedit';
 export default class Routes extends Component {
   render() {
     return (
@@ -195,9 +197,31 @@ export default class Routes extends Component {
            exact
            path="/:type/record"
            render={({match}) =>
-          <Dashboard type={match.params.type} />
+          <Videocontrol type={match.params.type} />
           }
           />
+{/*added route for videoedit*/}
+
+<Route
+exact
+path="/:type/videoedit"
+render={({match}) =>
+<Videoedit type={match.params.type} />
+}
+/>
+
+{/*added route for courseedit*/}
+
+<Route
+exact
+path="/:type/courseedit"
+render={({match}) =>
+<Courseedit type={match.params.type} />
+}
+/>
+
+
+
             <Route
            exact
            path="/:type/ds"
