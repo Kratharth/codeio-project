@@ -106,7 +106,21 @@ class SidebarAdmin extends Component {
             />
           </ListItem>
 
-        
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/AddUser"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="AddUser"
+            />
+          </ListItem>
+          
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}

@@ -14,10 +14,7 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import AddAdmin from './AddAdmin/AddAdmin';
-import AddDepartment from './AddDepartment/AddDepartment';
-import AddStudent from './AddStudent/AddStudent';
-import AddLecturer from './AddLecturer/AddLecturer';
+import TransferSessionForm from "./TransferSessionForm";
 
 // Component styles
 const styles = theme => ({
@@ -35,7 +32,7 @@ const styles = theme => ({
   }
 });
 
-class AddUser extends Component {
+class TransferSession extends Component {
   state = { tabIndex: 0 };
 
   render() {
@@ -54,10 +51,7 @@ class AddUser extends Component {
               xl={4}
               xs={12}
             >
-              {/* <AddAdmin /> */}
-              <AddDepartment />
-              {/* <AddLecturer /> */}
-              {/* <AddStudent /> */}
+              <TransferSessionForm />
             </Grid>
           </Grid>
         </div>
@@ -66,8 +60,8 @@ class AddUser extends Component {
   }
 }
 
-AddUser.propTypes = {
+TransferSession.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles) (AddUser);
+export default withStyles(styles) (TransferSession);

@@ -22,10 +22,26 @@ import {
 // Component styles
 import styles from './styles';
 
-class AddAdmin extends Component {
+const department = [
+    {
+      value: 'CSE',
+      label: 'CSE'
+    },
+    {
+      value: 'ISE',
+      label: 'ISE'
+    },
+    {
+      value: 'CE',
+      label: 'CE'
+    }
+  ];
+
+class AddStudent extends Component {
   state = {
     name: 'John',
     email: 'contact@devias.io',
+    department: 'CSE'
   };
 
   handleChange = e => {
@@ -79,6 +95,27 @@ class AddAdmin extends Component {
                 onChange={this.handleChange}
               />
             </div>
+            <div className={classes.field}>
+              <TextField
+                className={classes.textField}
+                label="Select Department"
+                margin="dense"
+                onChange={this.handleChange}
+                required
+                select
+                SelectProps={{ native: true }}
+                value={department}
+                variant="outlined">
+                {department.map(option => (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
+            </div>
           </form>
         </PortletContent>
         <PortletFooter className={classes.portletFooter}>
@@ -94,9 +131,9 @@ class AddAdmin extends Component {
   }
 }
 
-AddAdmin.propTypes = {
+AddStudent.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AddAdmin);
+export default withStyles(styles)(AddStudent);

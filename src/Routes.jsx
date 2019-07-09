@@ -15,6 +15,8 @@ import SignIn from './views/SignIn';
 import TimeTable from './views/TimeTable';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
+import AddUser from './views/Admin/Users/index';
+import TransferSession from 'views/Lecturer/TransferSession';
 
 export default class Routes extends Component {
   render() {
@@ -92,7 +94,16 @@ export default class Routes extends Component {
           exact
           path="/not-found"
         />
-        <Redirect to="/not-found" />
+        <Route
+          component={AddUser}
+          exact
+          path="/AddUser"
+        />
+        <Route 
+          component={TransferSession}
+          exact
+          path="/TransferSession"
+        />
       </Switch>
     );
   }

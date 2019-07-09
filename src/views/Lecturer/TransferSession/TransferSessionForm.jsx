@@ -22,10 +22,26 @@ import {
 // Component styles
 import styles from './styles';
 
-class AddAdmin extends Component {
+const department = [
+    {
+      value: 'CSE',
+      label: 'CSE'
+    },
+    {
+      value: 'ISE',
+      label: 'ISE'
+    },
+    {
+      value: 'CE',
+      label: 'CE'
+    }
+  ];
+
+class TransferSessionForm extends Component {
   state = {
     name: 'John',
     email: 'contact@devias.io',
+    department: 'CSE'
   };
 
   handleChange = e => {
@@ -70,7 +86,7 @@ class AddAdmin extends Component {
             <div className={classes.field}>
               <TextField
                 className={classes.textField}
-                helperText="Please specify the email"
+                helperText="Please specify the department email id"
                 label="Email Address"
                 margin="dense"
                 required
@@ -78,6 +94,27 @@ class AddAdmin extends Component {
                 variant="outlined"
                 onChange={this.handleChange}
               />
+            </div>
+            <div className={classes.field}>
+              <TextField
+                className={classes.textField}
+                label="Select Department"
+                margin="dense"
+                onChange={this.handleChange}
+                required
+                select
+                SelectProps={{ native: true }}
+                value={department}
+                variant="outlined">
+                {department.map(option => (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
             </div>
           </form>
         </PortletContent>
@@ -94,9 +131,9 @@ class AddAdmin extends Component {
   }
 }
 
-AddAdmin.propTypes = {
+TransferSessionForm.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AddAdmin);
+export default withStyles(styles)(TransferSessionForm);

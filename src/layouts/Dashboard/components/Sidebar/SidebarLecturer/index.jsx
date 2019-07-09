@@ -105,7 +105,20 @@ class SidebarLecturer extends Component {
               primary="Dashboard"
             />
           </ListItem>
-
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/TransferSession"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="TransferSession"
+            />
+          </ListItem>
         
           <ListItem
             activeClassName={classes.activeListItem}
