@@ -38,17 +38,17 @@ const PortletLabel = props => {
   const rootClassName = classNames(classes.root, className);
 
   return (
-    <div
+  <div
       {...rest}
       className={rootClassName}
     >
       {icon && <span className={classes.icon}>{icon}</span>}
       {title && (
-        <Typography
+     <Typography
           className={classes.title}
-          variant="h5"
+          variant="h2"
         >
-          {title}
+        {title}
         </Typography>
       )}
       {subtitle && (

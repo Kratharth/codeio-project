@@ -22,52 +22,55 @@ import {
 // Component styles
 import styles from './styles';
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
-];
+// const states = [
+//   {
+//     value: 'alabama',
+//     label: 'Alabama'
+//   },
+//   {
+//     value: 'new-york',
+//     label: 'New York'
+//   },
+//   {
+//     value: 'san-francisco',
+//     label: 'San Francisco'
+//   }
+// ];
 
 class Account extends Component {
   state = {
     firstName: 'John',
     lastName: 'Doe',
     email: 'contact@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
+    phone: '9937486232',
+    semester:'4',
+    usn:'1BM17CS098',
+    branch:'CSE'
+    //state: 'Alabama',
+   // country: 'USA'
   };
 
-  handleChange = e => {
-    this.setState({
-      state: e.target.value
-    });
-  };
+  // handleChange = e => {
+  //   this.setState({
+  //     state: e.target.value
+  //   });
+  // };
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { firstName, lastName, phone, state, country, email } = this.state;
+    const { firstName, lastName, phone,semester,usn,branch, state, country, email } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <Portlet
+    <Portlet
         {...rest}
         className={rootClassName}
       >
         <PortletHeader>
           <PortletLabel
-            subtitle="The information can be edited"
-            title="Profile"
+            // subtitle="The information can be edited"
+            title="DETAILS"
           />
         </PortletHeader>
         <PortletContent noPadding>
@@ -78,18 +81,18 @@ class Account extends Component {
             <div className={classes.field}>
               <TextField
                 className={classes.textField}
-                helperText="Please specify the first name"
+                // helperText="Please specify the first name"
                 label="First name"
                 margin="dense"
-                required
+                //required
                 value={firstName}
                 variant="outlined"
-              />
-              <TextField
+              /></div>
+              <div className={classes.field}><TextField
                 className={classes.textField}
                 label="Last name"
                 margin="dense"
-                required
+                //required
                 value={lastName}
                 variant="outlined"
               />
@@ -99,20 +102,51 @@ class Account extends Component {
                 className={classes.textField}
                 label="Email Address"
                 margin="dense"
-                required
+                //required
                 value={email}
                 variant="outlined"
-              />
-              <TextField
+              /></div>
+             <div className={classes.field}> <TextField
                 className={classes.textField}
                 label="Phone Number"
                 margin="dense"
-                type="number"
+                //type="number"
                 value={phone}
                 variant="outlined"
               />
+              
             </div>
             <div className={classes.field}>
+              <TextField
+                className={classes.textField}
+                label="Semester"
+                margin="dense"
+                //required
+                value={semester}
+                variant="outlined"
+              />
+              </div>
+              <div className={classes.field}>
+              <TextField
+                className={classes.textField}
+                label="USN"
+                margin="dense"
+                //required
+                value={usn}
+                variant="outlined"
+              />
+              </div>
+              <div className={classes.field}>
+              <TextField
+                className={classes.textField}
+                label="Branch"
+                margin="dense"
+                //required
+                value={branch}
+                variant="outlined"
+              />
+              </div>
+            {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}
                 label="Select State"
@@ -140,17 +174,17 @@ class Account extends Component {
                 value={country}
                 variant="outlined"
               />
-            </div>
+            </div> */}
           </form>
         </PortletContent>
-        <PortletFooter className={classes.portletFooter}>
+        {/* <PortletFooter className={classes.portletFooter}>
           <Button
             color="primary"
             variant="contained"
           >
             Save details
           </Button>
-        </PortletFooter>
+        </PortletFooter> */}
       </Portlet>
     );
   }

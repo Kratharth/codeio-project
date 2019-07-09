@@ -25,9 +25,9 @@ class AccountProfile extends Component {
     return (
       <Portlet
         {...rest}
-        className={rootClassName}
+         className={rootClassName}
       >
-        <PortletContent>
+        {/* <PortletContent>
           <div className={classes.details}>
             <div className={classes.info}>
               <Typography variant="h2">John Doe</Typography>
@@ -56,8 +56,8 @@ class AccountProfile extends Component {
               variant="determinate"
             />
           </div>
-        </PortletContent>
-        <PortletFooter>
+        </PortletContent> */}
+        { /* <PortletFooter>
           <Button
             className={classes.uploadButton}
             color="primary"
@@ -66,7 +66,7 @@ class AccountProfile extends Component {
             Upload picture
           </Button>
           <Button variant="text">Remove picture</Button>
-        </PortletFooter>
+        </PortletFooter> */}
       </Portlet>
     );
   }

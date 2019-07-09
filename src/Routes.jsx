@@ -12,9 +12,10 @@ import TimeTables from './views/TimeTables'
 import Settings from './views/Settings';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import TimeTable from './views/TimeTable';
+//import MaterialTableDemo from './views/TimeTable';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
+import TextFields from './views/form/form';
 
 export default class Routes extends Component {
   render() {
@@ -72,11 +73,11 @@ export default class Routes extends Component {
           exact
           path="/sign-in"
         />
-         <Route
-          component={TimeTable}
+         {/* <Route
+          component={MaterialTableDemo}
           exact
-          path="/sign-in"
-        />
+          path="/timetable"
+        /> */}
          <Route
           component={TimeTables}
           exact
@@ -92,7 +93,11 @@ export default class Routes extends Component {
           exact
           path="/not-found"
         />
-        <Redirect to="/not-found" />
+        <Route 
+        component={TextFields}
+        exact 
+        path="/form"
+       />
       </Switch>
     );
   }
