@@ -102,6 +102,7 @@ class SidebarAdmin extends Component {
               src="/images/bmscce.png"
             />
           </Link>
+          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
 
        {/* admin details */}
@@ -238,6 +239,16 @@ class SidebarAdmin extends Component {
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Lecturer"/>
           </ListItem>
+	<ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/department">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Department"/>
+          </ListItem>
           </List>
           </Collapse>
            
@@ -275,6 +286,16 @@ class SidebarAdmin extends Component {
           </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Mapping"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/processor">
+          <ListItemIcon className={classes.sublistItemIcon}>
+          <CameraAlt/>
+          </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Processors"/>
           </ListItem>
           </List>
           </Collapse>
@@ -347,11 +368,11 @@ class SidebarAdmin extends Component {
 
           {/* end of list */}
 
-        <Divider className={classes.listDivider} />
+        {/* <Divider className={classes.listDivider} />
 
         {/*help and support*/}
 
-        <List
+        {/* <List
           component="div"
           disablePadding
           subheader={
@@ -374,7 +395,7 @@ class SidebarAdmin extends Component {
               primary="Help and support"
             />
           </ListItem>
-        </List>
+        </List> */} 
       </nav>
     );
   }

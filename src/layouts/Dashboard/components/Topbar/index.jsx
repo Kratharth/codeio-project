@@ -23,10 +23,15 @@ import {
   Menu as MenuIcon,
   Close as CloseIcon,
   NotificationsOutlined as NotificationsIcon,
-  Input as InputIcon
+  Input as InputIcon,
+  Help,
 } from '@material-ui/icons';
 import Settings from '@material-ui/icons/Settings'
-
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PersonIcon from '@material-ui/icons/Person';
+import Security from '@material-ui/icons/Security';
 // Shared services
 import { getNotifications } from 'services/notification';
 
@@ -43,7 +48,8 @@ class Topbar extends Component {
     notifications: [],
     notificationsLimit: 4,
     notificationsCount: 0,
-    notificationsEl: null
+    notificationsEl: null,
+    anchorEl :null
   };
 
   async getNotifications() {
@@ -92,6 +98,16 @@ class Topbar extends Component {
       notificationsEl: null
     });
   };
+  handleClose = () => {
+    this.setState({
+      anchorEl:null
+    })
+  }
+  openMenu = event =>{
+    this.setState({
+      anchorEl : event.currentTarget
+    })
+  }
   render() {
     const {
       classes,
@@ -123,7 +139,7 @@ class Topbar extends Component {
             >
               {title}
             </Typography>
-            <IconButton
+            <Button
               className={classes.notificationsButton}
               onClick={this.handleShowNotifications}
             >
@@ -134,19 +150,36 @@ class Topbar extends Component {
               >
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
-            <IconButton
+            </Button>
+            <Button onClick="">
+              <Help/>
+            </Button>
+            {/* <IconButton
               className={classes.signOutButton}
               onClick={this.handleSignOut}
             >
               <InputIcon />
-            </IconButton>
+            </IconButton> */}
              {/* <IconButton
               className={classes.signOutButton}
               onClick={this.handleSettings}
             >
               <Settings/>
             </IconButton>   */}
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
+            <Settings/>
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={this.state.anchorEl}
+        keepMounted
+        open={Boolean(this.state.anchorEl)}
+        onClose={this.handleClose}
+      >
+        <MenuItem onClick={this.handleClose}><PersonIcon/>Profile</MenuItem>
+        <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem>
+        <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
+      </Menu>
           </Toolbar>
         </div>
         <Popover

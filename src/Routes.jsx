@@ -13,7 +13,9 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
-
+import  MappingList  from './views/mapping';
+import ProcessorList from './views/processor';
+import CameraList from './views/camera';
 export default class Routes extends Component {
   render() {
     return (
@@ -146,14 +148,21 @@ export default class Routes extends Component {
            exact
            path="/:type/camera"
            render={({match}) => 
-          <Dashboard type={match.params.type} />
+          <CameraList type={match.params.type} />
           }
           />
             <Route
            exact
            path="/:type/mapping"
            render={({match}) => 
-          <Icons type={match.params.type} />
+          <MappingList type={match.params.type} />
+          }
+          />
+          <Route
+           exact
+           path="/:type/processor"
+           render={({match}) => 
+          <ProcessorList type={match.params.type} />
           }
           />
             <Route
@@ -217,6 +226,13 @@ export default class Routes extends Component {
            path="/:type/iot"
            render={({match}) => 
           <Icons type={match.params.type} />
+          }
+          />
+           <Route
+           exact
+           path="/:type/processor"
+           render={({match}) => 
+          <UserList type={match.params.type} />
           }
           />
         {/* <Route

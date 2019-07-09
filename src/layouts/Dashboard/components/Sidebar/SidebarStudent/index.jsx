@@ -68,12 +68,13 @@ class SidebarStudent extends Component {
           className={classes.logoLink}
           to="/"
         >
-          <img
-            alt="BMSCE Logo"
-            className={classes.logoImage}
-            src="/images/bmscce.png"
-          />
-        </Link>
+ <img
+              alt="BMSCE Logo"
+              className={classes.logoImage}
+              src="/images/bmscce.png"
+            />
+          </Link>
+          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
       </div>
 
      {/* student details */}
@@ -225,12 +226,12 @@ class SidebarStudent extends Component {
          
         </List>
 
-
-        <Divider className={classes.listDivider} />
+{/* 
+        <Divider className={classes.listDivider} /> */}
 
        
         {/* Help and support */}
-
+{/* 
         <List
           component="div"
           disablePadding
@@ -254,7 +255,7 @@ class SidebarStudent extends Component {
               primary="Help and support"
             />
           </ListItem>
-        </List>
+        </List> */}
       </nav>
     );
   }

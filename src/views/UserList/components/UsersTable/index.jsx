@@ -36,7 +36,7 @@ class UsersTable extends Component {
   state = {
     selectedUsers: [],
     rowsPerPage: 10,
-    page: 0
+    page: 0,
   };
 
   handleSelectAll = event => {
@@ -102,7 +102,8 @@ class UsersTable extends Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="left">
-                    <Checkbox
+             {/*checkbox next to name */}       
+             <Checkbox
                       checked={selectedUsers.length === users.length}
                       color="primary"
                       indeterminate={

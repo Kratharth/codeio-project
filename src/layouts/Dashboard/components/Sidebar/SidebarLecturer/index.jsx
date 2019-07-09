@@ -82,6 +82,7 @@ class SidebarLecturer extends Component {
               src="/images/bmscce.png"
             />
           </Link>
+          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
 
        {/* Lecturer details */}
@@ -317,7 +318,7 @@ class SidebarLecturer extends Component {
         </List>
         
         
-      <Divider className={classes.listDivider} />
+      {/* <Divider className={classes.listDivider} />
 
       <List
           component="div"
@@ -342,7 +343,7 @@ class SidebarLecturer extends Component {
               primary="Help and support"
             />
           </ListItem>
-        </List>
+        </List> */}
       </nav>
     );
   }
