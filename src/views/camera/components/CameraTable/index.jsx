@@ -137,6 +137,7 @@ class CameraTable extends Component {
 
   render() {
     const { classes, className, cameras } = this.props;
+    console.log(cameras)
     const { activeTab, selectedcamera, rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
@@ -168,32 +169,32 @@ class CameraTable extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {cameras
-                  .filter(camera => {
-                    if (activeTab === 1) {
-                      return camera.returning;
-                    }
+                 {cameras
+                  // .filter(camera => {
+                  //   if (activeTab === 1) {
+                  //     return camera.returning;
+                  //   }
 
-                    if (activeTab === 2) {
-                      return camera.returning;
-                    }
+                  //   if (activeTab === 2) {
+                  //     return camera.returning;
+                  //   }
 
-                    return camera;
-                  })
-                  // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  //   return camera;
+                  // })
+                  /* //.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */
                   .slice(sliceStart, sliceStop)
-                  .map(camera => (
+                  .map(camera => ( 
                     <TableRow
                       className={classes.tableRow}
                       hover
                       key={camera.id}
-                      selected={selectedcamera.indexOf(camera.id) !== -1}
+                      // selected={selectedcamera.indexOf(cameras.id) !== -1}
                     >
                       <TableCell className={classes.tableCell}>
                        {camera.classroom}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
-                        {camera.ip}
+                        {camera.cameraip}
                       </TableCell>
                       <TableCell>
                       <Status

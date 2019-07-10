@@ -49,10 +49,10 @@ import { thisExpression } from '@babel/types';
 
 class SidebarAdmin extends Component {
   state ={
-    open1:true,
-    open2:true,
-    open3:true,
-    open4:true
+    open1:false,
+    open2:false,
+    open3:false,
+    open4:false
   }
   // opening and closing of drop downs in side-navs
      
@@ -174,7 +174,8 @@ class SidebarAdmin extends Component {
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/create-time-table">
+            to="/admin/create-time-table"
+            >
         <ListItemIcon className={classes.sublistItemIcon}>
           <CalenderToday/>
          </ListItemIcon>

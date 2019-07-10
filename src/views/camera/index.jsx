@@ -40,7 +40,7 @@ class CameraList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const {camera, cameraTotal} = await(getCameras(limit))
+      const {camera} = await(getCameras())
 
       if (this.signal) {
         this.setState({

@@ -1,6 +1,7 @@
 // Mock data
 //import users from 'data/users';
-import cameras from 'data/camera'
+// import cameras from 'data/camera'
+import Axios from 'axios';
 
 // function lookupUser(user) {
 //   const userCopy = JSON.parse(JSON.stringify(user));
@@ -18,33 +19,42 @@ import cameras from 'data/camera'
 //   return userCopy;
 // }
 
-export const getCameras = (limit = 10) => {
+export const getCameras = () => {
   return new Promise(resolve => {
-    setTimeout(() => {
-      const cameraLookup = cameras.slice(0, limit);
-
-      resolve({
-        camera: cameraLookup,
-        cameraTotal: cameras.length
-      });
-    }, 700);
-  });
-};
-
-export const getCamera = id => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const camera = cameras.find(camera => camera.id === id);
-
-      if (camera) {
+      Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera')
+      // const cameraLookup = cameras.slice(0, limit);
+      .then(res =>{
+        console.log('res API: ');
+        console.log(res);
         resolve({
-          camera
-        });
-      } else {
-        reject({
-          error: 'Camera  not found'
-        });
-      }
-    }, 500);
-  });
+          camera: res.data,
+          // cameraTotal: cameras.length
+        })
+      })
+      .catch (err =>{
+        console.log('err API: ');
+        console.log(err);
+        resolve({
+          camera:err
+        })
+      })
+    })
 };
+
+// export const getCamera = id => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const camera = cameras.find(camera => camera.id === id);
+
+//       if (camera) {
+//         resolve({
+//           camera
+//         });
+//       } else {
+//         reject({
+//           error: 'Camera  not found'
+//         });
+//       }
+//     }, 500);
+//   });
+// };
