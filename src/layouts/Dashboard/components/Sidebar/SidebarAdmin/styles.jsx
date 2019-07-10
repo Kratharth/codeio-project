@@ -18,7 +18,8 @@ export default theme => ({
     fontSize: 0
   },
   logoImage: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    width:'60px'  // bmsce logo width
   },
   logoDivider: {
     marginBottom: theme.spacing.unit * 2
@@ -72,7 +73,10 @@ export default theme => ({
     }
   },
   listItemIcon: {
-    marginRight: 0
+    marginRight:0
+  },
+  sublistItemIcon :{
+    marginLeft:20
   },
   listItemText: {
     fontWeight: 500,

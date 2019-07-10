@@ -30,72 +30,120 @@ import {
   ImageOutlined as ImageIcon,
   InfoOutlined as InfoIcon,
   AccountBoxOutlined as AccountBoxIcon,
-  SettingsOutlined as SettingsIcon
+  SettingsOutlined as SettingsIcon,
+  CameraAlt as CameraAlt,
+  Help,
+
 } from '@material-ui/icons';
+
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import CalenderToday from '@material-ui/icons/CalendarToday';
+import AccountBalance from '@material-ui/icons/AccountBalance';
+import Delete from '@material-ui/icons/Delete';
 
 // Component styles
 import styles from './styles';
+import { thisExpression } from '@babel/types';
 
-class Sidebar extends Component {
+class SidebarAdmin extends Component {
+  state ={
+    open1:true,
+    open2:true,
+    open3:true,
+    open4:true
+  }
+  // opening and closing of drop downs in side-navs
+     
+     // for Time Table
+  handleClick1(){
+    this.setState({
+      open1:!this.state.open1
+    })
+  }
+   
+   // for Users
+  handleClick2(){
+    this.setState({
+      open2:!this.state.open2
+    })
+  }
+
+   // for devices
+  handleClick3(){
+    this.setState({
+      open3:!this.state.open3
+    })
+  }
+
+  //for academics
+  handleClick4(){
+    this.setState({
+      open4:!this.state.open4
+    })
+  }
   render() {
     const { classes, className } = this.props;
-
     const rootClassName = classNames(classes.root, className);
 
     return (
       <nav className={rootClassName}>
         <div className={classes.logoWrapper}>
 
-        <Typography
-                    className={classes.title}
-                    variant="h2"
-                    align="center"
-                  >
-                    BMSCE LRS
-                  </Typography>
-          {/* <Link
+        {/* Bmsce logo */}
+          <Link
             className={classes.logoLink}
             to="/"
           >
             <img
-              alt="Brainalytica logo"
+              alt="BMSCE Logo"
               className={classes.logoImage}
-              src="/images/logos/brainalytica_logo.svg"
+              src="/images/bmscce.png"
             />
-          </Link> */}
+          </Link>
         </div>
+
+       {/* admin details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
-          <Link to="/account">
+          <Link to="/admin/account">
             <Avatar
-              alt=" Dr.Umadevi "
+              alt="Roman Kutepov"
               className={classes.avatar}
-              src="/images/avatars/umadevi.jpg"
+              src="/images/avatars/avatar_1.png"
             />
           </Link>
           <Typography
             className={classes.nameText}
             variant="h6"
           >
-         Dr.Umadevi
+            Anil
           </Typography>
           <Typography
             className={classes.bioText}
             variant="caption"
           >
-           ADMIN
+            Admin
           </Typography>
         </div>
+
+
         <Divider className={classes.profileDivider} />
+
+        {/*Start of the list */}
         <List
           component="div"
           disablePadding
         >
+
+        {/*dashboard*/}
+
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/dashboard"
+            to="/admin/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -106,123 +154,203 @@ class Sidebar extends Component {
             />
           </ListItem>
 
-        
-          <ListItem
-            activeClassName={classes.activeListItem}
+
+          {/* Time Table*/}
+
+          <ListItem button onClick={this.handleClick1.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <CalenderToday/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Time Table"/>
+          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
+        </ListItem>
+       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+        <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Time Tables"
-            />
+            to="/admin/create-time-table">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <CalenderToday/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Create Time Table"/>
           </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/view-time-table">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <CalenderToday/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Time Table Details"/>
+          </ListItem>
+          </List>
+          </Collapse>
+         
+
+           {/* Users*/}
+            <ListItem button onClick={this.handleClick2.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Users"/>
+        {!this.state.open2 ? <ExpandMore />: <ExpandLess />}
+      </ListItem>
+      <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+        <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/admin">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Admin"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/student">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Student"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/Lecturer">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Lecturer"/>
+          </ListItem>
+          </List>
+          </Collapse>
+           
+
+           {/*Devices */}
+          <ListItem button onClick={this.handleClick3.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <CameraAlt/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Devices"/>
+            {!this.state.open3 ? <ExpandMore />: <ExpandLess />}
+            </ListItem>
+            <Collapse in={this.state.open3} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/camera">
+          <ListItemIcon className={classes.sublistItemIcon}>
+            <CameraAlt/>
+          </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Camera"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/mapping">
+          <ListItemIcon className={classes.sublistItemIcon}>
+          <CameraAlt/>
+          </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Mapping"/>
+          </ListItem>
+          </List>
+          </Collapse>
+        
+         {/* Academics*/ }
+
+     <ListItem button onClick={this.handleClick4.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <AccountBalance/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Academics"/>
+        {!this.state.open4 ? <ExpandMore />: <ExpandLess />}
+      </ListItem>
+      <Collapse in={this.state.open4} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+        <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/department">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <AccountBalance/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Departments"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/subjects">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <AccountBalance/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Subjects"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/classrooms">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <AccountBalance/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Classrooms"/>
+          </ListItem>
+          </List>
+          </Collapse>
+
+        {/* Delete Videos*/}
           
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/users"
+            to="/admin/deletevideos"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
+              <Delete/>
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Users"
+              primary="Delete Videos"
             />
           </ListItem>
+          </List>
 
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/products"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ShoppingBasketIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Products"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <LockOpenIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Authentication"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/typography"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <TextFieldsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Typography"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/icons"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ImageIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Icons and Images"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/account"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Account"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/settings"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Settings"
-            />
-          </ListItem>
-        </List>
+          {/* end of list */}
+
         <Divider className={classes.listDivider} />
+
+        {/*help and support*/}
+
         <List
           component="div"
           disablePadding
@@ -234,16 +362,16 @@ class Sidebar extends Component {
         >
           <ListItem
             className={classes.listItem}
-            component="a"
-            href="https://devias.io/contact-us"
-            target="_blank"
+            className={classes.listItem}
+            component={NavLink}
+            to="/admin/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <InfoIcon />
+              <Help />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Customer support"
+              primary="Help and support"
             />
           </ListItem>
         </List>
@@ -252,9 +380,9 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.propTypes = {
+SidebarAdmin.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles)(SidebarAdmin);

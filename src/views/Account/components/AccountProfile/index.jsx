@@ -27,7 +27,7 @@ class AccountProfile extends Component {
         {...rest}
          className={rootClassName}
       >
-        {/* <PortletContent>
+        <PortletContent>
           <div className={classes.details}>
             <div className={classes.info}>
               <Typography variant="h2">John Doe</Typography>
@@ -37,27 +37,27 @@ class AccountProfile extends Component {
               >
                 Rm. Valcea, Romania
               </Typography>
-              <Typography
+              {/* <Typography
                 className={classes.dateText}
                 variant="body1"
               >
                 4:32PM (GMT-4)
-              </Typography>
+              </Typography> */}
             </div>
             <Avatar
               className={classes.avatar}
               src="/images/avatars/avatar_1.png"
             />
           </div>
-          <div className={classes.progressWrapper}>
+          {/* <div className={classes.progressWrapper}>
             <Typography variant="body1">Profile Completeness: 70%</Typography>
             <LinearProgress
               value={70}
               variant="determinate"
             />
-          </div>
-        </PortletContent> */}
-        { /* <PortletFooter>
+          </div> */}
+        </PortletContent> 
+         <PortletFooter>
           <Button
             className={classes.uploadButton}
             color="primary"
@@ -66,7 +66,7 @@ class AccountProfile extends Component {
             Upload picture
           </Button>
           <Button variant="text">Remove picture</Button>
-        </PortletFooter> */}
+        </PortletFooter> 
       </Portlet>
     );
   }

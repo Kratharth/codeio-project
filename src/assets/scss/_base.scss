@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
-  margin: 0;
+  margin:0;
   padding: 0;
+ // background-color: blue;  // to change the background of the entire thing
 }
 
 html {
@@ -11,7 +12,7 @@ html {
 }
 
 body {
-  background-color: #f9fafb;
+  background-color:white;
 }
 
 a {

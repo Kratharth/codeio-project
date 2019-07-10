@@ -38,7 +38,7 @@ const PortletLabel = props => {
   const rootClassName = classNames(classes.root, className);
 
   return (
-  <div
+    <div
       {...rest}
       className={rootClassName}
     >

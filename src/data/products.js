@@ -45,10 +45,10 @@ export default [
   },
   {
     id: 'DEV958347',
-    //title: 'GitHub',
+    title: 'GitHub',
     description:
-      'Artificial Intelligence.',
-    imageUrl: '/images/products/AI.png',
+      'GitHub is a web-based hosting service for version control of code using Git.',
+    imageUrl: '/images/products/product_5.png',
     totalDownloads: '835',
     price: '32',
     status: 'published',
@@ -56,10 +56,10 @@ export default [
   },
   {
     id: 'DEV773559',
-    //title: 'Squarespace',
+    title: 'Squarespace',
     description:
-      'Tech learn.',
-    imageUrl: '/images/products/tech.png',
+      'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/product_6.png',
     totalDownloads: '835',
     price: '32',
     status: 'published',

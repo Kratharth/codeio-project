@@ -13,7 +13,9 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { AccountProfile, AccountDetails } from './components';
+import { AccountProfile } from './components';
+import { AccountAdmin, AccountLecturer, AccountStudent } from './components/AccountDetails';
+import { AccountDept } from './components/AccountDetails';
 
 // Component styles
 const styles = theme => ({
@@ -24,18 +26,28 @@ const styles = theme => ({
 
 class Account extends Component {
   state = { tabIndex: 0 };
+  accountDetailType = (type)=>{
+    switch(type){
+      case 'admin':return <AccountAdmin/>
+      case 'lecturer':return <AccountLecturer/>
+      case 'student':return <AccountStudent/>
+      case 'department': return <AccountDept />
+      default :return null;
+    
+    }
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes,type} = this.props;
 
     return (
-      <DashboardLayout title="Account">
+      <DashboardLayout title="Account" type={type}>
         <div className={classes.root}>
           <Grid
             container
             spacing={4}
           >
-            {/* <Grid
+            { <Grid
               item
               lg={4}
               md={6}
@@ -43,7 +55,7 @@ class Account extends Component {
               xs={12}
             >
               <AccountProfile />
-            </Grid> */}
+            </Grid>  }
             <Grid
               item
               lg={8}
@@ -51,7 +63,8 @@ class Account extends Component {
               xl={8}
               xs={12}
             >
-              <AccountDetails />
+              {/* <AccountDetails /> */}
+              {this.accountDetailType(type)}
             </Grid>
           </Grid>
         </div>
@@ -61,7 +74,8 @@ class Account extends Component {
 }
 
 Account.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student']).isRequired
 };
 
 export default withStyles(styles)(Account);

@@ -32,7 +32,7 @@ class ProductCard extends Component {
       <Paper className={rootClassName}>
         <div className={classes.imageWrapper}>
           <img
-            alt="Product"
+            alt="Video"
             className={classes.image}
             src={product.imageUrl}
           />
@@ -60,8 +60,8 @@ class ProductCard extends Component {
           >
             Updated 2hr ago
           </Typography>
-          {/* <GetAppIcon className={classes.downloadsIcon} />
-          <Typography
+          {/* <GetAppIcon className={classes.downloadsIcon} /> */}
+          {/* <Typography
             className={classes.downloadsText}
             variant="body2"
           >

@@ -4,7 +4,9 @@ import { Link, NavLink } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
@@ -34,19 +36,15 @@ import {
   Help as Help
 } from '@material-ui/icons';
 import BookIcon from '@material-ui/icons/Book';
-
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import DesktopIcon from '@material-ui/icons/DesktopWindows';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 // Component styles
 import styles from './styles';
-// import { SidebarStudent } from '../..';
 
-class SidebarStudent extends Component {
-  
+class SidebarDepartment extends Component {
+
   //opening and closing of course-catalog
-  
   state ={
     open1:true
   }
@@ -55,65 +53,69 @@ class SidebarStudent extends Component {
       open1:!this.state.open1
     })
   }
+
   render() {
     const { classes, className } = this.props;
+    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
       <nav className={rootClassName}>
-      <div className={classes.logoWrapper}>
+        <div className={classes.logoWrapper}>
 
-      {/* Bmsce logo */}
-        <Link
-          className={classes.logoLink}
-          to="/"
-        >
-          <img
-            alt="BMSCE Logo"
-            className={classes.logoImage}
-            src="/images/bmscce.png"
-          />
-        </Link>
-      </div>
+        {/* Bmsce logo */}
+          <Link
+            className={classes.logoLink}
+            to="/"
+          >
+            <img
+              alt="BMSCE Logo"
+              className={classes.logoImage}
+              src="/images/bmscce.png"
+            />
+          </Link>
+        </div>
 
-     {/* student details */}
-      <Divider className={classes.logoDivider} />
-      <div className={classes.profile}>
-        <Link to="/student/account">
-          <Avatar
-            alt="Kratharth Hegde"
-            className={classes.avatar}
-            src="/images/avatars/avatar_1.png"
-          />
-        </Link>
-        <Typography
-          className={classes.nameText}
-          variant="h6"
-        >
-          Kratharth
-        </Typography>
-        <Typography
-          className={classes.bioText}
-          variant="caption"
-        >
-          Student
-        </Typography>
-      </div>
+       {/* department details */}
+        <Divider className={classes.logoDivider} />
+        <div className={classes.profile}>
+          <Link to="/department/account">
+            <Avatar
+              alt="CSE"
+              className={classes.avatar}
+              src="/images/bmscce.png"
+            />
+          </Link>
+          <Typography
+            className={classes.nameText}
+            variant="h6"
+          >
+            CSE
+          </Typography>
+          <Typography
+            className={classes.bioText}
+            variant="caption"
+          >
+            Department
+          </Typography>
+        </div>
 
 
-      <Divider className={classes.profileDivider} />
-        
-        {/*start of the list */}
+        <Divider className={classes.profileDivider} />
+
+      {/*list starts */}
 
         <List
           component="div"
           disablePadding
         >
+
+          {/*dashboard*/}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/dashboard"
+            to="/department/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -124,10 +126,9 @@ class SidebarStudent extends Component {
             />
           </ListItem>
 
-          {/* Course Catalog */}
+        {/*course catalog*/}
 
-
-          <ListItem button onClick={this.handleClick1.bind(this)}
+        <ListItem button onClick={this.handleClick1.bind(this)}
           className={classes.listItem}
           activeClassName={classes.activeListItem}
           component={NavLink}>
@@ -143,7 +144,7 @@ class SidebarStudent extends Component {
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem1">
+            to="/department/sem1">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -153,7 +154,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem2">
+            to="/department/sem2">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -163,7 +164,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem3">
+            to="/department/sem3">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -173,7 +174,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem4">
+            to="/department/sem4">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -183,7 +184,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem5">
+            to="/department/sem5">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -193,7 +194,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem6">
+            to="/department/sem6">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -203,7 +204,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem7">
+            to="/department/sem7">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -213,7 +214,7 @@ class SidebarStudent extends Component {
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/sem8">
+            to="/department/sem8">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
          </ListItemIcon>
@@ -223,15 +224,48 @@ class SidebarStudent extends Component {
           </List>
           </Collapse>
          
+        {/*Transfer Session */}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/transfer"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <DesktopIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Transfer Session"
+            />
+          </ListItem>
+          
+      {/*Add a Schedule */}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/addschedule"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <ScheduleIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Add Schedule"
+            />
+          </ListItem>
         </List>
-
-
+        
+        
         <Divider className={classes.listDivider} />
+        
+        
+       {/* Help and support */}
 
-       
-        {/* Help and support */}
-
-        <List
+       <List
           component="div"
           disablePadding
           subheader={
@@ -244,7 +278,7 @@ class SidebarStudent extends Component {
             className={classes.listItem}
             className={classes.listItem}
             component={NavLink}
-            to="/student/help"
+            to="/department/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <Help />
@@ -260,9 +294,9 @@ class SidebarStudent extends Component {
   }
 }
 
-SidebarStudent.propTypes = {
+SidebarDepartment.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SidebarStudent);
+export default withStyles(styles)(SidebarDepartment);

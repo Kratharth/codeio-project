@@ -13,7 +13,8 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { Notifications, Password } from './components';
+//import { AccountProfile, AccountDetails } from './components';
+import MaterialTableDemo from './timetable';
 
 // Component styles
 const styles = theme => ({
@@ -22,30 +23,36 @@ const styles = theme => ({
   }
 });
 
-class Settings extends Component {
+class Timetable extends Component {
+  state = { tabIndex: 0 };
+
   render() {
-    const { classes ,type } = this.props;
+    const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Settings" type={type}>
+      <DashboardLayout title="Timetable" type={type}>
         <div className={classes.root}>
           <Grid
             container
             spacing={4}
           >
-            <Grid
+            {/* <Grid
               item
-              md={7}
+              lg={4}
+              md={6}
+              xl={4}
               xs={12}
             >
-              <Notifications />
-            </Grid>
+              <AccountProfile />
+            </Grid>  */}
             <Grid
               item
-              md={5}
+              lg={12}
+              md={6}
+              xl={8}
               xs={12}
             >
-              <Password />
+              <MaterialTableDemo />
             </Grid>
           </Grid>
         </div>
@@ -54,8 +61,9 @@ class Settings extends Component {
   }
 }
 
-Settings.propTypes = {
-  classes: PropTypes.object.isRequired
+Timetable.propTypes = {
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','department'])
 };
 
-export default withStyles(styles)(Settings);
+export default withStyles(styles)(Timetable);
