@@ -90,7 +90,7 @@ class SidebarAdmin extends Component {
     return (
       <nav className={rootClassName}>
         <div className={classes.logoWrapper}>
-
+{/*
         <Typography
                     className={classes.title}
                     variant="h2"
@@ -255,16 +255,7 @@ class SidebarAdmin extends Component {
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="lecturer"/>
           </ListItem>
-	<ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/admin/department">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <PeopleIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Department"/>
-          </ListItem>
+	
           </List>
           </Collapse>
 
