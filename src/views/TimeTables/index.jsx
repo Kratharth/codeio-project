@@ -15,7 +15,7 @@ import { Dashboard as DashboardLayout } from 'layouts';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   }
 });
 
@@ -38,10 +38,10 @@ const variants = {
 
 class Typography extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Typography">
+      <DashboardLayout title="Typography" type={type}>
         <div className={classes.root}>
           <Grid
             container
@@ -77,7 +77,8 @@ class Typography extends Component {
 }
 
 Typography.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(Typography);

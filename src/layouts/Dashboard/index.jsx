@@ -12,7 +12,12 @@ import { withStyles, withWidth } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 
 // Custom components
-import { SidebarAdmin,SidebarDepartment,SidebarStudent,SidebarLecturer, Topbar, Footer } from './components';
+import { Topbar, Footer, 
+SidebarAdmin, 
+SidebarDepartment, 
+SidebarLecturer, 
+SidebarStudent}
+ from './components';
 
 // Component styles
 import styles from './styles';
@@ -92,7 +97,7 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   width: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default compose(

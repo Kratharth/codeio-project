@@ -18,13 +18,13 @@ import { Notifications, Password } from './components';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   }
 });
 
 class Settings extends Component {
   render() {
-    const { classes ,type } = this.props;
+    const { classes,type } = this.props;
 
     return (
       <DashboardLayout title="Settings" type={type}>
@@ -55,7 +55,8 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(Settings);

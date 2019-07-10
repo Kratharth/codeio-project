@@ -98,14 +98,6 @@ export default class Routes extends Component {
           <Account type={match.params.type} />
           }
           />
-          {/* <Route
-           exact
-           path="/:type/:userType"
-           render={({match}) => 
-          <Account type={match.params.type} userType={match.params.userType} /> 
-          
-          }
-        /> */}
            <Route
            exact
            path="/:type/help"
@@ -272,3 +264,4 @@ export default class Routes extends Component {
     );
   }
 }
+

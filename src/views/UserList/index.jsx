@@ -91,11 +91,10 @@ class UserList extends Component {
 
     return (
       <UsersTable
-        //
         onSelect={this.handleSelect}
         users={users}
       />
-    );
+    ); 
   }
 
   render() {
@@ -114,8 +113,8 @@ class UserList extends Component {
 }
 
 UserList.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(UserList);
