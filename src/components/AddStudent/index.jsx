@@ -122,7 +122,7 @@ class AddStudent extends Component {
                   id="outlined-email"
                   label="Email"
                   type="email"
-                  value={this.email}
+                  value={email}
                   onChange={this.handleChangeEmail}
                   className={classes.textField}
                   margin="normal"
@@ -161,7 +161,7 @@ class AddStudent extends Component {
               <FormControl className={classes.margin}>
                 <TextField
                   id="outlined-usn"
-                  label="usn"
+                  label="USN"
                   type="text"
                   value={usn}
                   onChange={this.handleChangeUsn}
