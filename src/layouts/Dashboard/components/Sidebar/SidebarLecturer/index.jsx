@@ -71,7 +71,23 @@ class SidebarLecturer extends Component {
 
     return (
       <div className={rootClassName}>
+        <div className={classes.logoWrapper}>
+
+{/* Bmsce logo */}
+      <Link
+        className={classes.logoLink}
+        to="/"
+      >
+        <img
+          alt="BMSCE Logo"
+          className={classes.logoImage}
+          src="/images/bmscce.png"
+        />
+    </Link>
+    &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+        </div>
        {/* Lecturer details */}
+
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
           <Link to="/lecturer/account">

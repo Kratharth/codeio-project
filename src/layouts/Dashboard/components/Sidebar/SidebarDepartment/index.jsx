@@ -67,7 +67,7 @@ class SidebarDepartment extends Component {
         <div className={classes.logoWrapper}>
 
         {/* Bmsce logo */}
-          <Link
+        <Link
             className={classes.logoLink}
             to="/"
           >
@@ -77,6 +77,7 @@ class SidebarDepartment extends Component {
               src="/images/bmscce.png"
             />
           </Link>
+          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
 
        {/* department details */}
