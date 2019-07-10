@@ -13,8 +13,10 @@ import { Typography, Divider } from '@material-ui/core';
 // Material icons
 import {
   AccessTime as AccessTimeIcon,
+  Edit as EditIcon,
   GetApp as GetAppIcon
 } from '@material-ui/icons';
+
 
 // Shared components
 import { Paper } from 'components';
@@ -60,8 +62,9 @@ class ProductCard extends Component {
           >
             Updated 2hr ago
           </Typography>
+          {/* <EditIcon className={classes.editIcon} />  */}
           {/* <GetAppIcon className={classes.downloadsIcon} /> */}
-          {/* <Typography
+           {/* <Typography
             className={classes.downloadsText}
             variant="body2"
           >

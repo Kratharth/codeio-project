@@ -28,7 +28,9 @@ import { Dashboard as DashboardLayout } from 'layouts';
 import { getProducts } from 'services/product';
 
 // Custom components
-import { ProductsToolbar, ProductCard } from './components';
+import {ProductCard} from 'components';
+import { ProductsToolbar } from './components';
+
 
 // Component styles
 import styles from './styles';
