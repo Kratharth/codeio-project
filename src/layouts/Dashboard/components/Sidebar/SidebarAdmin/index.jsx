@@ -218,32 +218,42 @@ class SidebarAdmin extends Component {
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/admin">
+            to="/addUser/admin">
         <ListItemIcon className={classes.sublistItemIcon}>
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Admin"/>
+              primary="admin"/>
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/student">
+            to="/addUser/department">
         <ListItemIcon className={classes.sublistItemIcon}>
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Student"/>
+              primary="department"/>
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/Lecturer">
+            to="/addUser/student">
         <ListItemIcon className={classes.sublistItemIcon}>
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Lecturer"/>
+              primary="student"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/addUser/lecturer">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <PeopleIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="lecturer"/>
           </ListItem>
 	<ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}

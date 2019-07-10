@@ -10,3 +10,7 @@ export { default as SearchInput } from './SearchInput';
 export { default as Status } from './Status';
 export {default as ProductCard} from './ProductCard';
 export {default as ProductCardEdit} from './ProductCardEdit';
+export {default as AddDepartment } from './AddDepartment';
+export {default as AddStudent } from './AddStudent';
+export {default as AddLecturer} from './AddLecturer';
+export {default as TransferSession} from './TransferSession';

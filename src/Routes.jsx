@@ -9,15 +9,15 @@ import Typography from './views/Typography';
 import Icons from './views/Icons';
 import Account from './views/Account';
 import Settings from './views/Settings';
-import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
-import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
 import  MappingList  from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import MaterialTableDemo from './views/Timetable/timetable';
 import Timetable from 'views/Timetable';
+import NotFound from './views/NotFound';
+import AddUser from './views/Admin/index';
+import TransferSession from './components/TransferSession/index';
 
 export default class Routes extends Component {
   render() {
@@ -117,7 +117,7 @@ export default class Routes extends Component {
            exact
            path="/:type/transfer"
            render={({match}) => 
-          <ProductList type={match.params.type} />
+          <TransferSession type={match.params.type} />
           }
           />
           <Route
@@ -136,25 +136,25 @@ export default class Routes extends Component {
           />
             <Route
            exact
-           path="/:type/admin"
+           path="/adduser/:userType"
            render={({match}) => 
-          <Typography type={match.params.type} />
+          <AddUser type="admin" userType={match.params.userType}/>
           }
           />
-            <Route
+            {/* <Route
            exact
            path="/:type/student"
            render={({match}) => 
-          <Settings type={match.params.type} />
+          <AddUser type={match.params.type} />
           }
           />
             <Route
            exact
            path="/:type/Lecturer"
            render={({match}) => 
-          <UserList type={match.params.type} />
+          <AddUser type={match.params.type} />
           }
-          />
+          /> */}
             <Route
            exact
            path="/:type/camera"
@@ -262,6 +262,11 @@ export default class Routes extends Component {
           exact
           path="/not-found"
         />
+        <Route
+          component={AddUser}
+          exact
+          path="/AddUser"
+        />*/} 
         <Redirect to="/not-found" />
       </Switch>
     );

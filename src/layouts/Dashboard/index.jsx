@@ -91,7 +91,8 @@ Dashboard.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default compose(
