@@ -14,10 +14,11 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import AddAdmin from './AddAdmin/AddAdmin';
-import AddDepartment from './AddDepartment/AddDepartment';
-import AddStudent from './AddStudent/AddStudent';
-import AddLecturer from './AddLecturer/AddLecturer';
+import AddAdmin from './components/AddAdmin';
+// import AddStudent from '../../../components/AddStudent';
+import {AddStudent} from 'components';
+import {AddLecturer} from 'components';
+import {AddDepartment} from 'components';
 
 // Component styles
 const styles = theme => ({
@@ -37,11 +38,21 @@ const styles = theme => ({
 
 class AddUser extends Component {
   state = { tabIndex: 0 };
+  addUser =(userType)=> {
+    switch(userType){
+      case 'lecturer': return <AddLecturer />
+      case 'student': return <AddStudent />
+      case 'admin': return <AddAdmin />
+      case 'department': return <AddDepartment />
+      default : return null
+    }
+  };
 
   render() {
-    const { classes } = this.props;
+    // console.log(this.props);
+    const { classes, type, userType} = this.props;
     return (
-      <DashboardLayout title="UserAdmin">
+      <DashboardLayout title="AddUser" type={type}>
         <div className={classes.root}>
           <Grid
             container
@@ -53,11 +64,9 @@ class AddUser extends Component {
               md={6}
               xl={4}
               xs={12}
-            >
-              {/* <AddAdmin /> */}
-              <AddDepartment />
-              {/* <AddLecturer /> */}
-              {/* <AddStudent /> */}
+            > 
+             {this.addUser(userType)}
+             
             </Grid>
           </Grid>
         </div>

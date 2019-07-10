@@ -5,8 +5,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Dashboard from './views/Dashboard';
 import ProductList from './views/ProductList';
 import UserList from './views/UserList';
-//import Typography from './views/Typography';
-// import Icons from './views/Icons';
+import Typography from './views/Typography';
+import Icons from './views/Icons';
 import Account from './views/Account';
 import TimeTables from './views/TimeTables'
 import Settings from './views/Settings';
@@ -15,8 +15,8 @@ import SignIn from './views/SignIn';
 import TimeTable from './views/TimeTable';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
-import AddUser from './views/Admin/Users/index';
-import TransferSession from 'views/Lecturer/TransferSession';
+import AddUser from './views/Admin/index';
+import TransferSession from './components/TransferSession/index';
 
 export default class Routes extends Component {
   render() {
@@ -108,7 +108,7 @@ export default class Routes extends Component {
            exact
            path="/:type/transfer"
            render={({match}) => 
-          <ProductList type={match.params.type} />
+          <TransferSession type={match.params.type} />
           }
           />
           <Route
@@ -127,25 +127,25 @@ export default class Routes extends Component {
           />
             <Route
            exact
-           path="/:type/admin"
+           path="/adduser/:userType"
            render={({match}) => 
-          <Typography type={match.params.type} />
+          <AddUser type="admin" userType={match.params.userType}/>
           }
           />
-            <Route
+            {/* <Route
            exact
            path="/:type/student"
            render={({match}) => 
-          <Settings type={match.params.type} />
+          <AddUser type={match.params.type} />
           }
           />
             <Route
            exact
            path="/:type/Lecturer"
            render={({match}) => 
-          <UserList type={match.params.type} />
+          <AddUser type={match.params.type} />
           }
-          />
+          /> */}
             <Route
            exact
            path="/:type/camera"
@@ -249,7 +249,7 @@ export default class Routes extends Component {
           exact
           path="/under-development"
         />
-        <Route
+        {/* <Route
           component={NotFound}
           exact
           path="/not-found"
@@ -258,12 +258,7 @@ export default class Routes extends Component {
           component={AddUser}
           exact
           path="/AddUser"
-        />
-        <Route 
-          component={TransferSession}
-          exact
-          path="/TransferSession"
-        />
+        />*/} 
         <Redirect to="/not-found" />
       </Switch>
     );

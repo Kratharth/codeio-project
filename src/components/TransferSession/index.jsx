@@ -14,7 +14,10 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import TransferSessionForm from "./TransferSessionForm";
+import TransferFrom from './TransferFrom';
+import TransferTo from './TransferTo';
+import { Button } from '@material-ui/core';
+
 
 // Component styles
 const styles = theme => ({
@@ -29,16 +32,22 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end'
-  }
+  },
+   menu: {
+     width: '80px',
+     alignItems: 'center',
+     justifyContent: 'center',
+     position: 'relative'
+   }
 });
 
 class TransferSession extends Component {
   state = { tabIndex: 0 };
 
   render() {
-    const { classes } = this.props;
+    const { classes, type} = this.props;
     return (
-      <DashboardLayout title="UserAdmin">
+      <DashboardLayout title="TransferSession" type={type}>
         <div className={classes.root}>
           <Grid
             container
@@ -51,8 +60,34 @@ class TransferSession extends Component {
               xl={4}
               xs={12}
             >
-              <TransferSessionForm />
+              <TransferFrom/>
             </Grid>
+            <Grid
+              item 
+              lg={6}
+              md={6}
+              xl={4}
+              xs={12}
+            >
+              <TransferTo/>
+            </Grid>
+            <Grid
+            item 
+            lg={2}
+            md={4}
+            xl={6}
+            xs={8}
+            >
+            <div className ={classes.menu}>
+            <Button
+            color="primary"
+            variant="contained"
+          >
+            Transfer
+          </Button>
+            </div>
+            </Grid>
+            
           </Grid>
         </div>
       </DashboardLayout>
