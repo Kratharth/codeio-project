@@ -1,5 +1,13 @@
 export default theme => ({
-  root: {},
+  root: {
+    padding: theme.spacing(3, 2),
+  },
+
+  card: {
+   width:"100%",
+   height:"auto"
+
+ },
   field: {
     margin: theme.spacing.unit * 3
   },

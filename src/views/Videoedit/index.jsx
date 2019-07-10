@@ -13,7 +13,7 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { VideoeditDetails } from './components';
+import { VideoeditDetails,Videoplay } from 'components';
 
 // Component styles
 const styles = theme => ({
@@ -35,6 +35,15 @@ class Videoedit extends Component {
             container
             spacing={4}
           >
+          <Grid
+            item
+            lg={8}
+            md={6}
+            xl={8}
+            xs={12}
+          >
+            <Videoplay />
+          </Grid>
 
             <Grid
               item

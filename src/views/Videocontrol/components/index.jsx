@@ -1,1 +1,1 @@
-export { default as VideoeditDetails } from './VideoeditDetails';
+export { default as VideocontrolDetails } from './VideocontrolDetails';

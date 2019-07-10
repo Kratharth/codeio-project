@@ -25,14 +25,12 @@ import {
 import styles from './styles';
 
 
-class Courseedit extends Component {
+class Videoedit extends Component {
   state = {
 values:{
     title:'Title',
-    coursecode:'Coursecode',
-    faculty:'name',
-    coursename:'Course name'
-
+    description:'description',
+    edit:'Edit'
   },
 
 
@@ -46,7 +44,7 @@ values:{
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { title,coursecode,coursename,faculty } = this.state;
+    const { title,description,edit } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -57,8 +55,8 @@ values:{
       >
         <PortletHeader>
           <PortletLabel
-            //subtitle="The Course details can be editted"
-            title="Courseedit"
+            //subtitle="The Video details can be editted"
+            title="Video edit"
           />
         </PortletHeader>
         <PortletContent noPadding>
@@ -82,37 +80,29 @@ values:{
             <br/>
             <TextField
               className={classes.textField}
-              label="coursecode"
+              label="description"
               margin="dense"
               required
-              value={coursecode}
-              variant="outlined"
-            />
-            <br/>
-            <br/>
-            <TextField
-              className={classes.textField}
-              label="coursename"
-              margin="dense"
-              required
-              value={coursename}
-              variant="outlined"
-            />
-
-
-            <br/>
-            <br/>
-            <TextField
-              className={classes.textField}
-              label="faculty"
-              margin="dense"
-              required
-              value={faculty}
+              value={description}
               variant="outlined"
             />
 
 
       <br/><br/>
+            <div>
+
+        <Button variant="contained" size="medium" color="green" className={classes.margin}>
+          Start
+        </Button>
+        <Button variant="contained" size="medium" color="" className={classes.margin}>
+          Pause/Resume
+        </Button>
+        <Button variant="contained" size="medium" color="" className={classes.margin}>
+          Stop
+        </Button>
+
+
+      </div>
 
 
 
@@ -126,7 +116,7 @@ values:{
             color="primary"
             variant="contained"
           >
-          save
+            Save
           </Button>
         </PortletFooter>
       </Portlet>
@@ -134,9 +124,9 @@ values:{
   }
 }
 
-Courseedit.propTypes = {
+Videoedit.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Courseedit);
+export default withStyles(styles)(Videoedit);

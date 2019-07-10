@@ -13,7 +13,7 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { CourseeditDetails } from './components';
+import { CourseeditDetails } from 'components';
 
 // Component styles
 const styles = theme => ({
@@ -29,7 +29,7 @@ class Coursecontrol extends Component {
     const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Coursecontrol" type={type} >
+      <DashboardLayout title="Course Edit" type={type} >
         <div className={classes.root}>
           <Grid
             container
