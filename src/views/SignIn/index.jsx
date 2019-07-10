@@ -95,12 +95,12 @@ class SignIn extends Component {
 
   handleChange = (field, value) => {
     const newState = { ...this.state };
-      
+
     newState.submitError = null;
     newState.touched[field] = true;
     newState.values[field] = value;
     this.setState(newState, this.validateForm);
-   
+
   };
 
   handleSignIn = async () => {
@@ -182,7 +182,7 @@ class SignIn extends Component {
                   </Typography>
                 </div> */}
               {/* </div> */}
-             </div>  
+             </div>
           </Grid>
           <Grid
             className={classes.content}

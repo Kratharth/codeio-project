@@ -20,7 +20,7 @@ export default theme => ({
   logoImage: {
     cursor: 'pointer',
     width:'40px',
-    marginLeft:'0px'  
+    marginLeft:'0px'
   },
   logoDivider: {
     marginBottom: theme.spacing.unit * 2

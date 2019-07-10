@@ -44,9 +44,9 @@ import styles from './styles';
 // import { SidebarStudent } from '../..';
 
 class SidebarStudent extends Component {
-  
+
   //opening and closing of course-catalog
-  
+
   state ={
     open1:true
   }
@@ -103,7 +103,7 @@ class SidebarStudent extends Component {
 
 
       <Divider className={classes.profileDivider} />
-        
+
         {/*start of the list */}
 
         <List
@@ -223,15 +223,15 @@ class SidebarStudent extends Component {
           </ListItem>
           </List>
           </Collapse>
-         
+
         </List>
 
-{/* 
+{/*
         <Divider className={classes.listDivider} /> */}
 
-       
+
         {/* Help and support */}
-{/* 
+{/*
         <List
           component="div"
           disablePadding
