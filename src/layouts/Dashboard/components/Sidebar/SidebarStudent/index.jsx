@@ -30,63 +30,82 @@ import {
   ImageOutlined as ImageIcon,
   InfoOutlined as InfoIcon,
   AccountBoxOutlined as AccountBoxIcon,
-  SettingsOutlined as SettingsIcon
+  SettingsOutlined as SettingsIcon,
+  Help as Help
 } from '@material-ui/icons';
+import BookIcon from '@material-ui/icons/Book';
+
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 // Component styles
 import styles from './styles';
+// import { SidebarStudent } from '../..';
 
-class Sidebar extends Component {
+class SidebarStudent extends Component {
+  
+  //opening and closing of course-catalog
+  
+  state ={
+    open1:true
+  }
+  handleClick1(){
+    this.setState({
+      open1:!this.state.open1
+    })
+  }
   render() {
     const { classes, className } = this.props;
-
     const rootClassName = classNames(classes.root, className);
 
     return (
       <nav className={rootClassName}>
-        <div className={classes.logoWrapper}>
+      <div className={classes.logoWrapper}>
 
-        <Typography
-                    className={classes.title}
-                    variant="h2"
-                    align="center"
-                  >
-                    BMSCE LRS
-                  </Typography>
-          {/* <Link
-            className={classes.logoLink}
-            to="/"
-          >
-            <img
-              alt="Brainalytica logo"
+      {/* Bmsce logo */}
+        <Link
+          className={classes.logoLink}
+          to="/"
+        >
+ <img
+              alt="BMSCE Logo"
               className={classes.logoImage}
-              src="/images/logos/brainalytica_logo.svg"
-            />
-          </Link> */}
-        </div>
-        <Divider className={classes.logoDivider} />
-        <div className={classes.profile}>
-          <Link to="/account">
-            <Avatar
-              alt=" Dr.Umadevi "
-              className={classes.avatar}
-              src="/images/avatars/umadevi.jpg"
+              src="/images/bmscce.png"
             />
           </Link>
-          <Typography
-            className={classes.nameText}
-            variant="h6"
-          >
-         Naveen R
-          </Typography>
-          <Typography
-            className={classes.bioText}
-            variant="caption"
-          >
-           Student
-          </Typography>
-        </div>
-        <Divider className={classes.profileDivider} />
+          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+      </div>
+
+     {/* student details */}
+      <Divider className={classes.logoDivider} />
+      <div className={classes.profile}>
+        <Link to="/student/account">
+          <Avatar
+            alt="Kratharth Hegde"
+            className={classes.avatar}
+            src="/images/avatars/avatar_1.png"
+          />
+        </Link>
+        <Typography
+          className={classes.nameText}
+          variant="h6"
+        >
+          Kratharth
+        </Typography>
+        <Typography
+          className={classes.bioText}
+          variant="caption"
+        >
+          Student
+        </Typography>
+      </div>
+
+
+      <Divider className={classes.profileDivider} />
+        
+        {/*start of the list */}
+
         <List
           component="div"
           disablePadding
@@ -95,7 +114,7 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/dashboard"
+            to="/student/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -106,123 +125,113 @@ class Sidebar extends Component {
             />
           </ListItem>
 
-        
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Time Tables"
-            />
-          </ListItem>
-          
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/users"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Users"
-            />
-          </ListItem>
+          {/* Course Catalog */}
 
-          <ListItem
-            activeClassName={classes.activeListItem}
+
+          <ListItem button onClick={this.handleClick1.bind(this)}
+          className={classes.listItem}
+          activeClassName={classes.activeListItem}
+          component={NavLink}>
+           <ListItemIcon className={classes.listItemIcon}>
+          <BookIcon/>
+         </ListItemIcon >
+            <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="Course Catalog"/>
+          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
+        </ListItem>
+       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+        <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/products"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ShoppingBasketIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Products"
-            />
+            to="/student/sem1">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-1"/>
           </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <LockOpenIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Authentication"
-            />
+            to="/student/sem2">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-2"/>
           </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/typography"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <TextFieldsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Typography"
-            />
+            to="/student/sem3">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-3"/>
           </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/icons"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ImageIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Icons and Images"
-            />
+            to="/student/sem4">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-4"/>
           </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/account"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Account"
-            />
+            to="/student/sem5">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-5"/>
           </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
+          <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/settings"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Settings"
-            />
+            to="/student/sem6">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-6"/>
           </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/student/sem7">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-7"/>
+          </ListItem>
+          <ListItem activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/student/sem8">
+        <ListItemIcon className={classes.sublistItemIcon}>
+          <BookIcon/>
+         </ListItemIcon>
+          <ListItemText  classes={{ primary: classes.listItemText }}
+              primary="SEM-8"/>
+          </ListItem>
+          </List>
+          </Collapse>
+         
         </List>
-        <Divider className={classes.listDivider} />
+
+{/* 
+        <Divider className={classes.listDivider} /> */}
+
+       
+        {/* Help and support */}
+{/* 
         <List
           component="div"
           disablePadding
@@ -234,27 +243,27 @@ class Sidebar extends Component {
         >
           <ListItem
             className={classes.listItem}
-            component="a"
-            href="https://devias.io/contact-us"
-            target="_blank"
+            className={classes.listItem}
+            component={NavLink}
+            to="/student/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <InfoIcon />
+              <Help />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Customer support"
+              primary="Help and support"
             />
           </ListItem>
-        </List>
+        </List> */}
       </nav>
     );
   }
 }
 
-Sidebar.propTypes = {
+SidebarStudent.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles)(SidebarStudent);

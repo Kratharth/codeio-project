@@ -17,7 +17,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(/images/principal.jpg)',
+    backgroundImage: 'url(/images/bmscce.png)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -27,7 +27,7 @@ export default theme => ({
     flexBasis: '600px'
   },
   quoteText: {
-    color: theme.palette.common.white,
+    color: theme.palette.danger.dark,
     fontWeight: 300
   },
   name: {
@@ -62,6 +62,10 @@ export default theme => ({
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center'
     }
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    width:'400px'
   },
   form: {
     paddingLeft: '100px',

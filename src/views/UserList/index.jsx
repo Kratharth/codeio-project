@@ -99,11 +99,11 @@ class UserList extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
     const { selectedUsers } = this.state;
 
     return (
-      <DashboardLayout title="Users">
+      <DashboardLayout title="Users" type={type}>
         <div className={classes.root}>
           <UsersToolbar selectedUsers={selectedUsers} />
           <div className={classes.content}>{this.renderUsers()}</div>

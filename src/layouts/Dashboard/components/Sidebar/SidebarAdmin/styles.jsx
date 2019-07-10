@@ -9,7 +9,7 @@ export default theme => ({
   },
   logoWrapper: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'left',
     alignItems: 'center',
     height: '63px',
     flexShrink: 0
@@ -18,7 +18,9 @@ export default theme => ({
     fontSize: 0
   },
   logoImage: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    width:'40px',
+    marginLeft:'0px'  // bmsce logo width
   },
   logoDivider: {
     marginBottom: theme.spacing.unit * 2
@@ -72,7 +74,10 @@ export default theme => ({
     }
   },
   listItemIcon: {
-    marginRight: 0
+    marginRight:0
+  },
+  sublistItemIcon :{
+    marginLeft:20
   },
   listItemText: {
     fontWeight: 500,

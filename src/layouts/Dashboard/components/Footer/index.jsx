@@ -33,12 +33,12 @@ class Footer extends Component {
         <Typography
           className={classes.company}
           variant="body1"
+          align="center"
         >
-          &copy; Devias Io. 2019
+          &copy; CODE I/O 2019
         </Typography>
-        <Typography variant="caption">
-          Created with love for the environment. By designers and developers who
-          love to work together in offices!
+        <Typography align="center" >
+          Created for BMSCE students.All Rights Reserved
         </Typography>
       </div>
     );
