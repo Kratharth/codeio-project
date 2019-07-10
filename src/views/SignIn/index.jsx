@@ -8,9 +8,10 @@ import validate from 'validate.js';
 import _ from 'underscore';
 
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
@@ -44,7 +45,7 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-      type:'',
+      type:'Student',
       open:false
     },
     touched: {
@@ -89,12 +90,12 @@ class SignIn extends Component {
 
   handleChange = (field, value) => {
     const newState = { ...this.state };
-      
+
     newState.submitError = null;
     newState.touched[field] = true;
     newState.values[field] = value;
     this.setState(newState, this.validateForm);
-   
+
   };
 
   handleSignIn = async () => {
@@ -176,7 +177,7 @@ class SignIn extends Component {
                   </Typography>
                 </div> */}
               {/* </div> */}
-             </div>  
+             </div>
           </Grid>
           <Grid
             className={classes.content}
@@ -185,14 +186,6 @@ class SignIn extends Component {
             xs={12}
           >
             <div className={classes.content}>
-              <div className={classes.contentHeader}>
-                <IconButton
-                  className={classes.backButton}
-                  onClick={this.handleBack}
-                >
-                  <ArrowBackIcon />
-                </IconButton>
-              </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
 		  <Avatar

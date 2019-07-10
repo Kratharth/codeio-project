@@ -47,7 +47,7 @@ import styles from './styles';
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarLecturer extends Component {
-  
+
   state ={
     open1:true,
     open2:true
@@ -97,13 +97,13 @@ class SidebarLecturer extends Component {
 
 
         <Divider className={classes.profileDivider} />
-        
-        
+
+
         <List
           component="div"
           disablePadding
         >
-         
+
       {/*Dashboard*/}
 
           <ListItem
@@ -123,7 +123,7 @@ class SidebarLecturer extends Component {
 
         {/* Course Catalog */}
 
-     
+
         <ListItem button onClick={this.handleClick1.bind(this)}
           className={classes.listItem}
           >
@@ -218,7 +218,7 @@ class SidebarLecturer extends Component {
           </ListItem>
           </List>
           </Collapse>
-          
+
           {/*Record Videos*/}
 
           <ListItem
@@ -227,7 +227,7 @@ class SidebarLecturer extends Component {
             component={newLink}
             to="/lecturer/record"
           >
-            <ListItemIcon className={classes.listItemIcon}>
+            <ListItemIcon clsName={classes.listItemIcon}>
               <VideoIcon/>
             </ListItemIcon>
             <ListItemText
@@ -299,9 +299,26 @@ class SidebarLecturer extends Component {
               primary="Transfer Session"
             />
           </ListItem>
+
+          {/*Videoedit*/}
+
+          <ListItem
+              activeClassName={classes.activeListItem}
+              className={classes.listItem}
+              component={NavLink}
+              to="/lecturer/videoedit"
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+              <VideoIcon />
+              </ListItemIcon>
+              <ListItemText
+                classes={{ primary: classes.listItemText }}
+                primary="Video edit"
+              />
+            </ListItem>
         </List>
-        
-        
+
+
       {/* <Divider className={classes.listDivider} />
 
       <List

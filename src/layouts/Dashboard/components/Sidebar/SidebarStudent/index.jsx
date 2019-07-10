@@ -39,11 +39,6 @@ import {
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-
 // Component styles
 import styles from './styles';
 // import { SidebarStudent } from '../..';
@@ -51,9 +46,9 @@ import styles from './styles';
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
-  
+
   //opening and closing of course-catalog
-  
+
   state ={
      open1:true,
     //anchorEl:null
@@ -122,7 +117,7 @@ class SidebarStudent extends Component {
 
 
       <Divider className={classes.profileDivider} />
-        
+
         {/*start of the list */}
 
         <List
@@ -255,15 +250,15 @@ class SidebarStudent extends Component {
             </List>
             {/* </Popover> */}
           </Collapse>
-         
+
         </List>
 
-{/* 
+{/*
         <Divider className={classes.listDivider} /> */}
 
-       
+
         {/* Help and support */}
-{/* 
+{/*
         <List
           component="div"
           disablePadding

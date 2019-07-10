@@ -56,14 +56,14 @@ class SidebarAdmin extends Component {
     open4:false
   }
   // opening and closing of drop downs in side-navs
-     
+
      // for Time Table
   handleClick1=()=>{
     this.setState({
       open1:!this.state.open1
     })
   }
-   
+
    // for Users
   handleClick2=()=>{
     this.setState({
@@ -91,7 +91,7 @@ class SidebarAdmin extends Component {
     return (
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
-
+{/*
         <Typography
                     className={classes.title}
                     variant="h2"
@@ -201,7 +201,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           </List>
           </Collapse>
-         
+
 
            {/* Users*/}
             <ListItem button onClick={this.handleClick2}
@@ -278,7 +278,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           </List>
           </Collapse>
-           
+
 
            {/*Devices */}
           <ListItem button onClick={this.handleClick3}
@@ -325,7 +325,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           </List>
           </Collapse>
-        
+
          {/* Academics*/ }
 
      <ListItem button onClick={this.handleClick4}
@@ -374,7 +374,7 @@ class SidebarAdmin extends Component {
           </Collapse>
 
         {/* Delete Videos*/}
-          
+
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
