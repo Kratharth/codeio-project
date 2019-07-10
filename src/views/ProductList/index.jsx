@@ -28,7 +28,9 @@ import { Dashboard as DashboardLayout } from 'layouts';
 import { getProducts } from 'services/product';
 
 // Custom components
-import { ProductsToolbar, ProductCard } from './components';
+import {ProductCard} from 'components';
+import { ProductsToolbar } from './components';
+
 
 // Component styles
 import styles from './styles';
@@ -124,7 +126,7 @@ class ProductList extends Component {
     const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Products" type={type}>
+      <DashboardLayout title="Videos" type={type}>
         <div className={classes.root}>
           <ProductsToolbar />
           <div className={classes.content}>{this.renderProducts()}</div>

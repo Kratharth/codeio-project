@@ -8,3 +8,5 @@ export { default as PortletLabel } from './PortletLabel';
 export { default as PortletToolbar } from './PortletToolbar';
 export { default as SearchInput } from './SearchInput';
 export { default as Status } from './Status';
+export {default as ProductCard} from './ProductCard';
+export {default as ProductCardEdit} from './ProductCardEdit';

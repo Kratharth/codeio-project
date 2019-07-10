@@ -50,12 +50,20 @@ export default theme => ({
     marginLeft: theme.spacing.unit,
     color: theme.palette.text.secondary
   },
-  downloadsIcon: {
-    marginLeft: 'auto',
-    color: theme.palette.text.secondary
-  },
-  downloadsText: {
-    marginLeft: theme.spacing.unit,
-    color: theme.palette.text.secondary
-  }
+  // editIcon: {
+  //   marginLeft: 'auto',
+  //   color: theme.palette.text.secondary
+  // },
+  // editText: {
+  //   marginLeft: theme.spacing.unit,
+  //   color: theme.palette.text.secondary
+  // }
+  // downloadsIcon: {
+  //   marginLeft: 'auto',
+  //   color: theme.palette.text.secondary
+  // },
+  // downloadsText: {
+  //   marginLeft: theme.spacing.unit,
+  //   color: theme.palette.text.secondary
+  // }
 });

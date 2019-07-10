@@ -26,18 +26,18 @@ class ProductsToolbar extends Component {
       <div className={rootClassName}>
         <div className={classes.row}>
           <span className={classes.spacer} />
-          <Button
+          {/* <Button
             color="primary"
             size="small"
             variant="outlined"
           >
             Add
-          </Button>
+          </Button> */}
         </div>
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
-            placeholder="Search product"
+            placeholder="Search video"
           />
           <span className={classes.spacer} />
           <DisplayMode mode="grid" />

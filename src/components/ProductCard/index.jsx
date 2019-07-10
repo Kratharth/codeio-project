@@ -13,8 +13,10 @@ import { Typography, Divider } from '@material-ui/core';
 // Material icons
 import {
   AccessTime as AccessTimeIcon,
+  Edit as EditIcon,
   GetApp as GetAppIcon
 } from '@material-ui/icons';
+
 
 // Shared components
 import { Paper } from 'components';
@@ -32,7 +34,7 @@ class ProductCard extends Component {
       <Paper className={rootClassName}>
         <div className={classes.imageWrapper}>
           <img
-            alt="Product"
+            alt="Video"
             className={classes.image}
             src={product.imageUrl}
           />
@@ -60,13 +62,14 @@ class ProductCard extends Component {
           >
             Updated 2hr ago
           </Typography>
-          <GetAppIcon className={classes.downloadsIcon} />
-          <Typography
+          {/* <EditIcon className={classes.editIcon} />  */}
+          {/* <GetAppIcon className={classes.downloadsIcon} /> */}
+           {/* <Typography
             className={classes.downloadsText}
             variant="body2"
           >
             {product.totalDownloads} Downloads
-          </Typography>
+          </Typography> */}
         </div>
       </Paper>
     );

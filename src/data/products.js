@@ -1,10 +1,10 @@
 export default [
   {
     id: 'DEV738089',
-    title: 'Dropbox',
-    description:
-      'Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.',
-    imageUrl: '/images/products/product_1.png',
+   title: 'Python',
+    //  description:
+    //   'Python is a programming language.',
+    imageUrl: '/images/products/python.png',
     totalDownloads: '594',
     price: '10',
     status: 'published',
@@ -12,10 +12,10 @@ export default [
   },
   {
     id: 'DEV795381',
-    title: 'Medium Corporation',
-    description:
-      'Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.',
-    imageUrl: '/images/products/product_2.png',
+    title: 'Web Development',
+    // description:
+    //   'Web development involves many scripting language.',
+    imageUrl: '/images/products/images.png',
     totalDownloads: '625',
     price: '27',
     status: 'archived',
@@ -23,10 +23,10 @@ export default [
   },
   {
     id: 'DEV774585',
-    title: 'Slack',
-    description:
-      'Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.',
-    imageUrl: '/images/products/product_3.png',
+    title: 'Java Programming',
+    // description:
+    //   'Java Programming.',
+    imageUrl: '/images/products/java.png',
     totalDownloads: '857',
     price: '20',
     status: 'published',
@@ -34,10 +34,10 @@ export default [
   },
   {
     id: 'DEV654476',
-    title: 'Lyft',
-    description:
-      'Lyft is an on-demand transportation company based in San Francisco, California.',
-    imageUrl: '/images/products/product_4.png',
+    title: 'Machine Learning',
+    // description:
+    //   'Machine Learning.',
+    imageUrl: '/images/products/dwd.png',
     totalDownloads: '406',
     price: '28',
     status: 'draft',
@@ -45,10 +45,10 @@ export default [
   },
   {
     id: 'DEV958347',
-    title: 'GitHub',
-    description:
-      'GitHub is a web-based hosting service for version control of code using Git.',
-    imageUrl: '/images/products/product_5.png',
+    title: 'Tech Learn',
+    // description:
+    //   'GitHub is a web-based hosting service for version control of code using Git.',
+    imageUrl: '/images/products/tech.png',
     totalDownloads: '835',
     price: '32',
     status: 'published',
@@ -56,10 +56,10 @@ export default [
   },
   {
     id: 'DEV773559',
-    title: 'Squarespace',
-    description:
-      'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
-    imageUrl: '/images/products/product_6.png',
+    title: 'Artificial Intelligence',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
     totalDownloads: '835',
     price: '32',
     status: 'published',

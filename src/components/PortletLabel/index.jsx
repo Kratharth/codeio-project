@@ -44,9 +44,9 @@ const PortletLabel = props => {
     >
       {icon && <span className={classes.icon}>{icon}</span>}
       {title && (
-        <Typography
+     <Typography
           className={classes.title}
-          variant="h5"
+          variant="h2"
         >
         {title}
         </Typography>
@@ -56,7 +56,7 @@ const PortletLabel = props => {
           className={classes.subtitle}
           variant="subtitle2"
         >
-        {subtitle}
+          {subtitle}
         </Typography>
       )}
     </div>

@@ -13,9 +13,8 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { AccountProfile } from './components';
-import { AccountAdmin, AccountLecturer, AccountStudent } from './components/AccountDetails';
-import { AccountDept } from './components/AccountDetails';
+//import { AccountProfile, AccountDetails } from './components';
+import MaterialTableDemo from './timetable';
 
 // Component styles
 const styles = theme => ({
@@ -24,30 +23,20 @@ const styles = theme => ({
   }
 });
 
-class Account extends Component {
+class Timetable extends Component {
   state = { tabIndex: 0 };
-  accountDetailType = (type)=>{
-    switch(type){
-      case 'admin':return <AccountAdmin/>
-      case 'lecturer':return <AccountLecturer/>
-      case 'student':return <AccountStudent/>
-      case 'department': return <AccountDept />
-      default :return null;
-    
-    }
-  }
 
   render() {
     const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Account" type={type}>
+      <DashboardLayout title="Timetable" type={type}>
         <div className={classes.root}>
           <Grid
             container
             spacing={4}
           >
-            { <Grid
+            {/* <Grid
               item
               lg={4}
               md={6}
@@ -55,16 +44,15 @@ class Account extends Component {
               xs={12}
             >
               <AccountProfile />
-            </Grid>  }
+            </Grid>  */}
             <Grid
               item
-              lg={8}
+              lg={12}
               md={6}
               xl={8}
               xs={12}
             >
-              {/* <AccountDetails /> */}
-              {this.accountDetailType(type)}
+              <MaterialTableDemo />
             </Grid>
           </Grid>
         </div>
@@ -73,9 +61,9 @@ class Account extends Component {
   }
 }
 
-Account.propTypes = {
+Timetable.propTypes = {
   classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student']).isRequired
+  type: PropTypes.oneOf(['admin','department','lecturer','department'])
 };
 
-export default withStyles(styles)(Account);
+export default withStyles(styles)(Timetable);
