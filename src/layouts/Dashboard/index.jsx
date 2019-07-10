@@ -14,7 +14,7 @@ import { Drawer } from '@material-ui/core';
 // Custom components
 import { Topbar, Footer, 
 SidebarAdmin, 
-SidebarDept, 
+SidebarDepartment, 
 SidebarLecturer, 
 SidebarStudent}
  from './components';
@@ -46,7 +46,7 @@ class Dashboard extends Component {
   sidebarType = (type,classes) => {
      switch(type){
       case 'admin': return <SidebarAdmin className={classes.sidebar}/>
-      case 'department': return <SidebarDept className={classes.sidebar}/>
+      case 'department': return <SidebarDepartment className={classes.sidebar}/>
       case 'lecturer': return <SidebarLecturer className={classes.sidebar}/>
       case 'student': return <SidebarStudent className={classes.sidebar}/>
       default : return null

@@ -42,13 +42,15 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 // Component styles
 import styles from './styles';
 
-class SidebarDept extends Component {
+const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+
+class SidebarDepartment extends Component {
 
   //opening and closing of course-catalog
   state ={
     open1:true
   }
-  handleClick1(){
+  handleClick1=()=>{
     this.setState({
       open1:!this.state.open1
     })
@@ -60,7 +62,22 @@ class SidebarDept extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <nav className={rootClassName}>
+      <div className={rootClassName}>
+        <div className={classes.logoWrapper}>
+
+        {/* Bmsce logo */}
+          <Link
+            className={classes.logoLink}
+            to="/"
+          >
+            <img
+              alt="BMSCE Logo"
+              className={classes.logoImage}
+              src="/images/bmscce.png"
+            />
+          </Link>
+        </div>
+
        {/* department details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
@@ -68,7 +85,7 @@ class SidebarDept extends Component {
             <Avatar
               alt="CSE"
               className={classes.avatar}
-              src="/images/bmslogo.png"
+              src="/images/bmscce.png"
             />
           </Link>
           <Typography
@@ -99,7 +116,7 @@ class SidebarDept extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -113,10 +130,9 @@ class SidebarDept extends Component {
 
         {/*course catalog*/}
 
-        <ListItem button onClick={this.handleClick1.bind(this)}
+        <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
+          >
            <ListItemIcon className={classes.listItemIcon}>
           <BookIcon/>
          </ListItemIcon >
@@ -128,7 +144,7 @@ class SidebarDept extends Component {
         <List component="div" disablePadding>
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem1">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -138,7 +154,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem2">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -148,7 +164,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem3">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -158,7 +174,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem4">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -168,7 +184,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem5">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -178,7 +194,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem6">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -188,7 +204,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem7">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -198,7 +214,7 @@ class SidebarDept extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/sem8">
         <ListItemIcon className={classes.sublistItemIcon}>
           <BookIcon/>
@@ -214,7 +230,7 @@ class SidebarDept extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/transfer"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -231,7 +247,7 @@ class SidebarDept extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/addschedule"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -262,7 +278,7 @@ class SidebarDept extends Component {
           <ListItem
             className={classes.listItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/department/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -274,15 +290,14 @@ class SidebarDept extends Component {
             />
           </ListItem>
         </List>
-      </nav>
+      </div>
     );
   }
 }
 
-SidebarDept.propTypes = {
+SidebarDepartment.propTypes = {
   className: PropTypes.string,
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SidebarDept);
-
+export default withStyles(styles)(SidebarDepartment);

@@ -17,7 +17,8 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
-  Typography
+  Typography,
+  //Popover
 } from '@material-ui/core';
 
 // Material icons
@@ -31,9 +32,9 @@ import {
   InfoOutlined as InfoIcon,
   AccountBoxOutlined as AccountBoxIcon,
   SettingsOutlined as SettingsIcon,
-  Help as Help
+  Help as Help,
+  Book as BookIcon
 } from '@material-ui/icons';
-import BookIcon from '@material-ui/icons/Book';
 
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -42,24 +43,38 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 // Component styles
 import styles from './styles';
 
+const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+
 class SidebarStudent extends Component {
   
   //opening and closing of course-catalog
   
   state ={
-    open1:true
+     open1:true,
+    //anchorEl:null
   }
-  handleClick1(){
+  handleClick1= ()=>{
     this.setState({
       open1:!this.state.open1
     })
   }
+  // handleClick1=(event)=>{
+  //   this.setState({
+  //     anchorEl: event.currentTarget
+  //   })
+  // };
+  
+  // handleClose=(event)=>{
+  //   this.setState({
+  //     anchorEl: null
+  //   })
+  // }
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
 
     return (
-     <nav className={rootClassName}>
+     <div className={rootClassName}>
        {/* student details */}
       <Divider className={classes.logoDivider} />
       <div className={classes.profile}>
@@ -96,7 +111,7 @@ class SidebarStudent extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/student/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -111,10 +126,9 @@ class SidebarStudent extends Component {
           {/* Course Catalog */}
 
 
-          <ListItem button onClick={this.handleClick1.bind(this)}
+          <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
+          >
            <ListItemIcon className={classes.listItemIcon}>
           <BookIcon/>
          </ListItemIcon >
@@ -123,88 +137,102 @@ class SidebarStudent extends Component {
           {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
         </ListItem>
        <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-        <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem1">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-1"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem2">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-2"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem3">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-3"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem4">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-4"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem5">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-5"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem6">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-6"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem7">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-7"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/student/sem8">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-8"/>
-          </ListItem>
-          </List>
+          {/* <Popover 
+            anchorEl={this.state.anchorEl}
+            open={Boolean(this.state.anchorEl)}
+            onClose={this.handleClose}
+            anchorOrigin={{
+              vertical: 'center',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            > */}
+            <List component="div" disablePadding>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem1">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-1"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem2">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-2"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem3">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-3"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem4">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-4"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem5">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-5"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem6">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-6"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem7">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-7"/>
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/student/sem8">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon/>
+                </ListItemIcon>
+                <ListItemText  classes={{ primary: classes.listItemText }}
+                  primary="SEM-8"/>
+              </ListItem>
+            </List>
+            {/* </Popover> */}
           </Collapse>
          
         </List>
@@ -227,7 +255,7 @@ class SidebarStudent extends Component {
           <ListItem
             className={classes.listItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/student/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -239,7 +267,7 @@ class SidebarStudent extends Component {
             />
           </ListItem>
         </List>
-      </nav>
+      </div>
     );
   }
 }

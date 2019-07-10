@@ -47,6 +47,8 @@ import Delete from '@material-ui/icons/Delete';
 import styles from './styles';
 import { thisExpression } from '@babel/types';
 
+const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+
 class SidebarAdmin extends Component {
   state ={
     open1:true,
@@ -57,28 +59,28 @@ class SidebarAdmin extends Component {
   // opening and closing of drop downs in side-navs
      
      // for Time Table
-  handleClick1(){
+  handleClick1=()=>{
     this.setState({
       open1:!this.state.open1
     })
   }
    
    // for Users
-  handleClick2(){
+  handleClick2=()=>{
     this.setState({
       open2:!this.state.open2
     })
   }
 
    // for devices
-  handleClick3(){
+  handleClick3=()=>{
     this.setState({
       open3:!this.state.open3
     })
   }
 
   //for academics
-  handleClick4(){
+  handleClick4=()=>{
     this.setState({
       open4:!this.state.open4
     })
@@ -88,7 +90,7 @@ class SidebarAdmin extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <nav className={rootClassName}>
+      <div className={rootClassName}>
 
        {/* admin details */}
         <Divider className={classes.logoDivider} />
@@ -128,7 +130,7 @@ class SidebarAdmin extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -143,36 +145,35 @@ class SidebarAdmin extends Component {
 
           {/* Time Table*/}
 
-          <ListItem button onClick={this.handleClick1.bind(this)}
+          <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
-           <ListItemIcon className={classes.listItemIcon}>
-          <CalenderToday/>
-         </ListItemIcon >
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <CalenderToday/>
+            </ListItemIcon >
             <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Time Table"/>
-          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
+            {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
         </ListItem>
-       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-        <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/admin/create-time-table">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <CalenderToday/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Create Time Table"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/admin/view-time-table">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <CalenderToday/>
-         </ListItemIcon>
+        <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem activeClassName={classes.activeListItem}
+              className={classes.listItem}
+              component={newLink}
+              to="/admin/create-time-table">
+              <ListItemIcon className={classes.sublistItemIcon}>
+                <CalenderToday/>
+              </ListItemIcon>
+              <ListItemText  classes={{ primary: classes.listItemText }}
+                primary="Create Time Table"/>
+            </ListItem>
+            <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/admin/view-time-table">
+              <ListItemIcon className={classes.sublistItemIcon}>
+                <CalenderToday/>
+              </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Time Table Details"/>
           </ListItem>
@@ -181,32 +182,31 @@ class SidebarAdmin extends Component {
          
 
            {/* Users*/}
-            <ListItem button onClick={this.handleClick2.bind(this)}
-          className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
-           <ListItemIcon className={classes.listItemIcon}>
-          <PeopleIcon/>
-         </ListItemIcon >
-            <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Users"/>
-        {!this.state.open2 ? <ExpandMore />: <ExpandLess />}
-      </ListItem>
-      <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-        <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/admin/admin">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <PeopleIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Admin"/>
-          </ListItem>
+            <ListItem button onClick={this.handleClick2}
+              className={classes.listItem}
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+                <PeopleIcon/>
+              </ListItemIcon >
+              <ListItemText  classes={{ primary: classes.listItemText }}
+                primary="Users"/>
+              {!this.state.open2 ? <ExpandMore />: <ExpandLess />}
+            </ListItem>
+            <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem activeClassName={classes.activeListItem}
+                  className={classes.listItem}
+                  component={newLink}
+                  to="/admin/admin">
+                  <ListItemIcon className={classes.sublistItemIcon}>
+                    <PeopleIcon/>
+                  </ListItemIcon>
+                  <ListItemText  classes={{ primary: classes.listItemText }}
+                    primary="Admin"/>
+                </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/student">
         <ListItemIcon className={classes.sublistItemIcon}>
           <PeopleIcon/>
@@ -216,7 +216,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/Lecturer">
         <ListItemIcon className={classes.sublistItemIcon}>
           <PeopleIcon/>
@@ -229,10 +229,9 @@ class SidebarAdmin extends Component {
            
 
            {/*Devices */}
-          <ListItem button onClick={this.handleClick3.bind(this)}
+          <ListItem button onClick={this.handleClick3}
           className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
+          >
            <ListItemIcon className={classes.listItemIcon}>
           <CameraAlt/>
          </ListItemIcon >
@@ -244,7 +243,7 @@ class SidebarAdmin extends Component {
           <List component="div" disablePadding>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/camera">
           <ListItemIcon className={classes.sublistItemIcon}>
             <CameraAlt/>
@@ -254,7 +253,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/mapping">
           <ListItemIcon className={classes.sublistItemIcon}>
           <CameraAlt/>
@@ -267,10 +266,9 @@ class SidebarAdmin extends Component {
         
          {/* Academics*/ }
 
-     <ListItem button onClick={this.handleClick4.bind(this)}
+     <ListItem button onClick={this.handleClick4}
           className={classes.listItem}
-          activeClassName={classes.activeListItem}
-          component={NavLink}>
+          >
            <ListItemIcon className={classes.listItemIcon}>
           <AccountBalance/>
          </ListItemIcon >
@@ -282,7 +280,7 @@ class SidebarAdmin extends Component {
         <List component="div" disablePadding>
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/department">
         <ListItemIcon className={classes.sublistItemIcon}>
           <AccountBalance/>
@@ -292,7 +290,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/subjects">
         <ListItemIcon className={classes.sublistItemIcon}>
           <AccountBalance/>
@@ -302,7 +300,7 @@ class SidebarAdmin extends Component {
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/classrooms">
         <ListItemIcon className={classes.sublistItemIcon}>
           <AccountBalance/>
@@ -318,7 +316,7 @@ class SidebarAdmin extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/deletevideos"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -349,7 +347,7 @@ class SidebarAdmin extends Component {
           <ListItem
             className={classes.listItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/admin/help"
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -361,7 +359,7 @@ class SidebarAdmin extends Component {
             />
           </ListItem>
         </List>
-      </nav>
+      </div>
     );
   }
 }
