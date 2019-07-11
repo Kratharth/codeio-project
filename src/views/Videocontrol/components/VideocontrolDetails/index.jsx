@@ -56,7 +56,7 @@ values:{
         <PortletHeader>
           <PortletLabel
             //subtitle="The Video details can be editted"
-            title="Video edit"
+            title="Record"
           />
         </PortletHeader>
         <PortletContent noPadding>

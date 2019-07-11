@@ -77,7 +77,7 @@ class VideoeditDetails extends Component {
               className={classes.textField}
               label="description"
               margin="dense"
-              required
+
               value={description}
               variant="outlined"
             />
@@ -85,7 +85,7 @@ class VideoeditDetails extends Component {
               className={classes.textField}
               label="edit"
               margin="dense"
-              required
+            
               value={edit}
               variant="outlined"
             />
