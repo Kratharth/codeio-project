@@ -226,7 +226,7 @@ class SidebarAdmin extends Component {
                   <ListItemText  classes={{ primary: classes.listItemText }}
                     primary="Admin"/>
                 </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
+          {/* <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
             to="/admin/student">
@@ -235,7 +235,7 @@ class SidebarAdmin extends Component {
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="admin"/>
-          </ListItem>
+          </ListItem> */}
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
@@ -244,7 +244,7 @@ class SidebarAdmin extends Component {
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="department"/>
+              primary="Department"/>
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -254,7 +254,7 @@ class SidebarAdmin extends Component {
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="student"/>
+              primary="Student"/>
           </ListItem>
           <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -264,9 +264,9 @@ class SidebarAdmin extends Component {
           <PeopleIcon/>
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="lecturer"/>
+              primary="Lecturer"/>
           </ListItem>
-	    <ListItem activeClassName={classes.activeListItem}
+	    {/* <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
             to="/admin/department">
@@ -275,7 +275,7 @@ class SidebarAdmin extends Component {
          </ListItemIcon>
           <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Department"/>
-          </ListItem>
+          </ListItem> */}
           </List>
           </Collapse>
 

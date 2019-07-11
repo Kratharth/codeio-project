@@ -6,7 +6,8 @@ import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import {postMappings} from 'services/mapping'
+import MappingList from '../../../mapping'
 // Material helpers
 import { withStyles , TextField } from '@material-ui/core';
 
@@ -18,7 +19,8 @@ import {
   ArrowDownward as ArrowDownwardIcon,
   ArrowUpward as ArrowUpwardIcon,
   Delete as DeleteIcon,
-  Edit as EditIcon
+  Edit as EditIcon,
+  DesktopWindows
 } from '@material-ui/icons';
 
 
@@ -35,7 +37,11 @@ import styles from './styles';
 class MappingToolbar extends Component {
   state = {
     open:false,
-    addClicked: false
+    addClicked: false,
+    classroom:'',
+    cameraip:'',
+    servername:'',
+    serverip:''
   }
   handleClickOpen = () => {
     this.setState({
@@ -74,15 +80,19 @@ class MappingToolbar extends Component {
               // helperText="Please specify the Classroom"
               label="Classroom"
               margin="dense"
+              id="classroom"
               required
               variant="outlined"
+              onChange={e => this.setState({classroom: e.target.value})}
             />
             <TextField
               className={classes.textField}
               label="Camera IP"
               margin="dense"
+              id="cameraip"
               required
               variant="outlined"
+              onChange={e => this.setState({cameraip: e.target.value})}
             />
           </div>
           {/* <div className={classes.field}>
@@ -121,15 +131,19 @@ class MappingToolbar extends Component {
               className={classes.textField}
               label="Server Name"
               margin="dense"
+              id="servername"
               required
               variant="outlined"
+              onChange={e => this.setState({servername: e.target.value})}
             /> 
             <TextField
               className={classes.textField}
               label="Server IP"
               margin="dense"
+              id="serverip"
               required
               variant="outlined"
+              onChange={e => this.setState({serverip: e.target.value})}
             /> 
           </div>
         </form>
@@ -138,6 +152,7 @@ class MappingToolbar extends Component {
         <Button
           color="primary"
           variant="contained"
+          onClick={this.verify.bind(this)}
         >
           Save details
         </Button>
@@ -154,6 +169,44 @@ class MappingToolbar extends Component {
     }    
   }
 } 
+    verify(ev)
+    {
+        ev.preventDefault()
+        if(document.getElementById("classroom").value=='')
+                alert('Classroom field is empty');
+         else if(document.getElementById("cameraip").value=='')
+            alert('Camera IP field is empty');
+            else if(document.getElementById("servername").value=='')
+            alert('Server Name IP field is empty');
+            else if(document.getElementById("serverip").value=='')
+            alert('Server  IP field is empty');
+            else 
+            this.submit();
+    }
+    submit(){
+        let classroom= this.state.classroom;
+    let servername=this.state.servername;
+    let cameraip=this.state.cameraip;
+    let serverip=this.state.serverip;
+       let data = {
+            classroom,
+            servername,
+            cameraip,
+            serverip
+        }
+        postMappings(data)
+        .then(res => {
+          console.log(res)
+              if(res.mapping==='Success')
+              { 
+                alert("Inserted Data");
+                window.location.reload();
+              }
+        })
+        .catch(err => {
+            alert(err);
+        })
+    }
   addClicked = () => {
     this.setState({
       addClicked: !this.state.addClicked
