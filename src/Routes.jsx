@@ -10,7 +10,6 @@ import Icons from './views/Icons';
 import Account from './views/Account';
 import Settings from './views/Settings';
 import SignIn from './views/SignIn';
-import NotFound from './views/NotFound';
 import  MappingList  from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
