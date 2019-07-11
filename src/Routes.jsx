@@ -16,8 +16,7 @@ import NotFound from './views/NotFound';
 import  MappingList  from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import MaterialTableDemo from './views/Timetable/timetable';
-import Timetable from 'views/Timetable';
+import Timetable from 'views/TimeTable';
 
 export default class Routes extends Component {
   render() {

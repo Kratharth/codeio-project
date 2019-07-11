@@ -91,14 +91,14 @@ class SidebarAdmin extends Component {
       <nav className={rootClassName}>
         <div className={classes.logoWrapper}>
 
-        <Typography
+        {/* <Typography
                     className={classes.title}
                     variant="h2"
                     align="center"
                   >
                     BMSCE LRS
                   </Typography>
-          {/* <Link
+          {/* <Link */}
         {/* Bmsce logo */}
           <Link
             className={classes.logoLink}
@@ -374,7 +374,7 @@ class SidebarAdmin extends Component {
 
           {/* end of list */}
 
-        {/* <Divider className={classes.listDivider} />
+      <Divider className={classes.listDivider} />
 
         {/*help and support*/}
 
@@ -401,7 +401,7 @@ class SidebarAdmin extends Component {
               primary="Help and support"
             />
           </ListItem>
-        </List> */} 
+        </List>  */}
       </nav>
     );
   }
