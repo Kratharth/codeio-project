@@ -70,7 +70,7 @@ class UserList extends Component {
   };
 
   renderUsers() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
     const { isLoading, users, error } = this.state;
 
     if (isLoading) {
@@ -91,7 +91,6 @@ class UserList extends Component {
 
     return (
       <UsersTable
-        //
         onSelect={this.handleSelect}
         users={users}
       />
@@ -99,11 +98,11 @@ class UserList extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes,type } = this.props;
     const { selectedUsers } = this.state;
 
     return (
-      <DashboardLayout title="Users">
+      <DashboardLayout title="Users" type={type}>
         <div className={classes.root}>
           <UsersToolbar selectedUsers={selectedUsers} />
           <div className={classes.content}>{this.renderUsers()}</div>
@@ -114,8 +113,8 @@ class UserList extends Component {
 }
 
 UserList.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(UserList);

@@ -146,7 +146,8 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(ProductList);

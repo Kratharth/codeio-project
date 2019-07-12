@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -8,27 +8,22 @@ import validate from 'validate.js';
 import _ from 'underscore';
 
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
 // Material components
 import {
   Grid,
+  Avatar,
   Button,
-  IconButton,
   CircularProgress,
   TextField,
   Typography
 } from '@material-ui/core';
-
-// Material icons
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-
-// // Shared components
-// import { Facebook as FacebookIcon, Google as GoogleIcon } from 'icons';
 
 // Component styles
 import styles from './styles';
@@ -50,7 +45,7 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-      type:'',
+      type:'Student',
       open:false
     },
     touched: {
@@ -95,12 +90,12 @@ class SignIn extends Component {
 
   handleChange = (field, value) => {
     const newState = { ...this.state };
-      
+
     newState.submitError = null;
     newState.touched[field] = true;
     newState.values[field] = value;
     this.setState(newState, this.validateForm);
-   
+
   };
 
   handleSignIn = async () => {
@@ -182,7 +177,7 @@ class SignIn extends Component {
                   </Typography>
                 </div> */}
               {/* </div> */}
-             </div>  
+             </div>
           </Grid>
           <Grid
             className={classes.content}
@@ -191,16 +186,13 @@ class SignIn extends Component {
             xs={12}
           >
             <div className={classes.content}>
-              <div className={classes.contentHeader}>
-                <IconButton
-                  className={classes.backButton}
-                  onClick={this.handleBack}
-                >
-                  <ArrowBackIcon />
-                </IconButton>
-              </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
+		  <Avatar
+                    alt="BMS logo"
+                    className={classes.avatar}
+                    src="/images/bmslogo.png"
+                  />
                   <Typography
                     className={classes.title}
                     variant="h2"
@@ -278,34 +270,18 @@ class SignIn extends Component {
                         {errors.password[0]}
                       </Typography>
                     )}
-                    <form>
-                     <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="demo-controlled-open-select">Select your type</InputLabel>
-          <Select
-            open={this.state.open}
-            name="type"
-          onClose={this.handleClose}
-          onOpen={this.handleOpen}
-          value={values.type}
-          onChange={event =>
-            this.handleChange('type',event.target.value)
-      }
-          inputProps={{
-            name: 'type',
-            id: 'demo-controlled-open-select',
-          }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-
-          <MenuItem value="admin">Administrator</MenuItem>
-          <MenuItem value="student">Student</MenuItem>
-          <MenuItem value="lecturer">Professor</MenuItem>
-          <MenuItem value="department">Department</MenuItem>
-        </Select>
-      </FormControl>
-    </form>
+		    <Select
+		      className={classes.textField}
+                      value={values.type}
+                      onChange={event => this.handleFieldChange('type',event.target.value)}
+                      input={<Input name="type" id="user-type" />}
+                    >
+                      <MenuItem value='admin'>Admin</MenuItem>
+                      <MenuItem value='department'>Department</MenuItem>
+                      <MenuItem value='lecturer'>Lecturer</MenuItem>
+                      <MenuItem value='student'>Student</MenuItem>
+                    </Select>
+                    <FormHelperText>Select user type</FormHelperText>
                   </div>
                   {submitError && (
                     <Typography

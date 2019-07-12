@@ -14,3 +14,6 @@ export {default as AddDepartment } from './AddDepartment';
 export {default as AddStudent } from './AddStudent';
 export {default as AddLecturer} from './AddLecturer';
 export {default as TransferSession} from './TransferSession';
+export { default as VideoeditDetails } from './VideoeditDetails';
+export { default as CourseeditDetails } from './CourseeditDetails';
+export { default as Videoplay } from './Videoplay';
