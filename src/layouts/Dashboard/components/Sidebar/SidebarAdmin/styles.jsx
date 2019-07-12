@@ -4,8 +4,8 @@ export default theme => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   },
   logoWrapper: {
     display: 'flex',
@@ -23,7 +23,7 @@ export default theme => ({
     marginLeft:'0px'  // bmsce logo width
   },
   logoDivider: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   },
   profile: {
     display: 'flex',
@@ -36,12 +36,12 @@ export default theme => ({
     height: '100px'
   },
   nameText: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   },
   bioText: {},
   profileDivider: {
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   listSubheader: {
     color: theme.palette.text.secondary
@@ -58,7 +58,7 @@ export default theme => ({
       }
     },
     '& + &': {
-      marginTop: theme.spacing.unit
+      marginTop: theme.spacing(1)
     }
   },
   activeListItem: {
@@ -84,7 +84,7 @@ export default theme => ({
     color: theme.palette.text.secondary
   },
   listDivider: {
-    marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2)
   }
 });

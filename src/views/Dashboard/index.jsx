@@ -27,7 +27,7 @@ import {
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   },
   item: {
     height: '100%'
@@ -36,11 +36,9 @@ const styles = theme => ({
 
 class Dashboard extends Component {
   render() {
-    console.log(this.props);
-    const { classes, type } = this.props;
-
+    const { classes,type } = this.props;
     return (
-      <DashboardLayout title="Dashboad" type={type}>
+      <DashboardLayout title="Dashboard" type={type}> {/*pass user type here*/}
         <div className={classes.root}>
           <Grid
             container
@@ -126,7 +124,8 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  type: PropTypes.oneOf(['admin','department','lecturer','student'])
 };
 
 export default withStyles(styles)(Dashboard);
