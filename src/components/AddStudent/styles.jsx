@@ -4,7 +4,7 @@ export default theme => ({
       margin: theme.spacing.unit * 3
     },
     textField: {
-      width: '420px',
+      width: '200px',
       maxWidth: '100%',
       marginRight: theme.spacing.unit * 3
     },
@@ -13,6 +13,10 @@ export default theme => ({
       paddingRight: theme.spacing.unit * 3,
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2
+    },
+    button: {
+      margin: theme.spacing(2)
+
     }
   });
   

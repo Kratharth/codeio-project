@@ -253,8 +253,22 @@ class SidebarLecturer extends Component {
           </ListItem>
 
       {/*My Videos*/}
+      <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/lecturer/myvideos"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="My Videos"
+            />
+          </ListItem>
 
-          <ListItem button onClick={this.handleClick2}
+          {/* <ListItem button onClick={this.handleClick2}
           className={classes.listItem}
           >
            <ListItemIcon className={classes.listItemIcon}>
@@ -297,7 +311,7 @@ class SidebarLecturer extends Component {
               primary="IOT"/>
             </ListItem>
           </List>
-          </Collapse>
+          </Collapse> */}
 
         {/*Transfer Session*/}
 

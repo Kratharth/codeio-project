@@ -25,6 +25,8 @@ import NotFound from './views/NotFound';
 import Videocontrol from './views/Videocontrol';
 import Videoedit from './views/Videoedit';
 import Courseedit from './views/Courseedit';
+//import MyVideos from './views/MyVideos';
+import ProductListedit from './views/ProductListedit';
 
 export default class Routes extends Component {
   render() {
@@ -234,6 +236,14 @@ exact
 path="/:type/courseedit"
 render={({match}) =>
 <Courseedit type={match.params.type} />
+}
+/>
+
+ <Route
+exact
+path="/:type/myvideos"
+render={({match}) =>
+<ProductListedit type={match.params.type} />
 }
 />
 
