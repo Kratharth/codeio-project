@@ -43,7 +43,8 @@ import DesktopIcon from '@material-ui/icons/DesktopWindows';
 
 // Component styles
 import styles from './styles';
-
+let courses=false;
+let myvideos=false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarLecturer extends Component {
@@ -52,14 +53,22 @@ class SidebarLecturer extends Component {
     open1:true,
     open2:true
   }
+  componentWillMount(){
+    courses?(this.state.open1=true):(this.state.open1=false);
+    myvideos?(this.state.open2=true):(this.state.open2=false);
+  }
    //opening and closing of course-catalog
   handleClick1=()=>{
+    courses=true;
+    myvideos=false;
     this.setState({
       open1:!this.state.open1
     })
   }
   // opening and closing of my videos
   handleClick2=()=>{
+    myvideos=true;
+    courses=false;
     this.setState({
       open2:!this.state.open2
     })

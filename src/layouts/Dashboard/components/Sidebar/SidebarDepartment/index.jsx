@@ -44,7 +44,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import styles from './styles';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-
+let courses=false;
 class SidebarDepartment extends Component {
 
   //opening and closing of course-catalog
@@ -52,11 +52,14 @@ class SidebarDepartment extends Component {
     open1:true
   }
   handleClick1=()=>{
+    courses=true;
     this.setState({
       open1:!this.state.open1
     })
   }
-
+  componentWillMount(){
+    courses?(this.state.open1=true):(this.state.open1=false);
+  }
   render() {
     const { classes, className } = this.props;
     console.log(this.props)

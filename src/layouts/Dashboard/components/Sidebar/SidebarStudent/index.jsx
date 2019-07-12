@@ -42,7 +42,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 // Component styles
 import styles from './styles';
 // import { SidebarStudent } from '../..';
-
+let courses=false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
@@ -53,7 +53,11 @@ class SidebarStudent extends Component {
      open1:true,
     //anchorEl:null
   }
+  componentWillMount(){
+    courses?(this.state.open1=true):(this.state.open1=false);
+  }
   handleClick1= ()=>{
+    courses=true;
     this.setState({
       open1:!this.state.open1
     })
