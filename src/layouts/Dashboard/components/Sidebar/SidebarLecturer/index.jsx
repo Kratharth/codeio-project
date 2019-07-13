@@ -56,7 +56,7 @@ class SidebarLecturer extends Component {
   handleClick1=()=>{
     this.setState({
       open1:!this.state.open1
-    })
+    });
   }
   // opening and closing of my videos
   handleClick2=()=>{
@@ -66,7 +66,6 @@ class SidebarLecturer extends Component {
   }
   render() {
     const { classes, className } = this.props;
-    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
