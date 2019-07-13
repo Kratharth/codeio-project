@@ -25,6 +25,7 @@ import NotFound from './views/NotFound';
 import Videocontrol from './views/Videocontrol';
 import Videoedit from './views/Videoedit';
 import Courseedit from './views/Courseedit';
+import Videorecordguest from './views/Videorecordguest';
 
 export default class Routes extends Component {
   render() {
@@ -217,6 +218,13 @@ export default class Routes extends Component {
           <Videocontrol type={match.params.type} />
           }
           />
+          <Route
+         exact
+         path="/:type/videorecordguest"
+         render={({match}) =>
+        <Videorecordguest type={match.params.type} />
+        }
+        />
 {/*added route for videoedit*/}
 
 <Route
@@ -293,4 +301,3 @@ render={({match}) =>
     );
   }
 }
-
