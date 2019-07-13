@@ -5,16 +5,7 @@ import { withStyles } from '@material-ui/core';
 import { Button, TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
-
-// Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-  PortletFooter
-} from 'components';
+import MaterialTableDemo  from './Table';
 
 // Component styles
 import styles from './styles';
@@ -49,38 +40,12 @@ class AddAdmin extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <Portlet
-        {...rest}
-        className={rootClassName}
-      >
-        <PortletHeader>
-          <PortletLabel
-            subtitle="The information can be edited"
-            title="Admin Details"
-          />
-        </PortletHeader>
-        <PortletContent noPadding>
-          <form
+      <div className={rootClassName}>
+        <form
             autoComplete="off"
             noValidate
           >
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-name"
-                  label="Name"
-                  type="text"
-                  value={name}
-                  onChange={this.handleChangeName}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
+                 <TextField
                   id="outlined-id"
                   label="Id"
                   type="text"
@@ -88,35 +53,21 @@ class AddAdmin extends Component {
                   onChange={this.handleChangeId}
                   className={classes.textField}
                   margin="normal"
-                  variant="outlined"
+                  helperText="Please enter the Id"
                 />
-                </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-email"
-                  label="Email"
-                  type="email"
-                  value={email}
-                  onChange={this.handleChangeEmail}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-          </form>
-        </PortletContent>
-        <PortletFooter className={classes.portletFooter}>
-          <Button
+             <Button
             color="primary"
             variant="contained"
+            className={classes.button}
           >
-            Save details
+            Search
           </Button>
-        </PortletFooter>
-      </Portlet>
+          </form>
+        
+         
+        
+      <MaterialTableDemo />
+      </div>
     );
   }
 }

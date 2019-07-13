@@ -56,13 +56,13 @@ class AddUser extends Component {
         <div className={classes.root}>
           <Grid
             container
-            spacing={8} 
+            spacing={12} 
           >
             <Grid
               item 
-              lg={6}
+              lg={12}
               md={6}
-              xl={4}
+              xl={8}
               xs={12}
             > 
              {this.addUser(userType)}

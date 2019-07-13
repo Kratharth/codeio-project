@@ -2,19 +2,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
-
-// Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-  PortletFooter
-} from 'components';
+import MaterialTableDemo from './Table';
 
 // Component styles
 import styles from './styles';
@@ -61,37 +52,16 @@ class AddStudent extends Component {
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <Portlet
-        {...rest}
+      <div
         className={rootClassName}
       >
-        <PortletHeader>
-          <PortletLabel
-            subtitle="The information can be edited"
-            title="Student Details"
-          />
-        </PortletHeader>
-        <PortletContent noPadding>
-          <form
+           <form
             autoComplete="off"
             noValidate
           >
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-name"
-                  label="Name"
-                  value={name}
-                  onChange={this.handleChangeName}
-                  type="text"
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
+            
+                
+                
               <TextField
                   id="outlined-select-department"
                   select
@@ -105,8 +75,8 @@ class AddStudent extends Component {
                     },
                   }}
                   margin="normal"
-                  variant="outlined"
-                >
+                  helperText="Please select the department"
+                  >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
@@ -114,24 +84,8 @@ class AddStudent extends Component {
                     <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
                     <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
                 </TextField>
-              </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-email"
-                  label="Email"
-                  type="email"
-                  value={email}
-                  onChange={this.handleChangeEmail}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
+              
+                
               <TextField
                   id="outlined-select-sem"
                   select
@@ -146,7 +100,6 @@ class AddStudent extends Component {
                   }}
                   helperText="Please select the sem"
                   margin="normal"
-                  variant="outlined"
                 >
                     <MenuItem value="">
                       <em>None</em>
@@ -155,10 +108,7 @@ class AddStudent extends Component {
                     <MenuItem value={"2"}>2</MenuItem>
                     <MenuItem value={"3"}>3</MenuItem>
                 </TextField>
-              </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
+              
                 <TextField
                   id="outlined-usn"
                   label="USN"
@@ -166,22 +116,29 @@ class AddStudent extends Component {
                   value={usn}
                   onChange={this.handleChangeUsn}
                   className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
+                  margin="normal"                  
+                  helperText="Please enter the usn"
                 />
-                </FormControl>
-            </div>
-          </form>
-        </PortletContent>
-        <PortletFooter className={classes.portletFooter}>
-          <Button
-            color="primary"
-            variant="contained"
+                <div>   
+            <Button
+          color="primary"
+          variant="contained"
+          className={classes.button}
           >
-            Save details
-          </Button>
-        </PortletFooter>
-      </Portlet>
+          Search
+        </Button>
+        <Typography variant="h4" component="h5" className={classes.or}>OR</Typography>
+            <Button
+          color="primary"
+          variant="contained"
+          className={classes.button}
+        >
+          View All
+        </Button>
+        </div>
+        </form>
+        <MaterialTableDemo />
+      </div>
     );
   }
 }

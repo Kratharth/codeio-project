@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
-import { Button, TextField } from '@material-ui/core';
+import { withStyles, Divider } from '@material-ui/core';
+import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
-
-// Shared components
-import {
-  Portlet,
-  PortletHeader,
-  PortletLabel,
-  PortletContent,
-  PortletFooter
-} from 'components';
-
-// Component styles
+import { makeStyles } from '@material-ui/core/styles';
+import MaterialTableDemo from './Table';
 import styles from './styles';
 
 class AddLecturer extends Component {
@@ -51,106 +41,71 @@ class AddLecturer extends Component {
   };
 
   render() {
+    // const classes = useStyles;
     const { classes, className, ...rest } = this.props;
     const { name, id, email, department} = this.state;
-
     const rootClassName = classNames(classes.root, className);
-
     return (
-      <Portlet
-        {...rest}
-        className={rootClassName}
+      <div className={rootClassName}>
+      <form
+        className={classes.container}
+        autoComplete="off"
+        noValidate
       >
-        <PortletHeader>
-          <PortletLabel
-            subtitle="The information can be edited"
-            title="Lecturer Details"
-          />
-        </PortletHeader>
-        <PortletContent noPadding>
-          <form
-            autoComplete="off"
-            noValidate
+        <div>
+          <TextField
+            id="outlined-select-department"
+            select
+            label="Department"
+            className={classes.textField}
+            value={department}
+            onChange={this.handleChangeDepartment}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            helperText="Please select the department"
+            margin="normal"
           >
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-name"
-                  label="Name"
-                  type="text"
-                  value={name}
-                  onChange={this.handleChangeName}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
+          <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
+          <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
+          </TextField>
+        <TextField
+              id="outlined-id"
+              label="Id"
+              value={id}
+              onChange={this.handleChangeId}
+              className={classes.textField}
+              margin="normal"
+              helperText="Please enter the lecturer Id"
+            /> 
             </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-id"
-                  label="Id"
-                  type="text"
-                  value={id}
-                  onChange={this.handleChangeId}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-              <TextField
-                  id="outlined-select-department"
-                  select
-                  label="Department"
-                  className={classes.textField}
-                  value={department}
-                  onChange={this.handleChangeDepartment}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu,
-                    },
-                  }}
-                  margin="normal"
-                  variant="outlined"
-                >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"ISE"}>ISE</MenuItem>
-                    <MenuItem value={"CSE"}>CSE</MenuItem>
-                    <MenuItem value={"CE"}>CE</MenuItem>
-                </TextField>
-              </FormControl>
-            </div>
-            <div className={classes.field}>
-              <FormControl className={classes.margin}>
-                <TextField
-                  id="outlined-email"
-                  label="Email"
-                  type="email"
-                  value={email}
-                  onChange={this.handleChangeEmail}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                />
-                </FormControl>
-            </div>
-          </form>
-        </PortletContent>
-        <PortletFooter className={classes.portletFooter}>
-          <Button
-            color="primary"
-            variant="contained"
+            <br />
+            <div>   
+            <Button
+          color="primary"
+          variant="contained"
+          className={classes.button}
           >
-            Save details
-          </Button>
-        </PortletFooter>
-      </Portlet>
+          Search
+        </Button>
+        <Typography variant="h4" component="h5" className={classes.or}>OR</Typography>
+            <Button
+          color="primary"
+          variant="contained"
+          className={classes.button}
+        >
+          View All
+        </Button>
+        </div>
+      </form>
+      <MaterialTableDemo />
+      </div>
     );
   }
 }
