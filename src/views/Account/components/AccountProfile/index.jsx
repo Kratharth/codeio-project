@@ -100,10 +100,11 @@ class AccountProfile extends Component {
             Upload picture
           </Button>
           <Button variant="text" color="primary">Remove picture</Button>
+          <Button onClick={this.handleClickOpen} color="primary"className={classes.uploadButton}>Change Password</Button>
         </PortletFooter> 
-        <div>
-    <center> <Button onClick={this.handleClickOpen} color="primary">Change Password</Button></center>
-      <Dialog disableBackdropClick disableEscapeKeyDown open={this.state.open} onClose={this.handleClose}>
+        
+    
+      <div><Dialog disableBackdropClick disableEscapeKeyDown open={this.state.open} onClose={this.handleClose}>
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent>
           <form className={classes.container}>
