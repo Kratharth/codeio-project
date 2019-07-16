@@ -28,9 +28,9 @@ import { Dashboard as DashboardLayout } from 'layouts';
 import { getProducts } from 'services/product';
 
 // Custom components
-import {ProductCard} from 'components';
+import { ProductCard } from 'components';
 import { ProductsToolbar } from './components';
-import {ProductCardEdit}  from 'components';
+import { ProductCardEdit } from 'components';
 
 
 // Component styles
@@ -124,7 +124,7 @@ class ProductList extends Component {
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes, type } = this.props;
 
     return (
       <DashboardLayout title="Videos" type={type}>
@@ -148,7 +148,7 @@ class ProductList extends Component {
 
 ProductList.propTypes = {
   classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student'])
+  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'student'])
 };
 
 export default withStyles(styles)(ProductList);

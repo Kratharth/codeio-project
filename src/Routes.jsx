@@ -11,7 +11,7 @@ import SignIn from './views/SignIn';
 import MappingList from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import Timetable from 'views/Timetable';
+import Timetable from 'views/TimeTable';
 import AddUser from './views/Admin/index';
 import TransferSession from './components/TransferSession/index';
 import NotFound from './views/NotFound';
@@ -48,6 +48,14 @@ export default class Routes extends Component {
             <ProductList type={match.params.type} />
           }
         />
+        <Route
+          exact
+          path="/:type/account"
+          render={({ match }) =>
+            <Account type={match.params.type} />
+          }
+        />
+
 
         {/* <Route
            exact
@@ -269,9 +277,9 @@ export default class Routes extends Component {
         <Route
           exact
           path="/:type/create-time-table"
-          render={({match}) =>
-        <Timetable type={match.params.type} />
-        }
+          render={({ match }) =>
+            <Timetable type={match.params.type} />
+          }
         />
         <Route
           exact
