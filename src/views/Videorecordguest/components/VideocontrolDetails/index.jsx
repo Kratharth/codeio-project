@@ -94,12 +94,12 @@ values:{
          });
        };
 
-       handleChangeSem = e => {
+       handleChangeclassroom = e => {
          this.setState({
            classroom: e.target.value
          });
        };
-       handleChangeSem = e => {
+       handleChangefaculty = e => {
          this.setState({
            faculty: e.target.value
          });
@@ -141,7 +141,7 @@ values:{
     <br/><br/>
     <TextField
       className={classes.textField}
-    
+
       label="Room number"
       margin="dense"
       required
