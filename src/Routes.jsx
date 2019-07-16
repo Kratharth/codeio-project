@@ -133,13 +133,13 @@ export default class Routes extends Component {
             <Typography type={match.params.type} />
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/department"
           render={({ match }) =>
             <Dashboard type={match.params.type} />
           }
-        />
+        /> */}
         <Route
           exact
           path="/:type/classrooms"
