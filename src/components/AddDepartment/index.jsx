@@ -16,25 +16,9 @@ class AddDepartment extends Component {
     name: '',
     code: '',
     email: '',
-    viewTable: false,
   };
   
-  clicked = e => {
-    this.setState({
-      viewTable: !this.state.viewTable,
-    });
-  }
-
-
-  renderTable() {
-    if(this.state.viewTable) return (
-      <div>
-        <h4>DATABASE</h4>
-        <Divider />
-        <MaterialTableDemo />
-      </div>
-    );
-  }
+  
 
   handleChangeName = e => {
     this.setState({
@@ -60,16 +44,7 @@ class AddDepartment extends Component {
 
     return (
           <div>
-
-            <Button
-            color="primary"
-            variant="contained"
-            className = {classes.button}
-            onClick = {this.clicked}
-          >
-            View Records
-          </Button>
-          {this.renderTable()}
+            <MaterialTableDemo />
           </div>
     );
   }
