@@ -1,18 +1,25 @@
 export default theme => ({
-    root: {},
-    field: {
-      margin: theme.spacing.unit * 3
-    },
-    textField: {
-      width: '420px',
-      maxWidth: '100%',
-      marginRight: theme.spacing.unit * 3
-    },
-    portletFooter: {
-      paddingLeft: theme.spacing.unit * 3,
-      paddingRight: theme.spacing.unit * 3,
-      paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit * 2
-    }
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 300,
+    maxWidth: 400,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
+  button: {
+    margin: 20,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(50 ),
+    width: 300
+  },
   });
   
