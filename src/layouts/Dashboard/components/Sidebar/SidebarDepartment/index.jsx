@@ -49,7 +49,7 @@ class SidebarDepartment extends Component {
 
   //opening and closing of course-catalog
   state ={
-    open1:true
+    open1:false
   }
   handleClick1=()=>{
     courses=true;

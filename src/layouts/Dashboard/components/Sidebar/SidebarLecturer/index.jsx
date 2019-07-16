@@ -50,8 +50,8 @@ const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...pro
 class SidebarLecturer extends Component {
 
   state ={
-    open1:true,
-    open2:true
+    open1:false,
+    open2:false
   }
   componentWillMount(){
     courses?(this.state.open1=true):(this.state.open1=false);

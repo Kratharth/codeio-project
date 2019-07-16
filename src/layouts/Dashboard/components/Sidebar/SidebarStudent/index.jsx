@@ -50,7 +50,7 @@ class SidebarStudent extends Component {
   //opening and closing of course-catalog
 
   state ={
-     open1:true,
+     open1:false,
     //anchorEl:null
   }
   componentWillMount(){
