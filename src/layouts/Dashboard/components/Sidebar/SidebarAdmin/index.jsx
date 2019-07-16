@@ -42,6 +42,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import CalenderToday from '@material-ui/icons/CalendarToday';
 import AccountBalance from '@material-ui/icons/AccountBalance';
 import Delete from '@material-ui/icons/Delete';
+import VideoIcon from'@material-ui/icons/Videocam';
 
 // Component styles
 import styles from './styles';
@@ -56,21 +57,21 @@ class SidebarAdmin extends Component {
      open1:false,
     open2:false,
     open3:false,
-    open4:false
+    // open4:false
   }
   // opening and closing of drop downs in side-navs
   componentWillMount(){
     (time_table)?(this.state.open1=true):(this.state.open1=false);
     (users)?(this.state.open2=true):(this.state.open2=false);
     (devices)?(this.state.open3=true):(this.state.open3=false);
-    (academics)?(this.state.open4=true):(this.state.open4=false);
+    // (academics)?(this.state.open4=true):(this.state.open4=false);
   }
      // for Time Table
   handleClick1=()=>{
     time_table=true;
     users=false;
     devices=false;
-    academics=false;
+    // academics=false;
     this.setState({
       open1:!this.state.open1
     })
@@ -80,7 +81,7 @@ class SidebarAdmin extends Component {
   handleClick2=()=>{
     users=true;
     devices=false;
-    academics=false;
+    // academics=false;
     time_table=false;
     this.setState({
       open2:!this.state.open2
@@ -90,7 +91,7 @@ class SidebarAdmin extends Component {
    // for devices
   handleClick3=()=>{
     devices=true;
-    academics=false;
+    // academics=false;
     time_table=false;
     users=false;
     this.setState({
@@ -99,15 +100,15 @@ class SidebarAdmin extends Component {
   }
 
   //for academics
-  handleClick4=()=>{
-    academics=true;
-    time_table=false;
-    users=false;
-    devices=false;
-    this.setState({
-      open4:!this.state.open4
-    })
-  }
+  // handleClick4=()=>{
+  //   academics=true;
+  //   time_table=false;
+  //   users=false;
+  //   devices=false;
+  //   this.setState({
+  //     open4:!this.state.open4
+  //   })
+  // }
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
@@ -225,6 +226,25 @@ class SidebarAdmin extends Component {
           </ListItem>
           </List>
           </Collapse>
+
+            
+            
+            {/* Videos */}
+
+            <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/admin/sem1"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Videos"
+            />
+          </ListItem>
 
 
            {/* Users*/}
@@ -352,7 +372,7 @@ class SidebarAdmin extends Component {
 
          {/* Academics*/ }
 
-     <ListItem button onClick={this.handleClick4}
+     {/* <ListItem button onClick={this.handleClick4}
           className={classes.listItem}
           >
            <ListItemIcon className={classes.listItemIcon}>
@@ -395,7 +415,7 @@ class SidebarAdmin extends Component {
               primary="Classrooms"/>
           </ListItem>
           </List>
-          </Collapse>
+          </Collapse> */}
 
         {/* Delete Videos*/}
 
