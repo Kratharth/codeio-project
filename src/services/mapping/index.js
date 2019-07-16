@@ -1,6 +1,6 @@
 // Mock data
 //import users from 'data/users';
-import mappings from 'data/mapping'
+import Axios from 'axios'
 
 // function lookupUser(user) {
 //   const userCopy = JSON.parse(JSON.stringify(user));
@@ -18,33 +18,67 @@ import mappings from 'data/mapping'
 //   return userCopy;
 // }
 
-export const getMappings = (limit = 10) => {
+export const getMappings = () => {
   return new Promise(resolve => {
-    setTimeout(() => {
-      const mappingLookup = mappings.slice(0, limit);
-
+    Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping')
+    // const cameraLookup = cameras.slice(0, limit);
+    .then(res =>{
+      console.log('res API: ');
+      console.log(res);
       resolve({
-        mapping: mappingLookup,
-        mappingTotal: mappings.length
-      });
-    }, 700);
-  });
+        mapping: res.data,
+        // mappingTotal: mappings.length
+      })
+    })
+    .catch (err =>{
+      console.log('err API: ');
+      console.log(err);
+      resolve({
+        camera:err
+      })
+    })
+  })
 };
 
-export const getMapping = id => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const mapping = mappings.find(mapping => mapping.id === id);
-
-      if (mapping) {
-        resolve({
-          mapping
-        });
-      } else {
-        reject({
-          error: 'User not found'
-        });
-      }
-    }, 500);
-  });
+export const postMappings = data => {
+  return new Promise((resolve ,reject) => {
+    Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping',data)
+    // const cameraLookup = cameras.slice(0, limit);
+    .then(res =>{
+      console.log('res API: ');
+      console.log(res);
+      resolve({
+        mapping: res.data,
+        // mappingTotal: mappings.length
+      })
+    })
+    .catch (err =>{
+      console.log('err API: ');
+      console.log(err);
+      reject({
+        error:err
+      })
+    })
+  })
 };
+// export const getMapping = id => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const mapping = mappings.find(mapping => mapping.id === id);
+
+//       if (mapping) {
+//         resolve({
+//           mapping
+//         });
+//       } else {
+//         reject({
+//           error: 'User not found'
+//         });
+//       }
+//     }, 500);
+//   });
+// };
+// export default {
+//   getMappings,
+//   postMappings
+// }
