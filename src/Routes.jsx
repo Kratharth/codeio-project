@@ -268,6 +268,13 @@ export default class Routes extends Component {
         /> */}
         <Route
           exact
+          path="/:type/create-time-table"
+          render={({match}) =>
+        <Timetable type={match.params.type} />
+        }
+        />
+        <Route
+          exact
           path="/adduser/:userType"
           render={({ match }) =>
             <AddUser type="admin" userType={match.params.userType} />
