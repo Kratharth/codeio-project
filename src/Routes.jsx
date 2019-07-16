@@ -15,7 +15,7 @@ import SignIn from './views/SignIn';
 import  MappingList  from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import Timetable from 'views/TimeTable';
+import Timetable from 'views/Timetable';
 
 import AddUser from './views/Admin/index';
 import TransferSession from './components/TransferSession/index';
