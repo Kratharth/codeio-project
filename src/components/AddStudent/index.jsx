@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -16,9 +16,49 @@ class AddStudent extends Component {
     department: '',
     email: '',
     sem: '',
-    usn: ''
+    usn: '',
+    displaySearchResults: false,
+    displayTable: false,
   };
   
+  renderTable() {
+    if (this.state.displayTable) {
+      return (
+          <div>
+            <center>Students Record</center>
+            <Divider />
+            <MaterialTableDemo />
+          </div>
+      );
+    } 
+  };
+
+  renderSearchResults() {
+    if (this.state.displaySearchResults) {
+      return (
+        <div>
+          <center>Search Results</center>
+          <Divider />
+          <MaterialTableDemo />
+        </div>
+     );
+    }
+  }
+  
+  clicked1 = (e) => {
+    this.setState({
+      displayTable: !this.state.displayTable,
+      displaySearchResults: false,
+    });
+  }
+
+  clicked2 = (e) => {
+    this.setState({
+      displayTable: false,
+      displaySearchResults: !this.state.displaySearchResults
+    });
+  }
+
   handleChangeName = e => {
     this.setState({
       name: e.target.value
@@ -55,35 +95,32 @@ class AddStudent extends Component {
       <div
         className={rootClassName}
       >
-           <form
-            autoComplete="off"
-            noValidate
-          >
-            
-                
-                
-              <TextField
-                  id="outlined-select-department"
-                  select
-                  label="Department"
-                  className={classes.textField}
-                  value={department}
-                  onChange={this.handleChangeDepartment}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu,
-                    },
-                  }}
-                  margin="normal"
-                  helperText="Please select the department"
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
-                    <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
-                    <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
-                </TextField>
+        <form
+          autoComplete="off"
+          noValidate
+        >
+          <TextField
+            id="outlined-select-department"
+            select
+            label="Department"
+            className={classes.textField}
+            value={department}
+            onChange={this.handleChangeDepartment}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            margin="normal"
+            helperText="Please select the department"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
+              <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
+              <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
+          </TextField>
               
                 
               <TextField
@@ -119,25 +156,29 @@ class AddStudent extends Component {
                   margin="normal"                  
                   helperText="Please enter the usn"
                 />
-                <div>   
+                <div> 
+                <Divider variant = 'fullWidth'/>  
             <Button
-          color="primary"
-          variant="contained"
-          className={classes.button}
-          >
-          Search
-        </Button>
-        <Typography variant="h4" component="h5" className={classes.or}>OR</Typography>
+              onClick={this.clicked2}
+              color="primary"
+              variant="contained"
+              className={classes.button}
+            >
+              Search
+            </Button>
+            <Typography variant="h4" component="h5" className={classes.or}>OR</Typography>
             <Button
-          color="primary"
-          variant="contained"
-          className={classes.button}
-        >
-          View All
-        </Button>
-        </div>
+              onClick={this.clicked1}
+              color="primary"
+              variant="contained"
+              className={classes.button}
+            >
+              View All
+            </Button>
+          </div>
         </form>
-        <MaterialTableDemo />
+        {this.renderTable()}
+        {this.renderSearchResults()}
       </div>
     );
   }

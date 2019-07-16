@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -15,8 +15,26 @@ class AddAdmin extends Component {
     name: '',
     id: '',
     email: '',
+    displayTable: false,
   };
   
+  renderTable() {
+    if (this.state.displayTable) {
+      return (
+          <div>
+            <center>Admins Record</center>
+            <MaterialTableDemo />
+          </div>
+      );
+    } 
+  };
+
+  clicked = (e) => {
+    this.setState({
+      displayTable: !this.state.displayTable,
+    });
+  }
+
   handleChangeName = e => {
     this.setState({
       name: e.target.value
@@ -55,18 +73,17 @@ class AddAdmin extends Component {
                   margin="normal"
                   helperText="Please enter the Id"
                 />
+                <Divider variant = 'fullWidth'/>
              <Button
             color="primary"
             variant="contained"
             className={classes.button}
+            onClick={this.clicked}
           >
             Search
           </Button>
           </form>
-        
-         
-        
-      <MaterialTableDemo />
+          {this.renderTable()}
       </div>
     );
   }

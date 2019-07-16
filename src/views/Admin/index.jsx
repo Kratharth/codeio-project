@@ -49,10 +49,9 @@ class AddUser extends Component {
   };
 
   render() {
-    // console.log(this.props);
     const { classes, type, userType} = this.props;
     return (
-      <DashboardLayout title="AddUser" type={type}>
+      <DashboardLayout title={userType} type={type}>
         <div className={classes.root}>
           <Grid
             container
