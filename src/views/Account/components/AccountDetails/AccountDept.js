@@ -46,8 +46,8 @@ class AccountDept extends Component {
     deptname:'CSE',
     code:'12345',
     email: 'contact@devias.io',
-    numberOfCourses:'5',
-    courseList:'OS,LA,JAVA,DBMS,DC'
+    //numberOfCourses:'5',
+    //courseList:'OS,LA,JAVA,DBMS,DC'
     //phone: '9937486232',
     //semester:'4',
     //usn:'1BM17CS098',
@@ -113,7 +113,7 @@ class AccountDept extends Component {
                 value={email}
                 variant="outlined"
               /></div>
-               <div className={classes.field}>
+               {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}
                 label="Number of Courses"
@@ -121,8 +121,8 @@ class AccountDept extends Component {
                 //required
                 value={numberOfCourses}
                 variant="outlined"
-              /></div>
-               <div className={classes.field}>
+              /></div> */}
+               {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}
                 label="Course list"
@@ -130,7 +130,7 @@ class AccountDept extends Component {
                 //required
                 value={courseList}
                 variant="outlined"
-              /></div>
+              /></div> */}
              
             
             {/* <div className={classes.field}>

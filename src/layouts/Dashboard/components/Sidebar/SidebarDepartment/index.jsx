@@ -22,6 +22,7 @@ import {
   Create as EditIcon,
   ExpandLess,
   ExpandMore,
+  Videocam as VideoIcon,
   Book as BookIcon,
   DesktopWindows as DesktopIcon,
   Schedule as ScheduleIcon
@@ -34,19 +35,22 @@ import {
 import styles from './styles';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-
+// let courses=false;
 class SidebarDepartment extends Component {
 
   //opening and closing of course-catalog
-  state ={
-    open:true
-  }
-  handleClick=()=>{
-    this.setState({
-      open:!this.state.open
-    })
-  }
-
+  // state ={
+  //   open1:false
+  // }
+  // handleClick1=()=>{
+  //   courses=true;
+  //   this.setState({
+  //     open1:!this.state.open1
+  //   })
+  // }
+  // componentWillMount(){
+  //   courses?(this.state.open1=true):(this.state.open1=false);
+  // }
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
@@ -110,9 +114,11 @@ class SidebarDepartment extends Component {
               primary="Dashboard"
             />
           </ListItem>
-          {/*course catalog*/}
-          <ListItem button onClick={this.handleClick}
-            className={classes.listItem}
+
+        {/*course catalog*/}
+    {/* 
+        <ListItem button onClick={this.handleClick1}
+          className={classes.listItem}
           >
             <ListItemIcon className={classes.listItemIcon}>
               <BookIcon/>
@@ -204,7 +210,26 @@ class SidebarDepartment extends Component {
               primary="SEM-8"/>
           </ListItem>
           </List>
-          </Collapse> */}
+          </Collapse>
+
+
+          {/*Videos*/}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/department/sem1"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Videos"
+            />
+          </ListItem> 
+        {/*Transfer Session */}
 
           {/*Transfer Session */}
           <ListItem
@@ -220,7 +245,26 @@ class SidebarDepartment extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Transfer Session"
             />
-          </ListItem>
+          </ListItem> 
+
+          {/*guest lecuture*/}
+
+            <ListItem
+              activeClassName={classes.activeListItem}
+              className={classes.listItem}
+              component={newLink}
+              to="/department/videorecordguest"
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+                <DesktopIcon />
+              </ListItemIcon>
+              <ListItemText
+                classes={{ primary: classes.listItemText }}
+                primary="Record"
+              />
+            </ListItem>
+
+
           {/*Courseedit */}
           <ListItem
             activeClassName={classes.activeListItem}

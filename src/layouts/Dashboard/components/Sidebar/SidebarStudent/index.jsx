@@ -23,20 +23,42 @@ import {
   ExpandLess,
   ExpandMore
 } from '@material-ui/icons';
+
+import VideoIcon from'@material-ui/icons/Videocam';
 // Component styles
 import styles from './styles';
-
+// import { SidebarStudent } from '../..';
+let courses=false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
-  state= {
-     open:true
-  }
-  handleClick= ()=>{
-    this.setState({
-      open:!this.state.open
-    })
-  }
+
+  //opening and closing of course-catalog
+
+  // state ={
+  //    open1:false,
+  //   //anchorEl:null
+  // }
+  // componentWillMount(){
+  //   courses?(this.state.open1=true):(this.state.open1=false);
+  // }
+  // handleClick1= ()=>{
+  //   courses=true;
+  //   this.setState({
+  //     open1:!this.state.open1
+  //   })
+  // }
+  // handleClick1=(event)=>{
+  //   this.setState({
+  //     anchorEl: event.currentTarget
+  //   })
+  // };
+  
+  // handleClose=(event)=>{
+  //   this.setState({
+  //     anchorEl: null
+  //   })
+  // }
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
@@ -100,7 +122,9 @@ class SidebarStudent extends Component {
             />
           </ListItem>
           {/* Course Catalog */}
-          <ListItem button onClick={this.handleClick}
+
+{/* 
+          <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -110,8 +134,21 @@ class SidebarStudent extends Component {
               primary="Course Catalog"/>
             {!this.state.open ? <ExpandMore />: <ExpandLess />}
         </ListItem>
-        {/* <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
+       <Collapse in={this.state.open1} timeout="auto" unmountOnExit> */}
+          {/* <Popover 
+            anchorEl={this.state.anchorEl}
+            open={Boolean(this.state.anchorEl)}
+            onClose={this.handleClose}
+            anchorOrigin={{
+              vertical: 'center',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            > */}
+            {/* <List component="div" disablePadding>
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
@@ -192,8 +229,27 @@ class SidebarStudent extends Component {
                 <ListItemText  classes={{ primary: classes.listItemText }}
                   primary="SEM-8"/>
               </ListItem>
-            </List>
-          </Collapse> */}
+            </List> */}
+            {/* </Popover> */}
+          {/* </Collapse> */}
+
+
+          {/*Videos*/}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/student/sem1"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Videos"
+            />
+          </ListItem> 
         </List>
       </div>
     );

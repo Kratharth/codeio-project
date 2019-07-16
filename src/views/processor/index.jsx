@@ -40,7 +40,7 @@ class ProcessorList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const {processor, processorTotal} = await(getProcessors(limit))
+      const {processor} = await(getProcessors(limit))
 
       if (this.signal) {
         this.setState({

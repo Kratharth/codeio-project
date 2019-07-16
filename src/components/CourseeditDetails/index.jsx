@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core';
 // Material components
 import { Button, TextField } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
-
+import Axios from 'axios';
 
 // Shared components
 import {
@@ -30,7 +30,7 @@ class Courseedit extends Component {
 values:{
     title:'Title',
     coursecode:'Coursecode',
-    faculty:'name',
+    faculty:'',
     coursename:'Course name'
 
   },
@@ -38,11 +38,47 @@ values:{
 
   };
 
+
   handleChange = e => {
     this.setState({
       state: e.target.value
     });
   };
+
+handleChangeTitle =e =>{
+  this.setState({
+    title:e.target.value
+  });
+};
+handleChangeCoursecode =e =>{
+  this.setState({
+    coursecode:e.target.value
+  });
+};
+handleChangeCoursename =e =>{
+  this.setState({
+    coursename:e.target.value
+  });
+};
+handleChangefaculty =e =>{
+  this.setState({
+    faculty:e.target.value
+  });
+};
+
+ postfun(title,coursecode,coursename,faculty){
+
+  Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping', { title,coursecode,coursename,faculty })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+    }
+
+
+
+
+
 
   render() {
     const { classes, className, ...rest } = this.props;
@@ -77,6 +113,7 @@ values:{
               required
               value={title}
               variant="outlined"
+              onChange={this.handleChangeTitle}
             />
             <br/>
             <br/>
@@ -87,6 +124,7 @@ values:{
               required
               value={coursecode}
               variant="outlined"
+              onChange={this.handleChangeCoursecode}
             />
             <br/>
             <br/>
@@ -97,6 +135,7 @@ values:{
               required
               value={coursename}
               variant="outlined"
+              onChange={this.handleChangeCoursename}
             />
 
 
@@ -109,6 +148,7 @@ values:{
               required
               value={faculty}
               variant="outlined"
+              onChange={this.handleChangefaculty}
             />
 
 
@@ -125,6 +165,7 @@ values:{
           <Button
             color="primary"
             variant="contained"
+            onClick={this.postfun(title,coursecode,coursename,faculty)}
           >
           Add/Update
           </Button>

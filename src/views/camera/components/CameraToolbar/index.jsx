@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import {postCameras} from 'services/camera';
 // Material helpers
 import { withStyles , TextField } from '@material-ui/core';
 
@@ -35,7 +35,10 @@ import styles from './styles';
 class CameraToolbar extends Component {
   state = {
     open:false,
-    addClicked: false
+    addClicked: false,
+    classroom:'',
+    cameraip:'',
+    status:''
   }
   handleClickOpen = () => {
     this.setState({
@@ -73,16 +76,20 @@ class CameraToolbar extends Component {
               className={classes.textField}
               // helperText="Please specify the Classroom"
               label="Classroom"
+              id="classroom"
               margin="dense"
               required
               variant="outlined"
+              onChange={e => this.setState({classroom: e.target.value})}
             />
             <TextField
               className={classes.textField}
               label="Camera IP"
+              id="cameraip"
               margin="dense"
               required
               variant="outlined"
+              onChange={e => this.setState({cameraip: e.target.value})}
             />
           </div>
           {/* <div className={classes.field}>
@@ -107,8 +114,9 @@ class CameraToolbar extends Component {
              <TextField
               className={classes.textField}
               label="Select Status"
+              id="status"
               margin="dense"
-              onChange={this.handleChange}
+              onChange= {e => this.setState({status: e.target.value})}
               required
               select
               SelectProps={{ native: true }}
@@ -138,6 +146,7 @@ class CameraToolbar extends Component {
         <Button
           color="primary"
           variant="contained"
+          onClick={this.verify.bind(this)}
         >
           Save details
         </Button>
@@ -154,6 +163,47 @@ class CameraToolbar extends Component {
     }    
   }
 } 
+verify(ev)
+{
+    ev.preventDefault()
+    if(document.getElementById("classroom").value=='')
+            alert('Classroom field is empty');
+     else if(document.getElementById("cameraip").value=='')
+        alert('Camera IP field is empty');
+        else if(document.getElementById("status").value=='')
+        alert('Status field is empty');
+        else 
+        this.submit();
+}
+submit(){
+    let classroom= this.state.classroom;
+    let cameraip=this.state.cameraip;
+    let status=this.state.status;
+    let link='https://www.google.com';
+    console.log(classroom)
+    console.log(cameraip)
+    console.log(status)
+    console.log(link)
+
+   let data = {
+        classroom,
+        cameraip,
+        status,
+        link
+    }
+    postCameras(data)
+    .then(res => {
+      console.log(res)
+          if(res.camera==='Success')
+          { 
+            alert("Inserted Data");
+            window.location.reload();
+          }
+    })
+    .catch(err => {
+        alert(err);
+    })
+}
   addClicked = () => {
     this.setState({
       addClicked: !this.state.addClicked

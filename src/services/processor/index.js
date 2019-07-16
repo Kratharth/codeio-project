@@ -1,6 +1,5 @@
 // Mock data
-//import users from 'data/users';
-import processors from 'data/processor'
+import Axios from 'axios';
 
 // function lookupUser(user) {
 //   const userCopy = JSON.parse(JSON.stringify(user));
@@ -18,33 +17,42 @@ import processors from 'data/processor'
 //   return userCopy;
 // }
 
-export const getProcessors = (limit = 10) => {
+export const getProcessors = () => {
   return new Promise(resolve => {
-    setTimeout(() => {
-      const processorLookup = processors.slice(0, limit);
-
-      resolve({
-        processor: processorLookup ,
-        processorTotal: processors.length
-      });
-    }, 700);
-  });
+  Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/processor')
+  // const cameraLookup = cameras.slice(0, limit);
+  .then(res =>{
+    console.log('res API: ');
+    console.log(res);
+    resolve({
+      processor: res.data,
+      // mappingTotal: mappings.length
+    })
+  })
+  .catch (err =>{
+    console.log('err API: ');
+    console.log(err);
+    resolve({
+      processor:err
+    })
+  })
+})
 };
 
-export const getProcessor = id => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const processor = processors.find(processor => processor.id === id);
+// export const getProcessor = id => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const processor = processors.find(processor => processor.id === id);
 
-      if (processor) {
-        resolve({
-          processor
-        });
-      } else {
-        reject({
-          error: 'Processor not found'
-        });
-      }
-    }, 500);
-  });
-};
+//       if (processor) {
+//         resolve({
+//           processor
+//         });
+//       } else {
+//         reject({
+//           error: 'Processor not found'
+//         });
+//       }
+//     }, 500);
+//   });
+// };

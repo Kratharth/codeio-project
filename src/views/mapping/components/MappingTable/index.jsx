@@ -168,17 +168,17 @@ class MappingTable extends Component {
               </TableHead>
               <TableBody>
                 {mappings
-                  .filter(mapping => {
-                    if (activeTab === 1) {
-                      return mapping.returning;
-                    }
+                  // .filter(mapping => {
+                  //   if (activeTab === 1) {
+                  //     return mapping.returning;
+                  //   }
 
-                    if (activeTab === 2) {
-                      return mapping.returning;
-                    }
+                  //   if (activeTab === 2) {
+                  //     return mapping.returning;
+                  //   }
 
-                    return mapping;
-                  })
+                  //   return mapping;
+                  // })
                   // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .slice(sliceStart, sliceStop)
                   .map(mapping => (
@@ -214,7 +214,7 @@ class MappingTable extends Component {
                         </div>
                       </TableCell>
                       <TableCell className={classes.tableCell}>
-                        {mapping.ip}
+                        {mapping.cameraip}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
                         {mapping.servername}
