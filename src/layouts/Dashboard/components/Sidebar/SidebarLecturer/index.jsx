@@ -56,6 +56,12 @@ class SidebarLecturer extends Component {
   componentWillMount() {
     // courses?(this.state.open1=true):(this.state.open1=false);
     myvideos ? (this.state.open2 = true) : (this.state.open2 = false);
+   //opening and closing of course-catalog
+  }
+  handleClick1=()=>{
+    this.setState({
+      open1:!this.state.open1
+    });
   }
   //opening and closing of course-catalog
   // handleClick1=()=>{
@@ -75,7 +81,6 @@ class SidebarLecturer extends Component {
   }
   render() {
     const { classes, className } = this.props;
-    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
@@ -280,10 +285,24 @@ class SidebarLecturer extends Component {
             />
           </ListItem>
 
-          {/*My Videos*/}
-
-          <ListItem button onClick={this.handleClick2}
+      {/*My Videos*/}
+      <ListItem
+            activeClassName={classes.activeListItem}
             className={classes.listItem}
+            component={newLink}
+            to="/lecturer/myvideos"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="My Videos"
+            />
+          </ListItem>
+
+          {/* <ListItem button onClick={this.handleClick2}
+          className={classes.listItem}
           >
             <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
