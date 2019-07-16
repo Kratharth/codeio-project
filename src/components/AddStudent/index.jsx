@@ -5,7 +5,7 @@ import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import MaterialTableDemo from './Table';
+import StudentDetails from './Table';
 
 // Component styles
 import styles from './styles';
@@ -27,7 +27,7 @@ class AddStudent extends Component {
           <div>
             <center>Students Record</center>
             <Divider />
-            <MaterialTableDemo />
+            <StudentDetails />
           </div>
       );
     } 
@@ -39,7 +39,7 @@ class AddStudent extends Component {
         <div>
           <center>Search Results</center>
           <Divider />
-          <MaterialTableDemo />
+          <StudentDetails />
         </div>
      );
     }
@@ -47,7 +47,7 @@ class AddStudent extends Component {
   
   clicked1 = (e) => {
     this.setState({
-      displayTable: !this.state.displayTable,
+      displayTable: true,
       displaySearchResults: false,
     });
   }
@@ -55,7 +55,7 @@ class AddStudent extends Component {
   clicked2 = (e) => {
     this.setState({
       displayTable: false,
-      displaySearchResults: !this.state.displaySearchResults
+      displaySearchResults: true
     });
   }
 

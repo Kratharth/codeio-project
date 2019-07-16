@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import MaterialTableDemo  from './Table';
 
 // Component styles
@@ -31,7 +29,7 @@ class AddAdmin extends Component {
 
   clicked = (e) => {
     this.setState({
-      displayTable: !this.state.displayTable,
+      displayTable: true,
     });
   }
 

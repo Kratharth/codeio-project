@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import Axios from 'axios';
 
 const tableIcons = {
 Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -36,19 +37,17 @@ ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
 ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-export default class MaterialTableDemo extends React.Component {
+export default class StudentDetails extends React.Component {
   state = {
     columns: [
-        { title: 'Classroom', field: 'classroom' },
-        { title: 'Faculty Name', field: 'name' },
-        { title: 'Course', field: 'course' },
+        { title: 'Name', field: 'name' },
+        { title: 'Department', field: 'department' },
+        { title: 'Email', field: 'email' },
         {
-          title: 'Time',
-          field: 'time',
+          title: 'Sem', field: 'sem',
           //lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
         },
-        {title:'Date',field:'date'},
-        {title:'Day',field:'day'},
+        {title:'USN',field:'usn'},
       ],
       data: [
        // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
@@ -66,7 +65,7 @@ export default class MaterialTableDemo extends React.Component {
         return (
             <MaterialTable
             icons={tableIcons}
-            title="TimeTable"
+            title="Student Details"
             columns={this.state.columns}
             data={this.state.data}
             editable={{
@@ -78,6 +77,11 @@ export default class MaterialTableDemo extends React.Component {
                     data.push(newData);
                     this.setState({ ...this.state, data });
                     }, 600);
+                    Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping',{newData})
+                    .then(res => {
+                      console.log(res);
+                      console.log(res.newData);
+                    })
                 }),
                 onRowUpdate: (newData, oldData) =>
                 new Promise(resolve => {

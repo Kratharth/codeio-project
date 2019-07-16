@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
-import MaterialTableDemo from './Table';
+import LecturerDetails from './Table';
 import styles from './styles';
+// import LecturerDetails from 'services/lecturerDetails/index';
+
 
 class AddLecturer extends Component {
   state = {
@@ -19,13 +19,14 @@ class AddLecturer extends Component {
     displayTable: false,
   };
   
+
   renderTable() {
     if (this.state.displayTable) {
       return (
           <div>
             <center>Students Record</center>
             <Divider />
-            <MaterialTableDemo />
+            <LecturerDetails />
           </div>
       );
     } 
@@ -37,7 +38,7 @@ class AddLecturer extends Component {
         <div>
           <center>Search Results</center>
           <Divider />
-          <MaterialTableDemo />
+          <LecturerDetails />
         </div>
      );
     }
@@ -45,7 +46,7 @@ class AddLecturer extends Component {
   
   clicked1 = (e) => {
     this.setState({
-      displayTable: !this.state.displayTable,
+      displayTable: true,
       displaySearchResults: false,
     });
   }
@@ -53,7 +54,7 @@ class AddLecturer extends Component {
   clicked2 = (e) => {
     this.setState({
       displayTable: false,
-      displaySearchResults: !this.state.displaySearchResults
+      displaySearchResults: true,
     });
   }
 
