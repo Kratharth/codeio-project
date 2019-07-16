@@ -28,6 +28,7 @@ import Courseedit from './views/Courseedit';
 //import MyVideos from './views/MyVideos';
 import ProductListedit from './views/ProductListedit';
 import Videoplay from './views/Videoplay';
+import Videorecordguest from './views/Videorecordguest';
 
 export default class Routes extends Component {
   render() {
@@ -220,6 +221,13 @@ export default class Routes extends Component {
           <Videocontrol type={match.params.type} />
           }
           />
+          <Route
+         exact
+         path="/:type/videorecordguest"
+         render={({match}) =>
+        <Videorecordguest type={match.params.type} />
+        }
+        />
 {/*added route for videoedit*/}
 
 <Route
@@ -315,4 +323,3 @@ render={({match}) =>
     );
   }
 }
-

@@ -265,6 +265,23 @@ class SidebarDepartment extends Component {
             />
           </ListItem> 
 
+          {/*guest lecuture*/}
+
+            <ListItem
+              activeClassName={classes.activeListItem}
+              className={classes.listItem}
+              component={newLink}
+              to="/department/videorecordguest"
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+                <DesktopIcon />
+              </ListItemIcon>
+              <ListItemText
+                classes={{ primary: classes.listItemText }}
+                primary="Record"
+              />
+            </ListItem>
+
 
           {/*Courseedit */}
 
