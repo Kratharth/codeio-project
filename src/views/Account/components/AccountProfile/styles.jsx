@@ -23,5 +23,18 @@ export default theme => ({
   },
   uploadButton: {
     marginRight: theme.spacing(2)
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  textField: {
+    width: '420px',
+    maxWidth: '100%',
+    marginRight: theme.spacing.unit * 3
   }
 });

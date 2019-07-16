@@ -37,6 +37,7 @@ import {
   Create as EditIcon
 } from '@material-ui/icons';
 import BookIcon from '@material-ui/icons/Book';
+import VideoIcon from'@material-ui/icons/Videocam';
 import DesktopIcon from '@material-ui/icons/DesktopWindows';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
@@ -44,19 +45,22 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import styles from './styles';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-
+// let courses=false;
 class SidebarDepartment extends Component {
 
   //opening and closing of course-catalog
-  state ={
-    open1:true
-  }
-  handleClick1=()=>{
-    this.setState({
-      open1:!this.state.open1
-    })
-  }
-
+  // state ={
+  //   open1:false
+  // }
+  // handleClick1=()=>{
+  //   courses=true;
+  //   this.setState({
+  //     open1:!this.state.open1
+  //   })
+  // }
+  // componentWillMount(){
+  //   courses?(this.state.open1=true):(this.state.open1=false);
+  // }
   render() {
     const { classes, className } = this.props;
     console.log(this.props)
@@ -131,7 +135,7 @@ class SidebarDepartment extends Component {
           </ListItem>
 
         {/*course catalog*/}
-
+    {/* 
         <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -227,6 +231,23 @@ class SidebarDepartment extends Component {
           </List>
           </Collapse>
 
+
+          {/*Videos*/}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/department/sem1"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Videos"
+            />
+          </ListItem> 
         {/*Transfer Session */}
 
           <ListItem
@@ -242,7 +263,7 @@ class SidebarDepartment extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Transfer Session"
             />
-          </ListItem>
+          </ListItem> 
 
 
           {/*Courseedit */}

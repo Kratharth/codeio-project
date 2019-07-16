@@ -15,7 +15,7 @@ import SignIn from './views/SignIn';
 import  MappingList  from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import Timetable from 'views/Timetable';
+import Timetable from 'views/TimeTable';
 
 import AddUser from './views/Admin/index';
 import TransferSession from './components/TransferSession/index';
@@ -25,6 +25,9 @@ import NotFound from './views/NotFound';
 import Videocontrol from './views/Videocontrol';
 import Videoedit from './views/Videoedit';
 import Courseedit from './views/Courseedit';
+//import MyVideos from './views/MyVideos';
+import ProductListedit from './views/ProductListedit';
+import Videoplay from './views/Videoplay';
 
 export default class Routes extends Component {
   render() {
@@ -227,6 +230,17 @@ render={({match}) =>
 }
 />
 
+{/*added route for videoplay*/}
+<Route
+exact
+path="/:type/videoplay"
+render={({match}) =>
+<Videoplay type={match.params.type} />
+}
+/>
+
+
+
 {/*added route for courseedit*/}
 
 <Route
@@ -234,6 +248,14 @@ exact
 path="/:type/courseedit"
 render={({match}) =>
 <Courseedit type={match.params.type} />
+}
+/>
+
+ <Route
+exact
+path="/:type/myvideos"
+render={({match}) =>
+<ProductListedit type={match.params.type} />
 }
 />
 

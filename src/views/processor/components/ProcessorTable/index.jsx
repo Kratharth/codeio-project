@@ -169,17 +169,17 @@ class ProcessorTable extends Component {
               </TableHead>
               <TableBody>
                 {processors
-                  .filter(processor => {
-                    if (activeTab === 1) {
-                      return processor.returning;
-                    }
+                  // .filter(processor => {
+                  //   if (activeTab === 1) {
+                  //     return processor.returning;
+                  //   }
 
-                    if (activeTab === 2) {
-                      return processor.returning;
-                    }
+                  //   if (activeTab === 2) {
+                  //     return processor.returning;
+                  //   }
 
-                    return processor;
-                  })
+                  //   return processor;
+                  // })
                   // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .slice(sliceStart, sliceStop)
                   .map(processor => (
@@ -187,13 +187,13 @@ class ProcessorTable extends Component {
                       className={classes.tableRow}
                       hover
                       key={processor.id}
-                      selected={selectedprocessor.indexOf(processor.id) !== -1}
+                      // selected={selectedprocessor.indexOf(processor.id) !== -1}
                     >
                           <TableCell className={classes.tableCell}>
-                        {processor.processorip}
+                        {processor.serverip}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
-                        {processor.name}
+                        {processor.servername}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
                         {processor.type}

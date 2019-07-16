@@ -76,7 +76,7 @@ class AddStudent extends Component {
             autoComplete="off"
             noValidate
           >
-            <div className={classes.field}>
+            {/* <div className={classes.field}>
               <FormControl className={classes.margin}>
                 <TextField
                   id="outlined-name"
@@ -89,7 +89,7 @@ class AddStudent extends Component {
                   variant="outlined"
                 />
                 </FormControl>
-            </div>
+            </div> */}
             <div className={classes.field}>
               <FormControl className={classes.margin}>
               <TextField
@@ -116,7 +116,7 @@ class AddStudent extends Component {
                 </TextField>
               </FormControl>
             </div>
-            <div className={classes.field}>
+            {/* <div className={classes.field}>
               <FormControl className={classes.margin}>
                 <TextField
                   id="outlined-email"
@@ -129,7 +129,7 @@ class AddStudent extends Component {
                   variant="outlined"
                 />
                 </FormControl>
-            </div>
+            </div> */}
             <div className={classes.field}>
               <FormControl className={classes.margin}>
               <TextField
@@ -144,7 +144,7 @@ class AddStudent extends Component {
                       className: classes.menu,
                     },
                   }}
-                  helperText="Please select the sem"
+                  //helperText="Please select the sem"
                   margin="normal"
                   variant="outlined"
                 >
@@ -178,9 +178,17 @@ class AddStudent extends Component {
             color="primary"
             variant="contained"
           >
-            Save details
+            Search
+          </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            component="span" className={classes.button}
+          >
+            View All
           </Button>
         </PortletFooter>
+       
       </Portlet>
     );
   }

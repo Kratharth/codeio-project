@@ -45,7 +45,7 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-      type:'Student',
+      type:'',
       open:false
     },
     touched: {
