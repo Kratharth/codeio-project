@@ -112,7 +112,7 @@ class SidebarAdmin extends Component {
                     BMSCE LRS
                   </Typography>
           {/* <Link */}
-        {/* Bmsce logo */}
+          {/* Bmsce logo */}
           <Link
             className={classes.logoLink}
             to="/"
@@ -219,7 +219,7 @@ class SidebarAdmin extends Component {
             component={newLink}
             to="/admin/sem1"
           >
-            <ListItemIcon clsName={classes.listItemIcon}>
+            <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
             </ListItemIcon>
             <ListItemText

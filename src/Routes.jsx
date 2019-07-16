@@ -244,35 +244,35 @@ export default class Routes extends Component {
             <UserList type={match.params.type} />
           }
         />
-        {/* <Route
-          component={SignUp}
+        <Route
+          // component={SignUp}
           exact
           path="/:type/transfer"
-          render={({match}) =>
-        <TransferSession type={match.params.type} />
-        }
+          render={({ match }) =>
+            <TransferSession type={match.params.type} />
+          }
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/create-time-table"
           render={({match}) =>
         <Timetable type={match.params.type} />
         }
         />
-          {/* <Route
-          exact
+          {/* <Route */}
+        {/* exact
           path="/:type/view-time-table"
           render={({match}) =>
         <Icons type={match.params.type} />
         }
-        /> */}
+        />
         <Route
           exact
           path="/:type/create-time-table"
           render={({match}) =>
         <Timetable type={match.params.type} />
         }
-        />
+        /> */}
         <Route
           exact
           path="/adduser/:userType"

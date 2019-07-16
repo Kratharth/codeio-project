@@ -1,4 +1,4 @@
-import React,{forwardRef} from 'react';
+import React, { forwardRef } from 'react';
 import MaterialTable from 'material-table';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -18,94 +18,98 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import Axios from 'axios';
 
 const tableIcons = {
-Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
-Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
-Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
-DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
-Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
-Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
-FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
-LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
-NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
-ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
-SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
-ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
-ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
+  Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
+  Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+  SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
+  ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
+  ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-export default class StudentDetails extends React.Component {
+export default class StudentTable extends React.Component {
   state = {
     columns: [
-        { title: 'Name', field: 'name' },
-        { title: 'Department', field: 'department' },
-        { title: 'Email', field: 'email' },
-        {
-          title: 'Sem', field: 'sem',
-          //lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-        },
-        {title:'USN',field:'usn'},
-      ],
-      data: [
-       // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
-        {
-          classroom: 407,
-           name: 'Uma Devi',
-           course: 'Python',
-           time: '2-2:55',
-           date:'9-7-2019',
-           day:'wednesday'
-         },
-      ]
+      { title: 'Name', field: 'name' },
+      { title: 'Department', field: 'department' },
+      { title: 'Email', field: 'email' },
+      {
+        title: 'Sem', field: 'sem',
+        //lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+      },
+      { title: 'USN', field: 'usn' },
+    ],
+    data: [
+      // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
+      {
+        classroom: 407,
+        name: 'Uma Devi',
+        course: 'Python',
+        time: '2-2:55',
+        date: '9-7-2019',
+        day: 'wednesday'
+      },
+    ]
   };
-  render(){
-        return (
-            <MaterialTable
-            icons={tableIcons}
-            title="Student Details"
-            columns={this.state.columns}
-            data={this.state.data}
-            editable={{
-                onRowAdd: newData =>
-                new Promise(resolve => {
-                    setTimeout(() => {
-                    resolve();
-                    const data = [...this.state.data];
-                    data.push(newData);
-                    this.setState({ ...this.state, data });
-                    }, 600);
-                    Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping',{newData})
-                    .then(res => {
-                      console.log(res);
-                      console.log(res.newData);
-                    })
-                }),
-                onRowUpdate: (newData, oldData) =>
-                new Promise(resolve => {
-                    setTimeout(() => {
-                    resolve();
-                    const data = [...this.state.data];
-                    data[data.indexOf(oldData)] = newData;
-                    this.setState({ ...this.state, data });
-                    }, 600);
-                }),
-                onRowDelete: oldData =>
-                new Promise(resolve => {
-                    setTimeout(() => {
-                    resolve();
-                    const data = [...this.state.data];
-                    data.splice(data.indexOf(oldData), 1);
-                    this.setState({ ...this.state, data });
-                    }, 600);
-                }),
-            }}
-            options={{
-              actionsColumnIndex: -1
-            }}
-            />
-        );
-    }
+  render() {
+    return (
+      <MaterialTable
+        icons={tableIcons}
+        title="Student Details"
+        columns={this.state.columns}
+        data={this.state.data}
+        editable={{
+          onRowAdd: newData =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve();
+                const data = [...this.state.data];
+                data.push(newData);
+                this.setState({ ...this.state, data });
+              }, 600);
+              let d = {
+                ...newData,
+                type: 'lecturer'
+              }
+              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping', { d })
+                .then(res => {
+                  console.log(res);
+                  console.log(res.newData);
+                })
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve();
+                const data = [...this.state.data];
+                data[data.indexOf(oldData)] = newData;
+                this.setState({ ...this.state, data });
+              }, 600);
+            }),
+          onRowDelete: oldData =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve();
+                const data = [...this.state.data];
+                data.splice(data.indexOf(oldData), 1);
+                this.setState({ ...this.state, data });
+              }, 600);
+            }),
+        }}
+        options={{
+          actionsColumnIndex: -1
+        }}
+      />
+    );
+  }
 }

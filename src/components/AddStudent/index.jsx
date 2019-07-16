@@ -5,7 +5,7 @@ import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import StudentDetails from './Table';
+import StudentTable from './Table';
 
 // Component styles
 import styles from './styles';
@@ -20,17 +20,17 @@ class AddStudent extends Component {
     displaySearchResults: false,
     displayTable: false,
   };
-  
+
   renderTable() {
     if (this.state.displayTable) {
       return (
-          <div>
-            <center>Students Record</center>
-            <Divider />
-            <StudentDetails />
-          </div>
+        <div>
+          <center>Students Record</center>
+          <Divider />
+          <StudentTable />
+        </div>
       );
-    } 
+    }
   };
 
   renderSearchResults() {
@@ -39,12 +39,12 @@ class AddStudent extends Component {
         <div>
           <center>Search Results</center>
           <Divider />
-          <StudentDetails />
+          <StudentTable />
         </div>
-     );
+      );
     }
   }
-  
+
   clicked1 = (e) => {
     this.setState({
       displayTable: true,
@@ -81,13 +81,13 @@ class AddStudent extends Component {
   };
   handleChangeUsn = e => {
     this.setState({
-     usn: e.target.value
+      usn: e.target.value
     });
   };
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name,department, sem, email,usn} = this.state;
+    const { name, department, sem, email, usn } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -113,51 +113,51 @@ class AddStudent extends Component {
             }}
             margin="normal"
             helperText="Please select the department"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
-              <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
-              <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
+            <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
+            <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
           </TextField>
-              
-                
-              <TextField
-                  id="outlined-select-sem"
-                  select
-                  label="Sem"
-                  className={classes.textField}
-                  value={sem}
-                  onChange={this.handleChangeSem}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu,
-                    },
-                  }}
-                  //helperText="Please select the sem"
-                  margin="normal"
-                >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"1"}>1</MenuItem>
-                    <MenuItem value={"2"}>2</MenuItem>
-                    <MenuItem value={"3"}>3</MenuItem>
-                </TextField>
-              
-                <TextField
-                  id="outlined-usn"
-                  label="USN"
-                  type="text"
-                  value={usn}
-                  onChange={this.handleChangeUsn}
-                  className={classes.textField}
-                  margin="normal"                  
-                  helperText="Please enter the usn"
-                />
-                <div> 
-                <Divider variant = 'fullWidth'/>  
+
+
+          <TextField
+            id="outlined-select-sem"
+            select
+            label="Sem"
+            className={classes.textField}
+            value={sem}
+            onChange={this.handleChangeSem}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            //helperText="Please select the sem"
+            margin="normal"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"1"}>1</MenuItem>
+            <MenuItem value={"2"}>2</MenuItem>
+            <MenuItem value={"3"}>3</MenuItem>
+          </TextField>
+
+          <TextField
+            id="outlined-usn"
+            label="USN"
+            type="text"
+            value={usn}
+            onChange={this.handleChangeUsn}
+            className={classes.textField}
+            margin="normal"
+            helperText="Please enter the usn"
+          />
+          <div>
+            <Divider variant='fullWidth' />
             <Button
               onClick={this.clicked2}
               color="primary"

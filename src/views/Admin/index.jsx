@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import clsx from 'clsx';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -16,9 +15,9 @@ import { Dashboard as DashboardLayout } from 'layouts';
 // Custom components
 import AddAdmin from './components/AddAdmin';
 // import AddStudent from '../../../components/AddStudent';
-import {AddStudent} from 'components';
-import {AddLecturer} from 'components';
-import {AddDepartment} from 'components';
+import { AddStudent } from 'components';
+import { AddLecturer } from 'components';
+import { AddDepartment } from 'components';
 
 // Component styles
 const styles = theme => ({
@@ -30,42 +29,40 @@ const styles = theme => ({
     justifyContent: 'center',
     position: 'relative',
     marginTop: '24px',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end'
   }
 });
 
 class AddUser extends Component {
   state = { tabIndex: 0 };
-  addUser =(userType)=> {
-    switch(userType){
+  addUser = (userType) => {
+    switch (userType) {
       case 'lecturer': return <AddLecturer />
       case 'student': return <AddStudent />
       case 'admin': return <AddAdmin />
       case 'department': return <AddDepartment />
-      default : return null
+      default: return null
     }
   };
 
   render() {
-    const { classes, type, userType} = this.props;
+    const { classes, type, userType } = this.props;
     return (
       <DashboardLayout title={userType} type={type}>
         <div className={classes.root}>
           <Grid
             container
-            spacing={12} 
+            spacing={10}
           >
             <Grid
-              item 
+              item
               lg={12}
               md={6}
               xl={8}
               xs={12}
-            > 
-             {this.addUser(userType)}
-             
+            >
+              {this.addUser(userType)}
+
             </Grid>
           </Grid>
         </div>
@@ -78,4 +75,4 @@ AddUser.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles) (AddUser);
+export default withStyles(styles)(AddUser);

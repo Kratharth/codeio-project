@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import LecturerDetails from './Table';
-import styles from './styles';
-// import LecturerDetails from 'services/lecturerDetails/index';
+import LecturerTable from './Table';
 
+import styles from './styles';
 
 class AddLecturer extends Component {
   state = {
@@ -18,18 +17,17 @@ class AddLecturer extends Component {
     displaySearchResults: false,
     displayTable: false,
   };
-  
+
 
   renderTable() {
     if (this.state.displayTable) {
       return (
-          <div>
-            <center>Students Record</center>
-            <Divider />
-            <LecturerDetails />
-          </div>
+        <div>
+          <center>Students Record</center>
+          <LecturerTable />
+        </div>
       );
-    } 
+    }
   };
 
   renderSearchResults() {
@@ -37,13 +35,12 @@ class AddLecturer extends Component {
       return (
         <div>
           <center>Search Results</center>
-          <Divider />
-          <LecturerDetails />
+          <LecturerTable />
         </div>
-     );
+      );
     }
   }
-  
+
   clicked1 = (e) => {
     this.setState({
       displayTable: true,
@@ -59,24 +56,24 @@ class AddLecturer extends Component {
   }
 
 
-  handleChangeName = e => {
+  handleChangeName = (e) => {
     this.setState({
       name: e.target.value
     });
   };
 
-  handleChangeDepartment = e => {
+  handleChangeDepartment = (e) => {
     this.setState({
       department: e.target.value
     });
   };
 
-  handleChangeId = e => {
+  handleChangeId = (e) => {
     this.setState({
       id: e.target.value
     });
   };
-  handleChangeEmail = e => {
+  handleChangeEmail = (e) => {
     this.setState({
       email: e.target.value
     });
@@ -84,7 +81,7 @@ class AddLecturer extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name, id, email, department} = this.state;
+    const { name, id, email, department } = this.state;
     const rootClassName = classNames(classes.root, className);
     return (
       <div className={rootClassName}>
@@ -124,10 +121,10 @@ class AddLecturer extends Component {
               className={classes.textField}
               margin="normal"
               helperText="Please enter the lecturer Id"
-            /> 
+            />
           </div>
           <div>
-          <Divider variant = 'fullWidth'/>   
+            <Divider variant='fullWidth' />
             <Button
               color="primary"
               variant="contained"
