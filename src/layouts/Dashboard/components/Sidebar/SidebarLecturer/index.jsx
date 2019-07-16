@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import {
   Avatar,
@@ -19,74 +13,84 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
   ListSubheader,
-  Typography
+  Collapse
 } from '@material-ui/core';
-
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
-  PeopleOutlined as PeopleIcon,
-  ShoppingBasketOutlined as ShoppingBasketIcon,
-  LockOpenOutlined as LockOpenIcon,
-  TextFields as TextFieldsIcon,
-  ImageOutlined as ImageIcon,
-  InfoOutlined as InfoIcon,
-  AccountBoxOutlined as AccountBoxIcon,
-  SettingsOutlined as SettingsIcon,
-  Help as Help
+  ExpandLess,
+  ExpandMore,
+  Book as BookIcon,
+  Videocam as VideoIcon,
+  DesktopWindows as DesktopIcon
 } from '@material-ui/icons';
-
-import BookIcon from '@material-ui/icons/Book';
-import VideoIcon from '@material-ui/icons/Videocam';
-import DesktopIcon from '@material-ui/icons/DesktopWindows';
+// import BookIcon from '@material-ui/icons/Book';
+// import VideoIcon from '@material-ui/icons/Videocam';
+// import DesktopIcon from '@material-ui/icons/DesktopWindows';
 
 // Component styles
 import styles from './styles';
-
+// let courses=false;
+let myvideos = false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarLecturer extends Component {
 
-  state ={
-    open1:true,
-    open2:true
+  state = {
+    // open1:false,
+    open2: false
   }
+  componentWillMount() {
+    // courses?(this.state.open1=true):(this.state.open1=false);
+    myvideos ? (this.state.open2 = true) : (this.state.open2 = false);
    //opening and closing of course-catalog
+  }
   handleClick1=()=>{
     this.setState({
       open1:!this.state.open1
-    })
+    });
   }
+  //opening and closing of course-catalog
+  // handleClick1=()=>{
+  //   courses=true;
+  //   myvideos=false;
+  //   this.setState({
+  //     open1:!this.state.open1
+  //   })
+  // }
   // opening and closing of my videos
-  handleClick2=()=>{
+  handleClick2 = () => {
+    myvideos = true;
+    // courses=false;
     this.setState({
-      open2:!this.state.open2
+      open2: !this.state.open2
     })
   }
+
   render() {
     const { classes, className } = this.props;
-    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
 
-{/* Bmsce logo */}
-      <Link
-        className={classes.logoLink}
-        to="/"
-      >
-        <img
-          alt="BMSCE Logo"
-          className={classes.logoImage}
-          src="/images/bmscce.png"
-        />
-    </Link>
-    &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+          {/* Bmsce logo */}
+          <Link
+            className={classes.logoLink}
+            to="/"
+          >
+            <img
+              alt="BMSCE Logo"
+              className={classes.logoImage}
+              src="/images/bmscce.png"
+            />
+          </Link>
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
-       {/* Lecturer details */}
+        {/* Lecturer details */}
 
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
@@ -101,7 +105,7 @@ class SidebarLecturer extends Component {
             className={classes.nameText}
             variant="h6"
           >
-           Dr.Umadevi
+            Dr.Umadevi
           </Typography>
           <Typography
             className={classes.bioText}
@@ -110,17 +114,13 @@ class SidebarLecturer extends Component {
             Lecturer
           </Typography>
         </div>
-
-
         <Divider className={classes.profileDivider} />
-
-
         <List
           component="div"
           disablePadding
         >
 
-      {/*Dashboard*/}
+          {/*Dashboard*/}
 
           <ListItem
             activeClassName={classes.activeListItem}
@@ -137,20 +137,20 @@ class SidebarLecturer extends Component {
             />
           </ListItem>
 
-        {/* Course Catalog */}
+          {/* Course Catalog */}
 
 
-        <ListItem button onClick={this.handleClick1.bind(this)}
+          {/* <ListItem button onClick={this.handleClick1.bind(this)}
           className={classes.listItem}
           >
-           <ListItemIcon className={classes.listItemIcon}>
-          <BookIcon/>
-         </ListItemIcon >
+            <ListItemIcon className={classes.listItemIcon}>
+              <BookIcon/>
+            </ListItemIcon >
             <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Course Catalog"/>
-          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
-        </ListItem>
-       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+            {!this.state.open[0] ? <ExpandMore />: <ExpandLess />}
+          </ListItem>
+       {/* <Collapse in={this.state.open[0]} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -233,10 +233,28 @@ class SidebarLecturer extends Component {
               primary="SEM-8"/>
           </ListItem>
           </List>
-          </Collapse>
+          </Collapse> */}
+
+
+
+          {/*Videos*/}
+
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/lecturer/sem1"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Videos"
+            />
+          </ListItem>
 
           {/*Record Videos*/}
-
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -244,7 +262,7 @@ class SidebarLecturer extends Component {
             to="/lecturer/record"
           >
             <ListItemIcon clsName={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
@@ -253,55 +271,69 @@ class SidebarLecturer extends Component {
           </ListItem>
 
       {/*My Videos*/}
+      <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/lecturer/myvideos"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="My Videos"
+            />
+          </ListItem>
 
-          <ListItem button onClick={this.handleClick2}
+          {/* <ListItem button onClick={this.handleClick2}
           className={classes.listItem}
           >
-           <ListItemIcon className={classes.listItemIcon}>
-          <VideoIcon/>
-          </ListItemIcon >
-            <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="My Videos"/>
-          {!this.state.open2 ? <ExpandMore />: <ExpandLess />}
+            <ListItemIcon className={classes.listItemIcon}>
+              <VideoIcon />
+            </ListItemIcon >
+            <ListItemText classes={{ primary: classes.listItemText }}
+              primary="My Videos" />
+            {!this.state.open2 ? <ExpandMore /> : <ExpandLess />}
           </ListItem>
           <Collapse in={this.state.open2} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/lecturer/ds">
-          <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-          </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Data Structures"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/lecturer/cn">
-          <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-          </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Computer Networks"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/lecturer/iot">
-          <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-          </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="IOT"/>
-            </ListItem>
-          </List>
+            <List component="div" disablePadding>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/lecturer/ds">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon />
+                </ListItemIcon>
+                <ListItemText classes={{ primary: classes.listItemText }}
+                  primary="Data Structures" />
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/lecturer/cn">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon />
+                </ListItemIcon>
+                <ListItemText classes={{ primary: classes.listItemText }}
+                  primary="Computer Networks" />
+              </ListItem>
+              <ListItem activeClassName={classes.activeListItem}
+                className={classes.listItem}
+                component={newLink}
+                to="/lecturer/iot">
+                <ListItemIcon className={classes.sublistItemIcon}>
+                  <BookIcon />
+                </ListItemIcon>
+                <ListItemText classes={{ primary: classes.listItemText }}
+                  primary="IOT" />
+              </ListItem>
+            </List>
           </Collapse>
 
-        {/*Transfer Session*/}
+          {/*Transfer Session*/}
 
-        <ListItem
+          <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
@@ -315,27 +347,25 @@ class SidebarLecturer extends Component {
               primary="Transfer Session"
             />
           </ListItem>
-
           {/*Videoedit*/}
-
           <ListItem
-              activeClassName={classes.activeListItem}
-              className={classes.listItem}
-              component={NavLink}
-              to="/lecturer/videoedit"
-            >
-              <ListItemIcon className={classes.listItemIcon}>
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/lecturer/videoedit"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
-              </ListItemIcon>
-              <ListItemText
-                classes={{ primary: classes.listItemText }}
-                primary="Video edit"
-              />
-            </ListItem>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Video edit"
+            />
+          </ListItem>
         </List>
 
 
-      {/* <Divider className={classes.listDivider} />
+        {/* <Divider className={classes.listDivider} /> */}
 
       <List
           component="div"
@@ -350,17 +380,17 @@ class SidebarLecturer extends Component {
             className={classes.listItem}
             className={classes.listItem}
             component={NavLink}
-            to="/lecturer/help"
+            to="/lecturer/videoedit"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <Help />
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Help and support"
+              primary="Video edit"
             />
           </ListItem>
-        </List> */}
+        </List>
       </div>
     );
   }

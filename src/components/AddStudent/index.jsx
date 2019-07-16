@@ -135,7 +135,7 @@ class AddStudent extends Component {
                       className: classes.menu,
                     },
                   }}
-                  helperText="Please select the sem"
+                  //helperText="Please select the sem"
                   margin="normal"
                 >
                     <MenuItem value="">

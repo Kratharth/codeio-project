@@ -16,7 +16,41 @@ import { Portlet, PortletContent, PortletFooter } from 'components';
 // Component styles
 import styles from './styles';
 
-class AccountProfile extends Component {
+//
+//import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+import {TextField } from '@material-ui/core';
+
+
+class AccountProfile extends Component { 
+ 
+  state={
+    open: false,
+    age: '',
+  };
+
+   handleChange = name => event => {
+    this.setState({ ...this.state, [name]: Number(event.target.value) });
+  };
+
+  handleClickOpen=()=> {
+    this.setState({ open : !this.state.open});
+  }
+
+  handleClose=()=> {
+    this.setState({ open : !this.state.open });
+  }
+
+
   render() {
     const { classes, className, ...rest } = this.props;
 
@@ -65,8 +99,82 @@ class AccountProfile extends Component {
           >
             Upload picture
           </Button>
-          <Button variant="text">Remove picture</Button>
+          <Button variant="text" color="primary">Remove picture</Button>
+          <Button onClick={this.handleClickOpen} color="primary"className={classes.uploadButton}>Change Password</Button>
         </PortletFooter> 
+        
+    
+      <div><Dialog disableBackdropClick disableEscapeKeyDown open={this.state.open} onClose={this.handleClose}>
+        <DialogTitle>Fill the form</DialogTitle>
+        <DialogContent>
+          <form className={classes.container}>
+            <FormControl className={classes.formControl}>
+            <div className={classes.field}>
+            <TextField
+              className={classes.textField}
+              label="Old Password"
+              margin="dense"
+              type="password"
+              required
+              variant="outlined"
+            />
+             <TextField
+              className={classes.textField}
+              label="New Password"
+              margin="dense"
+              type="password"
+              required
+              variant="outlined"
+            />
+             <TextField
+              className={classes.textField}
+              label="Confirm New Password"
+              margin="dense"
+              type="password"
+              required
+              variant="outlined"
+            />
+            </div>
+              {/* <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+              <Select
+                native
+                value={this.state.age}
+                onChange={this.handleChange('age')}
+                input={<Input id="age-native-simple" />}
+              >
+                <option value="" />
+                <option value={10}>Ten</option>
+                <option value={20}>Twenty</option>
+                <option value={30}>Thirty</option>
+              </Select>
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-simple">Age</InputLabel>
+              <Select
+                value={this.state.age}
+                onChange={this.handleChange('age')}
+                input={<Input id="age-simple" />}
+              > 
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem> 
+              </Select> */}
+            </FormControl>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={this.handleClose} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
       </Portlet>
     );
   }
