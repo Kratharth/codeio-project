@@ -114,7 +114,7 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to="#">
+            <Link to={`/${this.props.type}/videoedit`} >
               <ProductCardEdit product={product} />
             </Link>
           </Grid>

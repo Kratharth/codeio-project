@@ -34,6 +34,7 @@ import { ProductsToolbar } from './components';
 
 // Component styles
 import styles from './styles';
+//import Videoedit from 'views/Videoedit';
 
 class ProductList extends Component {
   signal = true;
@@ -85,6 +86,7 @@ class ProductList extends Component {
   renderProducts() {
     const { classes } = this.props;
     const { isLoading, products } = this.state;
+    
 
     if (isLoading) {
       return (
@@ -99,6 +101,8 @@ class ProductList extends Component {
         <Typography variant="h6">There are no products available</Typography>
       );
     }
+    
+      
 
     return (
       <Grid
@@ -113,13 +117,14 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to="#">
+            <Link to={`/${this.props.type}/videoplay`} >
               <ProductCard product={product} />
             </Link>
           </Grid>
         ))}
       </Grid>
     );
+  
   }
 
   render() {

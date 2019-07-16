@@ -114,6 +114,7 @@ class AccountProfile extends Component {
               className={classes.textField}
               label="Old Password"
               margin="dense"
+              type="password"
               required
               variant="outlined"
             />
@@ -121,6 +122,7 @@ class AccountProfile extends Component {
               className={classes.textField}
               label="New Password"
               margin="dense"
+              type="password"
               required
               variant="outlined"
             />
@@ -128,6 +130,7 @@ class AccountProfile extends Component {
               className={classes.textField}
               label="Confirm New Password"
               margin="dense"
+              type="password"
               required
               variant="outlined"
             />
