@@ -4,8 +4,8 @@ export default theme => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1)
+    overflow: 'auto',
+    paddingLeft: theme.spacing(1)
   },
   logoWrapper: {
     display: 'flex',
@@ -19,8 +19,8 @@ export default theme => ({
   },
   logoImage: {
     cursor: 'pointer',
-    width:'40px',
-    marginLeft:'0px'  // bmsce logo width
+    width: '40px',
+    marginLeft: '0px'  // bmsce logo width
   },
   logoDivider: {
     marginBottom: theme.spacing(2)
@@ -74,10 +74,10 @@ export default theme => ({
     }
   },
   listItemIcon: {
-    marginRight:0
+    marginRight: 0
   },
-  sublistItemIcon :{
-    marginLeft:20
+  sublistItemIcon: {
+    marginLeft: 20,
   },
   listItemText: {
     fontWeight: 500,

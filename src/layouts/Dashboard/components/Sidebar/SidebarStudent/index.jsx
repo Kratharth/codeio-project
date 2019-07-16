@@ -39,11 +39,11 @@ import {
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import VideoIcon from'@material-ui/icons/Videocam';
+import VideoIcon from '@material-ui/icons/Videocam';
 // Component styles
 import styles from './styles';
 // import { SidebarStudent } from '../..';
-let courses=false;
+let courses = false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
@@ -68,7 +68,7 @@ class SidebarStudent extends Component {
   //     anchorEl: event.currentTarget
   //   })
   // };
-  
+
   // handleClose=(event)=>{
   //   this.setState({
   //     anchorEl: null
@@ -80,48 +80,48 @@ class SidebarStudent extends Component {
 
     return (
       <div className={rootClassName}>
-      <div className={classes.logoWrapper}>
+        <div className={classes.logoWrapper}>
 
-      {/* Bmsce logo */}
-        <Link
-          className={classes.logoLink}
-          to="/"
-        >
- <img
+          {/* Bmsce logo */}
+          <Link
+            className={classes.logoLink}
+            to="/"
+          >
+            <img
               alt="BMSCE Logo"
               className={classes.logoImage}
               src="/images/bmscce.png"
             />
           </Link>
-          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
-      </div>
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
+        </div>
 
-     {/* student details */}
-      <Divider className={classes.logoDivider} />
-      <div className={classes.profile}>
-        <Link to="/student/account">
-          <Avatar
-            alt="Kratharth Hegde"
-            className={classes.avatar}
-            src="/images/bmslogo.png"
-          />
-        </Link>
-        <Typography
-          className={classes.nameText}
-          variant="h6"
-        >
-          Kratharth
+        {/* student details */}
+        <Divider className={classes.logoDivider} />
+        <div className={classes.profile}>
+          <Link to="/student/account">
+            <Avatar
+              alt="Kratharth Hegde"
+              className={classes.avatar}
+              src="/images/bmslogo.png"
+            />
+          </Link>
+          <Typography
+            className={classes.nameText}
+            variant="h6"
+          >
+            Kratharth
         </Typography>
-        <Typography
-          className={classes.bioText}
-          variant="caption"
-        >
-          Student
+          <Typography
+            className={classes.bioText}
+            variant="caption"
+          >
+            Student
         </Typography>
-      </div>
+        </div>
 
 
-      <Divider className={classes.profileDivider} />
+        <Divider className={classes.profileDivider} />
 
         {/*start of the list */}
 
@@ -146,7 +146,7 @@ class SidebarStudent extends Component {
 
           {/* Course Catalog */}
 
-{/* 
+          {/* 
           <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -171,7 +171,7 @@ class SidebarStudent extends Component {
               horizontal: 'left',
             }}
             > */}
-            {/* <List component="div" disablePadding>
+          {/* <List component="div" disablePadding>
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
@@ -253,7 +253,7 @@ class SidebarStudent extends Component {
                   primary="SEM-8"/>
               </ListItem>
             </List> */}
-            {/* </Popover> */}
+          {/* </Popover> */}
           {/* </Collapse> */}
 
 
@@ -266,21 +266,21 @@ class SidebarStudent extends Component {
             to="/student/sem1"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
+          </ListItem>
         </List>
 
-{/*
+        {/*
         <Divider className={classes.listDivider} /> */}
 
 
         {/* Help and support */}
-{/*
+        {/*
         <List
           component="div"
           disablePadding

@@ -37,7 +37,7 @@ import {
   Create as EditIcon
 } from '@material-ui/icons';
 import BookIcon from '@material-ui/icons/Book';
-import VideoIcon from'@material-ui/icons/Videocam';
+import VideoIcon from '@material-ui/icons/Videocam';
 import DesktopIcon from '@material-ui/icons/DesktopWindows';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
@@ -70,8 +70,8 @@ class SidebarDepartment extends Component {
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
 
-        {/* Bmsce logo */}
-        <Link
+          {/* Bmsce logo */}
+          <Link
             className={classes.logoLink}
             to="/"
           >
@@ -81,10 +81,10 @@ class SidebarDepartment extends Component {
               src="/images/bmscce.png"
             />
           </Link>
-          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
 
-       {/* department details */}
+        {/* department details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
           <Link to="/department/account">
@@ -111,7 +111,7 @@ class SidebarDepartment extends Component {
 
         <Divider className={classes.profileDivider} />
 
-      {/*list starts */}
+        {/*list starts */}
 
         <List
           component="div"
@@ -134,8 +134,8 @@ class SidebarDepartment extends Component {
             />
           </ListItem>
 
-        {/*course catalog*/}
-    {/* 
+          {/*course catalog*/}
+          {/* 
         <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -241,14 +241,14 @@ class SidebarDepartment extends Component {
             to="/department/sem1"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
-        {/*Transfer Session */}
+          </ListItem>
+          {/*Transfer Session */}
 
           <ListItem
             activeClassName={classes.activeListItem}
@@ -263,28 +263,28 @@ class SidebarDepartment extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Transfer Session"
             />
-          </ListItem> 
+          </ListItem>
 
 
           {/*Courseedit */}
 
-            <ListItem
-              activeClassName={classes.activeListItem}
-              className={classes.listItem}
-              component={NavLink}
-              to="/department/courseedit"
-            >
-              <ListItemIcon className={classes.listItemIcon}>
-                <EditIcon />
-              </ListItemIcon>
-              <ListItemText
-                classes={{ primary: classes.listItemText }}
-                primary="Course edit"
-              />
-            </ListItem>
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={NavLink}
+            to="/department/courseedit"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <EditIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Course edit"
+            />
+          </ListItem>
 
 
-      {/*Add a Schedule */}
+          {/*Add a Schedule */}
 
           <ListItem
             activeClassName={classes.activeListItem}
@@ -293,7 +293,7 @@ class SidebarDepartment extends Component {
             to="/department/addschedule"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <ScheduleIcon/>
+              <ScheduleIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
@@ -306,9 +306,9 @@ class SidebarDepartment extends Component {
         {/* <Divider className={classes.listDivider} /> */}
 
 
-       {/* Help and support */}
+        {/* Help and support */}
 
-       {/* <List
+        {/* <List
           component="div"
           disablePadding
           subheader={
