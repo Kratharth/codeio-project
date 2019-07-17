@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import Axios from 'axios';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -57,7 +58,7 @@ export default class DepartmentTable extends React.Component {
     return (
       <MaterialTable
         icons={tableIcons}
-        title="TimeTable"
+        title="Department Details"
         columns={this.state.columns}
         data={this.state.data}
         editable={{
@@ -73,6 +74,10 @@ export default class DepartmentTable extends React.Component {
                 ...newData,
                 type: 'lecturer'
               }
+              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
+                .then(res => {
+                  console.log(res);
+                })
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {

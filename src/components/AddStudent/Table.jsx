@@ -77,14 +77,16 @@ export default class StudentTable extends React.Component {
                 data.push(newData);
                 this.setState({ ...this.state, data });
               }, 600);
+              console.log('newdata: ');
+              console.log(newData);
+
               let d = {
                 ...newData,
-                type: 'lecturer'
-              }
-              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping', { d })
+                type: 'student'
+              };
+              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
                 .then(res => {
                   console.log(res);
-                  console.log(res.newData);
                 })
             }),
           onRowUpdate: (newData, oldData) =>

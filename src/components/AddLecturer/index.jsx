@@ -23,7 +23,8 @@ class AddLecturer extends Component {
     if (this.state.displayTable) {
       return (
         <div>
-          <center>Students Record</center>
+          <center>Lecturers Record</center>
+          <br />
           <LecturerTable />
         </div>
       );
@@ -35,6 +36,7 @@ class AddLecturer extends Component {
       return (
         <div>
           <center>Search Results</center>
+          <br />
           <LecturerTable />
         </div>
       );
@@ -106,12 +108,9 @@ class AddLecturer extends Component {
               helperText="Please select the department"
               margin="normal"
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
-              <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
-              <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
+              {department.map((dept) =>
+                <MenuItem key={dept.name} value={dept.name}>{dept.name}</MenuItem>
+              )}
             </TextField>
             <TextField
               id="outlined-id"

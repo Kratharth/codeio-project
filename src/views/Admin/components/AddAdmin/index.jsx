@@ -13,6 +13,7 @@ class AddAdmin extends Component {
     name: '',
     id: '',
     email: '',
+    department: '',
     displayTable: false,
   };
 
@@ -21,6 +22,7 @@ class AddAdmin extends Component {
       return (
         <div>
           <center>Admins Record</center>
+          <br />
           <AdminTable />
         </div>
       );
@@ -36,6 +38,11 @@ class AddAdmin extends Component {
   handleChangeName = e => {
     this.setState({
       name: e.target.value
+    });
+  };
+  handleChangeDepartment = e => {
+    this.setState({
+      department: e.target.value
     });
   };
   handleChangeId = e => {

@@ -57,8 +57,8 @@ class AddUser extends Component {
             <Grid
               item
               lg={12}
-              md={6}
-              xl={8}
+              md={12}
+              xl={12}
               xs={12}
             >
               {this.addUser(userType)}
