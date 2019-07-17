@@ -13,7 +13,7 @@ import ProcessorList from './views/processor';
 import CameraList from './views/camera';
 import Timetable from 'views/TimeTable';
 import AddUser from './views/Admin/index';
-import TransferSession from './components/TransferSession/index';
+import TransferSession from './components/TransferSession';
 import NotFound from './views/NotFound';
 import Videocontrol from './views/Videocontrol';
 import Videoedit from './views/Videoedit';
@@ -55,8 +55,6 @@ export default class Routes extends Component {
             <Account type={match.params.type} />
           }
         />
-
-
         {/* <Route
            exact
            path="/:type/sem7"
@@ -141,13 +139,13 @@ export default class Routes extends Component {
             <Typography type={match.params.type} />
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/department"
           render={({ match }) =>
             <Dashboard type={match.params.type} />
           }
-        />
+        /> */}
         <Route
           exact
           path="/:type/classrooms"
@@ -252,28 +250,28 @@ export default class Routes extends Component {
             <UserList type={match.params.type} />
           }
         />
-        {/* <Route
-          component={SignUp}
+        <Route
+          //component={SignUp}
           exact
           path="/:type/transfer"
-          render={({match}) =>
-        <TransferSession type={match.params.type} />
-        }
+          render={({ match }) =>
+            <TransferSession type={match.params.type} />
+          }
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/create-time-table"
           render={({match}) =>
         <Timetable type={match.params.type} />
         }
         />
-          {/* <Route
+           <Route
           exact
           path="/:type/view-time-table"
           render={({match}) =>
         <Icons type={match.params.type} />
         }
-        /> */}
+        />  */}
         <Route
           exact
           path="/:type/create-time-table"

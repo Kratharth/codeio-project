@@ -5,8 +5,9 @@ export default theme => ({
   row: {
     height: '42px',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(0)
   },
   spacer: {
     flexGrow: 1
@@ -14,7 +15,7 @@ export default theme => ({
   searchInput: {
     marginRight: theme.spacing(1)
   },
-  selectInput:{
+  selectInput: {
     backgroundColor: theme.palette.background.paper
   }
 });

@@ -20,10 +20,10 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 
 class ProductsToolbar extends Component {
-  state= {
+  state = {
     course: 'none'
   };
-   
+
   handleChange = name => event => {
     this.setState({
       ...this.state,
@@ -53,24 +53,24 @@ class ProductsToolbar extends Component {
             placeholder="Search video"
           />
           <Select
-          native
-          className={classes.selectInput}
-          value={this.state.course}
-          onChange={this.handleChange('course')}
-          inputProps={{
-            name: 'course',
-            id: 'course-native-simple',
-          }}
-        >
-          <option value="none" disabled >Course</option>
-          <option value={10}>LA</option>
-          <option value={20}>OS</option>
-          <option value={30}>DBMS</option>
-          <option value={40}>COA</option>
-          <option value={50}>WP</option>
-          <option value={60}>PYTHON</option>
-          <option value={70}>DC</option>
-        </Select>
+            native
+            className={classes.selectInput}
+            value={this.state.course}
+            onChange={this.handleChange('course')}
+            inputProps={{
+              name: 'course',
+              id: 'course-native-simple',
+            }}
+          >
+            <option value="none" disabled >Course</option>
+            <option value={10}>LA</option>
+            <option value={20}>OS</option>
+            <option value={30}>DBMS</option>
+            <option value={40}>COA</option>
+            <option value={50}>WP</option>
+            <option value={60}>PYTHON</option>
+            <option value={70}>DC</option>
+          </Select>
           <span className={classes.spacer} />
           <DisplayMode mode="grid" />
         </div>

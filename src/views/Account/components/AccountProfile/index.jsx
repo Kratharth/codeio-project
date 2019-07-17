@@ -28,26 +28,26 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import {TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 
-class AccountProfile extends Component { 
- 
-  state={
+class AccountProfile extends Component {
+
+  state = {
     open: false,
     age: '',
   };
 
-   handleChange = name => event => {
+  handleChange = name => event => {
     this.setState({ ...this.state, [name]: Number(event.target.value) });
   };
 
-  handleClickOpen=()=> {
-    this.setState({ open : !this.state.open});
+  handleClickOpen = () => {
+    this.setState({ open: !this.state.open });
   }
 
-  handleClose=()=> {
-    this.setState({ open : !this.state.open });
+  handleClose = () => {
+    this.setState({ open: !this.state.open });
   }
 
 
@@ -59,7 +59,7 @@ class AccountProfile extends Component {
     return (
       <Portlet
         {...rest}
-         className={rootClassName}
+        className={rootClassName}
       >
         <PortletContent>
           <div className={classes.details}>
@@ -90,8 +90,8 @@ class AccountProfile extends Component {
               variant="determinate"
             />
           </div> */}
-        </PortletContent> 
-         <PortletFooter>
+        </PortletContent>
+        <PortletFooter>
           <Button
             className={classes.uploadButton}
             color="primary"
@@ -100,42 +100,42 @@ class AccountProfile extends Component {
             Upload picture
           </Button>
           <Button variant="text" color="primary">Remove picture</Button>
-          <Button onClick={this.handleClickOpen} color="primary"className={classes.uploadButton}>Change Password</Button>
-        </PortletFooter> 
-        
-    
-      <div><Dialog disableBackdropClick disableEscapeKeyDown open={this.state.open} onClose={this.handleClose}>
-        <DialogTitle>Fill the form</DialogTitle>
-        <DialogContent>
-          <form className={classes.container}>
-            <FormControl className={classes.formControl}>
-            <div className={classes.field}>
-            <TextField
-              className={classes.textField}
-              label="Old Password"
-              margin="dense"
-              type="password"
-              required
-              variant="outlined"
-            />
-             <TextField
-              className={classes.textField}
-              label="New Password"
-              margin="dense"
-              type="password"
-              required
-              variant="outlined"
-            />
-             <TextField
-              className={classes.textField}
-              label="Confirm New Password"
-              margin="dense"
-              type="password"
-              required
-              variant="outlined"
-            />
-            </div>
-              {/* <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+          <Button onClick={this.handleClickOpen} color="primary" className={classes.uploadButton}>Change Password</Button>
+        </PortletFooter>
+
+
+        <div><Dialog disableBackdropClick disableEscapeKeyDown open={this.state.open} onClose={this.handleClose}>
+          <DialogTitle>Password</DialogTitle>
+          <DialogContent>
+            <form className={classes.container}>
+              <FormControl className={classes.formControl}>
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    label="Old Password"
+                    margin="dense"
+                    type="password"
+                    required
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="New Password"
+                    margin="dense"
+                    type="password"
+                    required
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="Confirm New Password"
+                    margin="dense"
+                    type="password"
+                    required
+                    variant="outlined"
+                  />
+                </div>
+                {/* <InputLabel htmlFor="age-native-simple">Age</InputLabel>
               <Select
                 native
                 value={this.state.age}
@@ -162,19 +162,19 @@ class AccountProfile extends Component {
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem> 
               </Select> */}
-            </FormControl>
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
-            Cancel
+              </FormControl>
+            </form>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
           </Button>
-          <Button onClick={this.handleClose} color="primary">
-            Ok
+            <Button onClick={this.handleClose} color="primary">
+              Ok
           </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+          </DialogActions>
+        </Dialog>
+        </div>
       </Portlet>
     );
   }
