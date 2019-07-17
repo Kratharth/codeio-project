@@ -82,7 +82,7 @@ export default class StudentTable extends React.Component {
 
               let d = {
                 ...newData,
-                type: 'student'
+                password: 'student'
               };
               Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
                 .then(res => {

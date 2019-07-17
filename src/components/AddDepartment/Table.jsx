@@ -72,7 +72,7 @@ export default class DepartmentTable extends React.Component {
               }, 600);
               let d = {
                 ...newData,
-                type: 'lecturer'
+                password: 'department'
               }
               Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
                 .then(res => {

@@ -5,6 +5,7 @@ import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import LecturerTable from './Table';
+import { getDepartment } from 'services/DepartmentDetails/index';
 
 import styles from './styles';
 
@@ -13,11 +14,42 @@ class AddLecturer extends Component {
     name: '',
     id: '',
     email: '',
-    department: '',
+    department: [],
+    departmentselected: '',
     displaySearchResults: false,
     displayTable: false,
   };
 
+  async getDepartment() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { department } = await (getDepartment())
+
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          department
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getDepartment();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
 
   renderTable() {
     if (this.state.displayTable) {
@@ -64,9 +96,9 @@ class AddLecturer extends Component {
     });
   };
 
-  handleChangeDepartment = (e) => {
+  handleChangeDepartment = e => {
     this.setState({
-      department: e.target.value
+      departmentselected: e.target.value
     });
   };
 
@@ -83,7 +115,7 @@ class AddLecturer extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name, id, email, department } = this.state;
+    const { name, id, email, department, departmentselected } = this.state;
     const rootClassName = classNames(classes.root, className);
     return (
       <div className={rootClassName}>
@@ -98,15 +130,11 @@ class AddLecturer extends Component {
               select
               label="Department"
               className={classes.textField}
-              value={department}
+              value={departmentselected}
               onChange={this.handleChangeDepartment}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu,
-                },
-              }}
-              helperText="Please select the department"
               margin="normal"
+              helperText="Please select the department"
+
             >
               {department.map((dept) =>
                 <MenuItem key={dept.name} value={dept.name}>{dept.name}</MenuItem>

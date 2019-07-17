@@ -76,7 +76,6 @@ export default class LecturerTable extends React.Component {
               }, 600);
               let d = {
                 ...newData,
-                type: 'lecturer',
                 password: 'lecturer'
               }
               Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
@@ -101,14 +100,6 @@ export default class LecturerTable extends React.Component {
                 data.splice(data.indexOf(oldData), 1);
                 this.setState({ ...this.state, data });
               }, 600);
-              let d = {
-                ...oldData,
-                type: 'lecturer'
-              }
-              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', { d })
-                .then(res => {
-                  console.log(res);
-                })
             }),
         }}
 
