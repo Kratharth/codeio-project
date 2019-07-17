@@ -104,7 +104,7 @@ class SidebarDepartment extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/department/deptdashboard"
+            to="/department/departmentdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
