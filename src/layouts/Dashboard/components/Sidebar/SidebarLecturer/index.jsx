@@ -126,7 +126,7 @@ class SidebarLecturer extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/lecturer/dashboard"
+            to="/lecturer/lecturerdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -402,4 +402,3 @@ SidebarLecturer.propTypes = {
 };
 
 export default withStyles(styles)(SidebarLecturer);
-

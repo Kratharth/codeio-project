@@ -59,10 +59,10 @@ class Videoplay extends Component {
           <CardActionArea>
           <ReactPlayer
 
-          url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
+        url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
           poster="/myPoster.png"
-          width="auto"
-          height="auto"
+          width="100%"
+          height="100%"
           autoplay
           controls
           />

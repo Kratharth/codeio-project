@@ -23,7 +23,9 @@ import ProductListedit from './views/ProductListedit';
 import ProductList from './views/ProductList';
 import Videoplay from './views/Videoplay';
 import Videorecordguest from './views/Videorecordguest';
-
+import AdminDashboard from './views/AdminDashboard';
+import StudentDashboard from './views/StudentDashboard';
+import LecturerDashboard from './views/LecturerDashboard';
 export default class Routes extends Component {
   render() {
     return (
@@ -35,9 +37,23 @@ export default class Routes extends Component {
         />
         <Route
           exact
-          path="/:type/dashboard"
+          path="/:type/admindashboard"
           render={({ match }) =>
-            <Dashboard type={match.params.type} />
+            <AdminDashboard type={match.params.type} />
+          }
+        />
+        <Route
+          exact
+          path="/:type/studentdashboard"
+          render={({ match }) =>
+            <StudentDashboard type={match.params.type} />
+          }
+        />
+        <Route
+          exact
+          path="/:type/lecturerdashboard"
+          render={({ match }) =>
+            <LecturerDashboard type={match.params.type} />
           }
         />
 

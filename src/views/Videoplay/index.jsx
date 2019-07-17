@@ -29,7 +29,7 @@ class Videoedit extends Component {
     const { classes,type} = this.props;
 
     return (
-      <DashboardLayout title="Videoedit" type={type}>
+      <DashboardLayout title="Video" type={type}>
         <div className={classes.root}>
           <Grid
             container

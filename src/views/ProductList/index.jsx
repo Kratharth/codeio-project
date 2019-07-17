@@ -77,7 +77,7 @@ class ProductList extends Component {
    this.setState({
     searchData: searchData
     })
-    
+
   }
 
   componentWillMount() {
@@ -109,8 +109,8 @@ class ProductList extends Component {
         <Typography variant="h6">There are no videos available</Typography>
       );
     }
-    
-      
+
+
 
     return (
       <Grid
@@ -125,14 +125,14 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to={`/${this.props.type}/videoplay`} >
+            <Link to={`/${this.props.type}/Videoedit`} >
               <ProductCard product={product} />
             </Link>
           </Grid>
         ))}
       </Grid>
     );
-  
+
   }
 
   render() {

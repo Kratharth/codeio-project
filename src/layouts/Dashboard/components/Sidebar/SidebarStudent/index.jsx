@@ -53,7 +53,7 @@ class SidebarStudent extends Component {
   //     anchorEl: event.currentTarget
   //   })
   // };
-  
+
   // handleClose=(event)=>{
   //   this.setState({
   //     anchorEl: null
@@ -111,7 +111,7 @@ class SidebarStudent extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/student/dashboard"
+            to="/student/studentdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -123,7 +123,7 @@ class SidebarStudent extends Component {
           </ListItem>
           {/* Course Catalog */}
 
-{/* 
+{/*
           <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -135,7 +135,7 @@ class SidebarStudent extends Component {
             {!this.state.open ? <ExpandMore />: <ExpandLess />}
         </ListItem>
        <Collapse in={this.state.open1} timeout="auto" unmountOnExit> */}
-          {/* <Popover 
+          {/* <Popover
             anchorEl={this.state.anchorEl}
             open={Boolean(this.state.anchorEl)}
             onClose={this.handleClose}
@@ -249,7 +249,7 @@ class SidebarStudent extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
+          </ListItem>
         </List>
       </div>
     );

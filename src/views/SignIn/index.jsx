@@ -93,7 +93,8 @@ class SignIn extends Component {
       await signIn(values.email, values.password);
 
       localStorage.setItem('isAuthenticated', true);
-       history.push(`/${values.type}/dashboard`);
+
+       history.push(`/${values.type}/${values.type}dashboard`);
     } catch (error) {
       this.setState({
         isLoading: false,
@@ -147,7 +148,7 @@ class SignIn extends Component {
                     >
                       Founder at BMS College of Engineering
                     </Typography>
-                  </div> 
+                  </div>
                 </div>
               </div>
           </Grid>
