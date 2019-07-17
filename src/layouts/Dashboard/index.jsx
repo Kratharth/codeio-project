@@ -12,12 +12,14 @@ import { withStyles, withWidth } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 
 // Custom components
-import { Topbar, Footer, 
-SidebarAdmin, 
-SidebarDepartment, 
-SidebarLecturer, 
-SidebarStudent}
- from './components';
+import {
+  Topbar, Footer,
+  SidebarAdmin,
+  SidebarDepartment,
+  SidebarLecturer,
+  SidebarStudent
+}
+  from './components';
 
 // Component styles
 import styles from './styles';
@@ -51,7 +53,7 @@ class Dashboard extends Component {
 
 
   render() {
-    const { classes, width, title, children ,type } = this.props;
+    const { classes, width, title, children, type } = this.props;
     const { isOpen } = this.state;
 
     const isMobile = ['xs', 'sm', 'md'].includes(width);
@@ -67,6 +69,7 @@ class Dashboard extends Component {
           isSidebarOpen={isOpen}
           onToggleSidebar={this.handleToggleOpen}
           title={title}
+          type={type}
         />
         <Drawer
           anchor="left"
@@ -97,7 +100,7 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   width: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student'])
+  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'student'])
 };
 
 export default compose(

@@ -41,7 +41,7 @@ class ProductList extends Component {
 
   state = {
     isLoading: false,
-    limit: 6,
+    limit: 24,
     products: [],
     productsTotal: 0,
     error: null

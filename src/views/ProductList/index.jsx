@@ -29,7 +29,7 @@ import { getCourseVideos } from 'services/coursevideo';
 import { getProducts } from 'services/product';
 
 // Custom components
-import {ProductCard} from 'components';
+import { ProductCard } from 'components';
 import { ProductsToolbar } from './components';
 
 
@@ -42,12 +42,12 @@ class ProductList extends Component {
 
   state = {
     isLoading: false,
-    limit: 6,
+    limit: 24,
     products: [],
     productsTotal: 0,
     error: null,
-    searchData:{},
-    products:[]
+    searchData: {},
+    products: []
   };
 
   async getProducts() {
@@ -73,11 +73,11 @@ class ProductList extends Component {
     }
   }
 
-  handleSearch=(searchData)=>{
-   this.setState({
-    searchData: searchData
+  handleSearch = (searchData) => {
+    this.setState({
+      searchData: searchData
     })
-    
+
   }
 
   componentWillMount() {
@@ -109,8 +109,8 @@ class ProductList extends Component {
         <Typography variant="h6">There are no videos available</Typography>
       );
     }
-    
-      
+
+
 
     return (
       <Grid
@@ -132,16 +132,16 @@ class ProductList extends Component {
         ))}
       </Grid>
     );
-  
+
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes, type } = this.props;
 
     return (
       <DashboardLayout title="Videos" type={type}>
         <div className={classes.root}>
-          <ProductsToolbar searchData={this.handleSearch}/>
+          <ProductsToolbar searchData={this.handleSearch} />
           <div className={classes.content}>{this.renderProducts()}</div>
           <div className={classes.pagination}>
             <Typography variant="caption">1-6 of 20</Typography>
@@ -160,7 +160,7 @@ class ProductList extends Component {
 
 ProductList.propTypes = {
   classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student'])
+  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'student'])
 };
 
 export default withStyles(styles)(ProductList);

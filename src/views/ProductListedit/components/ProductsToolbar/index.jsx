@@ -37,7 +37,7 @@ class ProductsToolbar extends Component {
 
     return (
       <div className={rootClassName}>
-        <div className={classes.row}>
+        {/* <div className={classes.row}>
           <span className={classes.spacer} />
           {/* <Button
             color="primary"
@@ -45,8 +45,8 @@ class ProductsToolbar extends Component {
             variant="outlined"
           >
             Add
-          </Button> */}
-        </div>
+          </Button>
+        </div> */}
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}

@@ -7,7 +7,8 @@ export default theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    marginTop: theme.spacing(0)
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(6)
   },
   spacer: {
     flexGrow: 1
@@ -16,6 +17,7 @@ export default theme => ({
     marginRight: theme.spacing(1)
   },
   selectInput: {
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    //marginRight: theme.spacing(1)
   }
 });
