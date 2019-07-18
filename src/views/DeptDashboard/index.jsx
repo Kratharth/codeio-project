@@ -37,9 +37,9 @@ const styles = theme => ({
 
 class Dashboard extends Component {
   render() {
-    const { classes, type } = this.props;
+    const { classes } = this.props;
     return (
-      <DashboardLayout title="Dashboard" type={type}> {/*pass user type here*/}
+      <DashboardLayout title="Dashboard" >
         <div className={classes.root}>
           <Grid
             container
@@ -134,8 +134,7 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'student'])
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Dashboard);
