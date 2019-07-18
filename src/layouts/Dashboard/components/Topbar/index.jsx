@@ -87,11 +87,9 @@ class Topbar extends Component {
     history.push('/sign-in');
   };
   handleAccount = () => {
-    const { history, type } = this.props;
-    console.log({ type })
-
+    const { history } = this.props;
     localStorage.setItem('isAuthenticated', false);
-    history.push(`/${this.props.type}/account`);
+    history.push('/account');
   };
 
 
@@ -172,8 +170,7 @@ class Topbar extends Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}><PersonIcon />Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}><Security />Change Password</MenuItem>
+              <MenuItem onClick={this.handleAccount}><PersonIcon />Account</MenuItem>
               <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
             </Menu>
           </Toolbar>

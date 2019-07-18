@@ -2,12 +2,13 @@ import React, { Component, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 // user context
-import UserContext from './userContext/userContext';
+//import UserContext from './userContext/userContext';
 // Views
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
+const DeptDashboard = React.lazy(() => import('./views/DeptDashboard'));
 //const UserList = React.lazy(() => import('./views/UserList'));
 const Typography = React.lazy(() => import('./views/Typography'));
-const Icons = React.lazy(() => import('./views/Icons'));
+//const Icons = React.lazy(() => import('./views/Icons'));
 const Account = React.lazy(() => import('./views/Account'));
 const Settings = React.lazy(() => import('./views/Settings'));
 const SignIn = React.lazy(() => import('./views/SignIn'));
@@ -36,11 +37,11 @@ export default class Routes extends Component {
             from="/"
             to="/sign-in"
           />
-          <Route
+          {/* <Route
             exact
             path="/dashboard"
             component={Dashboard}
-          />
+          /> */}
           <Route
             exact
             path="/account"
@@ -51,6 +52,35 @@ export default class Routes extends Component {
             path="/courses"
             component={ProductList}
           />
+          <Route
+            exact
+            path="/admin/dashboard"
+            render={() =>
+              <DeptDashboard type="admin" />
+            }
+          />
+          <Route
+            exact
+            path="/department/dashboard"
+            render={() =>
+              <DeptDashboard type="department" />
+            }
+          />
+          <Route
+            exact
+            path="/lecturer/dashboard"
+            render={() =>
+              <DeptDashboard type="lecturer" />
+            }
+          />
+          <Route
+            exact
+            path="/student/dashboard"
+            render={() =>
+              <DeptDashboard type="student" />
+            }
+          />
+
 
           {/* <Route
             exact

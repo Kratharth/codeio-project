@@ -28,15 +28,6 @@ import schema from './schema';
 // user-context
 import { UserContext } from 'userContext';
 
-// Service methods
-const signIn = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
-};
-
 class SignIn extends Component {
 
   static contextType = UserContext;
@@ -98,7 +89,7 @@ class SignIn extends Component {
       console.log(res);
       if (res.success === true) {
         localStorage.setItem('isAuthenticated', true);
-        history.push('/dashboard');
+        history.push(`${values.type}/dashboard`);
       }
     }).catch(error => {
       this.setState({
