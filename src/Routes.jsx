@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Views
 import Dashboard from './views/Dashboard';
+import DeptDashboard from './views/DeptDashboard';
 import UserList from './views/UserList';
 import Typography from './views/Typography';
 import Icons from './views/Icons';
@@ -11,9 +12,9 @@ import SignIn from './views/SignIn';
 import MappingList from './views/mapping';
 import ProcessorList from './views/processor';
 import CameraList from './views/camera';
-import Timetable from 'views/Timetable';
+import Timetable from 'views/TimeTable';
 import AddUser from './views/Admin/index';
-import TransferSession from './components/TransferSession/index';
+import TransferSession from './components/TransferSession';
 import NotFound from './views/NotFound';
 import Videocontrol from './views/Videocontrol';
 import Videoedit from './views/Videoedit';
@@ -23,6 +24,7 @@ import ProductListedit from './views/ProductListedit';
 import ProductList from './views/ProductList';
 import Videoplay from './views/Videoplay';
 import Videorecordguest from './views/Videorecordguest';
+import DepartmentDashboard from './views/DeptDashboard';
 
 export default class Routes extends Component {
   render() {
@@ -33,13 +35,21 @@ export default class Routes extends Component {
           from="/"
           to="/sign-in"
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/dashboard"
           render={({ match }) =>
             <Dashboard type={match.params.type} />
           }
+        /> */}
+        <Route
+          exact
+          path="/:type/departmentdashboard"
+          render={({ match }) =>
+            <DepartmentDashboard type={match.params.type} />
+          }
         />
+
 
         <Route
           exact
@@ -48,7 +58,13 @@ export default class Routes extends Component {
             <ProductList type={match.params.type} />
           }
         />
-
+        <Route
+          exact
+          path="/:type/account"
+          render={({ match }) =>
+            <Account type={match.params.type} />
+          }
+        />
         {/* <Route
            exact
            path="/:type/sem7"
@@ -252,7 +268,7 @@ export default class Routes extends Component {
           }
         />
         <Route
-          // component={SignUp}
+          //component={SignUp}
           exact
           path="/:type/transfer"
           render={({ match }) =>
@@ -273,7 +289,7 @@ export default class Routes extends Component {
           render={({match}) =>
         <Icons type={match.params.type} />
         }
-        /> */}
+        />  */}
         <Route
           exact
           path="/:type/create-time-table"
@@ -382,6 +398,11 @@ export default class Routes extends Component {
           component={SignIn}
           exact
           path="/sign-in"
+        />
+        <Route
+          component={Account}
+          exact
+          path="/account"
         />
         <Route
           component={NotFound}

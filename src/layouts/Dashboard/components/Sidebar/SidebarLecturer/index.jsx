@@ -45,11 +45,11 @@ class SidebarLecturer extends Component {
   componentWillMount() {
     // courses?(this.state.open1=true):(this.state.open1=false);
     myvideos ? (this.state.open2 = true) : (this.state.open2 = false);
-   //opening and closing of course-catalog
+    //opening and closing of course-catalog
   }
-  handleClick1=()=>{
+  handleClick1 = () => {
     this.setState({
-      open1:!this.state.open1
+      open1: !this.state.open1
     });
   }
   //opening and closing of course-catalog
@@ -270,15 +270,15 @@ class SidebarLecturer extends Component {
             />
           </ListItem>
 
-      {/*My Videos*/}
-      <ListItem
+          {/*My Videos*/}
+          <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
             to="/lecturer/myvideos"
           >
             <ListItemIcon clsName={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
@@ -367,14 +367,14 @@ class SidebarLecturer extends Component {
 
         {/* <Divider className={classes.listDivider} /> */}
 
-      <List
-          component="div"
-          disablePadding
-          subheader={
-            <ListSubheader className={classes.listSubheader}>
-              Support
-            </ListSubheader>
-          }
+        {/* <List
+        component="div"
+        disablePadding
+        subheader={
+          <ListSubheader className={classes.listSubheader}>
+            Support
+          </ListSubheader>
+        }
         >
           <ListItem
             className={classes.listItem}
@@ -390,7 +390,7 @@ class SidebarLecturer extends Component {
               primary="Video edit"
             />
           </ListItem>
-        </List>
+        </List> */}
       </div>
     );
   }

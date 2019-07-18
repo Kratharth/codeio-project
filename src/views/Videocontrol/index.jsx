@@ -26,7 +26,7 @@ class Videocontrol extends Component {
   state = { tabIndex: 0 };
 
   render() {
-    const { classes,type } = this.props;
+    const { classes, type } = this.props;
 
     return (
       <DashboardLayout title="Video control" type={type} >

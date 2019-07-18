@@ -72,7 +72,7 @@ class Topbar extends Component {
   }
 
   componentDidMount() {
-    this.signal = true;
+    this.signal = false;
     this.getNotifications();
   }
 
@@ -86,6 +86,14 @@ class Topbar extends Component {
     localStorage.setItem('isAuthenticated', false);
     history.push('/sign-in');
   };
+  handleAccount = () => {
+    const { history, type } = this.props;
+    console.log({ type })
+
+    localStorage.setItem('isAuthenticated', false);
+    history.push(`/${this.props.type}/account`);
+  };
+
 
   handleShowNotifications = event => {
     this.setState({
@@ -118,7 +126,7 @@ class Topbar extends Component {
       type
     } = this.props;
     const { notifications, notificationsCount, notificationsEl } = this.state;
-
+    console.log({ type })
     const rootClassName = classNames(classes.root, className);
     const showNotifications = Boolean(notificationsEl);
 
@@ -176,8 +184,8 @@ class Topbar extends Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleClose}><PersonIcon />Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}><Security />Change Password</MenuItem>
+              <MenuItem onClick={this.handleAccount}><PersonIcon />Account</MenuItem>
+              {/* <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem> */}
               <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
             </Menu>
           </Toolbar>
