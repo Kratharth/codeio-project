@@ -51,6 +51,9 @@ class Dashboard extends Component {
     }
   };
 
+  componentDidMount(){
+    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type') });
+  }
 
   render() {
     const { classes, width, title, children } = this.props;

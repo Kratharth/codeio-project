@@ -10,8 +10,7 @@ export default class UserContextProvider extends Component {
     }
     state = {
         user: {
-            email: '',
-            password: '',
+            name: '',
             type: ''
         },
         userDetails: this.handleUserDetails

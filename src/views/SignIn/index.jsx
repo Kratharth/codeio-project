@@ -89,6 +89,8 @@ class SignIn extends Component {
       console.log(res);
       if (res.success === true) {
         localStorage.setItem('isAuthenticated', true);
+        localStorage.setItem('name', res.name);
+        localStorage.setItem('type', this.state.values.type);
         history.push(`${values.type}/dashboard`);
       }
     }).catch(error => {
@@ -100,7 +102,9 @@ class SignIn extends Component {
   }
 
   componentWillUnmount() {
-    this.context.userDetails(this.state.values);
+    const name = localStorage.getItem('name');
+    const type = localStorage.getItem('type');
+    this.context.userDetails({ name, type });
   }
 
   render() {
