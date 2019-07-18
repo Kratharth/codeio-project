@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 import DepartmentTable from './Table';
 
+// Component styles
+import styles from './styles';
 class AddDepartment extends Component {
   state = {
     name: '',

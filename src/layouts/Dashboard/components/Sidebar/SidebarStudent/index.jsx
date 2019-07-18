@@ -24,11 +24,11 @@ import {
   ExpandMore
 } from '@material-ui/icons';
 
-import VideoIcon from'@material-ui/icons/Videocam';
+import VideoIcon from '@material-ui/icons/Videocam';
 // Component styles
 import styles from './styles';
 // import { SidebarStudent } from '../..';
-let courses=false;
+let courses = false;
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
@@ -53,7 +53,7 @@ class SidebarStudent extends Component {
   //     anchorEl: event.currentTarget
   //   })
   // };
-  
+
   // handleClose=(event)=>{
   //   this.setState({
   //     anchorEl: null
@@ -65,18 +65,18 @@ class SidebarStudent extends Component {
     return (
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
-        {/* Bmsce logo */}
+          {/* Bmsce logo */}
           <Link
             className={classes.logoLink}
             to="/"
           >
-          <img
+            <img
               alt="BMSCE Logo"
               className={classes.logoImage}
               src="/images/bmslogo.png"
             />
           </Link>
-          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
         {/* student details */}
         <Divider className={classes.logoDivider} />
@@ -123,7 +123,7 @@ class SidebarStudent extends Component {
           </ListItem>
           {/* Course Catalog */}
 
-{/* 
+          {/* 
           <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -148,7 +148,7 @@ class SidebarStudent extends Component {
               horizontal: 'left',
             }}
             > */}
-            {/* <List component="div" disablePadding>
+          {/* <List component="div" disablePadding>
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
@@ -230,7 +230,7 @@ class SidebarStudent extends Component {
                   primary="SEM-8"/>
               </ListItem>
             </List> */}
-            {/* </Popover> */}
+          {/* </Popover> */}
           {/* </Collapse> */}
 
 
@@ -243,13 +243,13 @@ class SidebarStudent extends Component {
             to="/student/sem1"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
+          </ListItem>
         </List>
       </div>
     );

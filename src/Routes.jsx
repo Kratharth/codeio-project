@@ -142,6 +142,13 @@ export default class Routes extends Component {
         /> */}
         <Route
           exact
+          path="/:type/account"
+          render={({ match }) =>
+            <Account type={match.params.type} />
+          }
+        />
+        <Route
+          exact
           path="/:type/classrooms"
           render={({ match }) =>
             <Typography type={match.params.type} />
@@ -252,27 +259,28 @@ export default class Routes extends Component {
             <TransferSession type={match.params.type} />
           }
         />
-        {/* <Route
-          exact
-          path="/:type/create-time-table"
-          render={({match}) =>
-        <Timetable type={match.params.type} />
-        }
-        />
-          {/* <Route */}
-        {/* exact
-          path="/:type/view-time-table"
-          render={({match}) =>
-        <Icons type={match.params.type} />
-        }
-        />
+        {/*
         <Route
           exact
           path="/:type/create-time-table"
           render={({match}) =>
         <Timetable type={match.params.type} />
         }
+        />
+          {/* <Route
+          exact
+          path="/:type/view-time-table"
+          render={({match}) =>
+        <Icons type={match.params.type} />
+        }
         /> */}
+        <Route
+          exact
+          path="/:type/create-time-table"
+          render={({ match }) =>
+            <Timetable type={match.params.type} />
+          }
+        />
         <Route
           exact
           path="/adduser/:userType"
@@ -304,12 +312,12 @@ export default class Routes extends Component {
           render={({ match }) =>
             <Typography type={match.params.type} />}
         />
-        <Route
+        {/* <Route
           exact
           path="/:type/department"
           render={({ match }) =>
             <Dashboard type={match.params.type} />}
-        />
+        /> */}
         <Route
           exact
           path="/:type/classrooms"

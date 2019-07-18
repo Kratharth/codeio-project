@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import StudentTable from './Table';
 import { getDepartment } from 'services/DepartmentDetails/index';
 
+
 // Component styles
 import styles from './styles';
 

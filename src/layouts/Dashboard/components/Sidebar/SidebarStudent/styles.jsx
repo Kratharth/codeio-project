@@ -5,7 +5,7 @@ export default theme => ({
     flexDirection: 'column',
     height: '100%',
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1)
+    overflow: 'auto'
   },
   logoWrapper: {
     display: 'flex',
@@ -19,8 +19,8 @@ export default theme => ({
   },
   logoImage: {
     cursor: 'pointer',
-    width:'40px',
-    marginLeft:'0px'
+    width: '40px',
+    marginLeft: '0px'
   },
   logoDivider: {
     marginBottom: theme.spacing(2)

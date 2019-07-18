@@ -219,7 +219,7 @@ class SidebarAdmin extends Component {
             component={newLink}
             to="/admin/sem1"
           >
-            <ListItemIcon className={classes.listItemIcon}>
+            <ListItemIcon clsName={classes.listItemIcon}>
               <VideoIcon />
             </ListItemIcon>
             <ListItemText

@@ -59,18 +59,18 @@ class SidebarDepartment extends Component {
         <div className={classes.logoWrapper}>
           {/* Bmsce logo */}
           <Link
-              className={classes.logoLink}
-              to="/"
-            >
-              <img
-                alt="BMSCE Logo"
-                className={classes.logoImage}
-                src="/images/bmslogo.png"
-              />
-            </Link>
-            &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+            className={classes.logoLink}
+            to="/"
+          >
+            <img
+              alt="BMSCE Logo"
+              className={classes.logoImage}
+              src="/images/bmslogo.png"
+            />
+          </Link>
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
-       {/* department details */}
+        {/* department details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
           <Link to="/department/account">
@@ -99,7 +99,7 @@ class SidebarDepartment extends Component {
           component="div"
           disablePadding
         >
-         {/*dashboard*/}
+          {/*dashboard*/}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -115,8 +115,8 @@ class SidebarDepartment extends Component {
             />
           </ListItem>
 
-        {/*course catalog*/}
-    {/* 
+          {/*course catalog*/}
+          {/* 
         <ListItem button onClick={this.handleClick1}
           className={classes.listItem}
           >
@@ -222,14 +222,14 @@ class SidebarDepartment extends Component {
             to="/department/sem1"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
-        {/*Transfer Session */}
+          </ListItem>
+          {/*Transfer Session */}
 
           {/*Transfer Session */}
           <ListItem
@@ -245,24 +245,24 @@ class SidebarDepartment extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Transfer Session"
             />
-          </ListItem> 
+          </ListItem>
 
           {/*guest lecuture*/}
 
-            <ListItem
-              activeClassName={classes.activeListItem}
-              className={classes.listItem}
-              component={newLink}
-              to="/department/videorecordguest"
-            >
-              <ListItemIcon className={classes.listItemIcon}>
-                <DesktopIcon />
-              </ListItemIcon>
-              <ListItemText
-                classes={{ primary: classes.listItemText }}
-                primary="Record"
-              />
-            </ListItem>
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/department/videorecordguest"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <DesktopIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Record"
+            />
+          </ListItem>
 
 
           {/*Courseedit */}
@@ -288,7 +288,7 @@ class SidebarDepartment extends Component {
             to="/department/addschedule"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <ScheduleIcon/>
+              <ScheduleIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
