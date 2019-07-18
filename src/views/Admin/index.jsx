@@ -13,16 +13,12 @@ import { Grid } from '@material-ui/core';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import AddAdmin from './components/AddAdmin';
-// import AddStudent from '../../../components/AddStudent';
-import { AddStudent } from 'components';
-import { AddLecturer } from 'components';
-import { AddDepartment } from 'components';
+import { AddAdmin, AddDepartment, AddLecturer, AddStudent } from './components';
 
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing(4),
     paddingTop: '48px',
     paddingBottom: '24px',
     display: 'flex',
@@ -34,7 +30,6 @@ const styles = theme => ({
 });
 
 class AddUser extends Component {
-  state = { tabIndex: 0 };
   addUser = (userType) => {
     switch (userType) {
       case 'lecturer': return <AddLecturer />
@@ -46,9 +41,9 @@ class AddUser extends Component {
   };
 
   render() {
-    const { classes, type, userType } = this.props;
+    const { classes, userType } = this.props;
     return (
-      <DashboardLayout title={userType} type={type}>
+      <DashboardLayout title={userType}>
         <div className={classes.root}>
           <Grid
             container

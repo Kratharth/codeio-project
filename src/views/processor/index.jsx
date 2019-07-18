@@ -14,7 +14,7 @@ import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
 // import { getUsers } from 'services/user';
-import {getProcessors} from 'services/processor';
+import { getProcessors } from 'services/processor';
 
 // Custom components
 import { ProcessorToolbar, ProcessorTable } from './components';
@@ -40,7 +40,7 @@ class ProcessorList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const {processor} = await(getProcessors(limit))
+      const { processor } = await (getProcessors(limit))
 
       if (this.signal) {
         this.setState({
@@ -102,13 +102,13 @@ class ProcessorList extends Component {
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
     const { selectedprocessor } = this.state;
 
     return (
-      <DashboardLayout title="Processor" type={type}>
+      <DashboardLayout title="Processor" >
         <div className={classes.root}>
-          <ProcessorToolbar selectedprocessor={selectedprocessor} processor={this.state.processor}/>
+          <ProcessorToolbar selectedprocessor={selectedprocessor} processor={this.state.processor} />
           <div className={classes.content}>{this.renderProcessors()}</div>
         </div>
       </DashboardLayout>

@@ -18,18 +18,17 @@ import { VideocontrolDetails } from './components';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   }
 });
 
 class Videocontrolguest extends Component {
-  state = { tabIndex: 0 };
 
   render() {
-    const { classes, type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Guest Lecturer" type={type} >
+      <DashboardLayout title="Guest Lecturer" >
         <div className={classes.root}>
           <Grid
             container

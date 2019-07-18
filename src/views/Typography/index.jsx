@@ -38,10 +38,10 @@ const variants = {
 
 class Typography extends Component {
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Typography" type={type}>
+      <DashboardLayout title="Typography" >
         <div className={classes.root}>
           <Grid
             container

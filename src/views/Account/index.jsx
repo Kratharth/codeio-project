@@ -14,8 +14,9 @@ import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
 import { AccountProfile } from './components';
-import { AccountAdmin, AccountLecturer, AccountStudent } from './components/AccountDetails';
-import { AccountDept } from './components/AccountDetails';
+import { AccountAdmin, AccountDept, AccountLecturer, AccountStudent } from './components/AccountDetails';
+//User Context
+import { UserContext } from 'userContext';
 
 // Component styles
 const styles = theme => ({
@@ -25,6 +26,9 @@ const styles = theme => ({
 });
 
 class Account extends Component {
+
+  static contextType = UserContext;
+
   accountDetailType = (type) => {
     switch (type) {
       case 'admin': return <AccountAdmin />
@@ -37,10 +41,10 @@ class Account extends Component {
   }
 
   render() {
-    const { classes, type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Account" type={type}>
+      <DashboardLayout title="Account" >
         <div className={classes.root}>
           <Grid
             container
@@ -62,8 +66,7 @@ class Account extends Component {
               xl={8}
               xs={12}
             >
-              {/* <AccountDetails /> */}
-              {this.accountDetailType(type)}
+              {this.accountDetailType(this.context.user.type)}
             </Grid>
           </Grid>
         </div>
@@ -73,8 +76,7 @@ class Account extends Component {
 }
 
 Account.propTypes = {
-  classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'student']).isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Account);

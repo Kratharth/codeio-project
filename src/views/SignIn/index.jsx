@@ -19,24 +19,28 @@ import {
   MenuItem,
   FormHelperText,
   Select,
-  InputLabel,
   Input
 } from '@material-ui/core';
 // Component styles
 import styles from './styles';
 // Form validation schema
 import schema from './schema';
+// user-context
+import { UserContext } from 'userContext';
 
 // Service methods
-// const signIn = () => {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve(true);
-//     }, 1500);
-//   });
-// };
+const signIn = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1500);
+  });
+};
 
 class SignIn extends Component {
+
+  static contextType = UserContext;
+
   state = {
     values: {
       email: '',
@@ -58,12 +62,6 @@ class SignIn extends Component {
     submitError: null
   };
 
-  // handleBack = () => {
-  //   const { history } = this.props;
-
-  //   history.goBack();
-  // };
-
   validateForm = _.debounce(() => {
     const { values } = this.state;
     const newState = { ...this.state };
@@ -73,7 +71,7 @@ class SignIn extends Component {
     newState.isValid = errors || values.type == '' ? false : true;
 
     this.setState(newState);
-  }, 300);
+  }, 800);
 
   handleFieldChange = (field, value) => {
     const newState = { ...this.state };
@@ -84,6 +82,7 @@ class SignIn extends Component {
 
     this.setState(newState, this.validateForm);
   };
+
   handleSignIn = async () => {
     const { history } = this.props;
     const { values } = this.state;
@@ -99,7 +98,7 @@ class SignIn extends Component {
       console.log(res);
       if (res.success === true) {
         localStorage.setItem('isAuthenticated', true);
-        history.push(`/${values.type}/dashboard`);
+        history.push('/dashboard');
       }
     }).catch(error => {
       this.setState({
@@ -108,6 +107,11 @@ class SignIn extends Component {
       });
     });
   }
+
+  componentWillUnmount() {
+    this.context.userDetails(this.state.values);
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -146,13 +150,13 @@ class SignIn extends Component {
                     className={classes.name}
                     variant="body1"
                   >
-                    B M Srinivasayya
+                    An online platform for all BMSCE lectures
                     </Typography>
                   <Typography
                     className={classes.bio}
                     variant="body2"
                   >
-                    Founder at BMS College of Engineering
+                    Made by the students for the students
                     </Typography>
                 </div>
               </div>

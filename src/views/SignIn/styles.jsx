@@ -23,7 +23,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(/images/principal.jpg)',
+    backgroundImage: 'url(/images/background.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -33,7 +33,7 @@ export default theme => ({
     flexBasis: '600px'
   },
   quoteText: {
-    color: theme.palette.danger.dark,
+    color: theme.palette.common.white,
     fontWeight: 300
   },
   name: {

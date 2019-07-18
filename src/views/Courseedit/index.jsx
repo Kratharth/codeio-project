@@ -18,18 +18,17 @@ import { CourseeditDetails } from 'components';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   }
 });
 
 class Coursecontrol extends Component {
-  state = { tabIndex: 0 };
 
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Course Edit" type={type} >
+      <DashboardLayout title="Course Edit" >
         <div className={classes.root}>
           <Grid
             container

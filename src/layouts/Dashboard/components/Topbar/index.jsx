@@ -15,7 +15,10 @@ import {
   IconButton,
   Popover,
   Toolbar,
-  Typography
+  Typography,
+  Button,
+  Menu,
+  MenuItem
 } from '@material-ui/core';
 
 // Material icons
@@ -25,13 +28,10 @@ import {
   NotificationsOutlined as NotificationsIcon,
   Input as InputIcon,
   Help,
+  Settings,
+  Person as PersonIcon,
+  Security
 } from '@material-ui/icons';
-import Settings from '@material-ui/icons/Settings'
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PersonIcon from '@material-ui/icons/Person';
-import Security from '@material-ui/icons/Security';
 // Shared services
 import { getNotifications } from 'services/notification';
 
@@ -162,18 +162,6 @@ class Topbar extends Component {
             <Button onClick={null}>
               <Help />
             </Button>
-            {/* <IconButton
-              className={classes.signOutButton}
-              onClick={this.handleSignOut}
-            >
-              <InputIcon />
-            </IconButton> */}
-            {/* <IconButton
-              className={classes.signOutButton}
-              onClick={this.handleSettings}
-            >
-              <Settings/>
-            </IconButton>   */}
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
               <Settings />
             </Button>
@@ -184,8 +172,8 @@ class Topbar extends Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem onClick={this.handleAccount}><PersonIcon />Account</MenuItem>
-              {/* <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem> */}
+              <MenuItem onClick={this.handleClose}><PersonIcon />Profile</MenuItem>
+              <MenuItem onClick={this.handleClose}><Security />Change Password</MenuItem>
               <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
             </Menu>
           </Toolbar>
