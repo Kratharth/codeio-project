@@ -24,7 +24,6 @@ import ProductListedit from './views/ProductListedit';
 import ProductList from './views/ProductList';
 import Videoplay from './views/Videoplay';
 import Videorecordguest from './views/Videorecordguest';
-import DepartmentDashboard from './views/DeptDashboard';
 
 export default class Routes extends Component {
   render() {
@@ -44,9 +43,30 @@ export default class Routes extends Component {
         /> */}
         <Route
           exact
-          path="/:type/departmentdashboard"
-          render={({ match }) =>
-            <DepartmentDashboard type={match.params.type} />
+          path="/admin/dashboard"
+          render={() =>
+            <DeptDashboard type="admin" />
+          }
+        />
+        <Route
+          exact
+          path="/department/dashboard"
+          render={() =>
+            <DeptDashboard type="department" />
+          }
+        />
+        <Route
+          exact
+          path="/lecturer/dashboard"
+          render={() =>
+            <DeptDashboard type="lecturer" />
+          }
+        />
+        <Route
+          exact
+          path="/student/dashboard"
+          render={() =>
+            <DeptDashboard type="student" />
           }
         />
 
