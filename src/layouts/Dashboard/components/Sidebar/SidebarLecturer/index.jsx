@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import {
   Avatar,
@@ -19,27 +13,22 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
   ListSubheader,
-  Typography
+  Collapse
 } from '@material-ui/core';
-
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
-  PeopleOutlined as PeopleIcon,
-  ShoppingBasketOutlined as ShoppingBasketIcon,
-  LockOpenOutlined as LockOpenIcon,
-  TextFields as TextFieldsIcon,
-  ImageOutlined as ImageIcon,
-  InfoOutlined as InfoIcon,
-  AccountBoxOutlined as AccountBoxIcon,
-  SettingsOutlined as SettingsIcon,
-  Help as Help
+  ExpandLess,
+  ExpandMore,
+  Book as BookIcon,
+  Videocam as VideoIcon,
+  DesktopWindows as DesktopIcon
 } from '@material-ui/icons';
-
-import BookIcon from '@material-ui/icons/Book';
-import VideoIcon from '@material-ui/icons/Videocam';
-import DesktopIcon from '@material-ui/icons/DesktopWindows';
+// import BookIcon from '@material-ui/icons/Book';
+// import VideoIcon from '@material-ui/icons/Videocam';
+// import DesktopIcon from '@material-ui/icons/DesktopWindows';
 
 // Component styles
 import styles from './styles';
@@ -56,6 +45,12 @@ class SidebarLecturer extends Component {
   componentWillMount() {
     // courses?(this.state.open1=true):(this.state.open1=false);
     myvideos ? (this.state.open2 = true) : (this.state.open2 = false);
+   //opening and closing of course-catalog
+  }
+  handleClick1=()=>{
+    this.setState({
+      open1:!this.state.open1
+    });
   }
   //opening and closing of course-catalog
   // handleClick1=()=>{
@@ -73,9 +68,9 @@ class SidebarLecturer extends Component {
       open2: !this.state.open2
     })
   }
+
   render() {
     const { classes, className } = this.props;
-    console.log(this.props)
     const rootClassName = classNames(classes.root, className);
 
     return (
@@ -119,11 +114,7 @@ class SidebarLecturer extends Component {
             Lecturer
           </Typography>
         </div>
-
-
         <Divider className={classes.profileDivider} />
-
-
         <List
           component="div"
           disablePadding
@@ -152,14 +143,14 @@ class SidebarLecturer extends Component {
           {/* <ListItem button onClick={this.handleClick1.bind(this)}
           className={classes.listItem}
           >
-           <ListItemIcon className={classes.listItemIcon}>
-          <BookIcon/>
-         </ListItemIcon >
+            <ListItemIcon className={classes.listItemIcon}>
+              <BookIcon/>
+            </ListItemIcon >
             <ListItemText  classes={{ primary: classes.listItemText }}
               primary="Course Catalog"/>
-          {!this.state.open1 ? <ExpandMore />: <ExpandLess />}
-        </ListItem>
-       <Collapse in={this.state.open1} timeout="auto" unmountOnExit>
+            {!this.state.open[0] ? <ExpandMore />: <ExpandLess />}
+          </ListItem>
+       {/* <Collapse in={this.state.open[0]} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
         <ListItem activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -264,7 +255,6 @@ class SidebarLecturer extends Component {
           </ListItem>
 
           {/*Record Videos*/}
-
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -280,10 +270,24 @@ class SidebarLecturer extends Component {
             />
           </ListItem>
 
-          {/*My Videos*/}
-
-          <ListItem button onClick={this.handleClick2}
+      {/*My Videos*/}
+      <ListItem
+            activeClassName={classes.activeListItem}
             className={classes.listItem}
+            component={newLink}
+            to="/lecturer/myvideos"
+          >
+            <ListItemIcon clsName={classes.listItemIcon}>
+              <VideoIcon/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="My Videos"
+            />
+          </ListItem>
+
+          {/* <ListItem button onClick={this.handleClick2}
+          className={classes.listItem}
           >
             <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
@@ -343,9 +347,7 @@ class SidebarLecturer extends Component {
               primary="Transfer Session"
             />
           </ListItem>
-
           {/*Videoedit*/}
-
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
@@ -363,7 +365,7 @@ class SidebarLecturer extends Component {
         </List>
 
 
-        {/* <Divider className={classes.listDivider} />
+        {/* <Divider className={classes.listDivider} /> */}
 
       <List
           component="div"
@@ -378,17 +380,17 @@ class SidebarLecturer extends Component {
             className={classes.listItem}
             className={classes.listItem}
             component={NavLink}
-            to="/lecturer/help"
+            to="/lecturer/videoedit"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <Help />
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Help and support"
+              primary="Video edit"
             />
           </ListItem>
-        </List> */}
+        </List>
       </div>
     );
   }

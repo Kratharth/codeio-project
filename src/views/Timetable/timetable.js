@@ -98,6 +98,9 @@ export default class MaterialTableDemo extends React.Component {
                     }, 600);
                 }),
             }}
+            options={{
+              actionsColumnIndex: -1
+            }}
             />
         );
     }

@@ -25,6 +25,7 @@ import {
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
+import { getCourseVideos } from 'services/coursevideo';
 import { getProducts } from 'services/product';
 
 // Custom components
@@ -34,6 +35,7 @@ import { ProductsToolbar } from './components';
 
 // Component styles
 import styles from './styles';
+//import Videoedit from 'views/Videoedit';
 
 class ProductList extends Component {
   signal = true;
@@ -43,21 +45,22 @@ class ProductList extends Component {
     limit: 6,
     products: [],
     productsTotal: 0,
-    error: null
+    error: null,
+    searchData:{},
+    products:[]
   };
 
-  async getProducts(limit) {
+  async getProducts() {
     try {
       this.setState({ isLoading: true });
-
-      const { products, productsTotal } = await getProducts(limit);
+      console.log(this.state.searchData);
+      // const { coursevideo } = await getCourseVideos(this.state.searchData);
+      const { products } = await getProducts();
 
       if (this.signal) {
         this.setState({
           isLoading: false,
-          products,
-          productsTotal,
-          limit
+          products
         });
       }
     } catch (error) {
@@ -70,12 +73,19 @@ class ProductList extends Component {
     }
   }
 
+  handleSearch=(searchData)=>{
+   this.setState({
+    searchData: searchData
+    })
+    
+  }
+
   componentWillMount() {
     this.signal = true;
 
     const { limit } = this.state;
 
-    this.getProducts(limit);
+    this.getProducts(); // api call for sem and dept here
   }
 
   componentWillUnmount() {
@@ -96,9 +106,11 @@ class ProductList extends Component {
 
     if (products.length === 0) {
       return (
-        <Typography variant="h6">There are no products available</Typography>
+        <Typography variant="h6">There are no videos available</Typography>
       );
     }
+    
+      
 
     return (
       <Grid
@@ -113,13 +125,14 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to="#">
+            <Link to={`/${this.props.type}/videoplay`} >
               <ProductCard product={product} />
             </Link>
           </Grid>
         ))}
       </Grid>
     );
+  
   }
 
   render() {
@@ -128,7 +141,7 @@ class ProductList extends Component {
     return (
       <DashboardLayout title="Videos" type={type}>
         <div className={classes.root}>
-          <ProductsToolbar />
+          <ProductsToolbar searchData={this.handleSearch}/>
           <div className={classes.content}>{this.renderProducts()}</div>
           <div className={classes.pagination}>
             <Typography variant="caption">1-6 of 20</Typography>

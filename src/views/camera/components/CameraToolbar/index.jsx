@@ -6,13 +6,14 @@ import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {postCameras} from 'services/camera';
+import { postCameras } from 'services/camera';
 // Material helpers
-import { withStyles , TextField } from '@material-ui/core';
-
+import { withStyles, TextField } from '@material-ui/core';
+// import csvtoJSON from 'convert-csv-to-json';
+import csv from 'convert-csv-to-json';
 // Material components
 import { Button, IconButton } from '@material-ui/core';
-
+import fs from 'fs';
 // Material icons
 import {
   ArrowDownward as ArrowDownwardIcon,
@@ -23,76 +24,90 @@ import {
 
 
 // Shared components
-import { DisplayMode, SearchInput, PortletHeader,
+import {
+  DisplayMode, SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
-  Portlet } from 'components';
+  Portlet
+} from 'components';
 
 // Component styles
 import styles from './styles';
 
 class CameraToolbar extends Component {
   state = {
-    open:false,
+    open: false,
     addClicked: false,
-    classroom:'',
-    cameraip:'',
-    status:''
+    classroom: '',
+    cameraip: '',
+    status: ''
   }
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
+  }
+
+  handleFile(e) {
+    console.log(e.target.files, '$$$$');
+    console.log(e.target.files[0]);
+    // const csvFilePath = e.target.files[0].name;
+    let d = fs.readFileSync(e.target.files[0]);
+    console.log(d);
+    let fileInputName = e.target.files[0].name;
+    let fileOutputName = 'myOutputFile.json';
+    // csv.generateJsonFileFromCsv(fileInputName, fileOutputName);
+    // console.log(fileOutputName);
   }
   showForm() {
     if (this.state.addClicked == true) {
-      const { classes, className,...rest} = this.props;
-    // const rootClassName = classNames(classes.root, className);
-    if (this.state.addClicked == true) {
-      return(
-      <Portlet
-      {...rest}
-      // className={rootClassName}
-    >
-      <PortletHeader>
-        <PortletLabel
-          subtitle="The information can be edited"
-          title="Add A Camera"
-        />
-      </PortletHeader>
-      <PortletContent noPadding>
-        <form
-          autoComplete="off"
-          noValidate
-        >
-          <div className={classes.field}>
-            <TextField
-              className={classes.textField}
-              // helperText="Please specify the Classroom"
-              label="Classroom"
-              id="classroom"
-              margin="dense"
-              required
-              variant="outlined"
-              onChange={e => this.setState({classroom: e.target.value})}
-            />
-            <TextField
-              className={classes.textField}
-              label="Camera IP"
-              id="cameraip"
-              margin="dense"
-              required
-              variant="outlined"
-              onChange={e => this.setState({cameraip: e.target.value})}
-            />
-          </div>
-          {/* <div className={classes.field}>
+      const { classes, className, ...rest } = this.props;
+      // const rootClassName = classNames(classes.root, className);
+      if (this.state.addClicked == true) {
+        return (
+          <Portlet
+            {...rest}
+          // className={rootClassName}
+          >
+            <PortletHeader>
+              <PortletLabel
+                subtitle="The information can be edited"
+                title="Add A Camera"
+              />
+            </PortletHeader>
+            <PortletContent noPadding>
+              <form
+                autoComplete="off"
+                noValidate
+              >
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    // helperText="Please specify the Classroom"
+                    label="Classroom"
+                    id="classroom"
+                    margin="dense"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ classroom: e.target.value })}
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="Camera IP"
+                    id="cameraip"
+                    margin="dense"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ cameraip: e.target.value })}
+                  />
+                </div>
+                {/* <div className={classes.field}>
             <TextField
               className={classes.textField}
               label="Email Address"
@@ -110,22 +125,22 @@ class CameraToolbar extends Component {
               variant="outlined"
             />
           </div> */}
-          <div className={classes.field}>
-             <TextField
-              className={classes.textField}
-              label="Select Status"
-              id="status"
-              margin="dense"
-              onChange= {e => this.setState({status: e.target.value})}
-              required
-              select
-              SelectProps={{ native: true }}
-              value={this.state.status}
-              variant="outlined">
-              <option value="offline">offline</option>
-              <option value="online">online</option>
-            </TextField> 
-             {/* <TextField
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    label="Select Status"
+                    id="status"
+                    margin="dense"
+                    onChange={e => this.setState({ status: e.target.value })}
+                    required
+                    select
+                    SelectProps={{ native: true }}
+                    value={this.state.status}
+                    variant="outlined">
+                    <option value="offline">offline</option>
+                    <option value="online">online</option>
+                  </TextField>
+                  {/* <TextField
               className={classes.textField}
               label="Server Name"
               margin="dense"
@@ -139,71 +154,65 @@ class CameraToolbar extends Component {
               required
               variant="outlined"
             />  */}
-          </div>
-        </form>
-      </PortletContent>
-      <PortletFooter className={classes.portletFooter}>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={this.verify.bind(this)}
-        >
-          Save details
+                </div>
+              </form>
+            </PortletContent>
+            <PortletFooter className={classes.portletFooter}>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={this.verify.bind(this)}
+              >
+                Save details
         </Button>
-        &nbsp;&nbsp;&nbsp;
-        <Button
-          color="primary"
-          variant="contained"
-        >
-           Import an Excel File
-        </Button>
-      </PortletFooter>
-    </Portlet>
-      );
-    }    
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label>Bulk Upload : </label>&nbsp;
+              <input type='file' name='camerafile' onChange={(e) => this.handleFile(e)} />
+            </PortletFooter>
+          </Portlet>
+        );
+      }
+    }
   }
-} 
-verify(ev)
-{
+  verify(ev) {
     ev.preventDefault()
-    if(document.getElementById("classroom").value=='')
-            alert('Classroom field is empty');
-     else if(document.getElementById("cameraip").value=='')
-        alert('Camera IP field is empty');
-        else if(document.getElementById("status").value=='')
-        alert('Status field is empty');
-        else 
-        this.submit();
-}
-submit(){
-    let classroom= this.state.classroom;
-    let cameraip=this.state.cameraip;
-    let status=this.state.status;
-    let link='https://www.google.com';
+    if (document.getElementById("classroom").value == '')
+      alert('Classroom field is empty');
+    else if (document.getElementById("cameraip").value == '')
+      alert('Camera IP field is empty');
+    else if (document.getElementById("status").value == '')
+      alert('Status field is empty');
+    else
+      this.submit();
+  }
+  submit() {
+    let classroom = this.state.classroom;
+    let cameraip = this.state.cameraip;
+    let status = this.state.status;
+    let link = 'https://www.google.com';
     console.log(classroom)
     console.log(cameraip)
     console.log(status)
     console.log(link)
 
-   let data = {
-        classroom,
-        cameraip,
-        status,
-        link
+    let data = {
+      classroom,
+      cameraip,
+      status,
+      link
     }
     postCameras(data)
-    .then(res => {
-      console.log(res)
-          if(res.camera==='Success')
-          { 
-            alert("Inserted Data");
-            window.location.reload();
-          }
-    })
-    .catch(err => {
+      .then(res => {
+        console.log(res)
+        if (res.camera === 'Success') {
+          alert("Inserted Data");
+          window.location.reload();
+        }
+      })
+      .catch(err => {
         alert(err);
-    })
-}
+      })
+  }
   addClicked = () => {
     this.setState({
       addClicked: !this.state.addClicked
@@ -212,28 +221,28 @@ submit(){
   showButton() {
     if (this.state.addClicked)
       return <Button
-      color="primary"
-      size="small"
-      variant="outlined"
-      onClick={this.addClicked}
-      >
-      Cancel
-    </Button>
-    else {
-      return (
-      <Button
         color="primary"
         size="small"
         variant="outlined"
         onClick={this.addClicked}
       >
-        Add
+        Cancel
+    </Button>
+    else {
+      return (
+        <Button
+          color="primary"
+          size="small"
+          variant="outlined"
+          onClick={this.addClicked}
+        >
+          Add
       </Button>
       );
     }
   }
   render() {
-    const { classes, className, selectedcamera,camera} = this.props;
+    const { classes, className, selectedcamera, camera } = this.props;
     const rootClassName = classNames(classes.root, className);
     // console.log(mapping)
     return (
@@ -283,10 +292,10 @@ submit(){
           </Button> */}
           {this.showButton()}
         </div>
-            <div>
-              {this.showForm()}
-            </div>
-            <br/><br/><br/>
+        <div>
+          {this.showForm()}
+        </div>
+        <br /><br /><br />
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
