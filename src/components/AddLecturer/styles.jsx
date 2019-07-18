@@ -18,7 +18,7 @@ export default theme => ({
   button: {
     margin: 20,
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(50 ),
+    marginRight: theme.spacing(50),
     width: 300
   },
   or: {
@@ -26,5 +26,4 @@ export default theme => ({
     marginRight: theme.spacing(20),
     color: theme.palette.primary.main
   }
-  });
-  
+});

@@ -261,7 +261,11 @@ export default class Routes extends Component {
           }
         />
         <Route
+<<<<<<< HEAD
           //component={SignUp}
+=======
+          // component={SignUp}
+>>>>>>> e9f3746444b90f50c21585b417841b6095358c0f
           exact
           path="/:type/transfer"
           render={({ match }) =>
@@ -275,12 +279,18 @@ export default class Routes extends Component {
         <Timetable type={match.params.type} />
         }
         />
+<<<<<<< HEAD
            <Route
           exact
+=======
+          {/* <Route */}
+        {/* exact
+>>>>>>> e9f3746444b90f50c21585b417841b6095358c0f
           path="/:type/view-time-table"
           render={({match}) =>
         <Icons type={match.params.type} />
         }
+<<<<<<< HEAD
         />  */}
         <Route
           exact
@@ -289,6 +299,16 @@ export default class Routes extends Component {
             <Timetable type={match.params.type} />
           }
         />
+=======
+        />
+        <Route
+          exact
+          path="/:type/create-time-table"
+          render={({match}) =>
+        <Timetable type={match.params.type} />
+        }
+        /> */}
+>>>>>>> e9f3746444b90f50c21585b417841b6095358c0f
         <Route
           exact
           path="/adduser/:userType"
