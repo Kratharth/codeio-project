@@ -88,7 +88,6 @@ class Topbar extends Component {
   };
   handleAccount = () => {
     const { history } = this.props;
-    localStorage.setItem('isAuthenticated', false);
     history.push('/account');
   };
 
