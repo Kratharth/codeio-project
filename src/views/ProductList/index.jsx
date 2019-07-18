@@ -125,7 +125,7 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to={`/${this.props.type}/videoplay`} >
+            <Link to='/videoplay' >
               <ProductCard product={product} />
             </Link>
           </Grid>
@@ -139,7 +139,7 @@ class ProductList extends Component {
     const { classes,type } = this.props;
 
     return (
-      <DashboardLayout title="Videos" type={type}>
+      <DashboardLayout title="Videos">
         <div className={classes.root}>
           <ProductsToolbar searchData={this.handleSearch}/>
           <div className={classes.content}>{this.renderProducts()}</div>
@@ -159,8 +159,7 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student'])
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ProductList);

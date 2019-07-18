@@ -14,7 +14,7 @@ import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
 // import { getUsers } from 'services/user';
-import {getMappings} from 'services/mapping';
+import { getMappings } from 'services/mapping';
 
 // Custom components
 import { MappingToolbar, MappingTable } from './components';
@@ -40,7 +40,7 @@ class MappingList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const {mapping, mappingTotal} = await(getMappings(limit))
+      const { mapping, mappingTotal } = await (getMappings(limit))
 
       if (this.signal) {
         this.setState({
@@ -102,13 +102,13 @@ class MappingList extends Component {
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
     const { selectedmapping } = this.state;
 
     return (
-      <DashboardLayout title="Mapping" type={type}>
+      <DashboardLayout title="Mapping">
         <div className={classes.root}>
-          <MappingToolbar selectedmapping={selectedmapping} mapping={this.state.mapping}/>
+          <MappingToolbar selectedmapping={selectedmapping} mapping={this.state.mapping} />
           <div className={classes.content}>{this.renderMappings()}</div>
         </div>
       </DashboardLayout>

@@ -21,6 +21,9 @@ import './assets/scss/index.scss';
 // Routes
 import Routes from './Routes';
 
+//User Context
+import { UserContextProvider } from './userContext';
+
 // Browser history
 const browserHistory = createBrowserHistory();
 
@@ -32,11 +35,13 @@ Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
 export default class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <Router history={browserHistory}>
-          <Routes />
-        </Router>
-      </ThemeProvider>
+      <UserContextProvider>
+        <ThemeProvider theme={theme}>
+          <Router history={browserHistory}>
+            <Routes />
+          </Router>
+        </ThemeProvider>
+      </UserContextProvider>
     );
   }
 }

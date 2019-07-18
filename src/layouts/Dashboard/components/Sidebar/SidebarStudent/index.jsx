@@ -13,75 +13,40 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  Collapse
+  Typography
 } from '@material-ui/core';
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
   Book as BookIcon,
-  ExpandLess,
-  ExpandMore
+  Videocam as VideoIcon
 } from '@material-ui/icons';
 
-import VideoIcon from'@material-ui/icons/Videocam';
 // Component styles
 import styles from './styles';
-// import { SidebarStudent } from '../..';
-let courses=false;
+
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
 
-  //opening and closing of course-catalog
-
-  // state ={
-  //    open1:false,
-  //   //anchorEl:null
-  // }
-  // componentWillMount(){
-  //   courses?(this.state.open1=true):(this.state.open1=false);
-  // }
-  // handleClick1= ()=>{
-  //   courses=true;
-  //   this.setState({
-  //     open1:!this.state.open1
-  //   })
-  // }
-  // handleClick1=(event)=>{
-  //   this.setState({
-  //     anchorEl: event.currentTarget
-  //   })
-  // };
-  
-  // handleClose=(event)=>{
-  //   this.setState({
-  //     anchorEl: null
-  //   })
-  // }
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
     return (
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
-        {/* Bmsce logo */}
-          <Link
-            className={classes.logoLink}
-            to="/"
-          >
+          {/* Bmsce logo */}
           <img
-              alt="BMSCE Logo"
-              className={classes.logoImage}
-              src="/images/bmslogo.png"
-            />
-          </Link>
-          &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+            alt="BMSCE Logo"
+            className={classes.logoImage}
+            src="/images/bmslogo.png"
+          />
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
         {/* student details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
-          <Link to="/student/account">
+          <Link to="/account">
             <Avatar
               alt="Kratharth Hegde"
               className={classes.avatar}
@@ -111,7 +76,7 @@ class SidebarStudent extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/student/dashboard"
+            to="/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -122,19 +87,20 @@ class SidebarStudent extends Component {
             />
           </ListItem>
           {/* Course Catalog */}
-
-{/* 
-          <ListItem button onClick={this.handleClick1}
-          className={classes.listItem}
+          {/* <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/courses"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <BookIcon/>
+              <BookIcon />
             </ListItemIcon >
-            <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Course Catalog"/>
-            {!this.state.open ? <ExpandMore />: <ExpandLess />}
-        </ListItem>
-       <Collapse in={this.state.open1} timeout="auto" unmountOnExit> */}
+            <ListItemText classes={{ primary: classes.listItemText }}
+              primary="Videos" />
+            {/*{!this.state.open ? <ExpandMore />: <ExpandLess />}
+          </ListItem>
+          <Collapse in={this.state.open1} timeout="auto" unmountOnExit> */}
           {/* <Popover 
             anchorEl={this.state.anchorEl}
             open={Boolean(this.state.anchorEl)}
@@ -148,7 +114,7 @@ class SidebarStudent extends Component {
               horizontal: 'left',
             }}
             > */}
-            {/* <List component="div" disablePadding>
+          {/* <List component="div" disablePadding>
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
@@ -230,8 +196,8 @@ class SidebarStudent extends Component {
                   primary="SEM-8"/>
               </ListItem>
             </List> */}
-            {/* </Popover> */}
-          {/* </Collapse> */}
+          {/* </Popover> 
+          </Collapse>*/}
 
 
           {/*Videos*/}
@@ -240,16 +206,16 @@ class SidebarStudent extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/student/sem1"
+            to="/courses"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
+          </ListItem>
         </List>
       </div>
     );

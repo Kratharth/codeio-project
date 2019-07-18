@@ -36,8 +36,7 @@ class Footer extends Component {
           align="center"
         >
           &copy; CODE I/O 2019
-        </Typography>
-        <Typography align="center" >
+          <br />
           Created for BMSCE students.All Rights Reserved
         </Typography>
       </div>

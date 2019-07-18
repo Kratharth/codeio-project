@@ -32,7 +32,6 @@ import {ProductCard} from 'components';
 import { ProductsToolbar } from './components';
 import {ProductCardEdit}  from 'components';
 
-
 // Component styles
 import styles from './styles';
 
@@ -114,7 +113,7 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to={`/${this.props.type}/videoedit`} >
+            <Link to='/videoedit' >
               <ProductCardEdit product={product} />
             </Link>
           </Grid>
@@ -124,10 +123,10 @@ class ProductList extends Component {
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Videos" type={type}>
+      <DashboardLayout title="Videos">
         <div className={classes.root}>
           <ProductsToolbar />
           <div className={classes.content}>{this.renderProducts()}</div>
@@ -147,8 +146,7 @@ class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-  classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','student'])
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ProductList);

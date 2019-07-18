@@ -1,392 +1,186 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import LinearProgress from '@material-ui/core/LinearProgress';
+// user context
+import UserContext from './userContext/userContext';
 // Views
-import Dashboard from './views/Dashboard';
-import UserList from './views/UserList';
-import Typography from './views/Typography';
-import Icons from './views/Icons';
-import Account from './views/Account';
-import Settings from './views/Settings';
-import SignIn from './views/SignIn';
-import MappingList from './views/mapping';
-import ProcessorList from './views/processor';
-import CameraList from './views/camera';
-import Timetable from 'views/Timetable';
-import AddUser from './views/Admin/index';
-import TransferSession from './components/TransferSession/index';
-import NotFound from './views/NotFound';
-import Videocontrol from './views/Videocontrol';
-import Videoedit from './views/Videoedit';
-import Courseedit from './views/Courseedit';
-//import MyVideos from './views/MyVideos';
-import ProductListedit from './views/ProductListedit';
-import ProductList from './views/ProductList';
-import Videoplay from './views/Videoplay';
-import Videorecordguest from './views/Videorecordguest';
+const Dashboard = React.lazy(() => import('./views/Dashboard'));
+//const UserList = React.lazy(() => import('./views/UserList'));
+const Typography = React.lazy(() => import('./views/Typography'));
+const Icons = React.lazy(() => import('./views/Icons'));
+const Account = React.lazy(() => import('./views/Account'));
+const Settings = React.lazy(() => import('./views/Settings'));
+const SignIn = React.lazy(() => import('./views/SignIn'));
+const MappingList = React.lazy(() => import('./views/mapping'));
+const ProcessorList = React.lazy(() => import('./views/processor'));
+const CameraList = React.lazy(() => import('./views/camera'));
+const Timetable = React.lazy(() => import('./views/Timetable'));
+const AddUser = React.lazy(() => import('./views/Admin'));
+//const TransferSession = React.lazy(() => import('./components/TransferSession'));
+const NotFound = React.lazy(() => import('./views/NotFound'));
+const Videocontrol = React.lazy(() => import('./views/Videocontrol'));
+const Videoedit = React.lazy(() => import('./views/Videoedit'));
+const Courseedit = React.lazy(() => import('./views/Courseedit'));
+const ProductList = React.lazy(() => import('./views/ProductList'));
+const ProductListedit = React.lazy(() => import('./views/ProductListedit'));
+const Videoplay = React.lazy(() => import('./views/Videoplay'));
+const Videorecordguest = React.lazy(() => import('./views/Videorecordguest'));
 
 export default class Routes extends Component {
   render() {
     return (
-      <Switch>
-        <Redirect
-          exact
-          from="/"
-          to="/sign-in"
-        />
-        <Route
-          exact
-          path="/:type/dashboard"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />
-          }
-        />
+      <Suspense fallback={<LinearProgress />}>
+        <Switch>
+          <Redirect
+            exact
+            from="/"
+            to="/sign-in"
+          />
+          <Route
+            exact
+            path="/dashboard"
+            component={Dashboard}
+          />
+          <Route
+            exact
+            path="/account"
+            component={Account}
+          />
+          <Route
+            exact
+            path="/courses"
+            component={ProductList}
+          />
 
-        <Route
-          exact
-          path="/:type/sem1"
-          render={({ match }) =>
-            <ProductList type={match.params.type} />
-          }
-        />
-
-        {/* <Route
-           exact
-           path="/:type/sem7"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem8"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem1"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem2"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem3"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem4"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem5"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
-          />
-             <Route
-           exact
-           path="/:type/sem6"
-           render={({match}) =>
-          <ProductList type={match.params.type} />
-          }
+          {/* <Route
+            exact
+            path="/sem1"
+            render={({ match }) =>
+              <ProductList type={match.params.type} />
+            }
           /> */}
-        <Route
-          exact
-          path="/:type/camera"
-          render={({ match }) =>
-            <CameraList type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/mapping"
-          render={({ match }) =>
-            <MappingList type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/processor"
-          render={({ match }) =>
-            <ProcessorList type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/subjects"
-          render={({ match }) =>
-            <Typography type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/department"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/classrooms"
-          render={({ match }) =>
-            <Typography type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/deletevideos"
-          render={({ match }) =>
-            <Settings type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/addschedule"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/record"
-          render={({ match }) =>
-            <Videocontrol type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/videorecordguest"
-          render={({ match }) =>
-            <Videorecordguest type={match.params.type} />
-          }
-        />
-        {/*added route for videoedit*/}
+          <Route
+            exact
+            path="/camera"
+            component={CameraList}
+          />
+          <Route
+            exact
+            path="/mapping"
+            component={MappingList}
+          />
+          <Route
+            exact
+            path="/processor"
+            component={ProcessorList}
+          />
+          <Route
+            exact
+            path="/subjects"
+            component={Typography}
+          />
+          <Route
+            exact
+            path="/department"
+            component={Dashboard}
+          />
+          <Route
+            exact
+            path="/classrooms"
+            component={Typography}
+          />
+          <Route
+            exact
+            path="/deletevideos"
+            component={Settings}
+          />
+          <Route
+            exact
+            path="/addschedule"
+            component={Dashboard}
+          />
+          <Route
+            exact
+            path="/record"
+            component={Videocontrol}
+          />
+          <Route
+            exact
+            path="/videorecordguest"
+            component={Videorecordguest}
+          />
+          {/*added route for videoedit*/}
 
-        <Route
-          exact
-          path="/:type/videoedit"
-          render={({ match }) =>
-            <Videoedit type={match.params.type} />
-          }
-        />
+          <Route
+            exact
+            path="/videoedit"
+            component={Videoedit}
+          />
 
-        {/*added route for videoplay*/}
-        <Route
-          exact
-          path="/:type/videoplay"
-          render={({ match }) =>
-            <Videoplay type={match.params.type} />
-          }
-        />
+          {/*added route for videoplay*/}
+          <Route
+            exact
+            path="/videoplay"
+            component={Videoplay}
+          />
 
+          {/*added route for courseedit*/}
+          <Route
+            exact
+            path="/courseedit"
+            component={Courseedit}
+          />
 
+          <Route
+            exact
+            path="/myvideos"
+            component={ProductListedit}
+          />
+          {/* <Route
+            exact
+            path="/processor"
 
-        {/*added route for courseedit*/}
-
-        <Route
-          exact
-          path="/:type/courseedit"
-          render={({ match }) =>
-            <Courseedit type={match.params.type} />
-          }
-        />
-
-        <Route
-          exact
-          path="/:type/myvideos"
-          render={({ match }) =>
-            <ProductListedit type={match.params.type} />
-          }
-        />
-
-
-
-        <Route
-          exact
-          path="/:type/ds"
-          render={({ match }) =>
-            <Typography type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/cn"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/iot"
-          render={({ match }) =>
-            <Icons type={match.params.type} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/processor"
-          render={({ match }) =>
-            <UserList type={match.params.type} />
-          }
-        />
-        {/* <Route
-          component={SignUp}
+            render={({ match }) =>
+              <UserList type={match.params.type} />
+            }
+          /> */}
+          {/* <Route
           exact
           path="/:type/transfer"
           render={({match}) =>
         <TransferSession type={match.params.type} />
         }
-        />
-        <Route
-          exact
-          path="/:type/create-time-table"
-          render={({match}) =>
-        <Timetable type={match.params.type} />
-        }
-        />
-          {/* <Route
-          exact
-          path="/:type/view-time-table"
-          render={({match}) =>
-        <Icons type={match.params.type} />
-        }
-        /> */}
-        <Route
-          exact
-          path="/:type/create-time-table"
-          render={({match}) =>
-        <Timetable type={match.params.type} />
-        }
-        />
-        <Route
-          exact
-          path="/adduser/:userType"
-          render={({ match }) =>
-            <AddUser type="admin" userType={match.params.userType} />
-          }
-        />
-        <Route
-          exact
-          path="/:type/camera"
-          render={({ match }) =>
-            <CameraList type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/mapping"
-          render={({ match }) =>
-            <MappingList type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/processor"
-          render={({ match }) =>
-            <ProcessorList type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/subjects"
-          render={({ match }) =>
-            <Typography type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/department"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/classrooms"
-          render={({ match }) =>
-            <Typography type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/deletevideos"
-          render={({ match }) =>
-            <Settings type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/addschedule"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/record"
-          render={({ match }) =>
-            <Videocontrol type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/videoedit"
-          render={({ match }) =>
-            <Videoedit type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/courseedit"
-          render={({ match }) =>
-            <Courseedit type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/ds"
-          render={({ match }) =>
-            <Typography type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/cn"
-          render={({ match }) =>
-            <Dashboard type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/iot"
-          render={({ match }) =>
-            <Icons type={match.params.type} />}
-        />
-        <Route
-          exact
-          path="/:type/processor"
-          render={({ match }) =>
-            <UserList type={match.params.type} />}
-        />
-        <Route
-          component={SignIn}
-          exact
-          path="/sign-in"
-        />
-        <Route
-          component={NotFound}
-          exact
-          path="/not-found"
-        />
-        <Route
-          component={AddUser}
-          exact
-          path="/AddUser"
-        />
-        <Redirect to="/not-found" />
-      </Switch>
+      />*/}
+          <Route
+            exact
+            path="/create-time-table"
+            component={Timetable}
+          />
+          <Route
+            exact
+            path="/adduser/:userType"
+            render={({ match }) =>
+              <AddUser userType={match.params.userType} />
+            }
+          />
+          <Route
+            exact
+            path="/sign-in"
+            component={SignIn}
+          />
+          <Route
+            component={NotFound}
+            exact
+            path="/not-found"
+          />
+          <Route
+            component={AddUser}
+            exact
+            path="/AddUser"
+          />
+          <Redirect to="/not-found" />
+        </Switch>
+      </Suspense>
     );
   }
 }

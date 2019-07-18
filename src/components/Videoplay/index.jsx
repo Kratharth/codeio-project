@@ -34,11 +34,11 @@ import styles from './styles';
 
 class Videoplay extends Component {
   state = {
-   values:{
-    title:'',
-    description:'',
-    edit:''
-  },
+    values: {
+      title: '',
+      description: '',
+      edit: ''
+    },
 
   };
 
@@ -50,38 +50,38 @@ class Videoplay extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { title,description,edit } = this.state;
+    const { title, description, edit } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
     return (
       <Card className={classes.card}>
-          <CardActionArea>
+        <CardActionArea>
           <ReactPlayer
 
-          url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
-          poster="/myPoster.png"
-          width="auto"
-          height="auto"
-          autoplay
-          controls
+            url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
+            poster="/myPoster.png"
+            width="auto"
+            height="auto"
+            autoPlay
+            controls
           />
 
 
-         </CardActionArea>
-          <div>
-        <Paper className={classes.root}>
-          <Typography variant="h5" component="h3">
-            Title
+        </CardActionArea>
+        <div>
+          <Paper className={classes.root}>
+            <Typography variant="h5" component="h3">
+              Title
           </Typography>
-          <Typography component="p">
+            <Typography component="p">
 
-  Description about video.
+              Description about video.
           </Typography>
-        </Paper>
-      </div>
+          </Paper>
+        </div>
 
-        </Card>
+      </Card>
 
     );
   }

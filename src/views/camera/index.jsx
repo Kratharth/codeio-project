@@ -14,7 +14,7 @@ import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
 // import { getUsers } from 'services/user';
-import {getCameras} from 'services/camera';
+import { getCameras } from 'services/camera';
 
 // Custom components
 import { CameraToolbar, CameraTable } from './components';
@@ -40,7 +40,7 @@ class CameraList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const {camera} = await(getCameras())
+      const { camera } = await (getCameras())
 
       if (this.signal) {
         this.setState({
@@ -102,13 +102,13 @@ class CameraList extends Component {
   }
 
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
     const { selectedcamera } = this.state;
 
     return (
-      <DashboardLayout title="Camera" type={type}>
+      <DashboardLayout title="Camera" >
         <div className={classes.root}>
-          <CameraToolbar selectedcamera={selectedcamera} camera={this.state.camera}/>
+          <CameraToolbar selectedcamera={selectedcamera} camera={this.state.camera} />
           <div className={classes.content}>{this.renderCameras()}</div>
         </div>
       </DashboardLayout>
