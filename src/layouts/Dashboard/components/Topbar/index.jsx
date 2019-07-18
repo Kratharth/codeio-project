@@ -159,11 +159,7 @@ class Topbar extends Component {
                 <NotificationsIcon />
               </Badge>
             </Button>
-<<<<<<< HEAD
-            <Button onClick="">
-=======
             <Button onClick={null}>
->>>>>>> e9f3746444b90f50c21585b417841b6095358c0f
               <Help />
             </Button>
             {/* <IconButton
@@ -188,13 +184,8 @@ class Topbar extends Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
             >
-<<<<<<< HEAD
               <MenuItem onClick={this.handleAccount}><PersonIcon />Account</MenuItem>
               {/* <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem> */}
-=======
-              <MenuItem onClick={this.handleClose}><PersonIcon />Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}><Security />Change Password</MenuItem>
->>>>>>> e9f3746444b90f50c21585b417841b6095358c0f
               <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
             </Menu>
           </Toolbar>
