@@ -27,7 +27,7 @@ class Timetable extends Component {
   state = { tabIndex: 0 };
 
   render() {
-    const { classes,type } = this.props;
+    const { classes, type } = this.props;
 
     return (
       <DashboardLayout title="Timetable" type={type}>
@@ -63,7 +63,7 @@ class Timetable extends Component {
 
 Timetable.propTypes = {
   classes: PropTypes.object.isRequired,
-  type: PropTypes.oneOf(['admin','department','lecturer','department'])
+  type: PropTypes.oneOf(['admin', 'department', 'lecturer', 'department'])
 };
 
 export default withStyles(styles)(Timetable);
