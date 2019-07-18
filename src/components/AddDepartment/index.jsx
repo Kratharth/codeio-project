@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { Button, TextField } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import { Divider } from '@material-ui/core';
 
 // Component styles
 import styles from './styles';
-import MaterialTableDemo from './Table';
+import DepartmentTable from './Table';
 
 class AddDepartment extends Component {
   state = {
@@ -17,8 +13,8 @@ class AddDepartment extends Component {
     code: '',
     email: '',
   };
-  
-  
+
+
 
   handleChangeName = e => {
     this.setState({
@@ -38,14 +34,14 @@ class AddDepartment extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name, code, email} = this.state;
+    const { name, code, email } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
     return (
-          <div>
-            <MaterialTableDemo />
-          </div>
+      <div>
+        <DepartmentTable />
+      </div>
     );
   }
 }

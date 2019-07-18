@@ -49,7 +49,7 @@ class Topbar extends Component {
     notificationsLimit: 4,
     notificationsCount: 0,
     notificationsEl: null,
-    anchorEl :null
+    anchorEl: null
   };
 
   async getNotifications() {
@@ -100,12 +100,12 @@ class Topbar extends Component {
   };
   handleClose = () => {
     this.setState({
-      anchorEl:null
+      anchorEl: null
     })
   }
-  openMenu = event =>{
+  openMenu = event => {
     this.setState({
-      anchorEl : event.currentTarget
+      anchorEl: event.currentTarget
     })
   }
   render() {
@@ -151,8 +151,8 @@ class Topbar extends Component {
                 <NotificationsIcon />
               </Badge>
             </Button>
-            <Button onClick="">
-              <Help/>
+            <Button onClick={null}>
+              <Help />
             </Button>
             {/* <IconButton
               className={classes.signOutButton}
@@ -160,26 +160,26 @@ class Topbar extends Component {
             >
               <InputIcon />
             </IconButton> */}
-             {/* <IconButton
+            {/* <IconButton
               className={classes.signOutButton}
               onClick={this.handleSettings}
             >
               <Settings/>
             </IconButton>   */}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
-            <Settings/>
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={this.state.anchorEl}
-        keepMounted
-        open={Boolean(this.state.anchorEl)}
-        onClose={this.handleClose}
-      >
-        <MenuItem onClick={this.handleClose}><PersonIcon/>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem>
-        <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
-      </Menu>
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
+              <Settings />
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={Boolean(this.state.anchorEl)}
+              onClose={this.handleClose}
+            >
+              <MenuItem onClick={this.handleClose}><PersonIcon />Profile</MenuItem>
+              <MenuItem onClick={this.handleClose}><Security />Change Password</MenuItem>
+              <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
+            </Menu>
           </Toolbar>
         </div>
         <Popover
@@ -215,7 +215,7 @@ Topbar.propTypes = {
 };
 
 Topbar.defaultProps = {
-  onToggleSidebar: () => {}
+  onToggleSidebar: () => { }
 };
 
 export default compose(

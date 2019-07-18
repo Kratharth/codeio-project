@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
-import MaterialTableDemo from './Table';
+import LecturerTable from './Table';
+import { getDepartment } from 'services/DepartmentDetails/index';
+
 import styles from './styles';
 
 class AddLecturer extends Component {
@@ -14,21 +14,53 @@ class AddLecturer extends Component {
     name: '',
     id: '',
     email: '',
-    department: '',
+    department: [],
+    departmentselected: '',
     displaySearchResults: false,
     displayTable: false,
   };
-  
+
+  async getDepartment() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { department } = await (getDepartment())
+
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          department
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getDepartment();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
   renderTable() {
     if (this.state.displayTable) {
       return (
-          <div>
-            <center>Students Record</center>
-            <Divider />
-            <MaterialTableDemo />
-          </div>
+        <div>
+          <center>Lecturers Record</center>
+          <br />
+          <LecturerTable />
+        </div>
       );
-    } 
+    }
   };
 
   renderSearchResults() {
@@ -36,16 +68,16 @@ class AddLecturer extends Component {
       return (
         <div>
           <center>Search Results</center>
-          <Divider />
-          <MaterialTableDemo />
+          <br />
+          <LecturerTable />
         </div>
-     );
+      );
     }
   }
-  
+
   clicked1 = (e) => {
     this.setState({
-      displayTable: !this.state.displayTable,
+      displayTable: true,
       displaySearchResults: false,
     });
   }
@@ -53,12 +85,12 @@ class AddLecturer extends Component {
   clicked2 = (e) => {
     this.setState({
       displayTable: false,
-      displaySearchResults: !this.state.displaySearchResults
+      displaySearchResults: true,
     });
   }
 
 
-  handleChangeName = e => {
+  handleChangeName = (e) => {
     this.setState({
       name: e.target.value
     });
@@ -66,16 +98,16 @@ class AddLecturer extends Component {
 
   handleChangeDepartment = e => {
     this.setState({
-      department: e.target.value
+      departmentselected: e.target.value
     });
   };
 
-  handleChangeId = e => {
+  handleChangeId = (e) => {
     this.setState({
       id: e.target.value
     });
   };
-  handleChangeEmail = e => {
+  handleChangeEmail = (e) => {
     this.setState({
       email: e.target.value
     });
@@ -83,7 +115,7 @@ class AddLecturer extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name, id, email, department} = this.state;
+    const { name, id, email, department, departmentselected } = this.state;
     const rootClassName = classNames(classes.root, className);
     return (
       <div className={rootClassName}>
@@ -98,22 +130,15 @@ class AddLecturer extends Component {
               select
               label="Department"
               className={classes.textField}
-              value={department}
+              value={departmentselected}
               onChange={this.handleChangeDepartment}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu,
-                },
-              }}
-              helperText="Please select the department"
               margin="normal"
+              helperText="Please select the department"
+
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"ISE"}>Information Science and Engineering</MenuItem>
-              <MenuItem value={"CSE"}>Computer Science and Engineering</MenuItem>
-              <MenuItem value={"CE"}>Chemical Engineering</MenuItem>
+              {department.map((dept) =>
+                <MenuItem key={dept.name} value={dept.name}>{dept.name}</MenuItem>
+              )}
             </TextField>
             <TextField
               id="outlined-id"
@@ -123,10 +148,10 @@ class AddLecturer extends Component {
               className={classes.textField}
               margin="normal"
               helperText="Please enter the lecturer Id"
-            /> 
+            />
           </div>
           <div>
-          <Divider variant = 'fullWidth'/>   
+            <Divider variant='fullWidth' />
             <Button
               color="primary"
               variant="contained"
