@@ -86,12 +86,15 @@ class SignIn extends Component {
       password
     }
     signIn(data).then(res => {
-      console.log(res);
       if (res.success === true) {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
         history.push(`${values.type}/dashboard`);
+      }
+      else {
+        alert("Something unexpected has occurred :( ");
+        this.setState({ isLoading: false });
       }
     }).catch(error => {
       this.setState({
