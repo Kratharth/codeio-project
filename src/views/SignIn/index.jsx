@@ -90,7 +90,7 @@ class SignIn extends Component {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
-        history.push(`${values.type}dashboard`);
+        history.push(`/${values.type}dashboard`);
       }
       else {
         alert("Something unexpected has occurred :( ");
@@ -105,9 +105,7 @@ class SignIn extends Component {
   }
 
   componentWillUnmount() {
-    const name = localStorage.getItem('name');
-    const type = localStorage.getItem('type');
-    this.context.userDetails({ name, type });
+    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type')});
   }
 
   render() {

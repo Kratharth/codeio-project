@@ -1,31 +1,30 @@
 
 import { green } from '@material-ui/core/colors';
-import { Button } from '@material-ui/core';
 
 export default theme => ({
 
   field: {
-    margin: theme.spacing.unit * 3
+    margin: theme.spacing(3)
   },
   textField: {
     width: '420px',
     maxWidth: '100%',
-    marginRight: theme.spacing.unit * 3
+    marginRight: theme.spacing(3)
   },
   portletFooter: {
-    paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
   },
   palette: {
     primary: green,
   },
   margin: {
-      margin: theme.spacing(1),
-    },
+    margin: theme.spacing(1),
+  },
 
-    root: {
+  root: {
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 16,
@@ -47,13 +46,13 @@ export default theme => ({
       '"Segoe UI Symbol"',
     ].join(','),
     '&:hover': {
-    //  backgroundColor: '#0069d9',
+      //  backgroundColor: '#0069d9',
       //borderColor: '#0062cc',
     },
     '&:active': {
       boxShadow: 'none',
-    //  backgroundColor: '#0062cc',
-    //  borderColor: '#005cbf',
+      //  backgroundColor: '#0062cc',
+      //  borderColor: '#005cbf',
     },
     '&:focus': {
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',

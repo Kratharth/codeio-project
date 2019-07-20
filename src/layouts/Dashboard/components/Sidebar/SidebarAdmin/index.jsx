@@ -29,13 +29,11 @@ import {
 } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
-
-// let time_table = false;
-// let users = false;
-// let devices = false;
-// let academics = false;
+// User Context
+import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+let newOpen = [false,false];
 
 class SidebarAdmin extends Component {
   // state = {
@@ -95,17 +93,16 @@ class SidebarAdmin extends Component {
   //   })
   // }
 
+  static contextType = UserContext;
+   
+
   state = {
-    open: [
-      false,
-      false
-    ]
+    open: newOpen
   }
 
   handleClick = e => {
-    const newOpen = this.state.open;
-    newOpen[e.currentTarget.dataset.open_id] = !newOpen[e.currentTarget.dataset.open_id];
-    this.setState({ newOpen });
+    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
+    this.setState({ open: newOpen });
   }
 
   render() {
@@ -137,7 +134,7 @@ class SidebarAdmin extends Component {
             className={classes.nameText}
             variant="h6"
           >
-            Anil {/* admin name */}
+            {this.context.user.name} {/* admin name */}
           </Typography>
           <Typography
             className={classes.bioText}
@@ -188,7 +185,7 @@ class SidebarAdmin extends Component {
             component={newLink}
             to="/courses"
           >
-            <ListItemIcon clsName={classes.listItemIcon}>
+            <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
             </ListItemIcon>
             <ListItemText

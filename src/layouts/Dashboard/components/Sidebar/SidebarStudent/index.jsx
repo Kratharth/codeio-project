@@ -18,16 +18,17 @@ import {
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
-  Book as BookIcon,
   Videocam as VideoIcon
 } from '@material-ui/icons';
-
 // Component styles
 import styles from './styles';
+//User Context
+import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 
 class SidebarStudent extends Component {
+  static contextType = UserContext;
 
   render() {
     const { classes, className } = this.props;
@@ -48,7 +49,7 @@ class SidebarStudent extends Component {
         <div className={classes.profile}>
           <Link to="/account">
             <Avatar
-              alt="Kratharth Hegde"
+              alt="BMS logo"
               className={classes.avatar}
               src="/images/bmslogo.png"
             />
@@ -57,7 +58,7 @@ class SidebarStudent extends Component {
             className={classes.nameText}
             variant="h6"
           >
-            Kratharth {/* student name */}
+            {this.context.user.name} {/* student name */}
           </Typography>
           <Typography
             className={classes.bioText}
@@ -86,122 +87,8 @@ class SidebarStudent extends Component {
               primary="Dashboard"
             />
           </ListItem>
-          {/* Course Catalog */}
-          {/* <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/courses"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <BookIcon />
-            </ListItemIcon >
-            <ListItemText classes={{ primary: classes.listItemText }}
-              primary="Videos" />
-            {/*{!this.state.open ? <ExpandMore />: <ExpandLess />}
-          </ListItem>
-          <Collapse in={this.state.open1} timeout="auto" unmountOnExit> */}
-          {/* <Popover 
-            anchorEl={this.state.anchorEl}
-            open={Boolean(this.state.anchorEl)}
-            onClose={this.handleClose}
-            anchorOrigin={{
-              vertical: 'center',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            > */}
-          {/* <List component="div" disablePadding>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem1">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-1"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem2">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-2"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem3">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-3"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem4">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-4"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem5">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-5"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem6">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-6"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem7">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-7"/>
-              </ListItem>
-              <ListItem activeClassName={classes.activeListItem}
-                className={classes.listItem}
-                component={newLink}
-                to="/student/sem8">
-                <ListItemIcon className={classes.sublistItemIcon}>
-                  <BookIcon/>
-                </ListItemIcon>
-                <ListItemText  classes={{ primary: classes.listItemText }}
-                  primary="SEM-8"/>
-              </ListItem>
-            </List> */}
-          {/* </Popover> 
-          </Collapse>*/}
-
 
           {/*Videos*/}
-
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
