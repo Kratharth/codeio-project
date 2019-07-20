@@ -213,7 +213,7 @@ class SidebarAdmin extends Component {
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
-                to="/addUser/admin">
+                to="/addUser/Admin">
                 <ListItemIcon className={classes.sublistItemIcon}>
                   <PeopleIcon />
                 </ListItemIcon>
@@ -223,7 +223,7 @@ class SidebarAdmin extends Component {
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
-                to="/addUser/department">
+                to="/addUser/Department">
                 <ListItemIcon className={classes.sublistItemIcon}>
                   <PeopleIcon />
                 </ListItemIcon>
@@ -233,7 +233,7 @@ class SidebarAdmin extends Component {
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
-                to="/addUser/student">
+                to="/addUser/Student">
                 <ListItemIcon className={classes.sublistItemIcon}>
                   <PeopleIcon />
                 </ListItemIcon>
@@ -243,7 +243,7 @@ class SidebarAdmin extends Component {
               <ListItem activeClassName={classes.activeListItem}
                 className={classes.listItem}
                 component={newLink}
-                to="/addUser/lecturer">
+                to="/addUser/Lecturer">
                 <ListItemIcon className={classes.sublistItemIcon}>
                   <PeopleIcon />
                 </ListItemIcon>
