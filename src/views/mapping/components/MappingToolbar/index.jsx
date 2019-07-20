@@ -6,10 +6,10 @@ import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {postMappings} from 'services/mapping'
+import { postMappings } from 'services/mapping'
 import MappingList from '../../../mapping'
 // Material helpers
-import { withStyles , TextField } from '@material-ui/core';
+import { withStyles, TextField } from '@material-ui/core';
 
 // Material components
 import { Button, IconButton } from '@material-ui/core';
@@ -25,77 +25,79 @@ import {
 
 
 // Shared components
-import { DisplayMode, SearchInput, PortletHeader,
+import {
+  DisplayMode, SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
-  Portlet } from 'components';
+  Portlet
+} from 'components';
 
 // Component styles
 import styles from './styles';
 
 class MappingToolbar extends Component {
   state = {
-    open:false,
+    open: false,
     addClicked: false,
-    classroom:'',
-    cameraip:'',
-    servername:'',
-    serverip:''
+    classroom: '',
+    cameraip: '',
+    servername: '',
+    serverip: ''
   }
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
   }
   showForm() {
     if (this.state.addClicked == true) {
-      const { classes, className,...rest} = this.props;
-    // const rootClassName = classNames(classes.root, className);
-    if (this.state.addClicked == true) {
-      return(
-      <Portlet
-      {...rest}
-      // className={rootClassName}
-    >
-      <PortletHeader>
-        <PortletLabel
-          subtitle="The information can be edited"
-          title="Add A Mapping"
-        />
-      </PortletHeader>
-      <PortletContent noPadding>
-        <form
-          autoComplete="off"
-          noValidate
-        >
-          <div className={classes.field}>
-            <TextField
-              className={classes.textField}
-              // helperText="Please specify the Classroom"
-              label="Classroom"
-              margin="dense"
-              id="classroom"
-              required
-              variant="outlined"
-              onChange={e => this.setState({classroom: e.target.value})}
-            />
-            <TextField
-              className={classes.textField}
-              label="Camera IP"
-              margin="dense"
-              id="cameraip"
-              required
-              variant="outlined"
-              onChange={e => this.setState({cameraip: e.target.value})}
-            />
-          </div>
-          {/* <div className={classes.field}>
+      const { classes, className, ...rest } = this.props;
+      // const rootClassName = classNames(classes.root, className);
+      if (this.state.addClicked == true) {
+        return (
+          <Portlet
+            {...rest}
+          // className={rootClassName}
+          >
+            <PortletHeader>
+              <PortletLabel
+                subtitle="The information can be edited"
+                title="Add A Mapping"
+              />
+            </PortletHeader>
+            <PortletContent noPadding>
+              <form
+                autoComplete="off"
+                noValidate
+              >
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    // helperText="Please specify the Classroom"
+                    label="Classroom"
+                    margin="dense"
+                    id="classroom"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ classroom: e.target.value })}
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="Camera IP"
+                    margin="dense"
+                    id="cameraip"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ cameraip: e.target.value })}
+                  />
+                </div>
+                {/* <div className={classes.field}>
             <TextField
               className={classes.textField}
               label="Email Address"
@@ -113,8 +115,8 @@ class MappingToolbar extends Component {
               variant="outlined"
             />
           </div> */}
-          <div className={classes.field}>
-            {/* <TextField
+                <div className={classes.field}>
+                  {/* <TextField
               className={classes.textField}
               label="Select State"
               margin="dense"
@@ -127,86 +129,84 @@ class MappingToolbar extends Component {
               <option value="offline">offline</option>
               <option value="online">online</option>
             </TextField> */}
-             <TextField
-              className={classes.textField}
-              label="Server Name"
-              margin="dense"
-              id="servername"
-              required
-              variant="outlined"
-              onChange={e => this.setState({servername: e.target.value})}
-            /> 
-            <TextField
-              className={classes.textField}
-              label="Server IP"
-              margin="dense"
-              id="serverip"
-              required
-              variant="outlined"
-              onChange={e => this.setState({serverip: e.target.value})}
-            /> 
-          </div>
-        </form>
-      </PortletContent>
-      <PortletFooter className={classes.portletFooter}>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={this.verify.bind(this)}
-        >
-          Save details
+                  <TextField
+                    className={classes.textField}
+                    label="Server Name"
+                    margin="dense"
+                    id="servername"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ servername: e.target.value })}
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="Server IP"
+                    margin="dense"
+                    id="serverip"
+                    required
+                    variant="outlined"
+                    onChange={e => this.setState({ serverip: e.target.value })}
+                  />
+                </div>
+              </form>
+            </PortletContent>
+            <PortletFooter className={classes.portletFooter}>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={this.verify.bind(this)}
+              >
+                Save details
         </Button>
-        &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
         <Button
-          color="primary"
-          variant="contained"
-        >
-           Import an Excel File
+                color="primary"
+                variant="contained"
+              >
+                Import an Excel File
         </Button>
-      </PortletFooter>
-    </Portlet>
-      );
-    }    
+            </PortletFooter>
+          </Portlet>
+        );
+      }
+    }
   }
-} 
-    verify(ev)
-    {
-        ev.preventDefault()
-        if(document.getElementById("classroom").value=='')
-                alert('Classroom field is empty');
-         else if(document.getElementById("cameraip").value=='')
-            alert('Camera IP field is empty');
-            else if(document.getElementById("servername").value=='')
-            alert('Server Name IP field is empty');
-            else if(document.getElementById("serverip").value=='')
-            alert('Server  IP field is empty');
-            else 
-            this.submit();
+  verify(ev) {
+    ev.preventDefault()
+    if (document.getElementById("classroom").value == '')
+      alert('Classroom field is empty');
+    else if (document.getElementById("cameraip").value == '')
+      alert('Camera IP field is empty');
+    else if (document.getElementById("servername").value == '')
+      alert('Server Name IP field is empty');
+    else if (document.getElementById("serverip").value == '')
+      alert('Server  IP field is empty');
+    else
+      this.submit();
+  }
+  submit() {
+    let classroom = this.state.classroom;
+    let servername = this.state.servername;
+    let cameraip = this.state.cameraip;
+    let serverip = this.state.serverip;
+    let data = {
+      classroom,
+      servername,
+      cameraip,
+      serverip
     }
-    submit(){
-        let classroom= this.state.classroom;
-    let servername=this.state.servername;
-    let cameraip=this.state.cameraip;
-    let serverip=this.state.serverip;
-       let data = {
-            classroom,
-            servername,
-            cameraip,
-            serverip
+    postMappings(data)
+      .then(res => {
+        console.log(res)
+        if (res.mapping === 'Success') {
+          alert("Inserted Data");
+          window.location.reload();
         }
-        postMappings(data)
-        .then(res => {
-          console.log(res)
-              if(res.mapping==='Success')
-              { 
-                alert("Inserted Data");
-                window.location.reload();
-              }
-        })
-        .catch(err => {
-            alert(err);
-        })
-    }
+      })
+      .catch(err => {
+        alert(err);
+      })
+  }
   addClicked = () => {
     this.setState({
       addClicked: !this.state.addClicked
@@ -215,28 +215,28 @@ class MappingToolbar extends Component {
   showButton() {
     if (this.state.addClicked)
       return <Button
-      color="primary"
-      size="small"
-      variant="outlined"
-      onClick={this.addClicked}
-      >
-      Cancel
-    </Button>
-    else {
-      return (
-      <Button
         color="primary"
         size="small"
         variant="outlined"
         onClick={this.addClicked}
       >
-        Add
+        Cancel
+    </Button>
+    else {
+      return (
+        <Button
+          color="primary"
+          size="small"
+          variant="outlined"
+          onClick={this.addClicked}
+        >
+          Add
       </Button>
       );
     }
   }
   render() {
-    const { classes, className, selectedmapping,mapping} = this.props;
+    const { classes, className, selectedmapping, mapping } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(mapping)
     return (
@@ -286,17 +286,17 @@ class MappingToolbar extends Component {
           </Button> */}
           {this.showButton()}
         </div>
-            <div>
-              {this.showForm()}
-            </div>
-            <br/><br/><br/>
+        <div>
+          {this.showForm()}
+        </div>
+        <br /><br /><br />
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
             placeholder="Search Mappings"
           />
-          <span className={classes.spacer} />
-          <DisplayMode mode="list" />
+          {/* <span className={classes.spacer} />
+          <DisplayMode mode="list" /> */}
         </div>
       </div>
     );
