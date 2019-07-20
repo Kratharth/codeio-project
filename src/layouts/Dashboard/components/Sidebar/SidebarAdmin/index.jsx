@@ -33,6 +33,7 @@ import styles from './styles';
 import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+let newOpen = [false,false];
 
 class SidebarAdmin extends Component {
   // state = {
@@ -93,16 +94,14 @@ class SidebarAdmin extends Component {
   // }
 
   static contextType = UserContext;
+   
 
   state = {
-    open: [
-      false,
-      false
-    ]
+    open: newOpen
   }
 
   handleClick = e => {
-    const newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
+    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
     this.setState({ open: newOpen });
   }
 
