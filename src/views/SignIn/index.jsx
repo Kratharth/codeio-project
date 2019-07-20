@@ -86,12 +86,15 @@ class SignIn extends Component {
       password
     }
     signIn(data).then(res => {
-      console.log(res);
       if (res.success === true) {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
-        history.push(`${values.type}/dashboard`);
+        history.push(`${values.type}dashboard`);
+      }
+      else {
+        alert("Something unexpected has occurred :( ");
+        this.setState({ isLoading: false });
       }
     }).catch(error => {
       this.setState({
@@ -138,21 +141,21 @@ class SignIn extends Component {
                   className={classes.quoteText}
                   variant="h1"
                 >
-                  Welcome To BMSCE Lecture Portal
-                  </Typography>
+                  <strong>Welcome To BMSCE Lecture Portal</strong>
+                </Typography>
                 <div className={classes.person}>
                   <Typography
                     className={classes.name}
-                    variant="body1"
+                    variant="h5"
                   >
-                    An online platform for all BMSCE lectures
-                    </Typography>
+                    <strong> An online platform for all BMSCE lectures</strong>
+                  </Typography>
                   <Typography
                     className={classes.bio}
-                    variant="body2"
+                    variant="h5"
                   >
-                    Made by the students for the students
-                    </Typography>
+                    <strong >Made by the students for the students</strong>
+                  </Typography>
                 </div>
               </div>
             </div>

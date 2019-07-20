@@ -33,15 +33,15 @@ export default theme => ({
     flexBasis: '600px'
   },
   quoteText: {
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
     fontWeight: 300
   },
   name: {
     marginTop: theme.spacing(3),
-    color: theme.palette.common.white
+    color: theme.palette.common.black
   },
   bio: {
-    color: theme.palette.common.white
+    color: theme.palette.common.black
   },
   contentWrapper: {},
   content: {
@@ -71,7 +71,7 @@ export default theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    width:'400px'
+    width: '400px'
   },
   form: {
     paddingLeft: '100px',

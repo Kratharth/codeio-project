@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import getUserDetails from 'services/AddUsers/index';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -38,6 +39,7 @@ const tableIcons = {
 };
 
 export default class StudentTable extends React.Component {
+  signal = true;
   state = {
     columns: [
       { title: 'Name', field: 'name' },
@@ -45,29 +47,59 @@ export default class StudentTable extends React.Component {
       { title: 'Email', field: 'email' },
       {
         title: 'Sem', field: 'sem',
-        //lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
       },
       { title: 'USN', field: 'usn' },
     ],
-    data: [
-      // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
-      {
-        classroom: 407,
-        name: 'Uma Devi',
-        course: 'Python',
-        time: '2-2:55',
-        date: '9-7-2019',
-        day: 'wednesday'
-      },
-    ]
+    // data: [
+    //   {
+    //     name: 'student1',
+    //     department: 'CSE',
+    //     email: 'student1@bmsce.ac.in',
+    //     sem: '5',
+    //     usn: '1BM17CS000',
+    //   },
+    // ],
+    userDetails: [],
   };
+
+  async getUserDetails() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { userDetails } = await (getUserDetails());
+          console.log(userDetails);
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          userDetails
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getUserDetails();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
   render() {
     return (
       <MaterialTable
         icons={tableIcons}
         title="Student Details"
         columns={this.state.columns}
-        data={this.state.data}
+        data={this.state.userDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {

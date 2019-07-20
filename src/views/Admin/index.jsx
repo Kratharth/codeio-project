@@ -32,10 +32,10 @@ const styles = theme => ({
 class AddUser extends Component {
   addUser = (userType) => {
     switch (userType) {
-      case 'lecturer': return <AddLecturer />
-      case 'student': return <AddStudent />
-      case 'admin': return <AddAdmin />
-      case 'department': return <AddDepartment />
+      case 'Lecturer': return <AddLecturer />
+      case 'Student': return <AddStudent />
+      case 'Admin': return <AddAdmin />
+      case 'Department': return <AddDepartment />
       default: return null
     }
   };
@@ -43,7 +43,7 @@ class AddUser extends Component {
   render() {
     const { classes, userType } = this.props;
     return (
-      <DashboardLayout title={userType}>
+      <DashboardLayout title={`Add ${userType}`}>
         <div className={classes.root}>
           <Grid
             container

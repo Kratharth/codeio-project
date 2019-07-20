@@ -39,7 +39,7 @@ class SidebarLecturer extends Component {
           <img
             alt="BMSCE Logo"
             className={classes.logoImage}
-            src="/images/bmscce.png"
+            src="/images/bmslogo.png"
           />
           &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
@@ -76,7 +76,7 @@ class SidebarLecturer extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/dashboard"
+            to="/lecturerdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
