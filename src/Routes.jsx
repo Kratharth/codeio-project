@@ -15,7 +15,7 @@ const SignIn = React.lazy(() => import('./views/SignIn'));
 const MappingList = React.lazy(() => import('./views/mapping'));
 const ProcessorList = React.lazy(() => import('./views/processor'));
 const CameraList = React.lazy(() => import('./views/camera'));
-const Timetable = React.lazy(() => import('./views/TimeTable'));
+const Timetable = React.lazy(() => import('./views/Timetable'));
 const AddUser = React.lazy(() => import('./views/Admin'));
 //const TransferSession = React.lazy(() => import('./components/TransferSession'));
 const NotFound = React.lazy(() => import('./views/NotFound'));
