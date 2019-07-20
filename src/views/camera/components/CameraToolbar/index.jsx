@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { postCameras } from 'services/camera';
+import { csvupload } from 'services/csv';
 // Material helpers
 import { withStyles, TextField } from '@material-ui/core';
 // import csvtoJSON from 'convert-csv-to-json';
@@ -53,17 +54,47 @@ class CameraToolbar extends Component {
       open: false
     })
   }
+  // fileToBase64 = (filename) => {
+  //   return new Promise(resolve => {
+  //     var file = new File([filename]);
+  //     var reader = new FileReader();
+  //     // Read file content on file loaded event
+  //     reader.onload = function(event) {
+  //       resolve(event.target.result);
+  //     };
 
-  handleFile(e) {
-    console.log(e.target.files, '$$$$');
-    console.log(e.target.files[0]);
-    // const csvFilePath = e.target.files[0].name;
-    let d = fs.readFileSync(e.target.files[0]);
-    console.log(d);
-    let fileInputName = e.target.files[0].name;
-    let fileOutputName = 'myOutputFile.json';
-    // csv.generateJsonFileFromCsv(fileInputName, fileOutputName);
-    // console.log(fileOutputName);
+  //     // Convert data to base64 
+  //     reader.readAsDataURL(file);
+  //   });
+  // };
+  // handleFile(e) {
+  //   console.log(e.target.files[0], '$$$$');
+  //   fileToBase64(e.target.files[0]).then(result => {
+  //     console.log(result);
+  //   });
+  // }
+
+  handleChange(evt) {
+    var f = evt.target.files[0]; // FileList object
+    var reader = new FileReader();
+    // Closure to capture the file information.
+    reader.onload = (function (theFile) {
+      return function (e) {
+        var binaryData = e.target.result;
+        //Converting Binary Data to base 64
+        var base64String = window.btoa(binaryData);
+        const data = {
+          base64String
+        }
+        console.log(base64String);
+        //showing file converted to base64
+        csvupload(data).then(res => {
+          console.log(res);
+        })
+      };
+    })(f);
+    // Read in the image file as a data URL.
+    reader.readAsBinaryString(f);
   }
   showForm() {
     if (this.state.addClicked == true) {
@@ -167,7 +198,9 @@ class CameraToolbar extends Component {
         </Button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label>Bulk Upload : </label>&nbsp;
-              <input type='file' name='camerafile' onChange={(e) => this.handleFile(e)} />
+              <input type="file" id="files" name="files" onChange={this.handleChange} width='1000px' />
+              <br />
+              {/* <textarea id="base64" rows="5"></textarea> */}
             </PortletFooter>
           </Portlet>
         );
@@ -301,8 +334,8 @@ class CameraToolbar extends Component {
             className={classes.searchInput}
             placeholder="Search Cameras"
           />
-          <span className={classes.spacer} />
-          <DisplayMode mode="list" />
+          {/* <span className={classes.spacer} />
+          <DisplayMode mode="list" /> */}
         </div>
       </div>
     );

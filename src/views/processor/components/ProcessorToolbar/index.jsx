@@ -8,7 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 // Material helpers
-import { withStyles , TextField } from '@material-ui/core';
+import { withStyles, TextField } from '@material-ui/core';
 
 // Material components
 import { Button, IconButton } from '@material-ui/core';
@@ -23,69 +23,71 @@ import {
 
 
 // Shared components
-import { DisplayMode, SearchInput, PortletHeader,
+import {
+  DisplayMode, SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
-  Portlet } from 'components';
+  Portlet
+} from 'components';
 
 // Component styles
 import styles from './styles';
 
 class ProcessorToolbar extends Component {
   state = {
-    open:false,
+    open: false,
     addClicked: false
   }
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
   }
   showForm() {
     if (this.state.addClicked == true) {
-      const { classes, className,...rest} = this.props;
-    // const rootClassName = classNames(classes.root, className);
-    if (this.state.addClicked == true) {
-      return(
-      <Portlet
-      {...rest}
-      // className={rootClassName}
-    >
-      <PortletHeader>
-        <PortletLabel
-          subtitle="The information can be edited"
-          title="Add A Processor"
-        />
-      </PortletHeader>
-      <PortletContent noPadding>
-        <form
-          autoComplete="off"
-          noValidate
-        >
-          <div className={classes.field}>
-            <TextField
-              className={classes.textField}
-              // helperText="Please specify the Classroom"
-              label="Sever-IP"
-              margin="dense"
-              required
-              variant="outlined"
-            />
-            <TextField
-              className={classes.textField}
-              label="Server Name"
-              margin="dense"
-              required
-              variant="outlined"
-            />
-          </div>
-          {/* <div className={classes.field}>
+      const { classes, className, ...rest } = this.props;
+      // const rootClassName = classNames(classes.root, className);
+      if (this.state.addClicked == true) {
+        return (
+          <Portlet
+            {...rest}
+          // className={rootClassName}
+          >
+            <PortletHeader>
+              <PortletLabel
+                subtitle="The information can be edited"
+                title="Add A Processor"
+              />
+            </PortletHeader>
+            <PortletContent noPadding>
+              <form
+                autoComplete="off"
+                noValidate
+              >
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    // helperText="Please specify the Classroom"
+                    label="Sever-IP"
+                    margin="dense"
+                    required
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.textField}
+                    label="Server Name"
+                    margin="dense"
+                    required
+                    variant="outlined"
+                  />
+                </div>
+                {/* <div className={classes.field}>
             <TextField
               className={classes.textField}
               label="Email Address"
@@ -103,57 +105,57 @@ class ProcessorToolbar extends Component {
               variant="outlined"
             />
           </div> */}
-          <div className={classes.field}>
-             <TextField
-              className={classes.textField}
-              label="Select Status"
-              margin="dense"
-              onChange={this.handleChange}
-              required
-              select
-              SelectProps={{ native: true }}
-              value={this.state.status}
-              variant="outlined">
-              <option value="offline">offline</option>
-              <option value="online">online</option>
-            </TextField>
-             <TextField
-              className={classes.textField}
-              label="Type"
-              margin="dense"
-              required
-              variant="outlined"
-            /> 
-            {/* <TextField
+                <div className={classes.field}>
+                  <TextField
+                    className={classes.textField}
+                    label="Select Status"
+                    margin="dense"
+                    onChange={this.handleChange}
+                    required
+                    select
+                    SelectProps={{ native: true }}
+                    value={this.state.status}
+                    variant="outlined">
+                    <option value="offline">offline</option>
+                    <option value="online">online</option>
+                  </TextField>
+                  <TextField
+                    className={classes.textField}
+                    label="Type"
+                    margin="dense"
+                    required
+                    variant="outlined"
+                  />
+                  {/* <TextField
               className={classes.textField}
               label="Server IP"
               margin="dense"
               required
               variant="outlined"
             />  */}
-          </div>
-        </form>
-      </PortletContent>
-      <PortletFooter className={classes.portletFooter}>
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Save details
+                </div>
+              </form>
+            </PortletContent>
+            <PortletFooter className={classes.portletFooter}>
+              <Button
+                color="primary"
+                variant="contained"
+              >
+                Save details
         </Button>
-        &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
         <Button
-          color="primary"
-          variant="contained"
-        >
-           Import an Excel File
+                color="primary"
+                variant="contained"
+              >
+                Import an Excel File
         </Button>
-      </PortletFooter>
-    </Portlet>
-      );
-    }    
+            </PortletFooter>
+          </Portlet>
+        );
+      }
+    }
   }
-} 
   addClicked = () => {
     this.setState({
       addClicked: !this.state.addClicked
@@ -162,28 +164,28 @@ class ProcessorToolbar extends Component {
   showButton() {
     if (this.state.addClicked)
       return <Button
-      color="primary"
-      size="small"
-      variant="outlined"
-      onClick={this.addClicked}
-      >
-      Cancel
-    </Button>
-    else {
-      return (
-      <Button
         color="primary"
         size="small"
         variant="outlined"
         onClick={this.addClicked}
       >
-        Add
+        Cancel
+    </Button>
+    else {
+      return (
+        <Button
+          color="primary"
+          size="small"
+          variant="outlined"
+          onClick={this.addClicked}
+        >
+          Add
       </Button>
       );
     }
   }
   render() {
-    const { classes, className, selectedprocessor,processor} = this.props;
+    const { classes, className, selectedprocessor, processor } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(processor)
     return (
@@ -233,17 +235,17 @@ class ProcessorToolbar extends Component {
           </Button> */}
           {this.showButton()}
         </div>
-            <div>
-              {this.showForm()}
-            </div>
-            <br/><br/><br/>
+        <div>
+          {this.showForm()}
+        </div>
+        <br /><br /><br />
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
             placeholder="Search Processors"
           />
-          <span className={classes.spacer} />
-          <DisplayMode mode="list" />
+          {/* <span className={classes.spacer} />
+          <DisplayMode mode="list" /> */}
         </div>
       </div>
     );

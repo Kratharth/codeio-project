@@ -61,7 +61,7 @@ class Videoplay extends Component {
 
             url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
             poster="/myPoster.png"
-            width="auto"
+            width="100%"
             height="auto"
             autoPlay
             controls
