@@ -90,7 +90,7 @@ class SignIn extends Component {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
-        history.push(`${values.type}/dashboard`);
+        history.push(`${values.type}dashboard`);
       }
       else {
         alert("Something unexpected has occurred :( ");

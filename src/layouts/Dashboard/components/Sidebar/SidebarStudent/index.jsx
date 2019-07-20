@@ -76,7 +76,7 @@ class SidebarStudent extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/dashboard"
+            to="/studentdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />

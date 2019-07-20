@@ -76,7 +76,7 @@ class SidebarLecturer extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/dashboard"
+            to="/lecturerdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />

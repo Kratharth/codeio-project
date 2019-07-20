@@ -157,7 +157,7 @@ class SidebarAdmin extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/dashboard"
+            to="/admindashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />

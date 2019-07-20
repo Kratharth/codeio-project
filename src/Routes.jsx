@@ -54,28 +54,28 @@ export default class Routes extends Component {
           />
           <Route
             exact
-            path="/admin/dashboard"
+            path="/admindashboard"
             render={() =>
               <DeptDashboard />
             }
           />
           <Route
             exact
-            path="/department/dashboard"
+            path="/departmentdashboard"
             render={() =>
               <DeptDashboard />
             }
           />
           <Route
             exact
-            path="/lecturer/dashboard"
+            path="/lecturerdashboard"
             render={() =>
               <DeptDashboard />
             }
           />
           <Route
             exact
-            path="/student/dashboard"
+            path="/studentdashboard"
             render={() =>
               <DeptDashboard />
             }
