@@ -168,6 +168,7 @@ class CameraToolbar extends Component {
                     SelectProps={{ native: true }}
                     value={this.state.status}
                     variant="outlined">
+                    <option value=''></option>
                     <option value="offline">offline</option>
                     <option value="online">online</option>
                   </TextField>
