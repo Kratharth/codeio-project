@@ -15,7 +15,10 @@ import {
   IconButton,
   Popover,
   Toolbar,
-  Typography
+  Typography,
+  Button,
+  Menu,
+  MenuItem
 } from '@material-ui/core';
 
 // Material icons
@@ -25,13 +28,10 @@ import {
   NotificationsOutlined as NotificationsIcon,
   Input as InputIcon,
   Help,
+  Settings,
+  Person as PersonIcon,
+  Security
 } from '@material-ui/icons';
-import Settings from '@material-ui/icons/Settings'
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PersonIcon from '@material-ui/icons/Person';
-import Security from '@material-ui/icons/Security';
 // Shared services
 import { getNotifications } from 'services/notification';
 
@@ -49,7 +49,7 @@ class Topbar extends Component {
     notificationsLimit: 4,
     notificationsCount: 0,
     notificationsEl: null,
-    anchorEl :null
+    anchorEl: null
   };
 
   async getNotifications() {
@@ -72,7 +72,7 @@ class Topbar extends Component {
   }
 
   componentDidMount() {
-    this.signal = true;
+    this.signal = false;
     this.getNotifications();
   }
 
@@ -86,6 +86,11 @@ class Topbar extends Component {
     localStorage.setItem('isAuthenticated', false);
     history.push('/sign-in');
   };
+  handleAccount = () => {
+    const { history } = this.props;
+    history.push('/account');
+  };
+
 
   handleShowNotifications = event => {
     this.setState({
@@ -100,12 +105,12 @@ class Topbar extends Component {
   };
   handleClose = () => {
     this.setState({
-      anchorEl:null
+      anchorEl: null
     })
   }
-  openMenu = event =>{
+  openMenu = event => {
     this.setState({
-      anchorEl : event.currentTarget
+      anchorEl: event.currentTarget
     })
   }
   render() {
@@ -118,7 +123,7 @@ class Topbar extends Component {
       type
     } = this.props;
     const { notifications, notificationsCount, notificationsEl } = this.state;
-
+    console.log({ type })
     const rootClassName = classNames(classes.root, className);
     const showNotifications = Boolean(notificationsEl);
 
@@ -151,35 +156,22 @@ class Topbar extends Component {
                 <NotificationsIcon />
               </Badge>
             </Button>
-            <Button onClick="">
-              <Help/>
+            <Button onClick={null}>
+              <Help />
             </Button>
-            {/* <IconButton
-              className={classes.signOutButton}
-              onClick={this.handleSignOut}
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
+              <Settings />
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={Boolean(this.state.anchorEl)}
+              onClose={this.handleClose}
             >
-              <InputIcon />
-            </IconButton> */}
-             {/* <IconButton
-              className={classes.signOutButton}
-              onClick={this.handleSettings}
-            >
-              <Settings/>
-            </IconButton>   */}
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
-            <Settings/>
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={this.state.anchorEl}
-        keepMounted
-        open={Boolean(this.state.anchorEl)}
-        onClose={this.handleClose}
-      >
-        <MenuItem onClick={this.handleClose}><PersonIcon/>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}><Security/>Change Password</MenuItem>
-        <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
-      </Menu>
+              <MenuItem onClick={this.handleAccount}><PersonIcon />Account</MenuItem>
+              <MenuItem onClick={this.handleSignOut}> <InputIcon />Logout</MenuItem>
+            </Menu>
           </Toolbar>
         </div>
         <Popover
@@ -215,7 +207,7 @@ Topbar.propTypes = {
 };
 
 Topbar.defaultProps = {
-  onToggleSidebar: () => {}
+  onToggleSidebar: () => { }
 };
 
 export default compose(

@@ -13,44 +13,26 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  //Collapse
+  Typography
 } from '@material-ui/core';
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
   Create as EditIcon,
-  ExpandLess,
-  ExpandMore,
   Videocam as VideoIcon,
-  Book as BookIcon,
   DesktopWindows as DesktopIcon,
   Schedule as ScheduleIcon
 } from '@material-ui/icons';
-// import BookIcon from '@material-ui/icons/Book';
-// import DesktopIcon from '@material-ui/icons/DesktopWindows';
-// import ScheduleIcon from '@material-ui/icons/Schedule';
-
 // Component styles
 import styles from './styles';
+// UserContext
+import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-// let courses=false;
-class SidebarDepartment extends Component {
 
-  //opening and closing of course-catalog
-  // state ={
-  //   open1:false
-  // }
-  // handleClick1=()=>{
-  //   courses=true;
-  //   this.setState({
-  //     open1:!this.state.open1
-  //   })
-  // }
-  // componentWillMount(){
-  //   courses?(this.state.open1=true):(this.state.open1=false);
-  // }
+class SidebarDepartment extends Component {
+  static contextType = UserContext;
+
   render() {
     const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
@@ -58,19 +40,14 @@ class SidebarDepartment extends Component {
       <div className={rootClassName}>
         <div className={classes.logoWrapper}>
           {/* Bmsce logo */}
-          <Link
-              className={classes.logoLink}
-              to="/"
-            >
-              <img
-                alt="BMSCE Logo"
-                className={classes.logoImage}
-                src="/images/bmslogo.png"
-              />
-            </Link>
-            &nbsp;&nbsp;<Typography className = {classes.Text}><strong>BMSCE LRS</strong></Typography>
+          <img
+            alt="BMSCE Logo"
+            className={classes.logoImage}
+            src="/images/bmslogo.png"
+          />
+          &nbsp;&nbsp;<Typography className={classes.Text}><strong>BMSCE LRS</strong></Typography>
         </div>
-       {/* department details */}
+        {/* department details */}
         <Divider className={classes.logoDivider} />
         <div className={classes.profile}>
           <Link to="/department/account">
@@ -84,7 +61,7 @@ class SidebarDepartment extends Component {
             className={classes.nameText}
             variant="h6"
           >
-            CSE
+            {this.context.user.name} {/*name of dept */}
           </Typography>
           <Typography
             className={classes.bioText}
@@ -99,12 +76,12 @@ class SidebarDepartment extends Component {
           component="div"
           disablePadding
         >
-         {/*dashboard*/}
+          {/*dashboard*/}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/department/dashboard"
+            to="/departmentdashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -115,124 +92,25 @@ class SidebarDepartment extends Component {
             />
           </ListItem>
 
-        {/*course catalog*/}
-    {/* 
-        <ListItem button onClick={this.handleClick1}
-          className={classes.listItem}
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <BookIcon/>
-            </ListItemIcon >
-            <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="Course Catalog"/>
-            {!this.state.open ? <ExpandMore />: <ExpandLess />}
-          </ListItem>
-        {/* <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-        <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem1">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-1"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem2">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-2"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem3">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-3"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem4">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-4"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem5">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-5"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem6">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-6"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem7">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-7"/>
-          </ListItem>
-          <ListItem activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={newLink}
-            to="/department/sem8">
-        <ListItemIcon className={classes.sublistItemIcon}>
-          <BookIcon/>
-         </ListItemIcon>
-          <ListItemText  classes={{ primary: classes.listItemText }}
-              primary="SEM-8"/>
-          </ListItem>
-          </List>
-          </Collapse>
-
-
           {/*Videos*/}
-
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/department/sem1"
+            //to="/department/sem1"
+            to="/courses"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon/>
+              <VideoIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary="Videos"
             />
-          </ListItem> 
-        {/*Transfer Session */}
+          </ListItem>
 
           {/*Transfer Session */}
-          <ListItem
+          {/* <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
@@ -245,32 +123,30 @@ class SidebarDepartment extends Component {
               classes={{ primary: classes.listItemText }}
               primary="Transfer Session"
             />
-          </ListItem> 
+          </ListItem> */}
 
           {/*guest lecuture*/}
-
-            <ListItem
-              activeClassName={classes.activeListItem}
-              className={classes.listItem}
-              component={newLink}
-              to="/department/videorecordguest"
-            >
-              <ListItemIcon className={classes.listItemIcon}>
-                <DesktopIcon />
-              </ListItemIcon>
-              <ListItemText
-                classes={{ primary: classes.listItemText }}
-                primary="Record"
-              />
-            </ListItem>
-
+          <ListItem
+            activeClassName={classes.activeListItem}
+            className={classes.listItem}
+            component={newLink}
+            to="/videorecordguest"
+          >
+            <ListItemIcon className={classes.listItemIcon}>
+              <DesktopIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Record"
+            />
+          </ListItem>
 
           {/*Courseedit */}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/department/courseedit"
+            to="/courseedit"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <EditIcon />
@@ -280,15 +156,16 @@ class SidebarDepartment extends Component {
               primary="Course edit"
             />
           </ListItem>
+
           {/*Add a Schedule */}
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/department/addschedule"
+            to="/addschedule"
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <ScheduleIcon/>
+              <ScheduleIcon />
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}

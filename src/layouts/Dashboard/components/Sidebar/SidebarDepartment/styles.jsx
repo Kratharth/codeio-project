@@ -5,7 +5,7 @@ export default theme => ({
     flexDirection: 'column',
     height: '100%',
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1)
+    overflow: 'auto'
   },
   logoWrapper: {
     display: 'flex',

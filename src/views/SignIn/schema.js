@@ -7,9 +7,9 @@ export default {
     }
   },
   password: {
-    presence: { allowEmpty: false, message: 'is required' },
+    presence: { allowEmpty: false, message: 'must be at least 8 characters' },
     length: {
-      maximum: 128
+      minimum: 8
     }
   },
   type: {

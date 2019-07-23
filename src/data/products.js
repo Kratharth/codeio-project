@@ -1,7 +1,7 @@
 export default [
   {
     id: 'DEV738089',
-   title: 'Python',
+    title: 'Python',
     //  description:
     //   'Python is a programming language.',
     imageUrl: '/images/products/python.png',
@@ -57,6 +57,105 @@ export default [
   {
     id: 'DEV773559',
     title: 'Artificial Intelligence',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'Artificial Intelligence',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'DC',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'ab',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'asb',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'xyz',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'poi',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'gg',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'yC',
+    // description:
+    //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
+    imageUrl: '/images/products/AI.png',
+    totalDownloads: '835',
+    price: '32',
+    status: 'published',
+    createdAt: '04/04/2019'
+  },
+  {
+    id: 'DEV773559',
+    title: 'cc',
     // description:
     //   'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
     imageUrl: '/images/products/AI.png',

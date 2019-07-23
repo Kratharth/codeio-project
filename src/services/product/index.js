@@ -1,7 +1,7 @@
 // Mock data
 import products from 'data/products';
 
-export const getProducts = (limit = 6) => {
+export const getProducts = (limit = 24) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
