@@ -200,11 +200,12 @@ class CameraToolbar extends Component {
         </Button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label>Bulk Upload : </label>&nbsp;
-              <input type="file" id="files" name="files" onChange={this.handleChange} width='1000px' />
+              <input type="file" id="files" name="files" onChange={this.handleChange} />
               <br />
               {/* <textarea id="base64" rows="5"></textarea> */}
               <br /><br />
-              <Link to="/cameradownload.ods" target="_blank" download>Download</Link>
+              <Button
+                variant="contained" ><Link to="/cameradownload.ods" target="_blank" download>Click here to download the template</Link></Button>
             </PortletFooter>
           </Portlet>
         );
