@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -89,7 +89,8 @@ class CameraToolbar extends Component {
         console.log(base64String);
         //showing file converted to base64
         csvupload(data).then(res => {
-          console.log(res);
+          if (res.data === 'success')
+            alert('Inserted Data Successfully');
         })
       };
     })(f);
@@ -202,6 +203,8 @@ class CameraToolbar extends Component {
               <input type="file" id="files" name="files" onChange={this.handleChange} width='1000px' />
               <br />
               {/* <textarea id="base64" rows="5"></textarea> */}
+              <br /><br />
+              <Link to="/cameradownload.ods" target="_blank" download>Download</Link>
             </PortletFooter>
           </Portlet>
         );
