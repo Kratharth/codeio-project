@@ -78,7 +78,7 @@ class SidebarLecturer extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/lecturerdashboard"
+            to="/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -155,20 +155,7 @@ class SidebarLecturer extends Component {
             />
           </ListItem> */}
           {/*Videoedit*/}
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/videoedit"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <VideoIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Video edit"
-            />
-          </ListItem>
+
         </List>
       </div>
     );
