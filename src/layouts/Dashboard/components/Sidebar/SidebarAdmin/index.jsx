@@ -29,83 +29,22 @@ import {
 } from '@material-ui/icons';
 // Component styles
 import styles from './styles';
-
-// let time_table = false;
-// let users = false;
-// let devices = false;
-// let academics = false;
+// User Context
+import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
+let newOpen = [false,false];
 
 class SidebarAdmin extends Component {
-  // state = {
-  //   open1: false,
-  //   open2: false,
-  //   open3: false,
-  //   // open4:false
-  // }
-  // // opening and closing of drop downs in side-navs
-  // componentWillMount() {
-  //   (time_table) ? (this.state.open1 = true) : (this.state.open1 = false);
-  //   (users) ? (this.state.open2 = true) : (this.state.open2 = false);
-  //   (devices) ? (this.state.open3 = true) : (this.state.open3 = false);
-  //   // (academics)?(this.state.open4=true):(this.state.open4=false);
-  // }
-  // // for Time Table
-  // handleClick1 = () => {
-  //   time_table = true;
-  //   users = false;
-  //   devices = false;
-  //   // academics=false;
-  //   this.setState({
-  //     open1: !this.state.open1
-  //   })
-  // }
-
-  // // for Users
-  // handleClick2 = () => {
-  //   users = true;
-  //   devices = false;
-  //   // academics=false;
-  //   time_table = false;
-  //   this.setState({
-  //     open2: !this.state.open2
-  //   })
-  // }
-
-  // // for devices
-  // handleClick3 = () => {
-  //   devices = true;
-  //   // academics=false;
-  //   time_table = false;
-  //   users = false;
-  //   this.setState({
-  //     open3: !this.state.open3
-  //   })
-  // }
-
-  //for academics
-  // handleClick4=()=>{
-  //   academics=true;
-  //   time_table=false;
-  //   users=false;
-  //   devices=false;
-  //   this.setState({
-  //     open4:!this.state.open4
-  //   })
-  // }
+  static contextType = UserContext;
 
   state = {
-    open: [
-      false,
-      false
-    ]
+    open: newOpen
   }
 
   handleClick = e => {
-    const newOpen = this.state.open;
-    newOpen[e.currentTarget.dataset.open_id] = !newOpen[e.currentTarget.dataset.open_id];
-    this.setState({ newOpen });
+    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
+    this.setState({ open: newOpen });
   }
 
   render() {
@@ -137,7 +76,7 @@ class SidebarAdmin extends Component {
             className={classes.nameText}
             variant="h6"
           >
-            Anil {/* admin name */}
+            {this.context.user.name} {/* admin name */}
           </Typography>
           <Typography
             className={classes.bioText}
@@ -157,7 +96,7 @@ class SidebarAdmin extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={newLink}
-            to="/admindashboard"
+            to="/dashboard"
           >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
@@ -188,7 +127,7 @@ class SidebarAdmin extends Component {
             component={newLink}
             to="/courses"
           >
-            <ListItemIcon clsName={classes.listItemIcon}>
+            <ListItemIcon className={classes.listItemIcon}>
               <VideoIcon />
             </ListItemIcon>
             <ListItemText

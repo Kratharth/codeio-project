@@ -36,7 +36,7 @@ class SignIn extends Component {
     values: {
       email: '',
       password: '',
-      type: 'student'
+      type: 'Student'
     },
     touched: {
       email: false,
@@ -90,7 +90,7 @@ class SignIn extends Component {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
-        history.push(`${values.type}dashboard`);
+        history.push('/dashboard');
       }
       else {
         alert("Something unexpected has occurred :( ");
@@ -105,9 +105,7 @@ class SignIn extends Component {
   }
 
   componentWillUnmount() {
-    const name = localStorage.getItem('name');
-    const type = localStorage.getItem('type');
-    this.context.userDetails({ name, type });
+    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type')});
   }
 
   render() {
@@ -226,10 +224,10 @@ class SignIn extends Component {
                       onChange={event => this.handleFieldChange('type', event.target.value)}
                       input={<Input name="type" id="user-type" />}
                     >
-                      <MenuItem value='admin'>Admin</MenuItem>
-                      <MenuItem value='department'>Department</MenuItem>
-                      <MenuItem value='lecturer'>Lecturer</MenuItem>
-                      <MenuItem value='student'>Student</MenuItem>
+                      <MenuItem value='Admin'>Admin</MenuItem>
+                      <MenuItem value='Department'>Department</MenuItem>
+                      <MenuItem value='Lecturer'>Lecturer</MenuItem>
+                      <MenuItem value='Student'>Student</MenuItem>
                     </Select>
                     <FormHelperText>Select user type</FormHelperText>
                   </div>

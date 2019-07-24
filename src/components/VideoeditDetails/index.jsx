@@ -81,14 +81,7 @@ class VideoeditDetails extends Component {
               value={description}
               variant="outlined"
             />
-            <TextField
-              className={classes.textField}
-              label="edit"
-              margin="dense"
             
-              value={edit}
-              variant="outlined"
-            />
 
 
 

@@ -1,63 +1,36 @@
-
-import { green } from '@material-ui/core/colors';
-import { Button } from '@material-ui/core';
-
 export default theme => ({
-
-  field: {
-    margin: theme.spacing.unit * 3
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   textField: {
-    width: '420px',
-    maxWidth: '100%',
-    marginRight: theme.spacing.unit * 3
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 300,
+    maxWidth: 400,
   },
-  portletFooter: {
-    paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+  dense: {
+    marginTop: 19,
   },
-  palette: {
-    primary: green,
+  menu: {
+    width: 200,
   },
-  margin: {
-      margin: theme.spacing(1),
-    },
+  button: {
+    margin: 20,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(50 ),
+    width: 300
+  },
+  or: {
+    marginLeft: theme.spacing(18),
+    marginRight: theme.spacing(20),
+    color: theme.palette.primary.main,
+  },
+  root:{
+    lg:12,
+    md:6,
+    xl:6,
+    xs:6
+  }
 
-    root: {
-    boxShadow: 'none',
-    textTransform: 'none',
-    fontSize: 16,
-    padding: '6px 12px',
-    border: '1px solid',
-    lineHeight: 1.5,
-    //backgroundColor: '#007bff',
-    //borderColor: '#007bff',
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:hover': {
-    //  backgroundColor: '#0069d9',
-      //borderColor: '#0062cc',
-    },
-    '&:active': {
-      boxShadow: 'none',
-    //  backgroundColor: '#0062cc',
-    //  borderColor: '#005cbf',
-    },
-    '&:focus': {
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-    },
-  },
-
-});
+  });

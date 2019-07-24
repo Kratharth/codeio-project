@@ -1,3 +1,5 @@
+
+
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -5,7 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 //import UserContext from './userContext/userContext';
 // Views
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
-const DeptDashboard = React.lazy(() => import('./views/DeptDashboard'));
+//const DeptDashboard = React.lazy(() => import('./views/DeptDashboard'));
 //const UserList = React.lazy(() => import('./views/UserList'));
 const Typography = React.lazy(() => import('./views/Typography'));
 //const Icons = React.lazy(() => import('./views/Icons'));
@@ -26,6 +28,9 @@ const ProductList = React.lazy(() => import('./views/ProductList'));
 const ProductListedit = React.lazy(() => import('./views/ProductListedit'));
 const Videoplay = React.lazy(() => import('./views/Videoplay'));
 const Videorecordguest = React.lazy(() => import('./views/Videorecordguest'));
+//const AdminDashboard = React.lazy(() => import('./views/AdminDashboard'));
+//const StudentDashboard = React.lazy(() => import('./views/StudentDashboard'));
+//const LecturerDashboard = React.lazy(() => import('./views/LecturerDashboard'));
 
 export default class Routes extends Component {
   render() {
@@ -54,32 +59,29 @@ export default class Routes extends Component {
           />
           <Route
             exact
+            path="/dashboard"
+            component={Dashboard}
+          />
+          {/*<Route
+            exact
             path="/admindashboard"
-            render={() =>
-              <DeptDashboard />
-            }
+            component={AdminDashboard}
           />
           <Route
             exact
             path="/departmentdashboard"
-            render={() =>
-              <DeptDashboard />
-            }
+            component={DeptDashboard}
           />
           <Route
             exact
             path="/lecturerdashboard"
-            render={() =>
-              <DeptDashboard />
-            }
+            component={LecturerDashboard}
           />
           <Route
             exact
             path="/studentdashboard"
-            render={() =>
-              <DeptDashboard />
-            }
-          />
+            component={StudentDashboard}
+          />*/}
 
 
           {/* <Route

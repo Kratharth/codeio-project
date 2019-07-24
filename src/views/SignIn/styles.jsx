@@ -23,7 +23,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(/images/background.jpg)',
+    background: 'url(/images/background.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
@@ -38,10 +38,10 @@ export default theme => ({
   },
   name: {
     marginTop: theme.spacing(3),
-    color: theme.palette.common.black
+    color: theme.palette.primary.primary
   },
   bio: {
-    color: theme.palette.common.black
+    color: theme.palette.primary.primary
   },
   contentWrapper: {},
   content: {

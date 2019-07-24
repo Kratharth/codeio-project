@@ -43,15 +43,15 @@ class Dashboard extends Component {
   };
   selectSideBar = type => {
     switch (type) {
-      case 'admin': return <SidebarAdmin className={this.props.classes.sidebar} />;
-      case 'department': return <SidebarDepartment className={this.props.classes.sidebar} />;
-      case 'lecturer': return <SidebarLecturer className={this.props.classes.sidebar} />;
-      case 'student': return <SidebarStudent className={this.props.classes.sidebar} />;
+      case 'Admin': return <SidebarAdmin className={this.props.classes.sidebar} />;
+      case 'Department': return <SidebarDepartment className={this.props.classes.sidebar} />;
+      case 'Lecturer': return <SidebarLecturer className={this.props.classes.sidebar} />;
+      case 'Student': return <SidebarStudent className={this.props.classes.sidebar} />;
       default: return null
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type') });
   }
 

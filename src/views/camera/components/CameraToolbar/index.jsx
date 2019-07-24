@@ -169,9 +169,9 @@ class CameraToolbar extends Component {
                     SelectProps={{ native: true }}
                     value={this.state.status}
                     variant="outlined">
-                    <option value=''></option>
-                    <option value="offline">offline</option>
-                    <option value="online">online</option>
+                    <option value="" />
+                          <option value="offline">offline</option>
+                          <option value="online">online</option>
                   </TextField>
                   {/* <TextField
               className={classes.textField}
@@ -193,18 +193,18 @@ class CameraToolbar extends Component {
             <PortletFooter className={classes.portletFooter}>
               <Button
                 color="primary"
-                variant="contained"
-                onClick={this.verify.bind(this)}
+                    variant="contained"
+                    onClick={this.verify.bind(this)}
               >
-                Save details
-        </Button>
+                                Save details
+                        </Button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label>Bulk Upload : </label>&nbsp;
-              <input type="file" id="files" name="files" onChange={this.handleChange} />
-              <br />
-              {/* <textarea id="base64" rows="5"></textarea> */}
-              <br /><br />
-              <Button
+                <input type="file" id="files" name="files" onChange={this.handleChange} />
+                <br />
+                {/* <textarea id="base64" rows="5"></textarea> */}
+                <br /><br />
+                  <Button
                 variant="contained" ><Link to="/cameradownload.ods" target="_blank" download>Click here to download the template</Link></Button>
             </PortletFooter>
           </Portlet>
@@ -314,7 +314,7 @@ class CameraToolbar extends Component {
            {selectedmapping.length > 0 && selectedmapping.length < 2 && (
             <IconButton
               className={classes.editButton}
-              onClick={this.handleDeletemapping}
+                      onClick={this.handleDeletemapping}
               >
               <EditIcon />
             </IconButton>
@@ -322,36 +322,36 @@ class CameraToolbar extends Component {
           &nbsp;  &nbsp;  &nbsp; */}
           {/* <Button
             color="primary"
-            size="small"
+                    size="small"
             variant="outlined"
             onClick={this.addClicked}
-            >
-            {this.buttonText()}
-          </Button> */}
-          {this.showButton()}
+                    >
+                    {this.buttonText()}
+                  </Button> */}
+                  {this.showButton()}
         </div>
         <div>
-          {this.showForm()}
+                {this.showForm ()}
         </div>
         <br /><br /><br />
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
-            placeholder="Search Cameras"
-          />
-          {/* <span className={classes.spacer} />
-          <DisplayMode mode="list" /> */}
+                      placeholder="Search Cameras"
+                    />
+                    {/* <span className={classes.spacer} />
+                    <DisplayMode mode="list" /> */}
         </div>
-      </div>
-    );
-  }
-}
-
+                    </div>
+                );
+              }
+            }
+            
 CameraToolbar.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired,
-  selectedcamera: PropTypes.array
-};
+                className: PropTypes.string,
+              classes: PropTypes.object.isRequired,
+              selectedcamera: PropTypes.array
+            };
 
 CameraToolbar.defaultProps = {
   selectedcamera: []

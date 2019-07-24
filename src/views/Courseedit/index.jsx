@@ -30,16 +30,17 @@ class Coursecontrol extends Component {
     return (
       <DashboardLayout title="Course Edit" >
         <div className={classes.root}>
+
           <Grid
             container
-            spacing={4}
+            spacing={10}
           >
 
             <Grid
               item
-              lg={8}
-              md={6}
-              xl={8}
+              lg={12}
+              md={12}
+              xl={12}
               xs={12}
             >
               <CourseeditDetails />

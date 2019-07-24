@@ -125,7 +125,7 @@ class ProductList extends Component {
             md={6}
             xs={12}
           >
-            <Link to='/videoplay' >
+            <Link to={'/videoplay'} >
               <ProductCard product={product} />
             </Link>
           </Grid>
