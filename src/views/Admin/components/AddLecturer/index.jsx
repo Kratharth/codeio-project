@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles, Divider } from '@material-ui/core';
-import { Button, TextField, Typography } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
+import {
+  withStyles,
+  Divider,
+  Button,
+  TextField,
+  Typography,
+  MenuItem
+} from '@material-ui/core';
 import LecturerTable from './Table';
 import { getDepartment } from 'services/DepartmentDetails/index';
 
@@ -55,7 +60,7 @@ class AddLecturer extends Component {
     if (this.state.displayTable) {
       return (
         <div>
-          <center>Lecturers Record</center>
+          <center><Typography variant='h4'>Lecturer Details</Typography></center>
           <br />
           <LecturerTable />
         </div>
@@ -67,7 +72,7 @@ class AddLecturer extends Component {
     if (this.state.displaySearchResults) {
       return (
         <div>
-          <center>Search Results</center>
+          <center><Typography variant='h4'>Search Results</Typography></center>
           <br />
           <LecturerTable />
         </div>

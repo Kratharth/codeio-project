@@ -54,6 +54,7 @@ export default class DepartmentTable extends React.Component {
       },
     ]
   };
+
   render() {
     return (
       <MaterialTable
@@ -74,7 +75,7 @@ export default class DepartmentTable extends React.Component {
                 ...newData,
                 password: 'department'
               }
-              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
+              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/dept', d)
                 .then(res => {
                   console.log(res);
                 })

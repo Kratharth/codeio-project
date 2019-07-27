@@ -41,8 +41,11 @@ class ProcessorList extends Component {
 
       // const { users } = await getUsers(limit);
       const { processor } = await (getProcessors(limit))
-
-      if (this.signal) {
+      if (!Array.isArray(processor)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
         this.setState({
           isLoading: false,
           processor

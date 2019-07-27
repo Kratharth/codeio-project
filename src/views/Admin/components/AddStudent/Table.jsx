@@ -43,22 +43,13 @@ export default class StudentTable extends React.Component {
   state = {
     columns: [
       { title: 'Name', field: 'name' },
-      { title: 'Department', field: 'department' },
+      { title: 'Department', field: 'dept' },
       { title: 'Email', field: 'email' },
       {
         title: 'Sem', field: 'sem',
       },
       { title: 'USN', field: 'usn' },
     ],
-    // data: [
-    //   {
-    //     name: 'student1',
-    //     department: 'CSE',
-    //     email: 'student1@bmsce.ac.in',
-    //     sem: '5',
-    //     usn: '1BM17CS000',
-    //   },
-    // ],
     userDetails: [],
   };
 
@@ -67,8 +58,11 @@ export default class StudentTable extends React.Component {
       this.setState({ isLoading: true });
 
       const { userDetails } = await (getUserDetails());
-          console.log(userDetails);
-      if (this.signal) {
+      if (!Array.isArray(userDetails)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
         this.setState({
           isLoading: false,
           userDetails
@@ -105,18 +99,13 @@ export default class StudentTable extends React.Component {
             new Promise(resolve => {
               setTimeout(() => {
                 resolve();
-                const data = [...this.state.data];
+                const data = [...this.state.userDetails];
                 data.push(newData);
                 this.setState({ ...this.state, data });
               }, 600);
               console.log('newdata: ');
               console.log(newData);
-
-              let d = {
-                ...newData,
-                password: 'student'
-              };
-              Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/user', d)
+              Axios.post('https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test/student', newData)
                 .then(res => {
                   console.log(res);
                 })

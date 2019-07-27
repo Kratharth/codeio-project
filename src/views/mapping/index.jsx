@@ -41,8 +41,11 @@ class MappingList extends Component {
 
       // const { users } = await getUsers(limit);
       const { mapping, mappingTotal } = await (getMappings(limit))
-
-      if (this.signal) {
+      if (!Array.isArray(mapping)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
         this.setState({
           isLoading: false,
           mapping

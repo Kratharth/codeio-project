@@ -41,11 +41,11 @@ class CameraList extends Component {
 
       // const { users } = await getUsers(limit);
       const { camera } = await (getCameras())
-      if (camera === null) {
-        alert("Something unexpected has occurred :( ");
+      if (!Array.isArray(camera)) {
+        alert("Something unexpected happened :(");
         this.setState({ isLoading: false });
       }
-      if (this.signal) {
+      else if (this.signal) {
         this.setState({
           isLoading: false,
           camera

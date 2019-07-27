@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles, Divider } from '@material-ui/core';
-import { Button, TextField, Typography } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
+import {
+  withStyles,
+  Divider,
+  Button,
+  TextField,
+  Typography,
+  MenuItem,
+
+} from '@material-ui/core';
 import StudentTable from './Table';
-import { getDepartment } from 'services/DepartmentDetails/index';
+import { getDepartment } from 'services/DepartmentDetails';
 
 // Component styles
 import styles from './styles';
@@ -29,8 +35,10 @@ class AddStudent extends Component {
       this.setState({ isLoading: true });
 
       const { department } = await (getDepartment())
-
-      if (this.signal) {
+      if (!Array.isArray(department)) {
+        alert("Something unexpected happened ):");
+      }
+      else if (this.signal) {
         this.setState({
           isLoading: false,
           department
@@ -59,7 +67,7 @@ class AddStudent extends Component {
     if (this.state.displayTable) {
       return (
         <div>
-          <center>Students Record</center>
+          <center><Typography variant='h4'>Student Details</Typography></center>
           <br />
           <StudentTable />
         </div>
@@ -71,7 +79,7 @@ class AddStudent extends Component {
     if (this.state.displaySearchResults) {
       return (
         <div>
-          <center>Search Results</center>
+          <center><Typography variant='h4'>Search Results</Typography></center>
           <br />
           <StudentTable />
         </div>

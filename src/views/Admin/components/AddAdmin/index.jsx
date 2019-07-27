@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles, Divider } from '@material-ui/core';
-import { Button, TextField } from '@material-ui/core';
+import {
+  withStyles,
+  Divider,
+  Button,
+  TextField,
+  Typography
+} from '@material-ui/core';
 import AdminTable from './Table';
 
 // Component styles
@@ -21,7 +26,7 @@ class AddAdmin extends Component {
     if (this.state.displayTable) {
       return (
         <div>
-          <center>Admins Record</center>
+          <center><Typography variant='h4'>Admin Details</Typography></center>
           <br />
           <AdminTable />
         </div>
