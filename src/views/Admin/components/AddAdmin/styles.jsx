@@ -1,4 +1,7 @@
 export default theme => ({
+  root: {
+    minHeight: '100vh'
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -18,8 +21,7 @@ export default theme => ({
   button: {
     margin: 20,
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(50 ),
+    marginRight: theme.spacing(50),
     width: 300
   },
-  });
-  
+});

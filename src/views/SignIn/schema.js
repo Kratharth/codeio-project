@@ -11,8 +11,5 @@ export default {
     length: {
       minimum: 8
     }
-  },
-  type: {
-    presence: { allowEmpty: false, message: 'is required' }
   }
 };

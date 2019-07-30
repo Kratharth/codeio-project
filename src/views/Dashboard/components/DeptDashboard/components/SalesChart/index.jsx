@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Button } from '@material-ui/core';
-
 // Material icons
 import {
-  ArrowDropDown as ArrowDropDownIcon,
-  ArrowRight as ArrowRightIcon
+  ArrowDropDown as ArrowDropDownIcon
 } from '@material-ui/icons';
 
 // Shared components
@@ -24,7 +19,7 @@ import {
   PortletLabel,
   PortletToolbar,
   PortletContent,
-  PortletFooter
+  //PortletFooter
 } from 'components';
 
 // Chart configuration
@@ -64,15 +59,15 @@ class SalesChart extends Component {
             />
           </div>
         </PortletContent>
-        <PortletFooter className={classes.portletFooter}>
+        {/* <PortletFooter className={classes.portletFooter}>
           <Button
             color="primary"
             size="small"
             variant="text"
           >
-            {/* Overview <ArrowRightIcon /> */}
+            {/* Overview <ArrowRightIcon /> 
           </Button>
-        </PortletFooter>
+        </PortletFooter> */}
       </Portlet>
     );
   }

@@ -1,16 +1,12 @@
 import React, { Component, Fragment } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles, withWidth } from '@material-ui/core';
-
 // Material components
 import { Drawer } from '@material-ui/core';
-
 // Custom components
 import {
   Topbar, Footer,
@@ -52,7 +48,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type') });
+    this.context.userDetails({...localStorage});
   }
 
   render() {

@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
-
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-// import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-
+import { MenuItem, FormControl } from '@material-ui/core';
 // Shared components
 import {
   Portlet,
@@ -34,7 +24,7 @@ class TransferTo extends Component {
   state = {
     courses: '',
     lecturer: ''
-    };
+  };
 
   handleChangeCourses = e => {
     this.setState({
@@ -67,9 +57,9 @@ class TransferTo extends Component {
             autoComplete="off"
             noValidate
           >
-                        <div className={classes.field}>
+            <div className={classes.field}>
               <FormControl className={classes.margin}>
-              <TextField
+                <TextField
                   id="outlined-select-courses"
                   select
                   label="Courses"
@@ -84,18 +74,18 @@ class TransferTo extends Component {
                   margin="normal"
                   variant="outlined"
                 >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"ISE"}>ISE</MenuItem>
-                    <MenuItem value={"CSE"}>CSE</MenuItem>
-                    <MenuItem value={"CE"}>CE</MenuItem>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"ISE"}>ISE</MenuItem>
+                  <MenuItem value={"CSE"}>CSE</MenuItem>
+                  <MenuItem value={"CE"}>CE</MenuItem>
                 </TextField>
               </FormControl>
             </div>
             <div className={classes.field}>
               <FormControl className={classes.margin}>
-              <TextField
+                <TextField
                   id="outlined-select-lecturer"
                   select
                   label="Lecturer"
@@ -110,12 +100,12 @@ class TransferTo extends Component {
                   margin="normal"
                   variant="outlined"
                 >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"L1"}>L1</MenuItem>
-                    <MenuItem value={"L2"}>L2</MenuItem>
-                    <MenuItem value={"L3"}>L3</MenuItem>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"L1"}>L1</MenuItem>
+                  <MenuItem value={"L2"}>L2</MenuItem>
+                  <MenuItem value={"L3"}>L3</MenuItem>
                 </TextField>
               </FormControl>
             </div>

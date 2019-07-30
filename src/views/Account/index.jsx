@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Grid } from '@material-ui/core';
-
 // Shared layouts
 import { Dashboard as DashboardLayout } from 'layouts';
-
 // Custom components
 import { AccountProfile } from './components';
 import { AccountAdmin, AccountDept, AccountLecturer, AccountStudent } from './components/AccountDetails';
@@ -21,7 +16,8 @@ import { UserContext } from 'userContext';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
+    minHeight: '100vh'
   }
 });
 
@@ -31,10 +27,10 @@ class Account extends Component {
 
   accountDetailType = (type) => {
     switch (type) {
-      case 'admin': return <AccountAdmin />
-      case 'lecturer': return <AccountLecturer />
-      case 'student': return <AccountStudent />
-      case 'department': return <AccountDept />
+      case 'Admin': return <AccountAdmin />
+      case 'Lecturer': return <AccountLecturer />
+      case 'Student': return <AccountStudent />
+      case 'Department': return <AccountDept />
       default: return null;
 
     }
@@ -42,7 +38,6 @@ class Account extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <DashboardLayout title="Account" >
         <div className={classes.root}>

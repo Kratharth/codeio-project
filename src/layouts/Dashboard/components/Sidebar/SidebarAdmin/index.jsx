@@ -33,7 +33,7 @@ import styles from './styles';
 import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-let newOpen = [false,false];
+let newOpen = [false, false];
 
 class SidebarAdmin extends Component {
   static contextType = UserContext;
@@ -43,7 +43,7 @@ class SidebarAdmin extends Component {
   }
 
   handleClick = e => {
-    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
+    newOpen = this.state.open.map((ele, index) => (index === e.currentTarget.dataset.open_id) ? !ele : false);
     this.setState({ open: newOpen });
   }
 
@@ -69,7 +69,7 @@ class SidebarAdmin extends Component {
             <Avatar
               alt="Admin"
               className={classes.avatar}
-              src="/images/bmslogo.png"
+              src="/images/avatars/avatar.png"
             />
           </Link>
           <Typography

@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Typography, Divider } from '@material-ui/core';
-
 // Material icons
 import {
   AccessTime as AccessTimeIcon,
-  Edit as EditIcon,
-  GetApp as GetAppIcon
+  Edit as EditIcon
 } from '@material-ui/icons';
-
-
 // Shared components
 import { Paper } from 'components';
-
 // Component styles
 import styles from './styles';
 
@@ -62,9 +54,9 @@ class ProductCard extends Component {
           >
             Updated 2hr ago
           </Typography>
-           <EditIcon className={classes.editIcon} />  
+          <EditIcon className={classes.editIcon} />
           {/* <GetAppIcon className={classes.downloadsIcon} /> */}
-           {/* <Typography
+          {/* <Typography
             className={classes.downloadsText}
             variant="body2"
           >

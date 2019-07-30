@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-
 // Externals
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Grid } from '@material-ui/core';
-
 // Shared layouts
 import { Dashboard as DashboardLayout } from 'layouts';
-
 // Custom components
 import { AddAdmin, AddDepartment, AddLecturer, AddStudent } from './components';
 

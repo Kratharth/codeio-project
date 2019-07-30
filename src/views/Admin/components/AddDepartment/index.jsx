@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+//import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
@@ -14,9 +14,6 @@ class AddDepartment extends Component {
     code: '',
     email: '',
   };
-
-
-
   handleChangeName = e => {
     this.setState({
       name: e.target.value
@@ -35,9 +32,9 @@ class AddDepartment extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { name, code, email } = this.state;
+    //const { name, code, email } = this.state;
 
-    const rootClassName = classNames(classes.root, className);
+    //const rootClassName = classNames(classes.root, className);
 
     return (
       <div>

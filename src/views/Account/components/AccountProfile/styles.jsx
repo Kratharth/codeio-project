@@ -35,6 +35,6 @@ export default theme => ({
   textField: {
     width: '420px',
     maxWidth: '100%',
-    marginRight: theme.spacing.unit * 3
+    marginRight: theme.spacing(3)
   }
 });

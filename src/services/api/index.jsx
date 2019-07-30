@@ -1,0 +1,1 @@
+export const api = 'https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test';

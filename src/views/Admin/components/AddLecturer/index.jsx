@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
-import { Button, TextField, Typography } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Button, TextField, Typography, MenuItem } from '@material-ui/core';
 import LecturerTable from './Table';
-import { getDepartment } from 'services/DepartmentDetails/index';
-
+import { getDepartment } from 'services/departmentDetails';
 import styles from './styles';
 
 class AddLecturer extends Component {

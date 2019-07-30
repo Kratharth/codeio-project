@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField } from '@material-ui/core';
 import AdminTable from './Table';
-
 // Component styles
 import styles from './styles';
 
@@ -57,8 +56,8 @@ class AddAdmin extends Component {
   };
 
   render() {
-    const { classes, className, ...rest } = this.props;
-    const { name, id, email } = this.state;
+    const { classes, className } = this.props;
+    const { id } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

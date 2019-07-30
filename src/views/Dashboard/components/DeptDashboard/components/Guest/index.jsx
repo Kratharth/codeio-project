@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Typography } from '@material-ui/core';
-
 // Material icons
 import {
-  ArrowDownward as ArrowDownwardIcon,
-  // Money as MoneyIcon
   Person as PersonIcon
 } from '@material-ui/icons';
-
 // Shared components
 import { Paper } from 'components';
 
@@ -58,21 +51,6 @@ class Budget extends Component {
           <div className={classes.iconWrapper}>
             <PersonIcon className={classes.icon} />
           </div>
-        </div>
-        <div className={classes.footer}>
-          <Typography
-            className={classes.difference}
-            variant="body2"
-          >
-            {/* <ArrowDownwardIcon />
-            12% */}
-          </Typography>
-          <Typography
-            className={classes.caption}
-            variant="caption"
-          >
-            {/* Since last month */}
-          </Typography>
         </div>
       </Paper>
     );

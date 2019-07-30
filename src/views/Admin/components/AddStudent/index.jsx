@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
-import { Button, TextField, Typography } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Button, TextField, Typography, MenuItem } from '@material-ui/core';
 import StudentTable from './Table';
-import { getDepartment } from 'services/DepartmentDetails/index';
+import { getDepartment } from 'services/departmentDetails';
 
 // Component styles
 import styles from './styles';
@@ -121,8 +120,8 @@ class AddStudent extends Component {
   };
 
   render() {
-    const { classes, className, ...rest } = this.props;
-    const { name, department, sem, email, usn, departmentselected } = this.state;
+    const { classes, className } = this.props;
+    const {  department, sem, usn, departmentselected } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

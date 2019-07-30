@@ -24,7 +24,6 @@ export default theme => ({
   content: {
     marginTop: '64px', // width between the header and body content
     backgroundColor: theme.palette.background.default,
-    minHeight: '100vh',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen

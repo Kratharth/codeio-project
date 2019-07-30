@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
-import { TextField } from '@material-ui/core';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-// import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-
+import { TextField, MenuItem, FormControl } from '@material-ui/core';
 // Shared components
 import {
   Portlet,
@@ -24,11 +14,9 @@ import {
   PortletContent,
   PortletFooter
 } from 'components';
-
 // Component styles
 import styles from './styles';
 import DatePicker from './DatePicker';
-
 
 class TransferFrom extends Component {
   state = {
@@ -54,7 +42,7 @@ class TransferFrom extends Component {
   };
   render() {
     const { classes, className, ...rest } = this.props;
-    const { classroom, courses, time } = this.state;
+    const { classroom, courses } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -79,7 +67,7 @@ class TransferFrom extends Component {
             </div>
             <div className={classes.field}>
               <FormControl className={classes.margin}>
-              <TextField
+                <TextField
                   id="outlined-select-classroom"
                   select
                   label="Classroom"
@@ -94,18 +82,18 @@ class TransferFrom extends Component {
                   margin="normal"
                   variant="outlined"
                 >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"405"}>405</MenuItem>
-                    <MenuItem value={"505"}>505</MenuItem>
-                    <MenuItem value={"605"}>605</MenuItem>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"405"}>405</MenuItem>
+                  <MenuItem value={"505"}>505</MenuItem>
+                  <MenuItem value={"605"}>605</MenuItem>
                 </TextField>
               </FormControl>
             </div>
             <div className={classes.field}>
               <FormControl className={classes.margin}>
-              <TextField
+                <TextField
                   id="outlined-select-courses"
                   select
                   label="Courses"
@@ -120,12 +108,12 @@ class TransferFrom extends Component {
                   margin="normal"
                   variant="outlined"
                 >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={"ISE"}>ISE</MenuItem>
-                    <MenuItem value={"CSE"}>CSE</MenuItem>
-                    <MenuItem value={"CE"}>CE</MenuItem>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"ISE"}>ISE</MenuItem>
+                  <MenuItem value={"CSE"}>CSE</MenuItem>
+                  <MenuItem value={"CE"}>CE</MenuItem>
                 </TextField>
               </FormControl>
             </div>
@@ -141,7 +129,7 @@ class TransferFrom extends Component {
                   }}
                   inputProps={{
                     step: 300, // 5 min
-                  }}                   
+                  }}
                 />
               </FormControl>
             </div>
