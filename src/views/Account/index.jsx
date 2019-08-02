@@ -21,7 +21,8 @@ import { UserContext } from 'userContext';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
+    minHeight:'100vh'
   }
 });
 

@@ -81,7 +81,7 @@ class AccountProfile extends Component {
             </div>
             <Avatar
               className={classes.avatar}
-              src="/images/avatars/avatar_1.png"
+              src="/images/avatars/avatar_11.png"
             />
           </div>
           {/* <div className={classes.progressWrapper}>
@@ -155,13 +155,13 @@ class AccountProfile extends Component {
                 value={this.state.age}
                 onChange={this.handleChange('age')}
                 input={<Input id="age-simple" />}
-              > 
+              >
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem> 
+                <MenuItem value={30}>Thirty</MenuItem>
               </Select> */}
               </FormControl>
             </form>

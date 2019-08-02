@@ -23,36 +23,11 @@ function StudentDashboard () {
 
           >
 
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
+          <Videos/>
+          <Videos/>
+          <Videos/>
 
-            </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
 
-            </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
-
-            </Grid>
             <Grid
               item
               lg={8}

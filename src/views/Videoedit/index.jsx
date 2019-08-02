@@ -118,7 +118,7 @@ forAdmin(type,classes){
             xl={8}
             xs={12}
           >
-            <Videoplay />
+            <Videoplay title="Title" description="Description" src="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"/>
          </Grid>
          <Grid
            item

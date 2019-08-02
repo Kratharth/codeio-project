@@ -153,7 +153,7 @@ class SidebarDepartment extends Component {
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Course edit"
+              primary="Course Details"
             />
           </ListItem>
 

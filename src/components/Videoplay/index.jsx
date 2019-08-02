@@ -33,24 +33,10 @@ import styles from './styles';
 
 
 class Videoplay extends Component {
-  state = {
-    values: {
-      title: '',
-      description: '',
-      edit: ''
-    },
-
-  };
-
-  handleChange = e => {
-    this.setState({
-      state: e.target.value
-    });
-  };
 
   render() {
-    const { classes, className, ...rest } = this.props;
-    const { title, description, edit } = this.state;
+    const { classes, className,title, description ,src, ...rest } = this.props;
+  //  const { title, description ,src} = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -58,8 +44,8 @@ class Videoplay extends Component {
       <Card className={classes.card}>
         <CardActionArea>
           <ReactPlayer
+        url={src}
 
-        url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
           poster="/myPoster.png"
           width="100%"
           height="100%"
@@ -72,11 +58,11 @@ class Videoplay extends Component {
         <div>
           <Paper className={classes.root}>
             <Typography variant="h5" component="h3">
-              Title
+              {title}
           </Typography>
             <Typography component="p">
 
-              Description about video.
+            {description}
           </Typography>
           </Paper>
         </div>
@@ -89,7 +75,11 @@ class Videoplay extends Component {
 
 Videoplay.propTypes = {
   className: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title:PropTypes.string,
+  description:PropTypes.string,
+  src:PropTypes.string
+
 };
 
 export default withStyles(styles)(Videoplay);
