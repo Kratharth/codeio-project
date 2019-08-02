@@ -15,7 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import { getDeptDetails } from 'services/AddUsers';
+import { getDeptDetails } from 'services/addUsers';
 import Axios from 'axios';
 
 const tableIcons = {
