@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import { getDeptDetails } from 'services/AddUsers';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -38,22 +39,51 @@ const tableIcons = {
 };
 
 export default class DepartmentTable extends React.Component {
+  signal = true;
   state = {
     columns: [
       { title: 'Name', field: 'name' },
       { title: 'Code', field: 'code' },
       { title: 'Email', field: 'email' },
     ],
-    data: [
-      // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
-      {
-        classroom: 407,
-        name: 'Uma Devi',
-        code: 'ISE',
-        email: 'devi@bmsce.ac.in',
-      },
-    ]
+    deptDetails: [],
+    isLoading: false,
   };
+
+  async getDeptDetails() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { deptDetails } = await (getDeptDetails());
+      if (!Array.isArray(deptDetails)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
+        this.setState({
+          isLoading: false,
+          deptDetails
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getDeptDetails();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
 
   render() {
     return (
@@ -61,7 +91,7 @@ export default class DepartmentTable extends React.Component {
         icons={tableIcons}
         title="Department Details"
         columns={this.state.columns}
-        data={this.state.data}
+        data={this.state.deptDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {

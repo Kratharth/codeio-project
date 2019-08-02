@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import { getAdminDetails } from 'services/AddUsers';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -38,28 +39,59 @@ const tableIcons = {
 };
 
 export default class AdminTable extends React.Component {
+  signal = true;
   state = {
     columns: [
       { title: 'Name', field: 'name' },
       { title: 'Id', field: 'id' },
       { title: 'Email', field: 'email' },
     ],
-    data: [
-      {
-        classroom: 407,
-        name: 'Uma Devi',
-        id: 'Python',
-        email: '2-2:55',
-      },
-    ]
+    adminDetails: [],
+    isLoading: false,
   };
+
+  async getAdminDetails() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { adminDetails } = await (getAdminDetails());
+      if (!Array.isArray(adminDetails)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
+        this.setState({
+          isLoading: false,
+          adminDetails
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getAdminDetails();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
+
   render() {
     return (
       <MaterialTable
         icons={tableIcons}
         title="Admin Details"
         columns={this.state.columns}
-        data={this.state.data}
+        data={this.state.adminDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {

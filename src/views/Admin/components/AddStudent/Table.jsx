@@ -15,7 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import getUserDetails from 'services/AddUsers/index';
+import { getStudentDetails } from 'services/AddUsers';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -50,22 +50,23 @@ export default class StudentTable extends React.Component {
       },
       { title: 'USN', field: 'usn' },
     ],
-    userDetails: [],
+    studentDetails: [],
+    isLoading: false,
   };
 
-  async getUserDetails() {
+  async getStudentDetails() {
     try {
       this.setState({ isLoading: true });
 
-      const { userDetails } = await (getUserDetails());
-      if (!Array.isArray(userDetails)) {
+      const { studentDetails } = await (getStudentDetails());
+      if (!Array.isArray(studentDetails)) {
         alert("Something unexpected happened :(");
         this.setState({ isLoading: false });
       }
       else if (this.signal) {
         this.setState({
           isLoading: false,
-          userDetails
+          studentDetails
         });
       }
     } catch (error) {
@@ -80,7 +81,7 @@ export default class StudentTable extends React.Component {
 
   componentDidMount() {
     this.signal = true;
-    this.getUserDetails();
+    this.getStudentDetails();
   }
 
   componentWillUnmount() {
@@ -93,18 +94,14 @@ export default class StudentTable extends React.Component {
         icons={tableIcons}
         title="Student Details"
         columns={this.state.columns}
-        data={this.state.userDetails}
+        data={this.state.studentDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              setTimeout(() => {
-                resolve();
-                const data = [...this.state.userDetails];
-                data.push(newData);
-                this.setState({ ...this.state, data });
-              }, 600);
-              console.log('newdata: ');
-              console.log(newData);
+              resolve();
+              const data = [...this.state.userDetails];
+              data.push(newData);
+              this.setState({ ...this.state, data });
               Axios.post('https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test/student', newData)
                 .then(res => {
                   console.log(res);
@@ -112,21 +109,17 @@ export default class StudentTable extends React.Component {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              setTimeout(() => {
-                resolve();
-                const data = [...this.state.data];
-                data[data.indexOf(oldData)] = newData;
-                this.setState({ ...this.state, data });
-              }, 600);
+              resolve();
+              const data = [...this.state.data];
+              data[data.indexOf(oldData)] = newData;
+              this.setState({ ...this.state, data });
             }),
           onRowDelete: oldData =>
             new Promise(resolve => {
-              setTimeout(() => {
-                resolve();
-                const data = [...this.state.data];
-                data.splice(data.indexOf(oldData), 1);
-                this.setState({ ...this.state, data });
-              }, 600);
+              resolve();
+              const data = [...this.state.data];
+              data.splice(data.indexOf(oldData), 1);
+              this.setState({ ...this.state, data });
             }),
         }}
         options={{
