@@ -15,6 +15,8 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import getCourseDetails from 'services/CourseDetails';
+import Axios from 'axios';
 
 const tableIcons = {
 Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -36,44 +38,79 @@ ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
 ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-export default class MaterialTableDemo extends React.Component {
+export default class CourseTable extends React.Component {
+signal=true
   state = {
+    signal:true,
     columns: [
         { title: 'Course name', field: 'coursename' },
-        { title: 'Course code', field: 'coursecode' },
+        { title: 'Course code', field: 'courseCode' },
         { title: 'Title', field: 'title' },
-
+          {title:'Sem',field:'sem'},
         {title:'Faculty',field:'faculty'},
 
       ],
-      data: [
-        {
-          coursename:'data communication',
-          coursecode:'15CS17DC',
-          title:'cp 1',
-          faculty:'grp'
 
-
-         },
-      ]
+        CourseDetails: [],
   };
+
+  async getCourseDetails() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { CourseDetails } = await (getCourseDetails());
+          console.log(CourseDetails);
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          CourseDetails
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getCourseDetails();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
+
+
   render(){
         return (
             <MaterialTable
             icons={tableIcons}
             title="Course"
             columns={this.state.columns}
-            data={this.state.data}
+            data={this.state.CourseDetails}
             editable={{
                 onRowAdd: newData =>
                 new Promise(resolve => {
                     setTimeout(() => {
                     resolve();
-                    const data = [...this.state.data];
+                    const data = [...this.state.CourseDetails];
                     data.push(newData);
                     this.setState({ ...this.state, data });
                     }, 600);
+                    console.log('newdata: ');
+                    console.log(newData);
+                    Axios.post('https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test/dept/sem/course', newData)
+                      .then(res => {
+                        console.log(res);
+                      })
                 }),
+
                 onRowUpdate: (newData, oldData) =>
                 new Promise(resolve => {
                     setTimeout(() => {

@@ -7,7 +7,7 @@ import { Paper, VideoPlay } from 'components';
 import {
   //Students,
   //Faculty,
-  //Videos,
+  Videos,
   VideoVsMonChart
 } from './components';
 
@@ -23,45 +23,20 @@ function StudentDashboard() {
 
     >
 
-      <Grid
-        item
-        lg={3}
-        sm={6}
-        xl={3}
-        xs={12}
-      >
-        <VideoPlay />
+          <Videos/>
+          <Videos/>
+          <Videos/>
 
-      </Grid>
-      <Grid
-        item
-        lg={3}
-        sm={6}
-        xl={3}
-        xs={12}
-      >
-        <VideoPlay />
 
-      </Grid>
-      <Grid
-        item
-        lg={3}
-        sm={6}
-        xl={3}
-        xs={12}
-      >
-        <VideoPlay />
-
-      </Grid>
-      <Grid
-        item
-        lg={8}
-        md={12}
-        xl={9}
-        xs={12}
-      >
-        <VideoVsMonChart style={styles} />
-      </Grid>
+            <Grid
+              item
+              lg={8}
+              md={12}
+              xl={9}
+              xs={12}
+            >
+              <VideoVsMonChart style={styles} />
+            </Grid>
 
     </Grid>
   );

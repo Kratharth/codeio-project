@@ -18,9 +18,10 @@ const styles = theme => ({
     paddingBottom: '24px',
     display: 'flex',
     justifyContent: 'center',
-    position: 'relative',
+    //position: 'relative',
     marginTop: '24px',
     alignItems: 'center',
+    minHeight:'100vh'
   }
 });
 

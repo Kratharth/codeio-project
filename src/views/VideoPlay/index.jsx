@@ -41,18 +41,9 @@ class VideoEdit extends Component {
               xl={8}
               xs={12}
             >
-              <VideoPlay />
+              <VideoPlay title="Title" description="Description" src="https://transcodedlecturevideos.s3.ap-south-1.amazonaws.com/videoplayback.ts"/>
             </Grid>
 
-            {/* <Grid
-              item
-              lg={8}
-              md={6}
-              xl={8}
-              xs={12}
-            >
-              <VideoEditDetails />
-            </Grid> */}
 
           </Grid>
         </div>

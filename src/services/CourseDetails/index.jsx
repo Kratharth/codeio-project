@@ -1,26 +1,25 @@
 import Axios from 'axios';
-import { api } from '../api';
 
-const getUserDetails = () => {
+const getCourseDetails = () => {
     return new Promise(resolve => {
-        Axios.get(`${api}/user`)
+        Axios.get('https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test/dept/sem/course')
             .then(res => {
                 console.log('res API: ');
                 console.log(res);
                 resolve({
-                    userDetails: res.data.res,
+                    CourseDetails: res.data,
                 })
-                console.log('department');
+                console.log('course');
                 console.log(res.data);
             })
             .catch(err => {
                 console.log('err API: ');
                 console.log(err);
                 resolve({
-                    userDetails: err
+                    CourseDetails: err
                 })
             })
     })
 };
 
-export default getUserDetails;
+export default getCourseDetails;
