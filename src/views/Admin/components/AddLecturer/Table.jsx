@@ -15,6 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import { getLecturerDetails } from 'services/AddUsers';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -38,6 +39,7 @@ const tableIcons = {
 };
 
 export default class LecturerTable extends React.Component {
+  signal = true;
   state = {
     columns: [
       { title: 'Name', field: 'name' },
@@ -45,26 +47,55 @@ export default class LecturerTable extends React.Component {
       { title: 'Id', field: 'id' },
       {
         title: 'Department',
-        field: 'department',
+        field: 'dept',
       },
     ],
-    data: [
-      // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
-      {
-        name: 'Uma Devi',
-        email: 'devi@bmsce.ac.in',
-        id: 'BMS19CSE',
-        department: 'ISE',
-      },
-    ]
+    lecturerDetails: [],
+    isLoading: false,
   };
+
+  async getLecturerDetails() {
+    try {
+      this.setState({ isLoading: true });
+
+      const { lecturerDetails } = await (getLecturerDetails());
+      if (!Array.isArray(lecturerDetails)) {
+        alert("Something unexpected happened :(");
+        this.setState({ isLoading: false });
+      }
+      else if (this.signal) {
+        this.setState({
+          isLoading: false,
+          lecturerDetails
+        });
+      }
+    } catch (error) {
+      if (this.signal) {
+        this.setState({
+          isLoading: false,
+          error
+        });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.signal = true;
+    this.getLecturerDetails();
+  }
+
+  componentWillUnmount() {
+    this.signal = false;
+  }
+
+
   render() {
     return (
       <MaterialTable
         icons={tableIcons}
         title="Lecturer Details"
         columns={this.state.columns}
-        data={this.state.data}
+        data={this.state.lecturerDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {

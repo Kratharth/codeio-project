@@ -1,26 +1,68 @@
 import Axios from 'axios';
 import { api } from '../api';
 
-const getUserDetails = () => {
+export const getStudentDetails = () => {
     return new Promise(resolve => {
         Axios.get(`${api}/user`)
             .then(res => {
-                console.log('res API: ');
-                console.log(res);
                 resolve({
-                    userDetails: res.data.res,
+                    studentDetails: res.data.res,
                 })
-                console.log('department');
-                console.log(res.data);
             })
             .catch(err => {
-                console.log('err API: ');
-                console.log(err);
                 resolve({
-                    userDetails: err
+                    studentDetails: err
                 })
             })
     })
 };
 
-export default getUserDetails;
+export const getLecturerDetails = () => {
+    return new Promise(resolve => {
+        Axios.get(`${api}/faculty`, { type: 'Lecturer' })
+            .then(res => {
+                console.log("lecturer details")
+                console.log(res.data);
+                resolve({
+                    lecturerDetails: res.data.res,
+                })
+            })
+            .catch(err => {
+                resolve({
+                    lecturerDetails: err
+                })
+            })
+    })
+};
+
+export const getDeptDetails = () => {
+    return new Promise(resolve => {
+        Axios.get(`${api}/dept`, { type: 'Department' })
+            .then(res => {
+                resolve({
+                    deptDetails: res.data.res,
+                })
+            })
+            .catch(err => {
+                resolve({
+                    deptDetails: err
+                })
+            })
+    })
+};
+
+export const getAdminDetails = () => {
+    return new Promise(resolve => {
+        Axios.get(`${api}/admin`, { type: 'Admin' })
+            .then(res => {
+                resolve({
+                    adminDetails: res.data.res,
+                })
+            })
+            .catch(err => {
+                resolve({
+                    adminDetails: err
+                })
+            })
+    })
+};

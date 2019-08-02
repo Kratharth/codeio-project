@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export const getDepartment = () => {
   return new Promise(resolve => {
-    Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/dept')
+    Axios.get('https://c81vghnvph.execute-api.ap-south-1.amazonaws.com/Test/dept')
       .then(res => {
         console.log('res API: ');
         console.log(res);
@@ -20,4 +20,4 @@ export const getDepartment = () => {
         })
       })
   })
-};
+}; 
