@@ -43,7 +43,7 @@ class SidebarAdmin extends Component {
   }
 
   handleClick = e => {
-    newOpen = this.state.open.map((ele, index) => (index === e.currentTarget.dataset.open_id) ? !ele : false);
+    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
     this.setState({ open: newOpen });
   }
 
