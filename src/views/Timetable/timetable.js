@@ -54,9 +54,25 @@ export default class MaterialTableDemo extends React.Component {
       // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
       {
         classroom: 407,
-        name: 'Uma Devi',
+        name: 'Dr.Umadevi V',
         course: 'Python',
         time: '2-2:55',
+        date: '9-7-2019',
+        day: 'wednesday'
+      },
+      {
+        classroom: 405,
+        name: 'Dr.Nagarathna N',
+        course: 'ADA',
+        time: '2:55-3.50',
+        date: '9-7-2019',
+        day: 'wednesday'
+      },
+      {
+        classroom: 402,
+        name: 'Dr.G R Prasad',
+        course: 'IOT',
+        time: '9.50-10.45',
         date: '9-7-2019',
         day: 'wednesday'
       },

@@ -49,9 +49,9 @@ class SidebarStudent extends Component {
         <div className={classes.profile}>
           <Link to="/account">
             <Avatar
-              alt="BMS logo"
+              alt="Student"
               className={classes.avatar}
-              src="/images/bmslogo.png"
+              src="/images/avatars/avatar.png"
             />
           </Link>
           <Typography

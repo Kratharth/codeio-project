@@ -52,7 +52,7 @@ class SidebarLecturer extends Component {
             <Avatar
               alt="Lecturer"
               className={classes.avatar}
-              src="/images/bmslogo.png"
+              src="/images/avatars/avatar.png"
             />
           </Link>
           <Typography

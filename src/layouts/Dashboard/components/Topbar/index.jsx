@@ -1,14 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-
 // Externals
 import classNames from 'classnames';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import {
   Badge,
@@ -20,7 +17,6 @@ import {
   Menu,
   MenuItem
 } from '@material-ui/core';
-
 // Material icons
 import {
   Menu as MenuIcon,
@@ -30,7 +26,6 @@ import {
   Help,
   Settings,
   Person as PersonIcon,
-  Security
 } from '@material-ui/icons';
 // Shared services
 import { getNotifications } from 'services/notification';
@@ -82,8 +77,7 @@ class Topbar extends Component {
 
   handleSignOut = () => {
     const { history } = this.props;
-
-    localStorage.setItem('isAuthenticated', false);
+    localStorage.clear();
     history.push('/sign-in');
   };
   handleAccount = () => {
@@ -123,7 +117,6 @@ class Topbar extends Component {
       type
     } = this.props;
     const { notifications, notificationsCount, notificationsEl } = this.state;
-    console.log({ type })
     const rootClassName = classNames(classes.root, className);
     const showNotifications = Boolean(notificationsEl);
 

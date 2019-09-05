@@ -1,58 +1,33 @@
 import React from 'react';
 // Material components
-import { Grid,Card } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-import {Paper,Videoplay} from 'components';
+import { Paper, VideoPlay } from 'components';
 // Custom components
 import {
-  Students,
-  Faculty,
+  //Students,
+  //Faculty,
   Videos,
   VideoVsMonChart
 } from './components';
 
 
-function StudentDashboard () {
-  const styles={
+function StudentDashboard() {
+  const styles = {
     height: '100%'
   }
-    return (
-          <Grid
-            container
-            spacing={6}
+  return (
+    <Grid
+      container
+      spacing={6}
 
-          >
+    >
 
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
+          <Videos/>
+          <Videos/>
+          <Videos/>
 
-            </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
 
-            </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-          <Videoplay/>
-
-            </Grid>
             <Grid
               item
               lg={8}
@@ -63,9 +38,9 @@ function StudentDashboard () {
               <VideoVsMonChart style={styles} />
             </Grid>
 
-          </Grid>
-    );
-  }
+    </Grid>
+  );
+}
 
 
 export default StudentDashboard;

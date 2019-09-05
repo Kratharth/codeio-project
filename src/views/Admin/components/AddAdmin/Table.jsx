@@ -46,10 +46,14 @@ export default class AdminTable extends React.Component {
     ],
     data: [
       {
-        classroom: 407,
-        name: 'Uma Devi',
-        id: 'Python',
-        email: '2-2:55',
+        name: 'Anil',
+        id: '100',
+        email: 'anil@bmsce.ac.in',
+      },
+      {
+        name: 'Dr.B V Ravishankar',
+        id: '101',
+        email: 'principal@bmsce.ac.in',
       },
     ]
   };

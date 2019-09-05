@@ -6,12 +6,12 @@ export const data = {
   labels: ['CSE', ' ISE', 'EEE', 'TC', 'EC', 'CIVIL'],
   datasets: [
     {
-      label: 'This year',
+      label: 'Last week',
       backgroundColor: palette.primary.main,
       data: [18, 5, 19, 27, 29, 19, 20]
     },
     {
-      label: 'Last year',
+      label: 'This week',
       backgroundColor: palette.common.neutral,
       data: [11, 20, 12, 29, 30, 25, 13]
     }

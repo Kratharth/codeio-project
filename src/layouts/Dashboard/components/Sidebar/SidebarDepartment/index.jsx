@@ -52,9 +52,9 @@ class SidebarDepartment extends Component {
         <div className={classes.profile}>
           <Link to="/department/account">
             <Avatar
-              alt="CSE"
+              alt="Dept"
               className={classes.avatar}
-              src="/images/bmslogo.png"
+              src="/images/avatars/avatar.png"
             />
           </Link>
           <Typography
@@ -153,7 +153,7 @@ class SidebarDepartment extends Component {
             </ListItemIcon>
             <ListItemText
               classes={{ primary: classes.listItemText }}
-              primary="Course edit"
+              primary="Course Details"
             />
           </ListItem>
 

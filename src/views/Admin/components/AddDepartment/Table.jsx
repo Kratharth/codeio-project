@@ -47,10 +47,24 @@ export default class DepartmentTable extends React.Component {
     data: [
       // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
       {
-        classroom: 407,
-        name: 'Uma Devi',
+        name: 'Computer Science and Engineering',
+        code: 'CSE',
+        email: 'hodcse@bmsce.ac.in',
+      },
+      {
+        name: 'Information Science and Engineering',
         code: 'ISE',
-        email: 'devi@bmsce.ac.in',
+        email: 'hodise@bmsce.ac.in',
+      },
+      {
+        name: 'Eelectronics and Communication Engineering',
+        code: 'ECE',
+        email: 'hodece@bmsce.ac.in',
+      },
+      {
+        name: 'Civil Engineering',
+        code: 'CIV',
+        email: 'hodciv@bmsce.ac.in',
       },
     ]
   };

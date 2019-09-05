@@ -24,10 +24,10 @@ const styles = theme => ({
 
 class Settings extends Component {
   render() {
-    const { classes,type } = this.props;
+    const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Settings" type={type}>
+      <DashboardLayout title="Settings" >
         <div className={classes.root}>
           <Grid
             container

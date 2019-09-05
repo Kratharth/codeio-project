@@ -5,7 +5,7 @@ import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import LecturerTable from './Table';
-import { getDepartment } from 'services/DepartmentDetails/index';
+import { getDepartment } from 'services/departmentDetails';
 
 import styles from './styles';
 

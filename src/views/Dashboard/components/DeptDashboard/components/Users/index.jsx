@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
 import { Typography } from '@material-ui/core';
-
 // Material icons
 import {
-  ArrowUpward as ArrowUpwardIcon,
-  PeopleOutlined as PeopleIcon,
   Videocam as VideoIcon
 } from '@material-ui/icons';
-
 // Shared components
 import { Paper } from 'components';
 
@@ -52,21 +45,6 @@ class Users extends Component {
           <div className={classes.iconWrapper}>
             <VideoIcon className={classes.icon} />
           </div>
-        </div>
-        <div className={classes.footer}>
-          <Typography
-            className={classes.difference}
-            variant="body2"
-          >
-            {/* <ArrowUpwardIcon /> */}
-
-          </Typography>
-          <Typography
-            className={classes.caption}
-            variant="caption"
-          >
-
-          </Typography>
         </div>
       </Paper>
     );

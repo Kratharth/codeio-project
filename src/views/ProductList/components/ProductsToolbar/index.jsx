@@ -73,7 +73,7 @@ class ProductsToolbar extends Component {
 	     <Button className={classes.button} type="submit"><SearchIcon /></Button>
           </form>
           <span className={classes.spacer} />
-          <DisplayMode mode="grid" />
+          {/* <DisplayMode mode="grid" /> */}
         </div>
       </div>
     );

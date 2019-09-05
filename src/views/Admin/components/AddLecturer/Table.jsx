@@ -51,9 +51,45 @@ export default class LecturerTable extends React.Component {
     data: [
       // { name: '', surname: '', birthYear: 1987, birthCity: 63 },
       {
-        name: 'Uma Devi',
-        email: 'devi@bmsce.ac.in',
-        id: 'BMS19CSE',
+        name: 'Dr.Umadevi',
+        email: 'druv@bmsce.ac.in',
+        id: 'BMS190CSE',
+        department: 'CSE',
+      },
+      {
+        name: 'Dr.B G Prasad',
+        email: 'drbgp@bmsce.ac.in',
+        id: 'BMS191CSE',
+        department: 'CSE',
+      },
+      {
+        name: 'Dr.G R Prasad',
+        email: 'drgrp@bmsce.ac.in',
+        id: 'BMS192CSE',
+        department: 'CSE',
+      },
+      {
+        name: 'Dr.Ganesh',
+        email: 'drggp@bmsce.ac.in',
+        id: 'BMS193CSE',
+        department: 'CSE',
+      },
+      {
+        name: 'Dr.Ramesh',
+        email: 'drrrp@bmsce.ac.in',
+        id: 'BMS195CSE',
+        department: 'CSE',
+      },
+      {
+        name: 'Dr.Chaitanya',
+        email: 'drcc@bmsce.ac.in',
+        id: 'BMS190ECE',
+        department: 'ECE',
+      },
+      {
+        name: 'Mrs.Indira',
+        email: 'ip@bmsce.ac.in',
+        id: 'BMS190ISE',
         department: 'ISE',
       },
     ]

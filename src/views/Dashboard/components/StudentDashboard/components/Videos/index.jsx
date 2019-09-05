@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Grid } from '@material-ui/core';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -14,43 +14,46 @@ import { Typography, LinearProgress } from '@material-ui/core';
 import { InsertChartOutlined as InsertChartIcon,  Videocam as VideoIcon, } from '@material-ui/icons';
 
 // Shared components
-import { Paper } from 'components';
+import { Paper,VideoPlay } from 'components';
 
 // Component styles
 import styles from './styles';
 
+
+
+
+
+
 class Videos extends Component {
+  state = {
+    title:'',
+    faculty:'',
+    coursename:''
+  };
+
+
+
+
+
+
   render() {
     const { classes, className, ...rest } = this.props;
 
     const rootClassName = classNames(classes.root, className);
 
     return (
-      <Paper
-        {...rest}
-        className={rootClassName}
-      >
-        <div className={classes.content}>
-          <div className={classes.details}>
-            <Typography
-              className={classes.title}
-              variant="body2"
-            >
-              Videos
-            </Typography>
-            <Typography
-              className={classes.value}
-              variant="h3"
-            >
-              1500
-            </Typography>
-          </div>
-          <div className={classes.iconWrapper}>
-            <VideoIcon className={classes.icon} />
-          </div>
-        </div>
 
-      </Paper>
+      <Grid
+        item
+        lg={3}
+        sm={6}
+        xl={3}
+        xs={12}
+      >
+        <VideoPlay title="Title" description="description" src="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4" />
+      </Grid>
+
+
     );
   }
 }

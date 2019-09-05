@@ -15,12 +15,10 @@ import {
   Button,
   CircularProgress,
   TextField,
-  Typography,
-  MenuItem,
-  FormHelperText,
-  Select,
-  Input
+  Typography
 } from '@material-ui/core';
+// Alert Dialog
+import { AlertDialog } from 'components';
 // Component styles
 import styles from './styles';
 // Form validation schema
@@ -35,18 +33,15 @@ class SignIn extends Component {
   state = {
     values: {
       email: '',
-      password: '',
-      type: 'Student'
+      password: ''
     },
     touched: {
       email: false,
-      password: false,
-      type: false
+      password: false
     },
     errors: {
       email: null,
-      password: null,
-      type: null
+      password: null
     },
     isValid: false,
     isLoading: false,
@@ -59,7 +54,7 @@ class SignIn extends Component {
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = errors || values.type == '' ? false : true;
+    newState.isValid = errors ? false : true;
 
     this.setState(newState);
   }, 800);
@@ -77,35 +72,29 @@ class SignIn extends Component {
   handleSignIn = async () => {
     const { history } = this.props;
     const { values } = this.state;
-    const email = values.email;
-    const password = values.password;
 
     this.setState({ isLoading: true });
-    const data = {
-      email,
-      password
-    }
-    signIn(data).then(res => {
-      if (res.success === true) {
-        localStorage.setItem('isAuthenticated', true);
-        localStorage.setItem('name', res.name);
-        localStorage.setItem('type', this.state.values.type);
+
+    signIn({ email: values.email, password: values.password }).then(res => {
+      if (res.success) {
+        for (let i in res.res) {
+          localStorage.setItem(i, res.res[i]);
+        }
         history.push('/dashboard');
       }
       else {
-        alert("Something unexpected has occurred :( ");
-        this.setState({ isLoading: false });
+        this.setState({ isLoading: false, submitError: res.errorMessage });
       }
     }).catch(error => {
       this.setState({
         isLoading: false,
-        serviceError: error
+        submitError: error
       });
     });
   }
 
   componentWillUnmount() {
-    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type')});
+    this.context.userDetails({...localStorage});
   }
 
   render() {
@@ -131,7 +120,7 @@ class SignIn extends Component {
           <Grid
             className={classes.quoteWrapper}
             item
-            lg={5}
+            lg={6}
           >
             <div className={classes.quote}>
               <div className={classes.quoteInner}>
@@ -161,7 +150,7 @@ class SignIn extends Component {
           <Grid
             className={classes.content}
             item
-            lg={7}
+            lg={6}
             xs={12}
           >
             <div className={classes.content}>
@@ -218,26 +207,15 @@ class SignIn extends Component {
                         {errors.password[0]}
                       </Typography>
                     )}
-                    <Select
-                      className={classes.textField}
-                      value={values.type}
-                      onChange={event => this.handleFieldChange('type', event.target.value)}
-                      input={<Input name="type" id="user-type" />}
-                    >
-                      <MenuItem value='Admin'>Admin</MenuItem>
-                      <MenuItem value='Department'>Department</MenuItem>
-                      <MenuItem value='Lecturer'>Lecturer</MenuItem>
-                      <MenuItem value='Student'>Student</MenuItem>
-                    </Select>
-                    <FormHelperText>Select user type</FormHelperText>
                   </div>
                   {submitError && (
-                    <Typography
-                      className={classes.submitError}
-                      variant="body2"
-                    >
-                      {submitError}
-                    </Typography>
+                    // <Typography
+                    //   className={classes.submitError}
+                    //   variant="body2"
+                    // >
+                    //   {submitError}
+                    // </Typography>
+                    <AlertDialog message="Hi" />
                   )}
                   {isLoading ? (
                     <CircularProgress className={classes.progress} />

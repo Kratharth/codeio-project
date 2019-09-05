@@ -15,7 +15,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import getUserDetails from 'services/AddUsers/index';
+import { getStudentDetails } from 'services/addUsers';
 import Axios from 'axios';
 
 const tableIcons = {
@@ -43,12 +43,12 @@ export default class StudentTable extends React.Component {
   state = {
     columns: [
       { title: 'Name', field: 'name' },
-      { title: 'Department', field: 'department' },
+      { title: 'Department', field: 'dept' },
       { title: 'Email', field: 'email' },
       {
         title: 'Sem', field: 'sem',
       },
-      { title: 'USN', field: 'usn' },
+      { title: 'USN', field: '_id' },
     ],
     // data: [
     //   {
@@ -59,19 +59,19 @@ export default class StudentTable extends React.Component {
     //     usn: '1BM17CS000',
     //   },
     // ],
-    userDetails: [],
+    studentDetails: [],
   };
 
-  async getUserDetails() {
+  async getStudentDetails() {
     try {
       this.setState({ isLoading: true });
 
-      const { userDetails } = await (getUserDetails());
-          console.log(userDetails);
+      const { studentDetails } = await (getStudentDetails());
+      console.log(studentDetails);
       if (this.signal) {
         this.setState({
           isLoading: false,
-          userDetails
+          studentDetails
         });
       }
     } catch (error) {
@@ -86,7 +86,7 @@ export default class StudentTable extends React.Component {
 
   componentDidMount() {
     this.signal = true;
-    this.getUserDetails();
+    this.getStudentDetails();
   }
 
   componentWillUnmount() {
@@ -99,7 +99,7 @@ export default class StudentTable extends React.Component {
         icons={tableIcons}
         title="Student Details"
         columns={this.state.columns}
-        data={this.state.userDetails}
+        data={this.state.studentDetails}
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {

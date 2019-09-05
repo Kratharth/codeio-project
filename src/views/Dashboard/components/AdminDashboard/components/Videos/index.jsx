@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
 // Material helpers
 import { withStyles } from '@material-ui/core';
-
 // Material components
-import { Typography, LinearProgress } from '@material-ui/core';
-
+import { Typography } from '@material-ui/core';
 // Material icons
-import { InsertChartOutlined as InsertChartIcon,  Videocam as VideoIcon, } from '@material-ui/icons';
-
+import { Videocam as VideoIcon, } from '@material-ui/icons';
 // Shared components
 import { Paper } from 'components';
 

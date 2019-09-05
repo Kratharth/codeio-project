@@ -1,6 +1,6 @@
 {
-  "name": "react-material-dashboard",
-  "version": "0.2.0",
+  "name": "bms-lrs",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
