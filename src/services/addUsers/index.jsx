@@ -5,17 +5,17 @@ const getUserDetails = () => {
     return new Promise(resolve => {
         Axios.get(`${api}/user`)
             .then(res => {
-                console.log('res API: ');
-                console.log(res);
+                //console.log('res API: ');
+                //console.log(res);
                 resolve({
                     userDetails: res.data,
                 })
-                console.log('department');
-                console.log(res.data);
+                //console.log('department');
+                //console.log(res.data);
             })
             .catch(err => {
-                console.log('err API: ');
-                console.log(err);
+                //console.log('err API: ');
+                //console.log(err);
                 resolve({
                     userDetails: err
                 })

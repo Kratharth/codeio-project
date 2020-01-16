@@ -5,15 +5,15 @@ export const getCameras = () => {
   return new Promise(resolve => {
     Axios.get(`${api}/camera`)
       .then(res => {
-        console.log('res API: ');
-        console.log(res);
+        //console.log('res API: ');
+        //console.log(res);
         resolve({
           camera: res.data
         })
       })
       .catch(err => {
-        console.log('err API: ');
-        console.log(err);
+        //console.log('err API: ');
+        //console.log(err);
         resolve({
           camera: err
         })
@@ -22,17 +22,17 @@ export const getCameras = () => {
 };
 export const postCameras = data => {
   return new Promise((resolve, reject) => {
-    Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera', data)
+    Axios.post(`${api}/camera`, data)
       .then(res => {
-        console.log('res API: ');
-        console.log(res);
+        //console.log('res API: ');
+        //console.log(res);
         resolve({
           camera: res.data,
         })
       })
       .catch(err => {
-        console.log('err API: ');
-        console.log(err);
+        //console.log('err API: ');
+        //console.log(err);
         reject({
           error: err
         })

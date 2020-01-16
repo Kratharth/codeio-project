@@ -27,6 +27,11 @@ export default class Routes extends Component {
     return (
       <Suspense fallback={<LinearProgress />}>
         <Switch>
+          {localStorage['email'] !=null ? <Redirect
+	    exact
+            from="/"
+            to="/dashboard"
+          />: null }
           <Redirect
             exact
             from="/"

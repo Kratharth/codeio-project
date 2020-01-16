@@ -1,18 +1,19 @@
 import Axios from 'axios';
+import { api } from '../api';
 
 export const getProcessors = () => {
   return new Promise(resolve => {
-    Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/processor')
+    Axios.get(`${api}camera/processor`)
       .then(res => {
-        console.log('res API: ');
-        console.log(res);
+        //console.log('res API: ');
+        //console.log(res);
         resolve({
           processor: res.data
         })
       })
       .catch(err => {
-        console.log('err API: ');
-        console.log(err);
+        //console.log('err API: ');
+        //console.log(err);
         resolve({
           processor: err
         })

@@ -1,9 +1,10 @@
 export default theme => ({
   root: {
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3),
+    minHeight: '100vh'
   },
   content: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   },
   progressWrapper: {
     paddingTop: '48px',

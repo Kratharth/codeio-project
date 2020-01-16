@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Card,
-         CardActionArea,
-         Typography,
-         Paper
+import uuid from 'uuid';
+import {
+  Card,
+  CardActionArea,
+  Typography,
+  Paper
 } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 // Externals
@@ -40,13 +42,13 @@ class VideoPlay extends Component {
       <Card className={classes.card}>
         <CardActionArea>
           <ReactPlayer
-
-        url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
-          poster="/myPoster.png"
-          width="100%"
-          height="100%"
-          autoPlay
-          controls
+            key={uuid.v1()}
+            url="https://codeiovideossource.s3.ap-south-1.amazonaws.com/videos/Test.mp4"
+            poster="/myPoster.png"
+            width="100%"
+            height="100%"
+            autoPlay
+            controls
           />
 
 

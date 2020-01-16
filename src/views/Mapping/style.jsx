@@ -1,6 +1,7 @@
 export default theme => ({
   root: {
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
+    minHeight: '100vh'
   },
   content: {
     marginTop: theme.spacing(2)

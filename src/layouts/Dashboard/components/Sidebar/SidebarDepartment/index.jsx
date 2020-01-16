@@ -145,7 +145,7 @@ class SidebarDepartment extends Component {
           <ListItem
             activeClassName={classes.activeListItem}
             className={classes.listItem}
-            component={NavLink}
+            component={newLink}
             to="/courseedit"
           >
             <ListItemIcon className={classes.listItemIcon}>

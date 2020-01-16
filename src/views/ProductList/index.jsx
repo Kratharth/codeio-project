@@ -25,7 +25,7 @@ import {
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
-import { getCourseVideos } from 'services/coursevideo';
+//import { getCourseVideos } from 'services/coursevideo';
 import { getProducts } from 'services/product';
 
 // Custom components
@@ -53,7 +53,7 @@ class ProductList extends Component {
   async getProducts() {
     try {
       this.setState({ isLoading: true });
-      console.log(this.state.searchData);
+      //console.log(this.state.searchData);
       // const { coursevideo } = await getCourseVideos(this.state.searchData);
       const { products } = await getProducts();
 
@@ -83,7 +83,7 @@ class ProductList extends Component {
   componentWillMount() {
     this.signal = true;
 
-    const { limit } = this.state;
+    //const { limit } = this.state;
 
     this.getProducts(); // api call for sem and dept here
   }

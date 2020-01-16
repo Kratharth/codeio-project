@@ -210,8 +210,6 @@ class VideoEdit extends Component {
 
               <br /><br />
               <TextField
-
-
                 label="class room"
                 className={classes.textField}
                 value={classroom}

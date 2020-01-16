@@ -1,18 +1,19 @@
-import Axios from 'axios'
+import Axios from 'axios';
+import { api } from '../api';
 
 export const getMappings = () => {
   return new Promise(resolve => {
-    Axios.get('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping')
+    Axios.get(`${api}/camera/mapping`)
       .then(res => {
-        console.log('res API: ');
-        console.log(res);
+        //console.log('res API: ');
+        //console.log(res);
         resolve({
           mapping: res.data
         })
       })
       .catch(err => {
-        console.log('err API: ');
-        console.log(err);
+        //console.log('err API: ');
+        //console.log(err);
         resolve({
           camera: err
         })
@@ -22,17 +23,17 @@ export const getMappings = () => {
 
 export const postMappings = data => {
   return new Promise((resolve, reject) => {
-    Axios.post('https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/camera/mapping', data)
+    Axios.post(`${api}/camera/mapping`, data)
       .then(res => {
-        console.log('res API: ');
-        console.log(res);
+        //console.log('res API: ');
+        //console.log(res);
         resolve({
           mapping: res.data
         })
       })
       .catch(err => {
-        console.log('err API: ');
-        console.log(err);
+        //console.log('err API: ');
+        //console.log(err);
         reject({
           error: err
         })

@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { api } from '../api';
 
 export const getCourseVideos = (searchData) => {
   let queryStr = "";
@@ -10,9 +11,9 @@ export const getCourseVideos = (searchData) => {
     console.log(searchData[key]);
   }
 
-  console.log("Hi" + queryStr);
+  //console.log("Hi" + queryStr);
   return new Promise(resolve => {
-    Axios.get(`https://mcs678ks83.execute-api.us-east-2.amazonaws.com/Test/dept/sem/course/video?${queryStr}`)
+    Axios.get(`${api}/dept/sem/course/video?${queryStr}`)
       .then(res => {
         resolve({
           coursevideo: res.data,

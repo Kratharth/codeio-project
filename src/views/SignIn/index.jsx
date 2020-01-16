@@ -209,13 +209,7 @@ class SignIn extends Component {
                     )}
                   </div>
                   {submitError && (
-                    // <Typography
-                    //   className={classes.submitError}
-                    //   variant="body2"
-                    // >
-                    //   {submitError}
-                    // </Typography>
-                    <AlertDialog message="Hi" />
+                    <AlertDialog message="Something unexcpected has occurred :(" />
                   )}
                   {isLoading ? (
                     <CircularProgress className={classes.progress} />
