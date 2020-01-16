@@ -21,7 +21,7 @@ const ProductList = React.lazy(() => import('./views/ProductList'));
 const ProductListEdit = React.lazy(() => import('./views/ProductListEdit'));
 const VideoPlay = React.lazy(() => import('./views/VideoPlay'));
 const VideoRecordGuest = React.lazy(() => import('./views/VideoRecordGuest'));
-
+const HelpAndSupport = React.lazy(() => import('./views/HelpAndSupport'));
 export default class Routes extends Component {
   render() {
     return (
@@ -150,6 +150,11 @@ export default class Routes extends Component {
             component={NotFound}
             exact
             path="/not-found"
+          />
+          <Route
+            component={HelpAndSupport}
+            exact
+            path="/support"
           />
           <Route
             component={AddUser}

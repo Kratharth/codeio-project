@@ -18,6 +18,7 @@ import {
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
+  ContactSupportOutlined as SupportIcon,
   Videocam as VideoIcon
 } from '@material-ui/icons';
 // Component styles

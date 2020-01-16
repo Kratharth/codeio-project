@@ -33,6 +33,8 @@ import { getNotifications } from 'services/notification';
 // Custom components
 import { NotificationList } from './components';
 
+import { HelpAndSupport } from 'views/HelpAndSupport';
+
 // Component styles
 import styles from './styles';
 
@@ -149,7 +151,7 @@ class Topbar extends Component {
                 <NotificationsIcon />
               </Badge>
             </Button>
-            <Button onClick={null}>
+            <Button onClick={HelpAndSupport}>
               <Help />
             </Button>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.openMenu}>
