@@ -67,7 +67,7 @@ export default class StudentTable extends React.Component {
       this.setState({ isLoading: true });
 
       const { userDetails } = await (getUserDetails());
-          console.log(userDetails);
+      console.log(userDetails);
       if (this.signal) {
         this.setState({
           isLoading: false,

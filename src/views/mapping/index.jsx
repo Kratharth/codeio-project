@@ -40,7 +40,7 @@ class MappingList extends Component {
       const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
-      const { mapping, mappingTotal } = await (getMappings(limit))
+      const { mapping } = await (getMappings(limit))
 
       if (this.signal) {
         this.setState({

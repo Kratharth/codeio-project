@@ -3,30 +3,26 @@ import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import { postMappings } from 'services/mapping'
-import MappingList from '../../../mapping'
 // Material helpers
 import { withStyles, TextField } from '@material-ui/core';
 
 // Material components
-import { Button, IconButton } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 // Material icons
-import {
-  ArrowDownward as ArrowDownwardIcon,
-  ArrowUpward as ArrowUpwardIcon,
-  Delete as DeleteIcon,
-  Edit as EditIcon,
-  DesktopWindows
-} from '@material-ui/icons';
+// import {
+//   ArrowDownward as ArrowDownwardIcon,
+//   ArrowUpward as ArrowUpwardIcon,
+//   Delete as DeleteIcon,
+//   Edit as EditIcon,
+//   DesktopWindows
+// } from '@material-ui/icons';
 
 
 // Shared components
 import {
-  DisplayMode, SearchInput, PortletHeader,
+  SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
@@ -56,10 +52,10 @@ class MappingToolbar extends Component {
     })
   }
   showForm() {
-    if (this.state.addClicked == true) {
+    if (this.state.addClicked === true) {
       const { classes, className, ...rest } = this.props;
       // const rootClassName = classNames(classes.root, className);
-      if (this.state.addClicked == true) {
+      if (this.state.addClicked === true) {
         return (
           <Portlet
             {...rest}
@@ -173,13 +169,13 @@ class MappingToolbar extends Component {
   }
   verify(ev) {
     ev.preventDefault()
-    if (document.getElementById("classroom").value == '')
+    if (document.getElementById("classroom").value === '')
       alert('Classroom field is empty');
-    else if (document.getElementById("cameraip").value == '')
+    else if (document.getElementById("cameraip").value === '')
       alert('Camera IP field is empty');
-    else if (document.getElementById("servername").value == '')
+    else if (document.getElementById("servername").value === '')
       alert('Server Name IP field is empty');
-    else if (document.getElementById("serverip").value == '')
+    else if (document.getElementById("serverip").value === '')
       alert('Server  IP field is empty');
     else
       this.submit();
@@ -236,7 +232,7 @@ class MappingToolbar extends Component {
     }
   }
   render() {
-    const { classes, className, selectedmapping, mapping } = this.props;
+    const { classes, className, mapping } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(mapping)
     return (

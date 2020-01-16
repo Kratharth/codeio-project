@@ -1,6 +1,5 @@
 
 import { green } from '@material-ui/core/colors';
-import { Button } from '@material-ui/core';
 
 export default theme => ({
 
@@ -22,10 +21,10 @@ export default theme => ({
     primary: green,
   },
   margin: {
-      margin: theme.spacing(1),
-    },
+    margin: theme.spacing(1),
+  },
 
-    root: {
+  root: {
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 16,
@@ -47,13 +46,13 @@ export default theme => ({
       '"Segoe UI Symbol"',
     ].join(','),
     '&:hover': {
-    //  backgroundColor: '#0069d9',
+      //  backgroundColor: '#0069d9',
       //borderColor: '#0062cc',
     },
     '&:active': {
       boxShadow: 'none',
-    //  backgroundColor: '#0062cc',
-    //  borderColor: '#005cbf',
+      //  backgroundColor: '#0062cc',
+      //  borderColor: '#005cbf',
     },
     '&:focus': {
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',

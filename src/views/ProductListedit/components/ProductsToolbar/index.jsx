@@ -7,8 +7,7 @@ import classNames from 'classnames';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
-// Material components
-import { Button } from '@material-ui/core';
+
 
 // Shared components
 import { DisplayMode, SearchInput } from 'components';
@@ -17,7 +16,7 @@ import { DisplayMode, SearchInput } from 'components';
 import styles from './styles';
 //for the drop down
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
+
 
 class ProductsToolbar extends Component {
   state = {

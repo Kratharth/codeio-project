@@ -13,8 +13,7 @@ import { Button } from '@material-ui/core';
 
 // Material icons
 import {
-  ArrowDropDown as ArrowDropDownIcon,
-  ArrowRight as ArrowRightIcon
+  ArrowDropDown as ArrowDropDownIcon
 } from '@material-ui/icons';
 
 // Shared components

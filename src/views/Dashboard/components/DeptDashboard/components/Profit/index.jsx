@@ -7,12 +7,6 @@ import PropTypes from 'prop-types';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 
-// Material components
-import { Typography } from '@material-ui/core';
-
-// Material icons
-import { AttachMoney as AttachMoneyIcon } from '@material-ui/icons';
-
 // Shared components
 import { Paper } from 'components';
 

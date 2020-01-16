@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,24 +13,19 @@ import { withStyles } from '@material-ui/core';
 // import passing from '../passing values'
 // Material components
 import {
-  Avatar,
-  Checkbox,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
-  Typography,
   TablePagination,
   IconButton,
   Button
 } from '@material-ui/core';
 
-// Shared helpers
-import { getInitials } from 'helpers';
 
 // Shared components
-import { Portlet, PortletContent,Status } from 'components';
+import { Portlet, PortletContent, Status } from 'components';
 
 // Component styles
 import styles from './styles';
@@ -40,11 +33,11 @@ import {
   Delete as DeleteIcon,
   Edit as EditIcon
 }
-from '@material-ui/icons';
+  from '@material-ui/icons';
 // 
- const statusColors = {
-   online: 'success',
-   offline: 'danger'
+const statusColors = {
+  online: 'success',
+  offline: 'danger'
 };
 class CameraTable extends Component {
   state = {
@@ -53,11 +46,11 @@ class CameraTable extends Component {
     page: 0,
     sliceStart: 0,
     sliceStop: 5,
-    open:false
+    open: false
   };
 
   handleSelectAll = event => {
-    const { camera, onSelect,selectedcameras } = this.props;
+    const { camera, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedcamera;
@@ -73,12 +66,12 @@ class CameraTable extends Component {
     onSelect(selectedcamera);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedcamera } = this.state;
     const selectedIndex = selectedcamera.indexOf(id);
     let newSelectedCameras = [];
-     if (selectedIndex === -1) {
+    if (selectedIndex === -1) {
       newSelectedCameras = newSelectedCameras.concat(selectedcamera, id);
     } else if (selectedIndex === 0) {
       newSelectedCameras = newSelectedCameras.concat(selectedcamera.slice(1));
@@ -99,46 +92,46 @@ class CameraTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
-    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.cameras.length)?
-           (page * rowsPerPage + rowsPerPage) :  (this.props.cameras.length);
+    const { rowsPerPage } = this.state;
+    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.cameras.length) ?
+      (page * rowsPerPage + rowsPerPage) : (this.props.cameras.length);
     this.setState({
       page,
       sliceStart: page * rowsPerPage,
-      sliceStop:  stop
+      sliceStop: stop
     });
   };
 
   handleChangeRowsPerPage = event => {
     // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
-    var stop = (newStart  + event.target.value) < (this.props.cameras.length)?
-           (newStart  + event.target.value) :  (this.props.cameras.length);
+    var stop = (newStart + event.target.value) < (this.props.cameras.length) ?
+      (newStart + event.target.value) : (this.props.cameras.length);
     this.setState({
       rowsPerPage: event.target.value,
       sliceStart: newStart,
       sliceStop: stop,
-      page: newStart/event.target.value
+      page: newStart / event.target.value
     });
     // console.log('sliceStart and stop: ' + newStart + '  ' + stop);
   };
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
   }
 
   render() {
     const { classes, className, cameras } = this.props;
     console.log(cameras)
-    const { activeTab, selectedcamera, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -159,17 +152,17 @@ class CameraTable extends Component {
                       }
                       onChange={this.handleSelectAll}
                     /> */}
-                  Classroom
+                    Classroom
                   </TableCell>
                   {/* <TableCell align="left">Classroom</TableCell> */}
                   <TableCell align="left">Camera-IP</TableCell>
                   <TableCell align="left">Status</TableCell>
                   <TableCell align="left">Link</TableCell>
-                   <TableCell align="left">Actions</TableCell> 
+                  <TableCell align="left">Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                 {cameras
+                {cameras
                   // .filter(camera => {
                   //   if (activeTab === 1) {
                   //     return camera.returning;
@@ -183,64 +176,64 @@ class CameraTable extends Component {
                   // })
                   /* //.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */
                   .slice(sliceStart, sliceStop)
-                  .map(camera => ( 
+                  .map(camera => (
                     <TableRow
                       className={classes.tableRow}
                       hover
                       key={camera.id}
-                      // selected={selectedcamera.indexOf(cameras.id) !== -1}
+                    // selected={selectedcamera.indexOf(cameras.id) !== -1}
                     >
                       <TableCell className={classes.tableCell}>
-                       {camera.classroom}
+                        {camera.classroom}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
                         {camera.cameraip}
                       </TableCell>
                       <TableCell>
-                      <Status
-                            className={classes.status}
-                            color={statusColors[camera.status]}
-                            size="sm"
-                          />
-                          &nbsp;{camera.status}
+                        <Status
+                          className={classes.status}
+                          color={statusColors[camera.status]}
+                          size="sm"
+                        />
+                        &nbsp;{camera.status}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
                         {camera.link}
                       </TableCell>
                       <TableCell>
-            <IconButton
-              className={classes.deleteButton}
-              onClick={this.handleClickOpen}
-            >
-              <DeleteIcon />
-            </IconButton>
-          
-             <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
-        <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
-            No
-          </Button>
-          <Button onClick={this.handleClose} color="primary" autoFocus>
-            Yes
-          </Button>
-            </DialogActions>
-          </Dialog>
-         
-            <IconButton
-              className={classes.editButton}
-              onClick={this.handleDeletemapping}
-              >
-              <EditIcon />
-            </IconButton>
+                        <IconButton
+                          className={classes.deleteButton}
+                          onClick={this.handleClickOpen}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
 
-                      </TableCell> 
-                     
+                        <Dialog
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
+                          <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                              No
+          </Button>
+                            <Button onClick={this.handleClose} color="primary" autoFocus>
+                              Yes
+          </Button>
+                          </DialogActions>
+                        </Dialog>
+
+                        <IconButton
+                          className={classes.editButton}
+                          onClick={this.handleDeletemapping}
+                        >
+                          <EditIcon />
+                        </IconButton>
+
+                      </TableCell>
+
                     </TableRow>
                   ))}
               </TableBody>
@@ -277,8 +270,8 @@ CameraTable.propTypes = {
 
 CameraTable.defaultProps = {
   camera: [],
-  onSelect: () => {},
-  onShowDetails: () => {}
+  onSelect: () => { },
+  onShowDetails: () => { }
 };
 
 export default withStyles(styles)(CameraTable);

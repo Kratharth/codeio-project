@@ -3,28 +3,17 @@ import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 // Material helpers
 import { withStyles, TextField } from '@material-ui/core';
 
 // Material components
-import { Button, IconButton } from '@material-ui/core';
-
-// Material icons
-import {
-  ArrowDownward as ArrowDownwardIcon,
-  ArrowUpward as ArrowUpwardIcon,
-  Delete as DeleteIcon,
-  Edit as EditIcon
-} from '@material-ui/icons';
-
+import { Button } from '@material-ui/core';
 
 // Shared components
 import {
-  DisplayMode, SearchInput, PortletHeader,
+  SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
@@ -50,10 +39,10 @@ class ProcessorToolbar extends Component {
     })
   }
   showForm() {
-    if (this.state.addClicked == true) {
+    if (this.state.addClicked === true) {
       const { classes, className, ...rest } = this.props;
       // const rootClassName = classNames(classes.root, className);
-      if (this.state.addClicked == true) {
+      if (this.state.addClicked === true) {
         return (
           <Portlet
             {...rest}
@@ -185,7 +174,7 @@ class ProcessorToolbar extends Component {
     }
   }
   render() {
-    const { classes, className, selectedprocessor, processor } = this.props;
+    const { classes, className, processor } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(processor)
     return (

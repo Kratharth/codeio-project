@@ -28,7 +28,6 @@ import { Dashboard as DashboardLayout } from 'layouts';
 import { getProducts } from 'services/product';
 
 // Custom components
-import { ProductCard } from 'components';
 import { ProductsToolbar } from './components';
 import { ProductCardEdit } from 'components';
 
@@ -105,7 +104,7 @@ class ProductList extends Component {
         container
         spacing={3}
       >
-    
+
         {products.map(product => (
           <Grid
             item

@@ -25,7 +25,6 @@ import {
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Shared services
-import { getCourseVideos } from 'services/coursevideo';
 import { getProducts } from 'services/product';
 
 // Custom components
@@ -46,8 +45,7 @@ class ProductList extends Component {
     products: [],
     productsTotal: 0,
     error: null,
-    searchData: {},
-    products: []
+    searchData: {}
   };
 
   async getProducts() {
@@ -83,7 +81,7 @@ class ProductList extends Component {
   componentWillMount() {
     this.signal = true;
 
-    const { limit } = this.state;
+    //const { limit } = this.state;
 
     this.getProducts(); // api call for sem and dept here
   }
@@ -136,7 +134,7 @@ class ProductList extends Component {
   }
 
   render() {
-    const { classes, type } = this.props;
+    const { classes } = this.props;
 
     return (
       <DashboardLayout title="Videos">

@@ -12,9 +12,7 @@ import { Typography, Divider } from '@material-ui/core';
 
 // Material icons
 import {
-  AccessTime as AccessTimeIcon,
-  Edit as EditIcon,
-  GetApp as GetAppIcon
+  AccessTime as AccessTimeIcon
 } from '@material-ui/icons';
 
 
@@ -64,7 +62,7 @@ class ProductCard extends Component {
           </Typography>
           {/* <EditIcon className={classes.editIcon} />  */}
           {/* <GetAppIcon className={classes.downloadsIcon} /> */}
-           {/* <Typography
+          {/* <Typography
             className={classes.downloadsText}
             variant="body2"
           >

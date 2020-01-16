@@ -21,7 +21,8 @@ import { UserContext } from 'userContext';
 // Component styles
 const styles = theme => ({
   root: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
+    minHeight: '100vh'
   }
 });
 
@@ -31,10 +32,10 @@ class Account extends Component {
 
   accountDetailType = (type) => {
     switch (type) {
-      case 'admin': return <AccountAdmin />
-      case 'lecturer': return <AccountLecturer />
-      case 'student': return <AccountStudent />
-      case 'department': return <AccountDept />
+      case 'Admin': return <AccountAdmin />
+      case 'Lecturer': return <AccountLecturer />
+      case 'Student': return <AccountStudent />
+      case 'Department': return <AccountDept />
       default: return null;
 
     }

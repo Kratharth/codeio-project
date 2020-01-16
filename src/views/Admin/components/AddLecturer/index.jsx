@@ -114,8 +114,8 @@ class AddLecturer extends Component {
   };
 
   render() {
-    const { classes, className, ...rest } = this.props;
-    const { name, id, email, department, departmentselected } = this.state;
+    const { classes, className } = this.props;
+    const { id, department, departmentselected } = this.state;
     const rootClassName = classNames(classes.root, className);
     return (
       <div className={rootClassName}>

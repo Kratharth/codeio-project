@@ -25,11 +25,11 @@ import styles from './styles';
 
 class VideoeditDetails extends Component {
   state = {
-   values:{
-    title:'',
-    description:'',
-    edit:''
-  },
+    values: {
+      title: '',
+      description: '',
+      edit: ''
+    },
 
   };
 
@@ -41,7 +41,7 @@ class VideoeditDetails extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { title,description,edit } = this.state;
+    const { title, description } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -61,31 +61,31 @@ class VideoeditDetails extends Component {
             autoComplete="off"
             noValidate
           >
-          <div className={classes.field}>
+            <div className={classes.field}>
 
 
-            <TextField
-              className={classes.textField}
-              //helperText="Please enter the title"
-              label="Title"
-              margin="dense"
-              required
-              value={title}
-              variant="outlined"
-            />
-            <TextField
-              className={classes.textField}
-              label="description"
-              margin="dense"
+              <TextField
+                className={classes.textField}
+                //helperText="Please enter the title"
+                label="Title"
+                margin="dense"
+                required
+                value={title}
+                variant="outlined"
+              />
+              <TextField
+                className={classes.textField}
+                label="description"
+                margin="dense"
 
-              value={description}
-              variant="outlined"
-            />
-            
-
+                value={description}
+                variant="outlined"
+              />
 
 
-          </div>
+
+
+            </div>
 
           </form>
         </PortletContent>

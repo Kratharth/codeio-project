@@ -20,7 +20,7 @@ import {
 import {
   DashboardOutlined as DashboardIcon,
   PeopleOutlined as PeopleIcon,
-  CameraAlt as CameraAlt,
+  CameraAlt as cameraAlt,
   ExpandLess,
   ExpandMore,
   CalendarToday,
@@ -33,7 +33,7 @@ import styles from './styles';
 import { UserContext } from 'userContext';
 
 const newLink = React.forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
-let newOpen = [false,false];
+let newOpen = [false, false];
 
 class SidebarAdmin extends Component {
   static contextType = UserContext;
@@ -43,7 +43,7 @@ class SidebarAdmin extends Component {
   }
 
   handleClick = e => {
-    newOpen = this.state.open.map((ele, index) => (index == e.currentTarget.dataset.open_id) ? !ele : false);
+    newOpen = this.state.open.map((ele, index) => (index === e.currentTarget.dataset.open_id) ? !ele : false);
     this.setState({ open: newOpen });
   }
 
@@ -197,7 +197,7 @@ class SidebarAdmin extends Component {
             className={classes.listItem}
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <CameraAlt />
+              <cameraAlt />
             </ListItemIcon >
             <ListItemText classes={{ primary: classes.listItemText }}
               primary="Devices" />
@@ -210,7 +210,7 @@ class SidebarAdmin extends Component {
                 component={newLink}
                 to="/camera">
                 <ListItemIcon className={classes.sublistItemIcon}>
-                  <CameraAlt />
+                  <cameraAlt />
                 </ListItemIcon>
                 <ListItemText classes={{ primary: classes.listItemText }}
                   primary="Camera" />
@@ -220,7 +220,7 @@ class SidebarAdmin extends Component {
                 component={newLink}
                 to="/mapping">
                 <ListItemIcon className={classes.sublistItemIcon}>
-                  <CameraAlt />
+                  <cameraAlt />
                 </ListItemIcon>
                 <ListItemText classes={{ primary: classes.listItemText }}
                   primary="Mapping" />
@@ -230,7 +230,7 @@ class SidebarAdmin extends Component {
                 component={newLink}
                 to="/processor">
                 <ListItemIcon className={classes.sublistItemIcon}>
-                  <CameraAlt />
+                  <cameraAlt />
                 </ListItemIcon>
                 <ListItemText classes={{ primary: classes.listItemText }}
                   primary="Processors" />

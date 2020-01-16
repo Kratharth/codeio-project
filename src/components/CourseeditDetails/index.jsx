@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles, Divider } from '@material-ui/core';
 import { Button, TextField, Typography } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import MaterialTableDemo from './Table';
 
 // Component styles
@@ -12,21 +10,21 @@ import styles from './styles';
 
 class Courseedit extends Component {
   state = {
-    coursecode:'',
-    title:'',
-    faculty:'',
-    coursename:''
+    coursecode: '',
+    title: '',
+    faculty: '',
+    coursename: ''
   };
 
   renderTable() {
     if (this.state.displayTable) {
       return (
-          <div>
-            <center>Course Record</center>
-            <br/>
-            <Divider />
-            <MaterialTableDemo />
-          </div>
+        <div>
+          <center>Course Record</center>
+          <br />
+          <Divider />
+          <MaterialTableDemo />
+        </div>
       );
     }
   };
@@ -39,7 +37,7 @@ class Courseedit extends Component {
           <Divider />
           <MaterialTableDemo />
         </div>
-     );
+      );
     }
   }
 
@@ -62,31 +60,31 @@ class Courseedit extends Component {
     });
   };
 
-  handleChangeTitle =e =>{
-  this.setState({
-    title:e.target.value
-  });
+  handleChangeTitle = e => {
+    this.setState({
+      title: e.target.value
+    });
   };
-  handleChangeCoursecode =e =>{
-  this.setState({
-    coursecode:e.target.value
-  });
+  handleChangeCoursecode = e => {
+    this.setState({
+      coursecode: e.target.value
+    });
   };
-  handleChangeCoursename =e =>{
-  this.setState({
-    coursename:e.target.value
-  });
+  handleChangeCoursename = e => {
+    this.setState({
+      coursename: e.target.value
+    });
   };
-  handleChangefaculty =e =>{
-  this.setState({
-    faculty:e.target.value
-  });
+  handleChangefaculty = e => {
+    this.setState({
+      faculty: e.target.value
+    });
   };
 
 
   render() {
-    const { classes, className, ...rest } = this.props;
-    const {title,coursecode,coursename,faculty } = this.state;
+    const { classes, className } = this.props;
+    const { coursecode, coursename } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -99,29 +97,29 @@ class Courseedit extends Component {
           noValidate
         >
 
-        <TextField
-          id="outlined-usn"
-          label="Course Name"
-          type="text"
-          value={coursename}
-          onChange={this.handleChangeCoursename}
-          className={classes.textField}
-          margin="normal"
+          <TextField
+            id="outlined-usn"
+            label="Course Name"
+            type="text"
+            value={coursename}
+            onChange={this.handleChangeCoursename}
+            className={classes.textField}
+            margin="normal"
 
-        />
+          />
 
-                <TextField
-                  id="outlined-usn"
-                  label="Course Code"
-                  type="text"
-                  value={coursecode}
-                  onChange={this.handleChangeCoursecode}
-                  className={classes.textField}
-                  margin="normal"
+          <TextField
+            id="outlined-usn"
+            label="Course Code"
+            type="text"
+            value={coursecode}
+            onChange={this.handleChangeCoursecode}
+            className={classes.textField}
+            margin="normal"
 
-                />
-                <div>
-                <Divider variant = 'fullWidth'/>
+          />
+          <div>
+            <Divider variant='fullWidth' />
             <Button
               onClick={this.clicked2}
               color="primary"

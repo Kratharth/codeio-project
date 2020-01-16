@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,8 +13,6 @@ import { withStyles } from '@material-ui/core';
 // import passing from '../passing values'
 // Material components
 import {
-  Avatar,
-  Checkbox,
   Table,
   TableBody,
   TableCell,
@@ -29,10 +25,10 @@ import {
 } from '@material-ui/core';
 
 // Shared helpers
-import { getInitials } from 'helpers';
+//import { getInitials } from 'helpers';
 
 // Shared components
-import { Portlet, PortletContent,Status } from 'components';
+import { Portlet, PortletContent } from 'components';
 
 // Component styles
 import styles from './styles';
@@ -40,7 +36,7 @@ import {
   Delete as DeleteIcon,
   Edit as EditIcon
 }
-from '@material-ui/icons';
+  from '@material-ui/icons';
 // 
 // const statusColors = {
 //   online: 'success',
@@ -53,11 +49,11 @@ class MappingTable extends Component {
     page: 0,
     sliceStart: 0,
     sliceStop: 5,
-    open:false
+    open: false
   };
 
   handleSelectAll = event => {
-    const { mapping, onSelect,selectedmappings } = this.props;
+    const { mapping, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedmapping;
@@ -73,12 +69,12 @@ class MappingTable extends Component {
     onSelect(selectedmapping);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedmapping } = this.state;
     const selectedIndex = selectedmapping.indexOf(id);
     let newSelectedMappings = [];
-     if (selectedIndex === -1) {
+    if (selectedIndex === -1) {
       newSelectedMappings = newSelectedMappings.concat(selectedmapping, id);
     } else if (selectedIndex === 0) {
       newSelectedMappings = newSelectedMappings.concat(selectedmapping.slice(1));
@@ -99,45 +95,45 @@ class MappingTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
-    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.mappings.length)?
-           (page * rowsPerPage + rowsPerPage) :  (this.props.mappings.length);
+    const { rowsPerPage } = this.state;
+    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.mappings.length) ?
+      (page * rowsPerPage + rowsPerPage) : (this.props.mappings.length);
     this.setState({
       page,
       sliceStart: page * rowsPerPage,
-      sliceStop:  stop
+      sliceStop: stop
     });
   };
 
   handleChangeRowsPerPage = event => {
     // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
-    var stop = (newStart  + event.target.value) < (this.props.mappings.length)?
-           (newStart  + event.target.value) :  (this.props.mappings.length);
+    var stop = (newStart + event.target.value) < (this.props.mappings.length) ?
+      (newStart + event.target.value) : (this.props.mappings.length);
     this.setState({
       rowsPerPage: event.target.value,
       sliceStart: newStart,
       sliceStop: stop,
-      page: newStart/event.target.value
+      page: newStart / event.target.value
     });
     // console.log('sliceStart and stop: ' + newStart + '  ' + stop);
   };
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
   }
 
   render() {
     const { classes, className, mappings } = this.props;
-    const { activeTab, selectedmapping, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { selectedmapping, rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -158,12 +154,12 @@ class MappingTable extends Component {
                       }
                       onChange={this.handleSelectAll}
                     /> */}
-                  Classroom
+                    Classroom
                   </TableCell>
                   <TableCell align="left">Camera-IP</TableCell>
                   <TableCell align="left">Server Name</TableCell>
                   <TableCell align="left">Server IP</TableCell>
-                   <TableCell align="left">Actions</TableCell> 
+                  <TableCell align="left">Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -205,12 +201,12 @@ class MappingTable extends Component {
                             {getInitials(user.name)}
                           </Avatar> */}
                           {/* <Link to="#"> */}
-                            <Typography
-                              className={classes.nameText}
-                              variant="body1"
-                            >
-                              {mapping.classroom}
-                            </Typography>
+                          <Typography
+                            className={classes.nameText}
+                            variant="body1"
+                          >
+                            {mapping.classroom}
+                          </Typography>
                         </div>
                       </TableCell>
                       <TableCell className={classes.tableCell}>
@@ -223,39 +219,39 @@ class MappingTable extends Component {
                         {mapping.serverip}
                       </TableCell>
                       <TableCell>
-            <IconButton
-              className={classes.deleteButton}
-              onClick={this.handleClickOpen}
-            >
-              <DeleteIcon />
-            </IconButton>
-          
-             <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
-        <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
-            No
-          </Button>
-          <Button onClick={this.handleClose} color="primary" autoFocus>
-            Yes
-          </Button>
-            </DialogActions>
-          </Dialog>
-         
-            <IconButton
-              className={classes.editButton}
-              onClick={this.handleDeletemapping}
-              >
-              <EditIcon />
-            </IconButton>
+                        <IconButton
+                          className={classes.deleteButton}
+                          onClick={this.handleClickOpen}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
 
-                      </TableCell> 
-                     
+                        <Dialog
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
+                          <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                              No
+          </Button>
+                            <Button onClick={this.handleClose} color="primary" autoFocus>
+                              Yes
+          </Button>
+                          </DialogActions>
+                        </Dialog>
+
+                        <IconButton
+                          className={classes.editButton}
+                          onClick={this.handleDeletemapping}
+                        >
+                          <EditIcon />
+                        </IconButton>
+
+                      </TableCell>
+
                     </TableRow>
                   ))}
               </TableBody>
@@ -292,8 +288,8 @@ MappingTable.propTypes = {
 
 MappingTable.defaultProps = {
   mapping: [],
-  onSelect: () => {},
-  onShowDetails: () => {}
+  onSelect: () => { },
+  onShowDetails: () => { }
 };
 
 export default withStyles(styles)(MappingTable);

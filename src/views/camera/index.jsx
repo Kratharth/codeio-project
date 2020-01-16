@@ -37,7 +37,7 @@ class CameraList extends Component {
     try {
       this.setState({ isLoading: true });
 
-      const { limit } = this.state;
+      //const { limit } = this.state;
 
       // const { users } = await getUsers(limit);
       const { camera } = await (getCameras())

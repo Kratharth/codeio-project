@@ -25,7 +25,7 @@ const styles = theme => ({
     justifyContent: 'center',
     position: 'relative',
     marginTop: '24px',
-    alignItems: 'center',
+    alignItems: 'center'
   }
 });
 

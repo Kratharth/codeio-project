@@ -59,7 +59,7 @@ class SignIn extends Component {
     const errors = validate(values, schema);
 
     newState.errors = errors || {};
-    newState.isValid = errors || values.type == '' ? false : true;
+    newState.isValid = errors || values.type === '' ? false : true;
 
     this.setState(newState);
   }, 800);
@@ -86,7 +86,7 @@ class SignIn extends Component {
       password
     }
     signIn(data).then(res => {
-      if (res.success === true) {
+      if (res.success) {
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('name', res.name);
         localStorage.setItem('type', this.state.values.type);
@@ -105,7 +105,7 @@ class SignIn extends Component {
   }
 
   componentWillUnmount() {
-    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type')});
+    this.context.userDetails({ name: localStorage.getItem('name'), type: localStorage.getItem('type') });
   }
 
   render() {

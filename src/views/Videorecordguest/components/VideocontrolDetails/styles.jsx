@@ -1,6 +1,5 @@
 
 import { green } from '@material-ui/core/colors';
-import { Button } from '@material-ui/core';
 
 export default theme => ({
   formControl: {

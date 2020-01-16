@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 // Material components
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 // Shared components
 import {
@@ -16,12 +16,10 @@ import {
   PortletHeader,
   PortletLabel,
   PortletContent,
-  PortletFooter
 } from 'components';
 
 // Component styles
 import styles from './styles';
-import { Label } from '@material-ui/icons';
 //import { AccountDept } from '.';
 
 // const states = [
@@ -43,8 +41,8 @@ class AccountDept extends Component {
   state = {
     //firstName: 'John',
     //lastName: 'Doe',
-    deptname:'CSE',
-    code:'12345',
+    deptname: 'CSE',
+    code: '12345',
     email: 'contact@devias.io',
     //numberOfCourses:'5',
     //courseList:'OS,LA,JAVA,DBMS,DC'
@@ -53,7 +51,7 @@ class AccountDept extends Component {
     //usn:'1BM17CS098',
     //branch:'CSE'
     //state: 'Alabama',
-   // country: 'USA'
+    // country: 'USA'
   };
 
   // handleChange = e => {
@@ -64,12 +62,12 @@ class AccountDept extends Component {
 
   render() {
     const { classes, className, ...rest } = this.props;
-    const { firstName, lastName, phone,semester,usn,branch, state, country, email,deptname,code,numberOfCourses,courseList } = this.state;
+    const { email, deptname, code } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
     return (
-    <Portlet
+      <Portlet
         {...rest}
         className={rootClassName}
       >
@@ -94,8 +92,8 @@ class AccountDept extends Component {
                 value={deptname}
                 variant="outlined"
               /></div>
-              <div className={classes.field}>
-                <TextField
+            <div className={classes.field}>
+              <TextField
                 className={classes.textField}
                 label="Code"
                 margin="dense"
@@ -113,7 +111,7 @@ class AccountDept extends Component {
                 value={email}
                 variant="outlined"
               /></div>
-               {/* <div className={classes.field}>
+            {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}
                 label="Number of Courses"
@@ -122,7 +120,7 @@ class AccountDept extends Component {
                 value={numberOfCourses}
                 variant="outlined"
               /></div> */}
-               {/* <div className={classes.field}>
+            {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}
                 label="Course list"
@@ -131,8 +129,8 @@ class AccountDept extends Component {
                 value={courseList}
                 variant="outlined"
               /></div> */}
-             
-            
+
+
             {/* <div className={classes.field}>
               <TextField
                 className={classes.textField}

@@ -3,30 +3,19 @@ import React, { Component } from 'react';
 // Externals
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import { postCameras } from 'services/camera';
 import { csvupload } from 'services/csv';
 // Material helpers
 import { withStyles, TextField } from '@material-ui/core';
-// import csvtoJSON from 'convert-csv-to-json';
-import csv from 'convert-csv-to-json';
 // Material components
-import { Button, IconButton } from '@material-ui/core';
-import fs from 'fs';
-// Material icons
-import {
-  ArrowDownward as ArrowDownwardIcon,
-  ArrowUpward as ArrowUpwardIcon,
-  Delete as DeleteIcon,
-  Edit as EditIcon
-} from '@material-ui/icons';
+import { Button } from '@material-ui/core';
+
+
 
 
 // Shared components
 import {
-  DisplayMode, SearchInput, PortletHeader,
+  SearchInput, PortletHeader,
   PortletLabel,
   PortletContent,
   PortletFooter,
@@ -97,10 +86,10 @@ class CameraToolbar extends Component {
     reader.readAsBinaryString(f);
   }
   showForm() {
-    if (this.state.addClicked == true) {
+    if (this.state.addClicked === true) {
       const { classes, className, ...rest } = this.props;
       // const rootClassName = classNames(classes.root, className);
-      if (this.state.addClicked == true) {
+      if (this.state.addClicked === true) {
         return (
           <Portlet
             {...rest}
@@ -210,11 +199,11 @@ class CameraToolbar extends Component {
   }
   verify(ev) {
     ev.preventDefault()
-    if (document.getElementById("classroom").value == '')
+    if (document.getElementById("classroom").value === '')
       alert('Classroom field is empty');
-    else if (document.getElementById("cameraip").value == '')
+    else if (document.getElementById("cameraip").value === '')
       alert('Camera IP field is empty');
-    else if (document.getElementById("status").value == '')
+    else if (document.getElementById("status").value === '')
       alert('Status field is empty');
     else
       this.submit();
@@ -276,7 +265,7 @@ class CameraToolbar extends Component {
     }
   }
   render() {
-    const { classes, className, selectedcamera, camera } = this.props;
+    const { classes, className } = this.props;
     const rootClassName = classNames(classes.root, className);
     // console.log(mapping)
     return (

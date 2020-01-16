@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,24 +13,21 @@ import { withStyles } from '@material-ui/core';
 // import passing from '../passing values'
 // Material components
 import {
-  Avatar,
-  Checkbox,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
-  Typography,
   TablePagination,
   IconButton,
   Button
 } from '@material-ui/core';
 
 // Shared helpers
-import { getInitials } from 'helpers';
+//import { getInitials } from 'helpers';
 
 // Shared components
-import { Portlet, PortletContent,Status } from 'components';
+import { Portlet, PortletContent, Status } from 'components';
 
 // Component styles
 import styles from './styles';
@@ -40,12 +35,12 @@ import {
   Delete as DeleteIcon,
   Edit as EditIcon
 }
-from '@material-ui/icons';
+  from '@material-ui/icons';
 // 
 const statusColors = {
-   online: 'success',
- offline: 'danger'
- };
+  online: 'success',
+  offline: 'danger'
+};
 class ProcessorTable extends Component {
   state = {
     selectedprocessor: [],
@@ -53,11 +48,11 @@ class ProcessorTable extends Component {
     page: 0,
     sliceStart: 0,
     sliceStop: 5,
-    open:false
+    open: false
   };
 
   handleSelectAll = event => {
-    const { processor, onSelect,selectedprocessors } = this.props;
+    const { processor, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedprocessor;
@@ -73,12 +68,12 @@ class ProcessorTable extends Component {
     onSelect(selectedprocessor);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedprocessor } = this.state;
     const selectedIndex = selectedprocessor.indexOf(id);
     let newSelectedProcessors = [];
-     if (selectedIndex === -1) {
+    if (selectedIndex === -1) {
       newSelectedProcessors = newSelectedProcessors.concat(selectedprocessor, id);
     } else if (selectedIndex === 0) {
       newSelectedProcessors = newSelectedProcessors.concat(selectedprocessor.slice(1));
@@ -99,45 +94,45 @@ class ProcessorTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
-    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.processors.length)?
-           (page * rowsPerPage + rowsPerPage) :  (this.props.processors.length);
+    const { rowsPerPage } = this.state;
+    var stop = (page * rowsPerPage + rowsPerPage) < (this.props.processors.length) ?
+      (page * rowsPerPage + rowsPerPage) : (this.props.processors.length);
     this.setState({
       page,
       sliceStart: page * rowsPerPage,
-      sliceStop:  stop
+      sliceStop: stop
     });
   };
 
   handleChangeRowsPerPage = event => {
     // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
-    var stop = (newStart  + event.target.value) < (this.props.processors.length)?
-           (newStart  + event.target.value) :  (this.props.processors.length);
+    var stop = (newStart + event.target.value) < (this.props.processors.length) ?
+      (newStart + event.target.value) : (this.props.processors.length);
     this.setState({
       rowsPerPage: event.target.value,
       sliceStart: newStart,
       sliceStop: stop,
-      page: newStart/event.target.value
+      page: newStart / event.target.value
     });
     // console.log('sliceStart and stop: ' + newStart + '  ' + stop);
   };
   handleClickOpen = () => {
     this.setState({
-      open:true,
+      open: true,
     })
   }
   handleClose = () => {
     this.setState({
-      open:false
+      open: false
     })
   }
 
   render() {
     const { classes, className, processors } = this.props;
-    const { activeTab, selectedprocessor, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 
@@ -149,7 +144,7 @@ class ProcessorTable extends Component {
               <TableHead>
                 <TableRow>
                   {/* <TableCell align="left"> */}
-                    {/* <Checkbox
+                  {/* <Checkbox
                       checked={selectedmapping.length === mappings.length}
                       color="primary"
                       indeterminate={
@@ -163,8 +158,8 @@ class ProcessorTable extends Component {
                   <TableCell align="left">Server-IP</TableCell>
                   <TableCell align="left">Server Name</TableCell>
                   <TableCell align="left">Type</TableCell>
-                   <TableCell align="left">Status</TableCell> 
-                   <TableCell align="left">Actions</TableCell>
+                  <TableCell align="left">Status</TableCell>
+                  <TableCell align="left">Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -187,9 +182,9 @@ class ProcessorTable extends Component {
                       className={classes.tableRow}
                       hover
                       key={processor.id}
-                      // selected={selectedprocessor.indexOf(processor.id) !== -1}
+                    // selected={selectedprocessor.indexOf(processor.id) !== -1}
                     >
-                          <TableCell className={classes.tableCell}>
+                      <TableCell className={classes.tableCell}>
                         {processor.serverip}
                       </TableCell>
                       <TableCell className={classes.tableCell}>
@@ -201,48 +196,48 @@ class ProcessorTable extends Component {
                       {/* <TableCell className={classes.tableCell}>
                         {mapping.serverip}
                       </TableCell> */}
-                       <TableCell>
-                      <Status
-                            className={classes.status}
-                            color={statusColors[processor.status]}
-                            size="sm"
-                          />
-                          &nbsp;{processor.status}
-                      </TableCell> 
                       <TableCell>
-            <IconButton
-              className={classes.deleteButton}
-              onClick={this.handleClickOpen}
-            >
-              <DeleteIcon />
-            </IconButton>
-          
-             <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            >
-        <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
-        <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
-            No
-          </Button>
-          <Button onClick={this.handleClose} color="primary" autoFocus>
-            Yes
-          </Button>
-            </DialogActions>
-          </Dialog>
-         
-            <IconButton
-              className={classes.editButton}
-              onClick={this.handleDeletemapping}
-              >
-              <EditIcon />
-            </IconButton>
+                        <Status
+                          className={classes.status}
+                          color={statusColors[processor.status]}
+                          size="sm"
+                        />
+                        &nbsp;{processor.status}
+                      </TableCell>
+                      <TableCell>
+                        <IconButton
+                          className={classes.deleteButton}
+                          onClick={this.handleClickOpen}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
 
-                      </TableCell> 
-                     
+                        <Dialog
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                        >
+                          <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete the mapping?"}</DialogTitle>
+                          <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                              No
+          </Button>
+                            <Button onClick={this.handleClose} color="primary" autoFocus>
+                              Yes
+          </Button>
+                          </DialogActions>
+                        </Dialog>
+
+                        <IconButton
+                          className={classes.editButton}
+                          onClick={this.handleDeletemapping}
+                        >
+                          <EditIcon />
+                        </IconButton>
+
+                      </TableCell>
+
                     </TableRow>
                   ))}
               </TableBody>
@@ -279,8 +274,8 @@ ProcessorTable.propTypes = {
 
 ProcessorTable.defaultProps = {
   processor: [],
-  onSelect: () => {},
-  onShowDetails: () => {}
+  onSelect: () => { },
+  onShowDetails: () => { }
 };
 
 export default withStyles(styles)(ProcessorTable);

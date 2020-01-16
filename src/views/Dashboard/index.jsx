@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // Material helpers
 import { withStyles } from '@material-ui/core';
 // Material components
-import { Grid } from '@material-ui/core';
 // Shared layouts
 import { Dashboard as DashboardLayout } from 'layouts';
 // Custom components
@@ -15,7 +14,8 @@ import {
   StudentDashboard
 } from './components';
 // UserContext
-import {UserContext} from 'userContext';
+import { UserContext } from 'userContext';
+//import Admin from 'views/Admin';
 
 // Component styles
 const styles = theme => ({
@@ -26,12 +26,13 @@ const styles = theme => ({
 
 class Dashboard extends Component {
   static contextType = UserContext;
-  selectDashboard = (type)=>{
-    switch(type){
+  selectDashboard = (type) => {
+    switch (type) {
       case 'Admin': return <AdminDashboard />;
       case 'Department': return <DeptDashboard />;
       case 'Lecturer': return <LecturerDashboard />;
       case 'Student': return <StudentDashboard />;
+      default: return <AdminDashboard />;
     }
   }
   render() {

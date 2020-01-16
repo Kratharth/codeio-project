@@ -29,8 +29,7 @@ import {
   Input as InputIcon,
   Help,
   Settings,
-  Person as PersonIcon,
-  Security
+  Person as PersonIcon
 } from '@material-ui/icons';
 // Shared services
 import { getNotifications } from 'services/notification';

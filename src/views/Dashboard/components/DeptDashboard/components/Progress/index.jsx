@@ -8,11 +8,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 // Material components
-import { Typography, LinearProgress } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 // Material icons
 import {
-  InsertChartOutlined as InsertChartIcon,
   Person as PersonIcon
 } from '@material-ui/icons';
 

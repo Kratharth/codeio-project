@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // Material components
-import { Avatar, Typography, Button, LinearProgress } from '@material-ui/core';
+import { Avatar, Typography, Button } from '@material-ui/core';
 
 // Shared components
 import { Portlet, PortletContent, PortletFooter } from 'components';
@@ -23,11 +23,8 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  InputLabel,
-  Input,
-  MenuItem,
   FormControl,
-  Select, TextField
+  TextField
 } from '@material-ui/core';
 import { AddPhotoAlternate as AddIcon, Delete as DeleteIcon } from '@material-ui/icons';
 
