@@ -30,6 +30,7 @@ class Dashboard extends Component {
       case 'Department': return <DeptDashboard />;
       case 'Lecturer': return <LecturerDashboard />;
       case 'Student': return <StudentDashboard />;
+      default: return <AdminDashboard />;
     }
   }
   render() {

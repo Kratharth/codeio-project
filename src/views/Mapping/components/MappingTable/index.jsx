@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -33,7 +32,6 @@ import {
   Edit as EditIcon
 }
   from '@material-ui/icons';
-
 class MappingTable extends Component {
   state = {
     selectedmapping: [],
@@ -45,7 +43,7 @@ class MappingTable extends Component {
   };
 
   handleSelectAll = event => {
-    const { mapping, onSelect, selectedmappings } = this.props;
+    const { mapping, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedmapping;
@@ -61,7 +59,7 @@ class MappingTable extends Component {
     onSelect(selectedmapping);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedmapping } = this.state;
     const selectedIndex = selectedmapping.indexOf(id);
@@ -87,7 +85,7 @@ class MappingTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
+    const { rowsPerPage } = this.state;
     var stop = (page * rowsPerPage + rowsPerPage) < (this.props.mappings.length) ?
       (page * rowsPerPage + rowsPerPage) : (this.props.mappings.length);
     this.setState({
@@ -99,7 +97,7 @@ class MappingTable extends Component {
 
   handleChangeRowsPerPage = event => {
     // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
     var stop = (newStart + event.target.value) < (this.props.mappings.length) ?
@@ -125,7 +123,7 @@ class MappingTable extends Component {
 
   render() {
     const { classes, className, mappings } = this.props;
-    const { activeTab, selectedmapping, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { selectedmapping, rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

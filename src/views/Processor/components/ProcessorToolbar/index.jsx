@@ -34,10 +34,10 @@ class ProcessorToolbar extends Component {
     })
   }
   showForm() {
-    if (this.state.addClicked == true) {
+    if (this.state.addClicked === true) {
       const { classes, className, ...rest } = this.props;
       // const rootClassName = classNames(classes.root, className);
-      if (this.state.addClicked == true) {
+      if (this.state.addClicked === true) {
         return (
           <Portlet
             {...rest}
@@ -169,7 +169,7 @@ class ProcessorToolbar extends Component {
     }
   }
   render() {
-    const { classes, className, selectedprocessor, processor } = this.props;
+    const { classes, className, processor } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(processor)
     return (

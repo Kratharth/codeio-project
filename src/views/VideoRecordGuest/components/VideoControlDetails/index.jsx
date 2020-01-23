@@ -26,21 +26,21 @@ import styles from './styles';
 class VideoEdit extends Component {
 
   state = {
-values:{
-    title:'',
-    description:'',
-   guestlec1:false,
-   guestlec2:false,
-    lecturename:'',
-    room:'',
-    value:'',
-    sem:'',
-    faculty:'',
-    classroom:'',
-    course:''
+    values: {
+      title: '',
+      description: '',
+      guestlec1: false,
+      guestlec2: false,
+      lecturename: '',
+      room: '',
+      value: '',
+      sem: '',
+      faculty: '',
+      classroom: '',
+      course: ''
 
 
-  },
+    },
 
 
   };
@@ -57,204 +57,201 @@ values:{
     });
   };
 
-       handleChangeRoom = e => {
-         this.setState({
-           room: e.target.value
-         });
-       };
-       handleChangeLecturername = e => {
-         this.setState({
-           lecturername: e.target.value
-         });
-       };
+  handleChangeRoom = e => {
+    this.setState({
+      room: e.target.value
+    });
+  };
+  handleChangeLecturername = e => {
+    this.setState({
+      lecturername: e.target.value
+    });
+  };
 
-       handleChangeSem = e => {
-         this.setState({
-           sem: e.target.value
-         });
-       };
-       handleChangecourse = e => {
-         this.setState({
-           course: e.target.value
-         });
-       };
+  handleChangeSem = e => {
+    this.setState({
+      sem: e.target.value
+    });
+  };
+  handleChangecourse = e => {
+    this.setState({
+      course: e.target.value
+    });
+  };
 
-       handleChangeclassroom = e => {
-         this.setState({
-           classroom: e.target.value
-         });
-       };
-       handleChangefaculty = e => {
-         this.setState({
-           faculty: e.target.value
-         });
-       };
-
-
-       clicked1=(e)=>{
-         this.setState({
-           guestlec:!this.state.guestlec,
-            facultylec:false
-         })
-       }
-       clicked2=(e)=>{
-         this.setState({
-           facultylec:!this.state.facultylec,
-              guestlec:false,
-         })
-       }
+  handleChangeclassroom = e => {
+    this.setState({
+      classroom: e.target.value
+    });
+  };
+  handleChangefaculty = e => {
+    this.setState({
+      faculty: e.target.value
+    });
+  };
 
 
-
- renderForm1(classes,lecturername,room){
-   if(this.state.guestlec)
-  {
-    return (
-      <div>
-      <TextField
-        className={classes.textField}
-        label="Lecturer name"
-        margin="dense"
-        required
-        value={lecturername}
-        variant="outlined"
-        onChange={this.handleChangeLecturername}
-        variant="outlined"
-      required
-    />
-    <br/><br/>
-    <TextField
-      className={classes.textField}
-
-      label="Room number"
-      margin="dense"
-      required
-      value={room}
-      variant="outlined"
-      onChange={this.handleChangeRoom}
-      variant="outlined"
-    required
-  />
-  <br/>
-      </div>
-    )
-
+  clicked1 = (e) => {
+    this.setState({
+      guestlec: !this.state.guestlec,
+      facultylec: false
+    })
+  }
+  clicked2 = (e) => {
+    this.setState({
+      facultylec: !this.state.facultylec,
+      guestlec: false,
+    })
   }
 
 
-}
 
-renderForm2(classes,sem,classroom,faculty,course){
-  if(this.state.facultylec)
- {
+  renderForm1(classes, lecturername, room) {
+    if (this.state.guestlec) {
+      return (
+        <div>
+          <TextField
+            className={classes.textField}
+            //helperText="Please enter the description"
+            label="Lecturer name"
+            margin="dense"
+            required
+            value={lecturername}
+            variant="outlined"
+            onChange={this.handleChangeLecturername}
 
-   return (
-     <div>
+          />
+          <br /><br />
+          <TextField
+            className={classes.textField}
 
-             <TextField
+            label="Room number"
+            margin="dense"
+            required
+            value={room}
+            variant="outlined"
+            onChange={this.handleChangeRoom}
 
-                 select
-                 label="Sem"
-                 className={classes.textField}
-                 value={sem}
-                 onChange={this.handleChangeSem}
-                 SelectProps={{
-                   MenuProps: {
-                     className: classes.menu,
-                   },
-                 }}
-                 helperText="Please select the sem"
-                 margin="dense"
-                 variant="outlined"
-               >
-                   <MenuItem value="">
-                     <em>None</em>
-                   </MenuItem>
-                   <MenuItem value={"1"}>1</MenuItem>
-                   <MenuItem value={"2"}>2</MenuItem>
-                   <MenuItem value={"3"}>3</MenuItem>
-               </TextField>
+          />
+          <br />
+        </div>
+      )
 
-       <br/><br/>
-
+    }
 
 
-         <TextField
+  }
 
-             select
-             label="course"
-             className={classes.textField}
-             value={course}
-             onChange={this.handleChangecourse}
-             SelectProps={{
-               MenuProps: {
-                 className: classes.menu,
-               },
-             }}
-             helperText="Please select the course"
-             margin="dense"
-             variant="outlined"
-           >
-               <MenuItem value="">
-                 <em>None</em>
-               </MenuItem>
-               <MenuItem value={"DC"}>DC</MenuItem>
-               <MenuItem value={"DS"}>DS</MenuItem>
-               <MenuItem value={"JAVA"}>JAVA</MenuItem>
-           </TextField>
+  renderForm2(classes, sem, classroom, faculty, course) {
+    if (this.state.facultylec) {
 
-     <br/><br/>
+      return (
+        <div>
 
+          <TextField
 
-     <TextField
+            select
+            label="Sem"
+            className={classes.textField}
+            value={sem}
+            onChange={this.handleChangeSem}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            helperText="Please select the sem"
+            margin="dense"
+            variant="outlined"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"1"}>1</MenuItem>
+            <MenuItem value={"2"}>2</MenuItem>
+            <MenuItem value={"3"}>3</MenuItem>
+          </TextField>
 
-         select
-         label="faculty"
-         className={classes.textField}
-         value={faculty}
-         onChange={this.handleChangefaculty}
-         SelectProps={{
-           MenuProps: {
-             className: classes.menu,
-           },
-         }}
-         //helperText="Please select the faculty"
-         margin="dense"
-         variant="outlined"
-       >
-           <MenuItem value="">
-             <em>None</em>
-           </MenuItem>
-           <MenuItem value={"grp"}>grp</MenuItem>
-           <MenuItem value={"grp"}>grp</MenuItem>
-
-       </TextField>
-
-     <br/><br/>
-     <TextField
+          <br /><br />
 
 
-         label="class room"
-         className={classes.textField}
-         value={classroom}
-         onChange={this.handleChangeclassroom}
-       required
-         helperText="Enter classroom number"
-         margin="dense"
-         variant="outlined"
-       >
 
-       </TextField>
+          <TextField
 
-     <br/><br/>
+            select
+            label="course"
+            className={classes.textField}
+            value={course}
+            onChange={this.handleChangecourse}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            helperText="Please select the course"
+            margin="dense"
+            variant="outlined"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"DC"}>DC</MenuItem>
+            <MenuItem value={"DS"}>DS</MenuItem>
+            <MenuItem value={"JAVA"}>JAVA</MenuItem>
+          </TextField>
 
-     </div>
-   )
-
- }
+          <br /><br />
 
 
-}
+          <TextField
+
+            select
+            label="faculty"
+            className={classes.textField}
+            value={faculty}
+            onChange={this.handleChangefaculty}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            //helperText="Please select the faculty"
+            margin="dense"
+            variant="outlined"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"grp"}>grp</MenuItem>
+            <MenuItem value={"grp"}>grp</MenuItem>
+
+          </TextField>
+
+          <br /><br />
+          <TextField
+
+
+            label="class room"
+            className={classes.textField}
+            value={classroom}
+            onChange={this.handleChangeclassroom}
+            required
+            helperText="Enter classroom number"
+            margin="dense"
+            variant="outlined"
+          >
+
+          </TextField>
+
+          <br /><br />
+
+        </div>
+      )
+
+    }
+
+
+  }
 
 
 
@@ -262,7 +259,7 @@ renderForm2(classes,sem,classroom,faculty,course){
 
 
     const { classes, className, ...rest } = this.props;
-    const { title,description,lecturername,room,sem,classroom,faculty,course} = this.state;
+    const { title, description, lecturername, room, sem, classroom, faculty, course } = this.state;
 
 
 
@@ -285,75 +282,73 @@ renderForm2(classes,sem,classroom,faculty,course){
             autoComplete="off"
             noValidate
           >
-          <div className={classes.field}>
+            <div className={classes.field}>
 
 
-            <TextField
-              className={classes.textField}
-              //helperText="Please enter the title"
-              label="Title"
-              margin="dense"
-              required
-              value={title}
-              variant="outlined"
-              onChange={this.handleChangeTitle}
-              variant="outlined"
-            required
-            />
-            <br/>
-            <br/>
-            <TextField
-              className={classes.textField}
-              //helperText="Please enter the description"
-              label="Description"
-              margin="dense"
-              required
-              value={description}
-              variant="outlined"
-              onChange={this.handleChangeDescription}
-              variant="outlined"
-            required
-          />
-          <br/>
-          <br/>
-          <Button variant="contained" size="medium" color=""
-          className={classes.margin}
-          onClick={this.clicked1 }
-                    >
-            Guest Lecturer
+              <TextField
+                className={classes.textField}
+                //helperText="Please enter the title"
+                label="Title"
+                margin="dense"
+                required
+                value={title}
+                variant="outlined"
+                onChange={this.handleChangeTitle}
+
+              />
+              <br />
+              <br />
+              <TextField
+                className={classes.textField}
+                //helperText="Please enter the description"
+                label="Description"
+                margin="dense"
+                required
+                value={description}
+                variant="outlined"
+                onChange={this.handleChangeDescription}
+
+              />
+              <br />
+              <br />
+              <Button variant="contained" size="medium" color=""
+                className={classes.margin}
+                onClick={this.clicked1}
+              >
+                Guest Lecturer
           </Button>
 
-          <Button variant="contained" size="medium" color=""
-          className={classes.margin}
-          onClick={this.clicked2 }
-                    >
-             Lecturer
+              <Button variant="contained" size="medium" color=""
+                className={classes.margin}
+                onClick={this.clicked2}
+              >
+                Lecturer
           </Button>
 
-<br/><br/>
+              <br /><br />
 
-  {this.renderForm1(classes,lecturername,room)}
- {this.renderForm2(classes,sem,classroom,faculty,course)}
+              {this.renderForm1(classes, lecturername, room)}
+              {this.renderForm2(classes, sem, classroom, faculty, course)}
 
-<br/>
+              <br />
 
-</div>
-  <div>
+            </div>
+            <div>
 
-        <Button variant="contained" size="medium" color="" className={classes.margin}>
-          Start
+              <Button variant="contained" size="medium" color="" className={classes.margin}>
+                Start
         </Button>
-        <Button variant="contained" size="medium" color="" className={classes.margin}>
-          Pause/Resume
+              <Button variant="contained" size="medium" color="" className={classes.margin}>
+                Pause/Resume
         </Button>
-        <Button variant="contained" size="medium" color="" className={classes.margin}>
-          Stop
+              <Button variant="contained" size="medium" color="" className={classes.margin}>
+                Stop
         </Button>
 
 
-      </div>
+            </div>
 
-  </form>
+          </form>
         </PortletContent>
         <PortletFooter className={classes.portletFooter}>
           <Button

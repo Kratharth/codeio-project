@@ -2,12 +2,9 @@ import React from 'react';
 // Material components
 import { Grid } from '@material-ui/core';
 
-import { Paper, VideoPlay } from 'components';
+import { Videoplay } from 'components';
 // Custom components
 import {
-  //Students,
-  //Faculty,
-  //Videos,
   VideoVsMonChart
 } from './components';
 
@@ -30,7 +27,7 @@ function StudentDashboard() {
         xl={3}
         xs={12}
       >
-        <VideoPlay />
+        <Videoplay />
 
       </Grid>
       <Grid
@@ -40,7 +37,7 @@ function StudentDashboard() {
         xl={3}
         xs={12}
       >
-        <VideoPlay />
+        <Videoplay />
 
       </Grid>
       <Grid
@@ -50,7 +47,7 @@ function StudentDashboard() {
         xl={3}
         xs={12}
       >
-        <VideoPlay />
+        <Videoplay />
 
       </Grid>
       <Grid

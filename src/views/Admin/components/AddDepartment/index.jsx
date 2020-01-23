@@ -31,7 +31,7 @@ class AddDepartment extends Component {
   };
 
   render() {
-    const { classes, className, ...rest } = this.props;
+    //const { classes, className, ...rest } = this.props;
     //const { name, code, email } = this.state;
 
     //const rootClassName = classNames(classes.root, className);

@@ -30,8 +30,15 @@ class CameraList extends Component {
   async getCameras() {
     try {
       this.setState({ isLoading: true });
+
       //const { limit } = this.state;
-      const { camera } = await (getCameras());
+
+      // const { users } = await getUsers(limit);
+      const { camera } = await (getCameras())
+      if (camera === null) {
+        alert("Something unexpected has occurred :( ");
+        this.setState({ isLoading: false });
+      }
       if (this.signal) {
         this.setState({
           isLoading: false,

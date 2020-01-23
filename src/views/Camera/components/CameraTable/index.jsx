@@ -7,9 +7,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { withStyles } from '@material-ui/core';
 // Material components
 import {
-  Dialog,
-  DialogActions,
-  DialogTitle,
   Table,
   TableBody,
   TableCell,
@@ -20,8 +17,6 @@ import {
   Button
 } from '@material-ui/core';
 
-// Shared helpers
-//import { getInitials } from 'helpers';
 
 // Shared components
 import { Portlet, PortletContent, Status } from 'components';
@@ -49,7 +44,7 @@ class CameraTable extends Component {
   };
 
   handleSelectAll = event => {
-    const { camera, onSelect, selectedcameras } = this.props;
+    const { camera, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedcamera;
@@ -65,7 +60,7 @@ class CameraTable extends Component {
     onSelect(selectedcamera);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedcamera } = this.state;
     const selectedIndex = selectedcamera.indexOf(id);
@@ -91,7 +86,7 @@ class CameraTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
+    const { rowsPerPage } = this.state;
     var stop = (page * rowsPerPage + rowsPerPage) < (this.props.cameras.length) ?
       (page * rowsPerPage + rowsPerPage) : (this.props.cameras.length);
     this.setState({
@@ -102,7 +97,8 @@ class CameraTable extends Component {
   };
 
   handleChangeRowsPerPage = event => {
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
     var stop = (newStart + event.target.value) < (this.props.cameras.length) ?
@@ -128,7 +124,7 @@ class CameraTable extends Component {
   render() {
     const { classes, className, cameras } = this.props;
     console.log(cameras)
-    const { activeTab, selectedcamera, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

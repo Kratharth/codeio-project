@@ -39,10 +39,10 @@ class MappingToolbar extends Component {
     })
   }
   showForm() {
-    if (this.state.addClicked == true) {
+    if (this.state.addClicked === true) {
       const { classes, className, ...rest } = this.props;
       // const rootClassName = classNames(classes.root, className);
-      if (this.state.addClicked == true) {
+      if (this.state.addClicked === true) {
         return (
           <Portlet
             {...rest}
@@ -156,13 +156,13 @@ class MappingToolbar extends Component {
   }
   verify(ev) {
     ev.preventDefault()
-    if (document.getElementById("classroom").value == '')
+    if (document.getElementById("classroom").value === '')
       alert('Classroom field is empty');
-    else if (document.getElementById("cameraip").value == '')
+    else if (document.getElementById("cameraip").value === '')
       alert('Camera IP field is empty');
-    else if (document.getElementById("servername").value == '')
+    else if (document.getElementById("servername").value === '')
       alert('Server Name IP field is empty');
-    else if (document.getElementById("serverip").value == '')
+    else if (document.getElementById("serverip").value === '')
       alert('Server  IP field is empty');
     else
       this.submit();
@@ -219,7 +219,7 @@ class MappingToolbar extends Component {
     }
   }
   render() {
-    const { classes, className, selectedmapping, mapping } = this.props;
+    const { classes, className, mapping } = this.props;
     const rootClassName = classNames(classes.root, className);
     console.log(mapping)
     return (

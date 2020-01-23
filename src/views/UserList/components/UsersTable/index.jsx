@@ -55,7 +55,7 @@ class UsersTable extends Component {
     onSelect(selectedUsers);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedUsers } = this.state;
 
@@ -80,7 +80,7 @@ class UsersTable extends Component {
     onSelect(newSelectedUsers);
   };
 
-  handleChangePage = (event, page) => {
+  handleChangePage = (page) => {
     this.setState({ page });
   };
 
@@ -102,8 +102,8 @@ class UsersTable extends Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="left">
-             {/*checkbox next to name */}       
-             <Checkbox
+                    {/*checkbox next to name */}
+                    <Checkbox
                       checked={selectedUsers.length === users.length}
                       color="primary"
                       indeterminate={
@@ -215,8 +215,8 @@ UsersTable.propTypes = {
 
 UsersTable.defaultProps = {
   users: [],
-  onSelect: () => {},
-  onShowDetails: () => {}
+  onSelect: () => { },
+  onShowDetails: () => { }
 };
 
 export default withStyles(styles)(UsersTable);

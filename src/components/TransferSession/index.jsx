@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//import clsx from 'clsx';
+
 // Externals
 import PropTypes from 'prop-types';
 // Material helpers
@@ -22,9 +24,8 @@ const styles = theme => ({
     justifyContent: 'center',
     position: 'relative',
     marginTop: '24px',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    //justifyContent: 'flex-end'
   },
   menu: {
     width: '80px',

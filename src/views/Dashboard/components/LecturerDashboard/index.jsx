@@ -3,9 +3,6 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 // Custom components
 import {
-  //Students,
-  //Faculty,
-  //Videos,
   VideoVsDepChart
 } from './components';
 

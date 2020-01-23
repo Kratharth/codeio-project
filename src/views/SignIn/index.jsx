@@ -94,7 +94,7 @@ class SignIn extends Component {
   }
 
   componentWillUnmount() {
-    this.context.userDetails({...localStorage});
+    this.context.userDetails({ ...localStorage });
   }
 
   render() {

@@ -12,9 +12,7 @@ class CourseEdit extends Component {
     coursecode: '',
     title: '',
     faculty: '',
-    coursename: '',
-    displayTable: false,
-    displaySearchResults: false
+    coursename: ''
   };
 
   renderTable() {

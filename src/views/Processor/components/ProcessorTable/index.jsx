@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 // Externals
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -46,7 +45,7 @@ class ProcessorTable extends Component {
   };
 
   handleSelectAll = event => {
-    const { processor, onSelect, selectedprocessors } = this.props;
+    const { processor, onSelect } = this.props;
 
     // let selectedUsers;
     let selectedprocessor;
@@ -62,7 +61,7 @@ class ProcessorTable extends Component {
     onSelect(selectedprocessor);
   };
 
-  handleSelectOne = (event, id) => {
+  handleSelectOne = (id) => {
     const { onSelect } = this.props;
     const { selectedprocessor } = this.state;
     const selectedIndex = selectedprocessor.indexOf(id);
@@ -88,7 +87,7 @@ class ProcessorTable extends Component {
   handleChangePage = (event, page) => {
     console.log(event);
     console.log(page);
-    const { rowsPerPage, sliceStart } = this.state;
+    const { rowsPerPage } = this.state;
     var stop = (page * rowsPerPage + rowsPerPage) < (this.props.processors.length) ?
       (page * rowsPerPage + rowsPerPage) : (this.props.processors.length);
     this.setState({
@@ -100,7 +99,7 @@ class ProcessorTable extends Component {
 
   handleChangeRowsPerPage = event => {
     // console.log('sliceStart and stop: ' + this.state.sliceStart + '  ' + this.state.sliceStop);
-    const { rowsPerPage, sliceStart, sliceStop } = this.state;
+    const { sliceStart } = this.state;
     var newRowsPerPage = event.target.value;
     var newStart = Math.floor(sliceStart / newRowsPerPage) * newRowsPerPage;
     var stop = (newStart + event.target.value) < (this.props.processors.length) ?
@@ -126,7 +125,7 @@ class ProcessorTable extends Component {
 
   render() {
     const { classes, className, processors } = this.props;
-    const { activeTab, selectedprocessor, rowsPerPage, page, sliceStart, sliceStop } = this.state;
+    const { rowsPerPage, page, sliceStart, sliceStop } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

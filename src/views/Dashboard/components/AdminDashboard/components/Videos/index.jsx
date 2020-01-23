@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core';
 // Material components
 import { Typography } from '@material-ui/core';
 // Material icons
-import { Videocam as VideoIcon, } from '@material-ui/icons';
+import { Videocam as VideoIcon } from '@material-ui/icons';
 // Shared components
 import { Paper } from 'components';
 

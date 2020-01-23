@@ -121,7 +121,7 @@ class AddStudent extends Component {
 
   render() {
     const { classes, className } = this.props;
-    const {  department, sem, usn, departmentselected } = this.state;
+    const { department, sem, usn, departmentselected } = this.state;
 
     const rootClassName = classNames(classes.root, className);
 

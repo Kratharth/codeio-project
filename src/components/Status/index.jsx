@@ -62,7 +62,6 @@ const Status = props => {
     <span
       {...rest}
       className={rootClassName}
-      //
     />
   );
 };
