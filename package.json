@@ -39,7 +39,7 @@
     "fs": "0.0.1-security",
     "history": "^4.7.2",
     "material-table": "^1.40.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.1",
     "react": "^16.8.6",
